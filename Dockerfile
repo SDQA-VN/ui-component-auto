@@ -1,4 +1,6 @@
-FROM node:10-slim
+FROM alpine:3.9
+
+ENV NODE_VERSION 12.13.0
 
 LABEL com.github.actions.name="kintone-ui-component auto"
 LABEL com.github.actions.description="Run automation for kintone-ui-component"
