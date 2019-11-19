@@ -7,7 +7,7 @@ LABEL com.github.actions.color="green"
 
 RUN apk add --update nodejs npm
 RUN apk add chromium
-COPY entrypoint.sh /entrypoint.sh
+COPY . /action
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
