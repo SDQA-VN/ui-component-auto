@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM node:10-slim
 
 LABEL com.github.actions.name="kintone-ui-component auto"
 LABEL com.github.actions.description="Run automation for kintone-ui-component"
