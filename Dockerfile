@@ -10,8 +10,8 @@ COPY package.json /source/ui-component-auto
 
 RUN apk add --update nodejs npm
 RUN apk add chromium
-RUN cd /source/ui-component-auto && npm i --only=production
-RUN chmod +x entrypoint.sh
+RUN cd /source/ui-component-auto && npm i
+RUN chmod +x /source/entrypoint.sh
 COPY . .
 
 ENTRYPOINT [ "/source/entrypoint.sh" ]
