@@ -10,6 +10,7 @@ COPY package.json /source/ui-component-auto
 
 RUN apk add --update nodejs npm
 RUN apk add chromium
+RUN apk add --no-cache git
 RUN cd /source/ui-component-auto && npm i
 RUN chmod +x /source/entrypoint.sh
 COPY . .
