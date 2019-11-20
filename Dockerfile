@@ -8,10 +8,9 @@ LABEL com.github.actions.color="green"
 
 COPY package.json /source/ui-component-auto
 
-RUN cd /source/ui-component-auto && npm i --only=production
-
 RUN apk add --update nodejs npm
 RUN apk add chromium
+RUN cd /source/ui-component-auto && npm i --only=production
 RUN chmod +x entrypoint.sh
 COPY . .
 
