@@ -14,4 +14,4 @@ RUN cd /source/ui-component-auto && npm i --only=production
 RUN chmod +x entrypoint.sh
 COPY . .
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/source/entrypoint.sh" ]
