@@ -3,6 +3,5 @@
 set -e
 npm install
 ls -l
-cd ./node_modules
-ls -l
+pwd
 npm run preparation
