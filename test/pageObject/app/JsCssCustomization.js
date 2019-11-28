@@ -1,34 +1,41 @@
 const ReturnElement = require('../../utils/ReturnElement');
 const CONSTANT = require('../../constant');
+const path = require('path');
+const fs = require('fs');
+const CONFIG = require('../../config.json');
+
 
 const UPLOAD_JS_FILE_PC_LOCATOR = '//*[@id="jsFiles_DESKTOP-browse"]//input';
 const UPLOAD_CSS_FILE_PC_LOCATOR = '//*[@id="jsFiles_DESKTOP_CSS-browse"]//input';
 const SAVE_LOCATOR = '//input[@value="Save"]';
 const JS_FILES_LIST_LOCATOR = '//*[@id="jsFiles_DESKTOP-filelist"]';
-const DELETE_LOCATOR = '//div[@id="jsFiles_DESKTOP-filelist"]//button[contains(@id,"remove")][1]';
+const DELETE_JS_LOCATOR = '//div[@id="jsFiles_DESKTOP-filelist"]//button[contains(@id,"remove")][1]';
+const DELETE_CSS_LOCATOR = '//div[@id="jsFiles_DESKTOP_CSS-filelist"]//button[contains(@id,"remove")][1]';
 const UPLOAD_JS_LINK_BUTTON_LOCATOR = '//*[@id="jsFiles_DESKTOP-container"]//span[@class="gaia-customize-url-button-text"]'
 const UPLOAD_JS_LINK_INPUT_LOCATOR = '//input[@id="url-:v-text"]'
+const sourceFolder = path.join(__dirname, '..', '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`);
 
 class JsCssCustomization {
     navigate() {
         browser.url(CONSTANT.PATH.APP_SETTING_JS_CUSTOMIZE);
         ReturnElement.waitForTitleDisplayed('JavaScript and CSS Customization');
-        return ReturnElement.checkElementExistence(JS_FILES_LIST_LOCATOR);
+        ReturnElement.checkElementExistence(JS_FILES_LIST_LOCATOR);
+        return this;
     };
 
-    addJSFiles(filePath) {
+    _addJSFiles(filePath) {
         ReturnElement.checkElementExistence(UPLOAD_JS_FILE_PC_LOCATOR);
         browser.chooseFile(UPLOAD_JS_FILE_PC_LOCATOR, filePath);
         return this;
     };
 
-    addCSSFiles(filePath) {
+    _addCSSFiles(filePath) {
         ReturnElement.checkElementExistence(UPLOAD_CSS_FILE_PC_LOCATOR);
         browser.chooseFile(UPLOAD_CSS_FILE_PC_LOCATOR, filePath);
         return this;
     };
 
-    addJSLink(link) {
+    _addJSLink(link) {
         checkElementExistence(UPLOAD_JS_LINK_BUTTON_LOCATOR)
         $(UPLOAD_JS_LINK_BUTTON_LOCATOR).click();
         checkElementExistence(UPLOAD_JS_LINK_INPUT_LOCATOR)
@@ -37,8 +44,11 @@ class JsCssCustomization {
     };
 
     deleteAllJSFiles() {
-        while ($(DELETE_LOCATOR).isVisible()) {
-            $(DELETE_LOCATOR).click();
+        while ($(DELETE_JS_LOCATOR).isVisible()) {
+            $(DELETE_JS_LOCATOR).click();
+        }
+        while ($(DELETE_CSS_LOCATOR).isVisible()) {
+            $(DELETE_CSS_LOCATOR).click();
         }
         return this;
     };
@@ -46,6 +56,43 @@ class JsCssCustomization {
     save() {
         $(SAVE_LOCATOR).click();
         return ReturnElement.waitForTitleDisplayed('Settings');
+    };
+
+    _orderFile(sourceFolder) {
+        const test = fs.readdirSync(sourceFolder);
+        const result = test.sort(function (file) {
+            if (file.includes('.min')) {
+                return -1;
+            }
+            else if (file.includes('_body.js')) {
+                return 0;
+            }
+            else if (file.includes('testgrid'))
+                return 0;
+            else
+                return 1;
+        });
+        return result;
+    }
+
+    uploadFile() {
+        console.log('!!! Upload file !!!');
+        const result = this._orderFile(sourceFolder);
+        if (`${CONFIG.folderTest}` == "react-non-jsx") {
+            this.addJSLink('https://unpkg.com/react@16/umd/react.production.min.js');
+            this.addJSLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js');
+        }
+        for (let fileName of result) {
+            if (fileName.includes('.js')) {
+                const filePath = path.join(__dirname, '..', '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`, `${fileName}`);
+                this._addJSFiles(filePath);
+            }
+            else {
+                const filePath = path.join(__dirname, '..', '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`, `${fileName}`);
+                this._addCSSFiles(filePath);
+            }
+        };
+        return this;
     };
 }
 module.exports = new JsCssCustomization;

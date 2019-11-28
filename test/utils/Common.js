@@ -72,43 +72,37 @@ deleteFile = () => {
 }
 
 uploadFile = () => {
-	let XPATH_UPDATE_APP_BTN = '.gaia-admin-app-deploy-button';
+    let XPATH_UPDATE_APP_BTN = '.gaia-admin-app-deploy-button';
     let XPATH_OK_BTN = '//button[@name="ok"]';
     let XPATH_APP_INDEX_CONTENT = '.app-index-contents-gaia';
     console.log('!!! Upload file AAAAA !!!');
-    browser.url(APP_URL_UPLOAD);
-    var source = [];
-    var sourceFolder = path.join(__dirname, '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`);
-    fs.readdirSync(sourceFolder).forEach(file => {
-        source.push(file);
+    const sourceFolder = path.join(__dirname, '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`);
+    const test = fs.readdirSync(sourceFolder);
+    const result = test.sort(function (file) {
+        if (file.includes('.min'))
+            return -1;
+        else if (file.includes('_body.js'))
+            return 0;
+        else if (file.includes('testgrid'))
+            return 0;
+        else
+            return 1;
     });
-    var result = source.sort(function (item) {
-        if (item.includes('.min')) {
-            return -1
-        }
-        if (item.includes('_body.js')){
-            return 1
-        };
-        if (item.includes('testgrid.js')){
-            return 1
-        };
-    }).reverse();
-    deleteFile();
-    console.log(source)
-    if (`${CONFIG.folderTest}` == "react-non-jsx") {
-        addLink('https://unpkg.com/react@16/umd/react.production.min.js')
-        addLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js')
-    }
-    for (let fileName of result) {
-        addFile(fileName)
-    };
-    browser.submitForm('#application-customize-gaia');
-    checkElementExistence(XPATH_UPDATE_APP_BTN);
-    $(XPATH_UPDATE_APP_BTN).click();
-    $(XPATH_OK_BTN).click();
-    checkElementExistence(XPATH_APP_INDEX_CONTENT);
+    // deleteFile();
+    // if (`${CONFIG.folderTest}` == "react-non-jsx") {
+    //     addLink('https://unpkg.com/react@16/umd/react.production.min.js')
+    //     addLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js')
+    // // }
+    // for (let fileName of result) {
+    //     // addFile(fileName)
+    //     // console.log(fileName)
+    // };
+    // browser.submitForm('#application-customize-gaia');
+    // checkElementExistence(XPATH_UPDATE_APP_BTN);
+    // $(XPATH_UPDATE_APP_BTN).click();
+    // $(XPATH_OK_BTN).click();
+    // checkElementExistence(XPATH_APP_INDEX_CONTENT);
 };
-
 module.exports = {
     logInSlash: logInSlash,
     logOutSlash: logOutSlash,

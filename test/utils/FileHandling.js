@@ -13,21 +13,19 @@ const sourceFolder = path.join(__dirname, '..', '..', 'kintoneUIComponent', `${C
 
 class FileHandling {
     orderFile(sourceFolder) {
-        const source = [];
-        fs.readdirSync(sourceFolder).forEach(file => {
-            source.push(file);
-        });
-        const result = source.sort(function (item) {
-            if (item.includes('.min')) {
-                return 1
+        const test = fs.readdirSync(sourceFolder);
+        const result = test.sort(function (file) {
+            if (file.includes('.min')) {
+                return -1;
             }
-            if (item.includes('_body.js')) {
-                return 2
-            };
-            if (item.includes('testgrid.js')) {
-                return 3
-            };
-        }).reverse();
+            else if (file.includes('_body.js')) {
+                return 0;
+            }
+            else if (file.includes('testgrid'))
+                return 0;
+            else
+                return 1;
+        });
         return result;
     }
 
@@ -35,15 +33,18 @@ class FileHandling {
         console.log('!!! Upload file !!!');
         const result = this.orderFile(sourceFolder);
         if (`${CONFIG.folderTest}` == "react-non-jsx") {
-            addLink('https://unpkg.com/react@16/umd/react.production.min.js')
-            addLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js')
+            JsCssCustomization.addJSLink('https://unpkg.com/react@16/umd/react.production.min.js');
+            JsCssCustomization.addJSLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js');
         }
         for (let fileName of result) {
-            console.log(fileName)
-            // if(fileName.includes('.js')){
-
-            // }
+            if (fileName.includes('.js')) {
+                JsCssCustomization.addJSFiles(fileName);
+            }
+            else {
+                JsCssCustomization.addCSSFiles(fileName);
+            }
         };
+        return this;
     };
 }
 
