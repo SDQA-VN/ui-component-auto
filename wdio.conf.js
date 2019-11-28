@@ -1,6 +1,5 @@
 const CONFIG = require('./test/config.json')
 exports.config = {
-
   specs: [
 
     //Fro running test scipt
@@ -9,7 +8,7 @@ exports.config = {
 
   suites: {
     preparation: [
-      './test/testScripts/common/_uploadJSFiles.js'
+      './test/testScripts/preparation/importSource.js'
     ],
   },
 
