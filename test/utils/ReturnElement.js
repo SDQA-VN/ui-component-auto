@@ -12,7 +12,7 @@ class ReturnElement {
     static waitForTitleDisplayed(title) {
         browser.waitUntil(() => {
             return browser.title().value === title;
-        }, 10000, `${title} is not correct`);
+        }, 300000, `${title} is not correct`);
     }
 
     static waitForURLCorrect(url) {

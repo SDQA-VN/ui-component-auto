@@ -43,4 +43,4 @@ OnCallBackTriggerNotifyPopupEl.id = 'on-callback-trigger-notifypopup';
 function on_trigger_NP() {
     alert('on_click_trigger has been clicked');
 }
-onCallBackTriggerAlert.on('click', on_trigger_NP);
+OnCallBackTriggerNotifyPopup.on('click', on_trigger_NP);
