@@ -1,8 +1,6 @@
-const $ = require('../../utils/ReturnElement').singleElement;
 const common = require('../../utils/common');
 const Helper = require('../../helper/main');
-
-const expect = require('chai').expect;
+const expect = require('chai').expect
 
 const CONSTRUCTOR_TEXT = "//div[@id='constructor-text']//input[@class='kuc-input-text']";
 // TXT_FULL_CONSTRUCTOR: "//input[@value= 'fullConstructorText']",
@@ -103,26 +101,23 @@ describe('kintoneUIComponent - Text', function () {
             .verifyElementEnabled(ENABLE_ENABLED_TEXT)
     });
 
-    // it('[Text-33] should register a callback function for change event successfully', function () {
-    //     $(ON_CALLBACK_FUNCTION_TEXT).click();
-    //     let alertText = browser.alertText();
-    //     expect(alertText).to.equal('onClickCallBackFunctionText has been clicked');
-    //     browser.alertAccept();
-    //     $(ON_CALLBACK_FUNCTION_TEXT).addValue('onChange callback');
-    //     alertText = browser.alertText();
-    //     expect(alertText).to.equal('onChangeCallBackFunctionText has been changed');
-    //     browser.alertAccept();
-    // });
+    it('[Text-33] should register a callback function for change event successfully', function () {
+        Helper.ElementHandler
+            .waitForElement(ON_CALLBACK_FUNCTION_TEXT)
+            .click(ON_CALLBACK_FUNCTION_TEXT)
+            .verifyAlertText('onClickCallBackFunctionText has been clicked')
+            .addValue(ON_CALLBACK_FUNCTION_TEXT, 'onChange callback')
+            .click(ENABLE_BUTTON_TEXT)
+            .verifyAlertText('onChangeCallBackFunctionText has been changed')
+    });
 
-    // it('[Text-36] should verify that the callback function will be trigger when click on the textbox', function () {
-    //     $(ON_CALLBACK_TRIGGER_TEXT).click();
-    //     let alertText = browser.alertText();
-    //     expect(alertText).to.equal('onClickCallBackTriggerText has been clicked');
-    //     browser.alertAccept();
-    //     $(ON_CALLBACK_TRIGGER_TEXT).addValue('onChange callback');
-    //     // $(ENABLE_ENABLED_TEXT).click(); //Operation of onChange event of JS and React is different  (JS will use this click event)
-    //     alertText = browser.alertText();
-    //     expect(alertText).to.equal('onChangeCallBackTriggerText has been changed');
-    //     browser.alertAccept();
-    // });
+    it('[Text-36] should verify that the callback function will be trigger when click on the textbox', function () {
+        Helper.ElementHandler
+            .waitForElement(ON_CALLBACK_TRIGGER_TEXT)
+            .click(ON_CALLBACK_TRIGGER_TEXT)
+            .verifyAlertText('onClickCallBackTriggerText has been clicked')
+            .addValue(ON_CALLBACK_TRIGGER_TEXT, 'onChange callback')
+            .click(ENABLE_ENABLED_TEXT)
+            .verifyAlertText('onChangeCallBackTriggerText has been changed')
+    });
 });

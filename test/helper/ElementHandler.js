@@ -156,6 +156,16 @@ class ElementHandler {
     }
 
     /**
+    * @param {string} locator    Element for set value
+    * @param {string} value    Value for enter
+    */
+    addValue(locator, value) {
+        browser.waitForVisible(locator, 30000, false);
+        $(locator).addValue(value);
+        return this;
+    }
+
+    /**
     * @param {string} locator    Element for verify
     * @param {string} value       Value for verify
     */
