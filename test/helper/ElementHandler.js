@@ -10,6 +10,14 @@ class ElementHandler {
     }
 
     /**
+    * @param {string} locator    Element for wait
+    */
+    waitForElementExit(locator) {
+        browser.waitForExist(locator, 30000, false);
+        return this;
+    }
+
+    /**
     * @param {string} locator    Element for verify
     */
     verifyElementVisible(locator) {
@@ -118,7 +126,7 @@ class ElementHandler {
     /**
     * @param {string} title    Element for verify
     */
-    verifyTitleCorrect(title) {
+    verifyTitle(title) {
         browser.waitUntil(() => {
             return browser.title().value === title;
         }, 10000, `${title} is not correct`);
@@ -128,10 +136,10 @@ class ElementHandler {
     /**
     * @param {string} url    URL for verify
     */
-    verifyURLCorrect(url) {
+    verifyURL(url) {
         browser.waitUntil(() => {
             return browser.getUrl() === url;
-        }, 10000, `${url} is not correct`);
+        }, 30000, `${url} is not correct`);
         return this;
     }
 

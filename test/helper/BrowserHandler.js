@@ -3,7 +3,7 @@ class BrowserHandling {
    * @param {string} url    url for navigate
    */
     navigate(url) {
-        browser.windowHandleMaximize();
+        browser.windowHandleFullscreen();
         browser.url(url);
         this.waitForPageReady();
     }

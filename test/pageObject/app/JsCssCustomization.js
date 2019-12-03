@@ -1,11 +1,11 @@
-const ReturnElement = require('../../utils/ReturnElement');
 const CONSTANT = require('../../constant');
 const path = require('path');
 const fs = require('fs');
 const CONFIG = require('../../config.json');
+const Helper = require('../../helper/main')
 
 
-const UPLOAD_JS_FILE_PC_LOCATOR = '//*[@id="jsFiles_DESKTOP-browse"]//input';
+const UPLOAD_JS_FILE_PC_LOCATOR = '//span[@id="jsFiles_DESKTOP-browse"]//input';
 const UPLOAD_CSS_FILE_PC_LOCATOR = '//*[@id="jsFiles_DESKTOP_CSS-browse"]//input';
 const SAVE_LOCATOR = '//input[@value="Save"]';
 const JS_FILES_LIST_LOCATOR = '//*[@id="jsFiles_DESKTOP-filelist"]';
@@ -17,28 +17,28 @@ const sourceFolder = path.join(__dirname, '..', '..', '..', 'kintoneUIComponent'
 
 class JsCssCustomization {
     navigate() {
-        browser.url(CONSTANT.PATH.APP_SETTING_JS_CUSTOMIZE);
-        ReturnElement.waitForTitleDisplayed('JavaScript and CSS Customization');
-        ReturnElement.checkElementExistence(JS_FILES_LIST_LOCATOR);
+        Helper.BrowserHandler.navigate(CONSTANT.PATH.APP_SETTING_JS_CUSTOMIZE)
+        Helper.ElementHandler.verifyTitle('JavaScript and CSS Customization');
+        Helper.ElementHandler.waitForElement(JS_FILES_LIST_LOCATOR);
         return this;
     };
 
     _addJSFiles(filePath) {
-        ReturnElement.checkElementExistence(UPLOAD_JS_FILE_PC_LOCATOR);
+        Helper.ElementHandler.waitForElementExit(UPLOAD_JS_FILE_PC_LOCATOR);
         browser.chooseFile(UPLOAD_JS_FILE_PC_LOCATOR, filePath);
         return this;
     };
 
     _addCSSFiles(filePath) {
-        ReturnElement.checkElementExistence(UPLOAD_CSS_FILE_PC_LOCATOR);
+        Helper.ElementHandler.waitForElementExit(UPLOAD_CSS_FILE_PC_LOCATOR);
         browser.chooseFile(UPLOAD_CSS_FILE_PC_LOCATOR, filePath);
         return this;
     };
 
     _addJSLink(link) {
-        checkElementExistence(UPLOAD_JS_LINK_BUTTON_LOCATOR)
+        Helper.ElementHandler.waitForElementExit(UPLOAD_JS_LINK_BUTTON_LOCATOR)
         $(UPLOAD_JS_LINK_BUTTON_LOCATOR).click();
-        checkElementExistence(UPLOAD_JS_LINK_INPUT_LOCATOR)
+        Helper.ElementHandler.waitForElementExit(UPLOAD_JS_LINK_INPUT_LOCATOR)
         $(UPLOAD_JS_LINK_INPUT_LOCATOR).setValue(link);
         return this;
     };
@@ -55,7 +55,8 @@ class JsCssCustomization {
 
     save() {
         $(SAVE_LOCATOR).click();
-        return ReturnElement.waitForTitleDisplayed('Settings');
+        Helper.ElementHandler.verifyTitle('Settings');
+        return this;
     };
 
     _orderFile(sourceFolder) {

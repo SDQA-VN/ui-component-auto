@@ -1,21 +1,15 @@
 const UPDATE_APP_LOCATOR = '//button[contains(@class,"app-deploy-button")]';
 const OK_LOCATOR = '//button[@name="ok"]';
+const Helper = require('../../helper/main')
 
 class AppSettings {
-    waitForButton(button, isVisible) {
-        browser.waitUntil(() => {
-            return $(button).isVisible() === isVisible;
-        }, 30000, button + " is not " + isVisible);
-    }
-
     updateApp() {
-        this.waitForButton(UPDATE_APP_LOCATOR, true);
+        Helper.ElementHandler.waitForElement(UPDATE_APP_LOCATOR);
         $(UPDATE_APP_LOCATOR).click();
-        this.waitForButton(OK_LOCATOR, true);
+        Helper.ElementHandler.waitForElement(OK_LOCATOR);
         $(OK_LOCATOR).click();
-        browser.waitUntil(() => {
-            return (browser.title().value !== "Settings");
-        }, 30000, 'Cannot update app settings');
+        Helper.ElementHandler.verifyTitle("Settings");
+        return this;
     };
 }
 module.exports = new AppSettings();
