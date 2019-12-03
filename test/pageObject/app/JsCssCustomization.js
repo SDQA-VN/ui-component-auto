@@ -19,7 +19,7 @@ class JsCssCustomization {
     navigate() {
         Helper.BrowserHandler.navigate(CONSTANT.PATH.APP_SETTING_JS_CUSTOMIZE)
         Helper.ElementHandler.verifyTitle('JavaScript and CSS Customization');
-        Helper.ElementHandler.waitForElement(JS_FILES_LIST_LOCATOR);
+        Helper.ElementHandler.waitForElementExit(JS_FILES_LIST_LOCATOR);
         return this;
     };
 
