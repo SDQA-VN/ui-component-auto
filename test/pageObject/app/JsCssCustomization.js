@@ -62,13 +62,11 @@ class JsCssCustomization {
     _orderFile(sourceFolder) {
         const test = fs.readdirSync(sourceFolder);
         const result = test.sort(function (file) {
-            if (file.includes('.min')) {
+            if (file.includes('kintone-ui-component.min'))
                 return -1;
-            }
-            else if (file.includes('_body.js')) {
-                return 0;
-            }
             else if (file.includes('testgrid'))
+                return -1;
+            else if (file.includes('body.js'))
                 return 0;
             else
                 return 1;
@@ -79,6 +77,7 @@ class JsCssCustomization {
     uploadFile() {
         console.log('!!! Upload file !!!');
         const result = this._orderFile(sourceFolder);
+        console.log(result)
         if (`${CONFIG.folderTest}` == "react-non-jsx") {
             this.addJSLink('https://unpkg.com/react@16/umd/react.production.min.js');
             this.addJSLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js');
