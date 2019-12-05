@@ -129,7 +129,7 @@ class ElementHandler {
     verifyTitle(title) {
         browser.waitUntil(() => {
             return browser.title().value === title;
-        }, 10000, `${title} is not correct`);
+        }, 30000, `${title} is not correct`);
         return this;
     }
 
