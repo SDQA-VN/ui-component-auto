@@ -104,6 +104,30 @@ class ElementHandler {
         return $(locator).getValue();
     }
 
+    /**
+    * @param {string} locator  Element for verify
+    * @param {number} width    Element for verify
+    * @param {number} height   Element for verify
+    */
+    verifyElementSize(locator, width, height) {
+        let elementSize = $(locator).getElementSize();
+        expect(elementSize.width).to.equal(width);
+        expect(elementSize.height).to.equal(height);
+        return this;
+    }
+
+    /**
+    * @param {string} locator  Element for verify
+    * @param {number} width    Element for verify
+    * @param {number} height   Element for verify
+    */
+
+    verifyElementSizeDragAndDrop(locator, width, height) {
+        let elementSize = $(locator).getElementSize();
+        expect(elementSize.width >= width).to.equal(true);
+        expect(elementSize.height >= height).to.equal(true);
+        return this;
+    }
 
     /**
     * @param {string} locator    Element for verify
@@ -182,6 +206,16 @@ class ElementHandler {
         return this;
     }
 
+        /**
+    * @param {string} locator    Element for verify
+    * @param {number} value       Value for verify
+    */
+
+    verifyNumberOfElements(locator,value){
+        expect($$(locator).length).to.equal(value)
+        return this
+    }
+
     /**
     * @param {string} locator    Element for verify
     * @param {string} attribute    Attribute for verify
@@ -210,5 +244,44 @@ class ElementHandler {
         $(locator).click();
         return this;
     }
+
+    /**
+    * @param {string} locator    Element for verify
+    */
+    moveToObject(locator) {
+        browser.moveToObject(locator)
+        return this;
+    }
+
+    /**
+    * @param {string} sourceLocator    Element for verify
+    * @param {string} destinationLocator    Element for verify
+    */
+    dragAndDrop(sourceLocator, destinationLocator) {
+        this.waitForElement(sourceLocator)
+        this.waitForElement(destinationLocator)
+        browser.dragAndDrop(sourceLocator, destinationLocator)
+        return this;
+    }
+
+    /**
+    * @param {string} locator    Element for verify
+    */
+    buttonUp(locator) {
+        this.waitForElementClickable(locator)
+        browser.buttonUp(locator)
+        return this;
+    }
+
+    /**
+    * @param {string} locator    Element for verify
+    */
+    buttonDown(locator) {
+        this.waitForElementClickable(locator)
+        browser.buttonDown(locator)
+        return this;
+    }
 }
+
+
 module.exports = new ElementHandler();

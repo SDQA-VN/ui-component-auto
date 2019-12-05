@@ -3,7 +3,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = (env = {}) => {
     return {
         entry: {
-            "my-customization.min": './kintoneUIComponent/react/react-jsx/main.js',
+            // "my-customization.min": './kintoneUIComponent/react/react-jsx/main.js',
+            // "testReact.min": './testReact.js',
+            "test.min": './test.js',
         },
         output: {
             path: path.resolve(__dirname, './kintoneUIComponent/react/'),
@@ -22,7 +24,7 @@ module.exports = (env = {}) => {
                     use: {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['react-app','@babel/preset-env'],
+                            presets: ['react-app', '@babel/preset-env'],
                             plugins: ["transform-class-properties"]
                         }
                     }
@@ -30,8 +32,8 @@ module.exports = (env = {}) => {
                 {
                     test: /\.css$/,
                     use: [
-                      { loader: "style-loader" },
-                      { loader: "css-loader" }
+                        { loader: "style-loader" },
+                        { loader: "css-loader" }
                     ]
                 }
             ]
