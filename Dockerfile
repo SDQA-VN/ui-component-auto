@@ -9,7 +9,7 @@ LABEL com.github.actions.color="green"
 COPY package.json /source/ui-component-auto
 
 RUN apt update
-RUN apt install default-jdk
+RUN apt install openjdk-11-jdk
 RUN apt install nodejs
 RUN apt install npm
 RUN apt-get install google-chrome-stable
