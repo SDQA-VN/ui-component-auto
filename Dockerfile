@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM alpine:3.9
 WORKDIR /source/ui-component-auto
 
 LABEL com.github.actions.name="kintone-ui-component auto"
@@ -8,11 +8,10 @@ LABEL com.github.actions.color="green"
 
 COPY package.json /source/ui-component-auto
 
-RUN apt-get update
-RUN apt-get install nodejs
-RUN apt-get install npm
-RUN apt-get install google-chrome-stable
-RUN apt-get install git
+RUN apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --update nodejs npm	
+RUN apk add --no-cache chromium chromium-chromedriver
+RUN apk add --no-cache git
 RUN cd /source/ui-component-auto && npm i
 COPY . .
 RUN cat package.json
