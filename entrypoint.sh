@@ -3,6 +3,8 @@
 set -e
 cd /source/ui-component-auto
 ls -l
-cat /source/ui-component-auto/node_modules
+cd /source/ui-component-auto/node_modules
+ls -l
+cd ..
 chromium-browser -version
 npm run preparation
