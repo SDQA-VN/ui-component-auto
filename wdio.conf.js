@@ -15,8 +15,7 @@ exports.config = {
   maxInstances: 10,
   //Server Info for Chrome
   host: 'localhost',
-  port: 9515,
-  path: '/',
+  port: 4444,
 
   //Testing Browser Info
   capabilities: [{
@@ -33,7 +32,7 @@ exports.config = {
   }],
   reporters: 'spec',
 
-  services: ['chromedriver'],
+  services: ['selenium-standalone'],
   sync: true,
   deprecationWarnings: false,
 
