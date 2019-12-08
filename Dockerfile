@@ -8,12 +8,12 @@ LABEL com.github.actions.color="green"
 
 COPY package.json /source/ui-component-auto
 
-RUN sudo apt update
-RUN sudo apt install default-jdk
-RUN sudo apt install nodejs
-RUN sudo apt install npm
-RUN sudo apt-get install google-chrome-stable
-RUN sudo apt install git
+RUN apt update
+RUN apt install default-jdk
+RUN apt install nodejs
+RUN apt install npm
+RUN apt-get install google-chrome-stable
+RUN apt install git
 RUN cd /source/ui-component-auto && npm i
 COPY . .
 RUN cat package.json
