@@ -1,7 +1,12 @@
-const CONFIG = require('./test/config.json')
+const CONFIG = require('./test/config.json');
+const fs = require('fs');
+const path = require('path');
+const moment = require('moment');
+const reportFolder = path.join('reports');
+const screenshotFolder = path.join('screenshot')
+
 exports.config = {
   specs: [
-
     //Fro running test scipt
     `./test/testScripts/${CONFIG.folderTest}-test/text.js`,
   ],
@@ -30,7 +35,30 @@ exports.config = {
       proxyType: 'autodetect'
     }
   }],
-  reporters: 'spec',
+  before: function () {
+    if (!fs.existsSync(reportFolder)) {
+      fs.mkdirSync(reportFolder);
+    }
+    if (!fs.existsSync(screenshotFolder)) {
+      fs.mkdirSync(screenshotFolder);
+    }
+  },
+  afterTest: function (test) {
+    // if test passed, ignore, else take and save screenshot.
+    if (test.passed) {
+      return;
+    }
+    const datetime = moment().format('YYYYMMDD-HHmmss.SSS');
+    const filepath = path.join(screenshotFolder, datetime + '.png');
+    browser.saveScreenshot(filepath);
+  },
+  reporters: ['spec', 'html-format'],
+  reporterOptions: {
+    htmlFormat: {
+      outputDir: reportFolder,
+      screenshotPath: screenshotFolder,
+    },
+  },
 
   services: ['selenium-standalone'],
   sync: true,
