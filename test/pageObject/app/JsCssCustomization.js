@@ -77,7 +77,6 @@ class JsCssCustomization {
     uploadFile() {
         console.log('!!! Upload file !!!');
         const result = this._orderFile(sourceFolder);
-        console.log(result)
         if (`${CONFIG.folderTest}` == "react-non-jsx") {
             this.addJSLink('https://unpkg.com/react@16/umd/react.production.min.js');
             this.addJSLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js');
