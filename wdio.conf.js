@@ -26,11 +26,11 @@ exports.config = {
   capabilities: [{
     maxInstances: 5,
     browserName: 'chrome',
-    // 'goog:chromeOptions': {
-    //   // to run chrome headless the following flags are required
-    //   // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-    //   args: ['--headless', '--disable-gpu', 'no-sandbox'],
-    // },
+    'goog:chromeOptions': {
+      // to run chrome headless the following flags are required
+      // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+      args: ['--headless', '--disable-gpu', 'no-sandbox'],
+    },
     proxy: {
       proxyType: 'autodetect'
     }
@@ -39,14 +39,14 @@ exports.config = {
     if (!fs.existsSync(reportFolder)) {
       fs.mkdirSync(reportFolder);
     }
+    if (!fs.existsSync(screenshotFolder)) {
+      fs.mkdirSync(screenshotFolder);
+    }
   },
   afterTest: function (test) {
     // if test passed, ignore, else take and save screenshot.
     if (test.passed) {
       return;
-    }
-    if (!fs.existsSync(screenshotFolder)) {
-      fs.mkdirSync(screenshotFolder);
     }
     const datetime = moment().format('YYYYMMDD-HHmmss.SSS');
     const filepath = path.join(screenshotFolder, datetime + '.png');
