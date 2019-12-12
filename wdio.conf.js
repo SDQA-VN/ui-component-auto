@@ -19,7 +19,7 @@ exports.config = {
 
   maxInstances: 10,
   //Server Info for Chrome
-  host: './Dockerfile',
+  host: './Dockerfile/source/ui-component-auto/',
   port: 4444,
 
   //Testing Browser Info
