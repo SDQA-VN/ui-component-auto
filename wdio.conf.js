@@ -19,7 +19,7 @@ exports.config = {
 
   maxInstances: 10,
   //Server Info for Chrome
-  host: 'localhost',
+  host: './Dockerfile',
   port: 4444,
 
   //Testing Browser Info
