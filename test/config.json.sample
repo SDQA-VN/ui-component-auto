@@ -1,0 +1,9 @@
+{
+    "domain": "sample.domain",
+    "appId": 80,
+    "credentials": {
+        "username": "Username sample",
+        "password": "password sample"
+    },
+	"folderTest": "js"
+}
