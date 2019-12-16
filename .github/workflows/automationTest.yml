@@ -37,3 +37,4 @@ jobs:
         npm run test
       env:
         CI: true
+        ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
