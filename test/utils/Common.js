@@ -6,7 +6,7 @@ const CONSTANT = require('../constant');
 
 logInSlash = () => {
     console.log('!!! Login !!!');
-    console.log(secrets.ACCESS_TOKEN)
+    console.log(ACCESS_TOKEN)
     Helper.BrowserHandler.navigate(CONSTANT.PATH.APP_INDEX);
     Login.submitLoginFormWithValidCred(CONFIG.credentials.username, CONFIG.credentials.password);
     Helper.ElementHandler.verifyURL(CONSTANT.PATH.APP_INDEX);
