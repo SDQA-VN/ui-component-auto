@@ -1,6 +1,6 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const $$ = require('../../util/ReturnElement').listOfElements;
-const common = require('../../util/common');
+const $ = require('../../utils/ReturnElement').singleElement;
+const $$ = require('../../utils/ReturnElement').listOfElements;
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 
 const XPATH_ALERT_ERROR = '.alert-error .kuc-alert';

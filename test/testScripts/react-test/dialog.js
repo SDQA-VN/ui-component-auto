@@ -1,8 +1,8 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const $$ = require('../../util/ReturnElement').listOfElements;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const isExisted = require('../../util/ReturnElement').checkElementExistence;
-const common = require('../../util/common');
+const $ = require('../../utils/ReturnElement').singleElement;
+const $$ = require('../../utils/ReturnElement').listOfElements;
+const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
+const isExisted = require('../../utils/ReturnElement').checkElementExistence;
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 
 const XPATH_SHOW_DIALOG_FULL_OPTION_BUTTON = '.dialog_full_option_button';

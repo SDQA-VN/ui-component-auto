@@ -8,7 +8,11 @@ const screenshotFolder = path.join('screenshot')
 exports.config = {
   specs: [
     //Fro running test scipt
-    `./test/testScripts/${CONFIG.folderTest}-test/text.js`,
+    `./test/testScripts/${CONFIG.folderTest}-test/attachment.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/checkbox.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/dialog.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/dropdown.js`,
+    // `./test/testScripts/js-test/fieldgroup.js`,
   ],
 
   suites: {
