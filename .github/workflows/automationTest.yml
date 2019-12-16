@@ -1,0 +1,39 @@
+name: Automation Test
+
+on:
+  repository_dispatch:
+    types: do-something
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: install chrome
+      run: |
+        sudo apt-get update 
+        sudo apt-get install google-chrome-stable 
+    - name: install package
+      run: |
+        npm install
+    - name: install environment data
+      run: |
+        npm install https://${{secrets.ACCESS_TOKEN}}:x-oauth-basic@github.com/luckhiem/environment-data.git
+    - name: preparation source
+      run: |
+        npm run preparation
+    - name: run test
+      run: |
+        npm run test
+      env:
+        CI: true
