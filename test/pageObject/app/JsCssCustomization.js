@@ -86,7 +86,7 @@ class JsCssCustomization {
                 const filePath = path.join(__dirname, '..', '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`, `${fileName}`);
                 this._addJSFiles(filePath);
             }
-            else {
+            else if (fileName.includes('.css')) {
                 const filePath = path.join(__dirname, '..', '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`, `${fileName}`);
                 this._addCSSFiles(filePath);
             }

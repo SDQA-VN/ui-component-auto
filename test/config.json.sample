@@ -1,6 +1,6 @@
 {
     "domain": "sample.domain",
-    "appId": 80,
+    "appId": "sample appId",
     "credentials": {
         "username": "Username sample",
         "password": "password sample"
