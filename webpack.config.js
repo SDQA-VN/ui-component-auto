@@ -3,8 +3,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = (env = {}) => {
     return {
         entry: {
-            // "source.min": './kintoneUIComponent/react/react-jsx/main.js',
-            "test_react.min": './test_react.js',
+            "source.min": './kintoneUIComponent/react/react-jsx/main.js',
         },
         output: {
             path: path.resolve(__dirname, './kintoneUIComponent/react/'),
