@@ -1,8 +1,9 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const isEnabled = require('../../util/ReturnElement').waitUntilSelectorEnabled;
-const common = require('../../util/common');
+const $ = require('../../utils/ReturnElement').singleElement;
+const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
+const isEnabled = require('../../utils/ReturnElement').waitUntilSelectorEnabled;
+const common = require('../../utils/common');
 const expect = require('chai').expect;
+const path = require('path');
 
 // const CONSTRUCTOR_FIELDGROUP = "//div[@id='constructor-fieldgroup']//div[@class='kuc-fieldgroup']//ul[@class='kuc-fieldgroup-container']//li";
 const CONSTRUCTOR_ATTACHMENT = "//div[@id='constructor-attachment']//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']//a";
@@ -26,6 +27,7 @@ const ON_CALLBACK_FILENAME_ATTACHMENT = "//div[@id='on-callback-attachment']//di
 const SHOW_HIDE_ATTACHMENT = "//div[@id='show-hide-attachment']//div[@class='kuc-attachment-outer']";
 const SHOW_BUTTON_ATTACHMENT = "//button[contains(text(),'Show Attachment')]";
 const HIDE_BUTTON_ATTACHMENT = "//button[contains(text(),'Hide Attachment')]";
+const filePath = path.join(__dirname, 'alert.js')
 
 describe('kintoneUIComponent - Attachment', function () {
     before(() => {
@@ -36,9 +38,9 @@ describe('kintoneUIComponent - Attachment', function () {
     });
 
     it('[Attachment-1] should Verify the operation of Attachment', function () {
-        browser.chooseFile(CONSTRUCTOR_ATTACHMENT + '//input', 'C:/Users/k001534/Desktop/1.txt');
+        browser.chooseFile(CONSTRUCTOR_ATTACHMENT + '//input', filePath);
         let checkUploadFile = $(CONSTRUCTOR_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_name']").getText();
-        expect(checkUploadFile).to.equal('1.txt');
+        expect(checkUploadFile).to.equal('alert.js');
         $(CONSTRUCTOR_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_action']//button").click();
         let deleteUploadFile = browser.isExisting(CONSTRUCTOR_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_name']");
         expect(deleteUploadFile).to.equal(false);
@@ -89,10 +91,10 @@ describe('kintoneUIComponent - Attachment', function () {
     });
 
     it('[Attachment-8] should Verify the operation of Attachment', function () {
-        browser.chooseFile(ON_CALLBACK_ATTACHMENT + '//input', 'C:/Users/k001534/Desktop/1.txt');
+        browser.chooseFile(ON_CALLBACK_ATTACHMENT + '//input', filePath);
         let alertText = browser.alertText();
         browser.alertAccept();
-        expect(alertText).to.equal('1.txt');
+        expect(alertText).to.equal('alert.js');
         $(ON_CALLBACK_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_action']//button").click();
         alertText = browser.alertText();
         browser.alertAccept();

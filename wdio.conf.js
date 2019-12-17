@@ -9,6 +9,9 @@ exports.config = {
   specs: [
     //Fro running test scipt
     `./test/testScripts/${CONFIG.folderTest}-test/attachment.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/text.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/datetime.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/tabs.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/checkbox.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/dialog.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/dropdown.js`,
@@ -21,7 +24,7 @@ exports.config = {
     ],
   },
 
-  maxInstances: 10,
+  maxInstances: 1,
   //Server Info for Chrome
   host: 'localhost',
   port: 4444,
