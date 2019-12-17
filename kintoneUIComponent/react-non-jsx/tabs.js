@@ -307,7 +307,7 @@ class GetItemTabs extends React.Component {
             {
                 tabName: "Tab1",
                 tabContent: 'This is Tab1',
-                isDisabled: true
+                isDisabled: false
             },
             {
                 tabName: "Tab2",
@@ -315,18 +315,18 @@ class GetItemTabs extends React.Component {
                 isDisabled: false
             }
         ];
-        this.state = { items: items, value: 0};
+        this.state = { items: items, value: 0 };
     }
 
     handleClick = () => {
-            alert(JSON.stringify(this.state.items));
+        alert(JSON.stringify(this.state.items));
     }
 
     render() {
         return (
-            React.createElement("div", {id: "get-item-tabs"},
-            React.createElement(kintoneUIComponent.Tabs,{ items:this.state.items, value:this.state.value, onClickTabItem:(value) => { this.setState({ value }) }}),
-            React.createElement("button",{onClick: this.handleClick},'Get Item Tabs')
+            React.createElement("div", { id: "get-item-tabs" },
+                React.createElement(kintoneUIComponent.Tabs, { items: this.state.items, value: this.state.value, onClickTabItem: (value) => { this.setState({ value }) } }),
+                React.createElement("button", { onClick: this.handleClick }, 'Get Item Tabs')
             )
         );
     }
@@ -412,7 +412,7 @@ class DisableItemTabs extends React.Component {
             {
                 tabName: "Tab2",
                 tabContent: "This is Tab2",
-                isDisabled: true
+                isDisabled: false
             }
         ];
         this.state = { items: items, value: 0,value1:''};
@@ -420,7 +420,7 @@ class DisableItemTabs extends React.Component {
 
     handleClick = () => {
         const items = [...this.state.items];
-        items[0].isDisabled = true;
+        items[0].isDisabled = false;
         items[1].isDisabled = true;
         this.setState({ items: items });
     }
@@ -442,12 +442,12 @@ class EnableItemTabs extends React.Component {
             {
                 tabName: "Tab1",
                 tabContent: 'This is Tab1',
-                isDisabled: true
+                isDisabled: false
             },
             {
                 tabName: "Tab2",
                 tabContent: "This is Tab2",
-                isDisabled: false
+                isDisabled: true
             }
         ];
         this.state = { items: items, value: 0};

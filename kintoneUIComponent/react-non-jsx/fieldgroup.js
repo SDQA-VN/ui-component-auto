@@ -153,7 +153,7 @@ class ConstructorComponentFieldGroup extends React.Component {
                 isDisabled: true
             },
         ];
-        this.state = { files: [], value: ['Orange'], dropdown_value: 'Orange', text_value: '', items: items, color: '', date: new Date(), toggle: 'expand', name: 'Group', }
+        this.state = { files: [], value: ['Orange'], dropdown_value: 'Orange', text_value: '', items: items, color: '', date: new Date(), toggle: 'expand', name: 'FieldsGroup', }
     }
 
     handleFilesAdd = (files) => {
@@ -187,7 +187,7 @@ class ConstructorComponentFieldGroup extends React.Component {
                 React.createElement(kintoneUIComponent.RadioButton, {name:'radio', items:this.state.items, value:this.state.dropdown_value, onChange:(dropdown_value) => {this.setState({dropdown_value})}}),
                 React.createElement(kintoneUIComponent.Text, {value:this.state.text_value, onChange:(text_value) => {this.setState({text_value})}}),
                 React.createElement(kintoneUIComponent.TextArea, {value:this.state.text_value, onChange:(text_value) => {this.setState({text_value})}}),
-                React.createElement(ConstructorTable)
+                // React.createElement(ConstructorTable)
               )  
         );
     }
