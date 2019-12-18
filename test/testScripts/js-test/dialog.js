@@ -1,8 +1,8 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const isExisted = require('../../util/ReturnElement').checkElementExistence;
+const $ = require('../../utils/ReturnElement').singleElement;
+const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
+const isExisted = require('../../utils/ReturnElement').checkElementExistence;
 const xpath = require('../../xpath/js-test/dialog.xpath');
-const common = require('../../util/common');
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 
 describe('kintoneUIComponent - Dialog', function () {

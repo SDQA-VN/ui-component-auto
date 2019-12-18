@@ -1,6 +1,6 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const isEnabled = require('../../util/ReturnElement').waitUntilSelectorEnabled;
+const $ = require('../../utils/ReturnElement').singleElement;
+const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
+const isEnabled = require('../../utils/ReturnElement').waitUntilSelectorEnabled;
 const common = require('../../util/common');
 const expect = require('chai').expect;
 

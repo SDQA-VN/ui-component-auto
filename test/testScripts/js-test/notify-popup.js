@@ -1,8 +1,8 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const $$ = require('../../util/ReturnElement').listOfElements;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const isEnabled = require('../../util/ReturnElement').waitUntilSelectorEnabled;
-const common = require('../../util/common');
+const $ = require('../../utils/ReturnElement').singleElement;
+const $$ = require('../../utils/ReturnElement').listOfElements;
+const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
+const isEnabled = require('../../utils/ReturnElement').waitUntilSelectorEnabled;
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 const xpath = require('../../xpath/js-test/notify-popup.xpath');
 

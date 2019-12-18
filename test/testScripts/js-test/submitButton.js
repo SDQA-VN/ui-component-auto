@@ -1,6 +1,6 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const common = require('../../util/common');
+const $ = require('../../utils/ReturnElement').singleElement;
+const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 const xpath = require('../../xpath/js-test/submitButton.xpath');
 

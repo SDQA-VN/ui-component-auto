@@ -1,7 +1,7 @@
 module.exports = {
      XPATH_BODY: "//body",
      XPATH_UI: "//span[contains(text(), 'UILabel')]",
-     // XPATH_CONSTRUCTOR: "//span[contains(text(), 'constructorLabel')]",
+     XPATH_CONSTRUCTOR: "//span[contains(text(), 'constructorLabel')]",
      XPATH_FULL_OPTION_LABEL: "//div[@id='full-option-label']//div[@class='kuc-label']",
      XPATH_SET_TEXT_LABEL: "//div[@id='set-text-label']//span",
      XPATH_SET_TEXT_BUTTON_LABEL: "//button[contains(text(),'Set text for label not contain existing text')]",
@@ -28,7 +28,7 @@ module.exports = {
      XPATH_ENABLE_ENABLE_LABEL: "//div[@id='enable-enable-label']//div[@class='kuc-label']",
      XPATH_ENABLE_DISABLE_LABEL: "//div[@id='enable-disable-label']//div[@class='kuc-label']",
      XPATH_ENABLE_BUTTON_LABEL: "//button[contains(text(), 'Enable Label')]",
-     // XPATH_ENABLE: "//span[contains(text(), 'enableLabel')]",
+     XPATH_ENABLE: "//span[contains(text(), 'enableLabel')]",
      XPATH_ON_FUNC: "//span[contains(text(), 'onFunctionLabel')]",
      XPATH_ON_TRIG: "//span[contains(text(), 'onTriggerLabel')]",
      XPATH_NO_OPTION_LABEL: "//div[@id='no-option-label']//div[@class='kuc-label']",
