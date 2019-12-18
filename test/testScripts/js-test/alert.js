@@ -1,5 +1,4 @@
 const $ = require('../../utils/ReturnElement').singleElement;
-const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
 const common = require('../../utils/common');
 const Helper = require('../../helper/main');
 const expect = require('chai').expect;
@@ -12,7 +11,6 @@ const FULL_OPTION_ALERT = "//div[@id='full-option-alert']//div";
 const ONLY_TEXT_ALERT = "//div[@id='only-text-alert']//div";
 const ONLY_TYPE_ALERT = "//div[@id='only-type-alert']//div";
 const ONLY_TYPE_BUTTON_ALERT = "//html//button[text()='Change Only Type To Success']";
-const ONLY_DISABLED_TRUE_ALERT = "//div[@id='only-disable-alert']//div";
 const ONLY_VISIBLE_ALERT = "//div[@id='only-visible-alert']//div";
 const ONLY_INVISIBLE_ALERT = "//div[@id='only-invisible-alert']//div";
 const SET_TEXT_ALERT = "//div[@id='set-text-alert']//div";
@@ -35,12 +33,6 @@ const SHOW_BUTTON_ALERT = "//button[contains(text(),'Show Alert')]";
 const VISIBLE_HIDE_ALERT = "//div[@id='hide-visible-alert']//div";
 const INVISIBLE_HIDE_ALERT = "//div[@id='hide-invisible-alert']//div";
 const HIDE_BUTTON_ALERT = "//button[contains(text(), 'Hide Alert')]";
-const DISABLE_ENABLED_ALERT = "//div[@id='disable-enabled-alert']//div";
-const DISABLE_DISABLED_ALERT = "//div[@id='disable-disabled-alert']//div";
-const DISABLE_BUTTON_ALERT = "//button[contains(text(), 'Disable Alert')]";
-const ENABLE_ENABLED_ALERT = "//div[@id='enable-enabled-alert']//div";
-const ENABLE_DISABLED_ALERT = "//div[@id='enable-disabled-alert']//div";
-const ENABLE_BUTTON_ALERT = "//button[contains(text(), 'Enable Alert')]";
 const ON_CALLBACK_FUNCTION_ALERT = "//div[@id='on-callback-function-alert']";
 const ON_CALLBACK_TRIGGER_ALERT = "//div[@id='on-callback-trigger-alert']";
 
@@ -156,16 +148,6 @@ describe('kintoneUIComponent - Alert', function () {
             .click(SHOW_TYPE_INVISIBLE_BUTTON_ALERT)
             .verifyElementVisible(SET_TYPE_INVISIBLE_ALERT)
             .verifyAttribute(SET_TYPE_INVISIBLE_ALERT, 'class', 'kuc-alert bg-success')
-
-
-        // let beforeSetTypeInvisible = browser.isVisible(SET_TYPE_INVISIBLE_ALERT);
-        // expect(beforeSetTypeInvisible).to.equal(false);
-        // $(SET_TYPE_INVISIBLE_BUTTON_ALERT).click();
-        // $(SHOW_TYPE_INVISIBLE_BUTTON_ALERT).click();
-        // let afterSetTypeInvisible = browser.isVisible(SET_TYPE_INVISIBLE_ALERT);
-        // expect(afterSetTypeInvisible).to.equal(true);
-        // let afterSetText = $(SET_TYPE_INVISIBLE_ALERT).getAttribute('class');
-        // expect(afterSetText).to.include('kuc-alert bg-success')
     });
 
     it('[Alert-27-28] should show invisible Alert and visible Alert on UI', function () {
@@ -175,17 +157,6 @@ describe('kintoneUIComponent - Alert', function () {
             .click(SHOW_BUTTON_ALERT)
             .verifyElementVisible(INVISIBLE_SHOW_ALERT)
             .verifyElementVisible(VISIBLE_SHOW_ALERT)
-
-
-        // let invisibleAlert = browser.isVisible(INVISIBLE_SHOW_ALERT);
-        // let visibleAlert = browser.isVisible(VISIBLE_SHOW_ALERT);
-        // expect(invisibleAlert).to.equal(false);
-        // expect(visibleAlert).to.equal(true);
-        // $(SHOW_BUTTON_ALERT).click();
-        // invisibleAlert = browser.isVisible(INVISIBLE_SHOW_ALERT);
-        // visibleAlert = browser.isVisible(VISIBLE_SHOW_ALERT);
-        // expect(invisibleAlert).to.equal(true);
-        // expect(visibleAlert).to.equal(true);
     });
 
     it('[Alert-29-30] should hide visible Alert and hide invisible Alert on UI', function () {
@@ -195,19 +166,6 @@ describe('kintoneUIComponent - Alert', function () {
             .click(HIDE_BUTTON_ALERT)
             .verifyElementNotVisible(VISIBLE_HIDE_ALERT)
             .verifyElementNotVisible(INVISIBLE_HIDE_ALERT)
-
-
-
-
-        // let visibleAlert = browser.isVisible(VISIBLE_HIDE_ALERT);
-        // let invisibleAlert = browser.isVisible(INVISIBLE_HIDE_ALERT);
-        // expect(visibleAlert).to.equal(true);
-        // expect(invisibleAlert).to.equal(false);
-        // $(HIDE_BUTTON_ALERT).click();
-        // visibleAlert = browser.isVisible(VISIBLE_HIDE_ALERT);
-        // invisibleAlert = browser.isVisible(INVISIBLE_HIDE_ALERT);
-        // expect(visibleAlert).to.equal(false);
-        // expect(invisibleAlert).to.equal(false);
     });
 
     it('[Alert-35] should register a callback function for click event successfully', function () {
