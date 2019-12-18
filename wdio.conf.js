@@ -15,7 +15,9 @@ exports.config = {
     // `./test/testScripts/${CONFIG.folderTest}-test/checkbox.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/dialog.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/dropdown.js`,
-    `./test/testScripts/${CONFIG.folderTest}-test/alert.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/alert.js`,
+    `./test/testScripts/${CONFIG.folderTest}-test/textarea.js`,
+
     // `./test/testScripts/js-test/fieldgroup.js`,
   ],
 
