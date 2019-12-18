@@ -217,9 +217,9 @@ class ElementHandler {
     }
 
     /**
-* @param {string} locator    Element for verify
-* @param {number} value       Value for verify
-*/
+    * @param {string} locator    Element for verify
+    * @param {number} value       Value for verify
+    */
 
     verifyNumberOfElements(locator, value) {
         expect($$(locator).length).to.equal(value)
@@ -252,6 +252,15 @@ class ElementHandler {
     click(locator) {
         this.waitForElementClickable(locator);
         $(locator).click();
+        return this;
+    }
+
+    /**
+    * @param {string} locator    Element for verify
+    * @param {string} filePath    filePath for upload
+    */
+    chooseFile(locator, filePath) {
+        browser.chooseFile(locator, filePath);
         return this;
     }
 

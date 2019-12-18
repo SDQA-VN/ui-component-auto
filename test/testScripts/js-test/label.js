@@ -1,7 +1,5 @@
-const $ = require('../../utils/ReturnElement').singleElement;
 const common = require('../../utils/common');
 const Helper = require('../../helper/main');
-const expect = require('chai').expect;
 
 const XPATH_UI = "//span[contains(text(), 'UILabel')]";
 const XPATH_FULL_OPTION_LABEL = "//div[@id='full-option-label']//div[@class='kuc-label']";
@@ -18,12 +16,6 @@ const XPATH_SHOW_BUTTON_LABEL = "//button[contains(text(),'Show Label')]";
 const XPATH_VISIBLE_HIDE_LABEL = "//div[@id='hide-visible-label']//span";
 const XPATH_INVISIBLE_HIDE_LABEL = "//div[@id='hide-invisible-label']//span";
 const XPATH_HIDE_BUTTON_LABEL = "//button[contains(text(), 'Hide Label')]";
-const XPATH_DISABLE_ENABLE_LABEL = "//div[@id='disable-enable-label']//div[@class='kuc-label']";
-const XPATH_DISABLE_DISABLE_LABEL = "//div[@id='disable-disable-label']//div[@class='kuc-label']";
-const XPATH_DISABLE_BUTTON_LABEL = "//button[contains(text(), 'Disable Label')]";
-const XPATH_ENABLE_ENABLE_LABEL = "//div[@id='enable-enable-label']//div[@class='kuc-label']";
-const XPATH_ENABLE_DISABLE_LABEL = "//div[@id='enable-disable-label']//div[@class='kuc-label']";
-const XPATH_ENABLE_BUTTON_LABEL = "//button[contains(text(), 'Enable Label')]";
 const XPATH_ON_FUNC = "//span[contains(text(), 'onFunctionLabel')]";
 const XPATH_ON_TRIG = "//span[contains(text(), 'onTriggerLabel')]";
 const XPATH_NO_OPTION_LABEL = "//div[@id='no-option-label']//div[@class='kuc-label']";
