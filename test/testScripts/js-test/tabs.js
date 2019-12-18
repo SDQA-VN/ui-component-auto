@@ -58,14 +58,13 @@ describe('kintoneUIComponent - Text', function () {
     });
 
     it('[Tabs-17] should Verify that add items into Tab with options: String and DOM', function () {
-        Helper.ElementHandler
-            .verifyNumberOfElements(ADD_ITEM_TABS, 2)
-            .click(ADD_ITEM_BUTTON_TABS)
-            .verifyNumberOfElements(ADD_ITEM_TABS, 4)
-            .click(ADD_ITEM_TABS + '[3]')
-            .verifyText(ADD_ITEM_CONTENT_TABS, 'This is Tab3')
-            .click(ADD_ITEM_TABS + '[4]')
-            .verifyElementExists(ADD_ITEM_CONTENT_TABS + "//div[@class='kuc-alert bg-success']")
+        Helper.ElementHandler.verifyNumberOfElements(ADD_ITEM_TABS, 2)
+        Helper.ElementHandler.click(ADD_ITEM_BUTTON_TABS)
+        Helper.ElementHandler.verifyNumberOfElements(ADD_ITEM_TABS, 4)
+        Helper.ElementHandler.click(ADD_ITEM_TABS + '[3]')
+        Helper.ElementHandler.verifyText(ADD_ITEM_CONTENT_TABS, 'This is Tab3')
+        Helper.ElementHandler.click(ADD_ITEM_TABS + '[4]')
+        Helper.ElementHandler.verifyElementExists(ADD_ITEM_CONTENT_TABS + "//div[@class='kuc-alert bg-success']")
     });
 
     it('[Tabs-23] should Verify that the items will be removed correctly with the position in the tab ', function () {
@@ -97,19 +96,19 @@ describe('kintoneUIComponent - Text', function () {
 
     it('[Tabs-37-38] should Verify that can set disable for existing enabled item in the Tab and existing disabled item in the Tab', function () {
         Helper.ElementHandler
-            .verifyAttribute(DISABLE_TABS + '[1]','class','kuc-tabs-container kuc-tabs-container-selection kuc-tabs-disabled')
-            .verifyAttribute(DISABLE_TABS + '[2]','class','kuc-tabs-container')
+            .verifyAttribute(DISABLE_TABS + '[1]', 'class', 'kuc-tabs-container kuc-tabs-container-selection kuc-tabs-disabled')
+            .verifyAttribute(DISABLE_TABS + '[2]', 'class', 'kuc-tabs-container')
             .click(DISABLE_BUTTON_TABS)
-            .verifyAttribute(DISABLE_TABS + '[1]','class','kuc-tabs-container kuc-tabs-container-selection kuc-tabs-disabled')
-            .verifyAttribute(DISABLE_TABS + '[2]','class','kuc-tabs-container kuc-tabs-disabled')
+            .verifyAttribute(DISABLE_TABS + '[1]', 'class', 'kuc-tabs-container kuc-tabs-container-selection kuc-tabs-disabled')
+            .verifyAttribute(DISABLE_TABS + '[2]', 'class', 'kuc-tabs-container kuc-tabs-disabled')
     });
 
     it('[Tabs-41-42] should Verify that can set enable for existing disabled item in the Tab and existing enabled item in the Tab', function () {
         Helper.ElementHandler
-        .verifyAttribute(ENABLE_TABS + '[1]','class','kuc-tabs-container kuc-tabs-container-selection kuc-tabs-disabled')
-        .verifyAttribute(ENABLE_TABS + '[2]','class','kuc-tabs-container')
-        .click(ENABLE_BUTTON_TABS)
-        .verifyAttribute(ENABLE_TABS + '[1]','class','kuc-tabs-container')
-        .verifyAttribute(ENABLE_TABS + '[2]','class','kuc-tabs-container')
+            .verifyAttribute(ENABLE_TABS + '[1]', 'class', 'kuc-tabs-container kuc-tabs-container-selection kuc-tabs-disabled')
+            .verifyAttribute(ENABLE_TABS + '[2]', 'class', 'kuc-tabs-container')
+            .click(ENABLE_BUTTON_TABS)
+            .verifyAttribute(ENABLE_TABS + '[1]', 'class', 'kuc-tabs-container')
+            .verifyAttribute(ENABLE_TABS + '[2]', 'class', 'kuc-tabs-container')
     });
 });
