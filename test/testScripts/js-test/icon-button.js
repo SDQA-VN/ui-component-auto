@@ -16,7 +16,7 @@ describe('kintoneUIComponent - Icon button', function () {
     it('[Icon-Button-2] should verify UI', function () {
         let iconButtonBgColor = $(xpath.XPATH_FULL_OPTIONS_VALUE).getCssProperty('color');
         let iconButtonSize = browser.getElementSize(xpath.XPATH_FULL_OPTIONS_VALUE);
-        expect(iconButtonBgColor.parsed.hex).to.equal('#ffffff');
+        expect(iconButtonBgColor.parsed.hex).to.equal('#333333');
         expect(iconButtonSize.width).to.equal(iconButtonSize.width);
         expect(iconButtonSize.height).to.equal(iconButtonSize.height);
     });

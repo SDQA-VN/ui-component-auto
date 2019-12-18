@@ -1,6 +1,6 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const common = require('../../util/common');
+const $ = require('../../utils/ReturnElement').singleElement;
+const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 
 const XPATH_CONSTRUCTOR_COLORPICKER = "//div[@id='constructor-colorpicker']//div/input";
@@ -69,7 +69,7 @@ describe('kintoneUIComponent - Alert', () => {
     verify(getVerifyObj(), { r: '236', g: '209', b: '16', h: '0.1', u: '0.9', e: '0.9' });
     browser.leftClick(XPATH_CONSTRUCTOR_COLORPICKER_SATURATION, 82, 58);
     let getHexColor = $(XPATH_CONSTRUCTOR_COLORPICKER_HEX_FIELD).getValue();
-    verify(getVerifyObj(), { r: '132', g: '124', b: '67', h: '0.1', u: '0.5', e: '0.5' });
+    verify(getVerifyObj(), { r: '131', g: '123', b: '66', h: '0.1', u: '0.5', e: '0.5' });
 
     browser.leftClick(XPATH_CONSTRUCTOR_COLORPICKER_HUE, 10, 92);
     verify(getVerifyObj(), { r: '0', g: '183', b: '255', h: '0.5', u: '1.0', e: '1.0' });

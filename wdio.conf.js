@@ -8,7 +8,7 @@ const screenshotFolder = path.join('screenshot')
 exports.config = {
   specs: [
     //Fro running test scipt
-    `./test/testScripts/${CONFIG.folderTest}-test/attachment.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/attachment.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/text.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/datetime.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/tabs.js`,
@@ -16,14 +16,19 @@ exports.config = {
     // `./test/testScripts/${CONFIG.folderTest}-test/textarea.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/spinner.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/label.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/dialog.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/fieldgroup.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/colorpicker.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/icon-button.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/radio-button.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/multiplechoice.js`,
+
 
     // `./test/testScripts/${CONFIG.folderTest}-test/checkbox.js`,
-    // `./test/testScripts/${CONFIG.folderTest}-test/dialog.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/dropdown.js`,
+    // `./test/testScripts/${CONFIG.folderTest}-test/table.js`,
+    `./test/testScripts/${CONFIG.folderTest}-test/notify-popup.js`,
 
-
-
-    // `./test/testScripts/js-test/fieldgroup.js`,
   ],
 
   suites: {

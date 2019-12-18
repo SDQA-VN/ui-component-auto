@@ -120,8 +120,8 @@ class ElementHandler {
     * @param {string} locator  Element for verify
     * @param {number} value    Color for verify
     */
-    verifyElementColor(locator, value) {
-        let elementColor = $(locator).getCssProperty('color');
+    verifyElementColor(locator, attribute, value) {
+        let elementColor = $(locator).getCssProperty(attribute);
         expect(elementColor.parsed.hex).to.equal(value);
         return this;
     }

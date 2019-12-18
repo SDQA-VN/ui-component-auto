@@ -49,7 +49,7 @@ describe('kintoneUIComponent - Label', function () {
     it('[Label-2] should Verify that the Label have the UI is the same as Label on kintone - color, - size ( width + height)', function () {
         Helper.ElementHandler
             .verifyElementSize(XPATH_UI, 45, 17)
-            .verifyElementColor(XPATH_UI, '#333333')
+            .verifyElementColor(XPATH_UI, 'color', '#333333')
     });
 
     it('[Label-4] should verify that can create a label without any options value', function () {
@@ -144,7 +144,7 @@ describe('kintoneUIComponent - Label', function () {
             .click(XPATH_SET_TRUE_REQUIRED_BUTTON_LABEL)
             .verifyElementExists(XPATH_SET_TRUE_REQUIRED_LABEL)
             .verifyText(XPATH_SET_TRUE_REQUIRED_LABEL, '*')
-            .verifyElementColor(XPATH_SET_TRUE_REQUIRED_LABEL, '#e74c3c')
+            .verifyElementColor(XPATH_SET_TRUE_REQUIRED_LABEL, 'color', '#e74c3c')
     });
 
     it('[Label-24] should set required for invisible label ', function () {

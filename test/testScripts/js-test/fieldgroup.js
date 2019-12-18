@@ -1,7 +1,5 @@
 const $ = require('../../utils/ReturnElement').singleElement;
-const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
-const isEnabled = require('../../utils/ReturnElement').waitUntilSelectorEnabled;
-const common = require('../../util/common');
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 
 // const CONSTRUCTOR_FIELDGROUP = "//div[@id='constructor-fieldgroup']//div[@class='kuc-fieldgroup']//ul[@class='kuc-fieldgroup-container']//li";
