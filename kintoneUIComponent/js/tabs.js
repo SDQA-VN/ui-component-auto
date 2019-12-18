@@ -666,12 +666,12 @@ var disableTab = new kintoneUIComponent.Tabs({
         {
             tabName: "Tab1",
             tabContent: 'isDisabled is false',
-            isDisabled: false
+            isDisabled: true
         },
         {
             tabName: "Tab2",
             tabContent: "isDisabled is true",
-            isDisabled: true
+            isDisabled: false
         }
     ]
 });
@@ -680,7 +680,6 @@ disableTabEl.setAttribute("id", "disable-tabs");
 let buttonDisableTab = document.createElement('button');
 buttonDisableTab.innerHTML='Disable Tabs';
 buttonDisableTab.addEventListener('click',function(){
-  disableTab.disableItem('Tab1');
   disableTab.disableItem('Tab2');
 });
 disableTabEl.appendChild(disableTab.render());

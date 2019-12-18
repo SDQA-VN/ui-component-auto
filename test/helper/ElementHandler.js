@@ -223,7 +223,7 @@ class ElementHandler {
     */
     verifyAttribute(locator, attribute, value) {
         let result = this.getAttribute(locator, attribute)
-        expect(result).to.equal(value);
+        expect(result).to.include(value);
         return this;
     }
 
