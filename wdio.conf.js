@@ -9,9 +9,9 @@ exports.config = {
   specs: [
     //Fro running test scipt
     `./test/testScripts/${CONFIG.folderTest}-test/attachment.js`,
-    // `./test/testScripts/${CONFIG.folderTest}-test/text.js`,
-    // `./test/testScripts/${CONFIG.folderTest}-test/datetime.js`,
-    // `./test/testScripts/${CONFIG.folderTest}-test/tabs.js`,
+    `./test/testScripts/${CONFIG.folderTest}-test/text.js`,
+    `./test/testScripts/${CONFIG.folderTest}-test/datetime.js`,
+    `./test/testScripts/${CONFIG.folderTest}-test/tabs.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/checkbox.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/dialog.js`,
     // `./test/testScripts/${CONFIG.folderTest}-test/dropdown.js`,
@@ -33,11 +33,11 @@ exports.config = {
   capabilities: [{
     maxInstances: 5,
     browserName: 'chrome',
-    'goog:chromeOptions': {
-      // to run chrome headless the following flags are required
-      // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-      args: ['--headless', '--disable-gpu', 'no-sandbox'],
-    },
+    // 'goog:chromeOptions': {
+    //   // to run chrome headless the following flags are required
+    //   // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+    //   args: ['--headless', '--disable-gpu', 'no-sandbox'],
+    // },
     proxy: {
       proxyType: 'autodetect'
     }
@@ -77,5 +77,5 @@ exports.config = {
     ui: 'bdd',
     timeout: 900000, //10 minutes
   },
-  logLevel: 'silent'
+  logLevel: 'verbose'
 };
