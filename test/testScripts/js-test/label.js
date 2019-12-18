@@ -30,8 +30,6 @@ const XPATH_NO_OPTION_LABEL = "//div[@id='no-option-label']//div[@class='kuc-lab
 const XPATH_ONLY_TEXT_LABEL = "//span[contains(text(),'only options.Text Label')]";
 const XPATH_ONLY_REQUIRED_LABEL = "//div[@id='only-isRequired-label-true']//span[@class='kuc-require']";
 const XPATH_ONLY_REQUIRED_LABEL_1 = "//div[@id='only-isRequired-label-false']//span[@class='kuc-require']";
-const XPATH_ONLY_DISABLED_BUTTON = "//button[contains(text(),'Get Value of isDisabled true')]";
-const XPATH_ONLY_DISABLED_BUTTON_1 = "//button[contains(text(),'Get Value of isDisabled false')]";
 const XPATH_ONLY_VISIBLE_LABEL = "//div[@id='only-isVisibled-label-true']";
 const XPATH_ONLY_VISIBLE_LABEL_1 = "//div[@id='only-isVisibled-label-false']";
 const XPATH_SET_XSS_VALUE_LABEL = "//div[@id='set-XSS-value-label']//div[@class='kuc-label']";
@@ -57,11 +55,9 @@ describe('kintoneUIComponent - Label', function () {
     });
 
     it('[Label-2] should Verify that the Label have the UI is the same as Label on kintone - color, - size ( width + height)', function () {
-        let bgColor = $(XPATH_UI).getCssProperty('color');
-        let size = browser.getElementSize(XPATH_UI);
-        expect(bgColor.parsed.hex).to.equal('#333333');
-        expect(size.width).to.equal(size.width);
-        expect(size.height).to.equal(size.height);
+        Helper.ElementHandler
+            .verifyElementSize(XPATH_UI, 45, 17)
+            .verifyElementColor(XPATH_UI, '#333333')
     });
 
     it('[Label-4] should verify that can create a label without any options value', function () {
@@ -92,18 +88,6 @@ describe('kintoneUIComponent - Label', function () {
     it('[Label-8] should verify that can create a label with only option.isRequired is False', function () {
         Helper.ElementHandler
             .verifyElementNotExist(XPATH_ONLY_REQUIRED_LABEL_1)
-    });
-
-    it('[Label-9] should verify that can create a label with only option.isDisabled is True', function () {
-        Helper.ElementHandler
-            .click(XPATH_ONLY_DISABLED_BUTTON)
-            .verifyAlertText('true')
-    });
-
-    it('[Label-10] should verify that can create a label with only option.isDisabled is False', function () {
-        Helper.ElementHandler
-            .click(XPATH_ONLY_DISABLED_BUTTON_1)
-            .verifyAlertText('false')
     });
 
     it('[Label-11] should verify that can create a label with only option.isVisibled is True', function () {
@@ -152,7 +136,7 @@ describe('kintoneUIComponent - Label', function () {
         Helper.ElementHandler
             .verifyText(XPATH_SET_TEXT_NO_PARAM_LABEL, 'Set text with no parameter for Label')
             .click(XPATH_SET_TEXT_NO_PARAM_BUTTON_LABEL)
-            .verifyText(XPATH_SET_TEXT_NO_PARAM_LABEL, 'Set text with no parameter for Label')
+            .verifyText(XPATH_SET_TEXT_NO_PARAM_LABEL, '')
     });
 
     it('[Label-22] should hidden the required icon for exisiting required label when using setRequired(false)', function () {
@@ -163,96 +147,56 @@ describe('kintoneUIComponent - Label', function () {
     });
 
     it('[Label-21-23] should set the required label when using setRequired(true) for the existing required label', function () {
-        let setTrueRequired = XPATH_SET_TRUE_REQUIRED_LABEL;
-        let checkRequired = browser.isExisting(setTrueRequired);
-        expect(checkRequired).to.equal(false);
-        $(XPATH_SET_TRUE_REQUIRED_BUTTON_LABEL).click();
-        let getColor = $(setTrueRequired).getCssProperty('color');
-        checkRequired = browser.isExisting(setTrueRequired);
-        expect(checkRequired).to.equal(true);
-        expect($(setTrueRequired).getText()).to.equal('*');
-        expect(getColor.parsed.hex).to.equal('#e74c3c');
+        Helper.ElementHandler
+            .verifyElementNotExist(XPATH_SET_TRUE_REQUIRED_LABEL)
+            .click(XPATH_SET_TRUE_REQUIRED_BUTTON_LABEL)
+            .verifyElementExists(XPATH_SET_TRUE_REQUIRED_LABEL)
+            .verifyText(XPATH_SET_TRUE_REQUIRED_LABEL, '*')
+            .verifyElementColor(XPATH_SET_TRUE_REQUIRED_LABEL, '#e74c3c')
     });
 
     it('[Label-24] should set required for invisible label ', function () {
-        let classNameOfSelectedItem = XPATH_SET_REQUIRED_INVISIBLE_LABEL
-        let checkExist = browser.isExisting(classNameOfSelectedItem);
-        let checkVisible = browser.isVisible(classNameOfSelectedItem)
-        expect(checkExist).to.equal(false);
-        expect(checkVisible).to.equal(false);
-        $(XPATH_SET_REQUIRED_BUTTON_INVISIBLE_LABEL).click();
-        checkExist = browser.isExisting(classNameOfSelectedItem);
-        expect(checkExist).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementNotExist(XPATH_SET_REQUIRED_INVISIBLE_LABEL)
+            .verifyElementNotVisible(XPATH_SET_REQUIRED_INVISIBLE_LABEL)
+            .click(XPATH_SET_REQUIRED_BUTTON_INVISIBLE_LABEL)
+            .verifyElementExists(XPATH_SET_REQUIRED_INVISIBLE_LABEL)
     });
 
     it('[Label-25] should set required without parameter for label ', function () {
-        let classNameOfSelectedItem = XPATH_SET_REQUIRED_NO_PARAM_LABEL
-        let checkExist = browser.isExisting(classNameOfSelectedItem);
-        expect(checkExist).to.equal(false);
-        $(XPATH_SET_REQUIRED_NO_PARAM_BUTTON_LABEL).click();
-        checkExist = browser.isExisting(classNameOfSelectedItem);
-        expect(checkExist).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementNotExist(XPATH_SET_REQUIRED_NO_PARAM_LABEL)
+            .click(XPATH_SET_REQUIRED_NO_PARAM_BUTTON_LABEL)
+            .verifyElementNotExist(XPATH_SET_REQUIRED_NO_PARAM_LABEL)
     });
 
     it('[Label-28] should show invisible Label and visible Label on UI', function () {
-        let invisibleLabel = browser.isVisible(XPATH_INVISIBLE_SHOW_LABEL);
-        let visibleLabel = browser.isVisible(XPATH_VISIBLE_SHOW_LABEL);
-        expect(invisibleLabel).to.equal(false);
-        expect(visibleLabel).to.equal(true);
-        $(XPATH_SHOW_BUTTON_LABEL).click();
-        invisibleLabel = browser.isVisible(XPATH_INVISIBLE_SHOW_LABEL);
-        visibleLabel = browser.isVisible(XPATH_VISIBLE_SHOW_LABEL);
-        expect(invisibleLabel).to.equal(true);
-        expect(visibleLabel).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementNotVisible(XPATH_INVISIBLE_SHOW_LABEL)
+            .verifyElementVisible(XPATH_VISIBLE_SHOW_LABEL)
+            .click(XPATH_SHOW_BUTTON_LABEL)
+            .verifyElementVisible(XPATH_INVISIBLE_SHOW_LABEL)
+            .verifyElementVisible(XPATH_VISIBLE_SHOW_LABEL)
     });
 
     it('[Label-30] should hide the visible Label and invisible Label on UI', function () {
-        let visibleLabel = browser.isVisible(XPATH_VISIBLE_HIDE_LABEL);
-        let invisibleLabel = browser.isVisible(XPATH_INVISIBLE_HIDE_LABEL);
-        expect(visibleLabel).to.equal(true);
-        expect(invisibleLabel).to.equal(false);
-        $(XPATH_HIDE_BUTTON_LABEL).click();
-        visibleLabel = browser.isVisible(XPATH_VISIBLE_HIDE_LABEL);
-        invisibleLabel = browser.isVisible(XPATH_INVISIBLE_HIDE_LABEL);
-        expect(visibleLabel).to.equal(false);
-        expect(invisibleLabel).to.equal(false);
-    });
-
-    it('[Label-32] should disable the current enable Label and disable the current disable on UI', function () {
-        let enableLabel = browser.getAttribute(XPATH_DISABLE_ENABLE_LABEL, 'disabled');
-        let disableLabel = browser.getAttribute(XPATH_DISABLE_DISABLE_LABEL, 'disabled');
-        expect(enableLabel).to.equal(null)
-        expect(disableLabel).to.equal('true');
-        $(XPATH_DISABLE_BUTTON_LABEL).click();
-        enableLabel = browser.getAttribute(XPATH_DISABLE_ENABLE_LABEL, 'disabled');
-        disableLabel = browser.getAttribute(XPATH_DISABLE_DISABLE_LABEL, 'disabled');
-        expect(enableLabel).to.equal('true')
-        expect(disableLabel).to.equal('true');
-    });
-
-    it('[Label-34] should enable the disabled Label on UI', function () {
-        let disableLabel = browser.getAttribute(XPATH_ENABLE_DISABLE_LABEL, 'disabled');
-        let enableLabel = browser.getAttribute(XPATH_ENABLE_ENABLE_LABEL, 'disabled');
-        expect(disableLabel).to.equal('true');
-        expect(enableLabel).to.equal(null)
-        $(XPATH_ENABLE_BUTTON_LABEL).click();
-        disableLabel = browser.getAttribute(XPATH_ENABLE_DISABLE_LABEL, 'disabled');
-        enableLabel = browser.getAttribute(XPATH_ENABLE_ENABLE_LABEL, 'disabled');
-        expect(enableLabel).to.equal(null)
-        expect(disableLabel).to.equal(null);
+        Helper.ElementHandler
+            .verifyElementVisible(XPATH_VISIBLE_HIDE_LABEL)
+            .verifyElementNotVisible(XPATH_INVISIBLE_HIDE_LABEL)
+            .click(XPATH_HIDE_BUTTON_LABEL)
+            .verifyElementNotVisible(XPATH_VISIBLE_HIDE_LABEL)
+            .verifyElementNotVisible(XPATH_INVISIBLE_HIDE_LABEL)
     });
 
     it('[Label-36] should register a callback function for click event successfully', function () {
-        $(XPATH_ON_FUNC).click();
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('onFunctionLabel has been clicked');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_ON_FUNC)
+            .verifyAlertText('onFunctionLabel has been clicked')
     });
 
     it('[Label-37] should verify that the callback function will be trigger when click on the textbox', function () {
-        $(XPATH_ON_TRIG).click();
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('onTriggerLabel has been clicked');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_ON_TRIG)
+            .verifyAlertText('onTriggerLabel has been clicked')
     });
 });

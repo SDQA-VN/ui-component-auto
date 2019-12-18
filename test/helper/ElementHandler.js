@@ -118,6 +118,16 @@ class ElementHandler {
 
     /**
     * @param {string} locator  Element for verify
+    * @param {number} value    Color for verify
+    */
+    verifyElementColor(locator, value) {
+        let elementColor = $(locator).getCssProperty('color');
+        expect(elementColor.parsed.hex).to.equal(value);
+        return this;
+    }
+
+    /**
+    * @param {string} locator  Element for verify
     * @param {number} width    Element for verify
     * @param {number} height   Element for verify
     */
@@ -206,12 +216,12 @@ class ElementHandler {
         return this;
     }
 
-        /**
-    * @param {string} locator    Element for verify
-    * @param {number} value       Value for verify
-    */
+    /**
+* @param {string} locator    Element for verify
+* @param {number} value       Value for verify
+*/
 
-    verifyNumberOfElements(locator,value){
+    verifyNumberOfElements(locator, value) {
         expect($$(locator).length).to.equal(value)
         return this
     }
