@@ -3,7 +3,6 @@ const Helper = require('../../helper/main');
 const expect = require('chai').expect
 
 const CONSTRUCTOR_TEXT = "//div[@id='constructor-text']//input[@class='kuc-input-text']";
-// TXT_FULL_CONSTRUCTOR: "//input[@value= 'fullConstructorText']",
 const SET_VALUE_TEXT = "//div[@id='set-value-text']//input[@class='kuc-input-text']";
 const SET_VALUE_BUTTON_TEXT = "//button[contains(text(),'Set Value of Text with string')]";
 const GET_VALUE_TEXT = "//div[@id='get-value-text']//input[@class='kuc-input-text']";
