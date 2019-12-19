@@ -53,6 +53,7 @@ describe('kintoneUIComponent - Notify Popup', function () {
     it('[Notify-6] should create a NotifyPopup without any options value', function () {
         Helper.ElementHandler
             .click(NO_OPTIONS_NOTIFY_SHOW_BUTTON)
+            .waitForElement(NO_OPTIONS_NOTIFY)
             .verifyElementVisible(NO_OPTIONS_NOTIFY)
             .click(NO_OPTIONS_NOTIFY_CLOSE_BUTTON)
     });
@@ -76,6 +77,7 @@ describe('kintoneUIComponent - Notify Popup', function () {
         Helper.ElementHandler
             .click(NO_OPTIONS_NOTIFY_SET_TYPE_BUTTON)
             .click(NO_OPTIONS_NOTIFY_SHOW_BUTTON)
+            .waitForElement(NO_OPTIONS_NOTIFY_TYPE_SUCCESS)
             .verifyElementVisible(NO_OPTIONS_NOTIFY_TYPE_SUCCESS)
             .click(NO_OPTIONS_NOTIFY_CLOSE_BUTTON)
     });
@@ -89,6 +91,7 @@ describe('kintoneUIComponent - Notify Popup', function () {
     it('[Notify-32] should show invisible notify on UI', function () {
         Helper.ElementHandler
             .click(NO_OPTIONS_NOTIFY_SHOW_BUTTON)
+            .waitForElement(NO_OPTIONS_NOTIFY)
             .verifyElementVisible(NO_OPTIONS_NOTIFY)
             .click(NO_OPTIONS_NOTIFY_HIDE_BUTTON)
     });

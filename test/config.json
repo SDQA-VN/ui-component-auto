@@ -1,9 +1,9 @@
 {
-    "domain": "hbr0a.kintone.com",
-    "appId": 80,
+    "domain": "khiem-test-1.cybozu-dev.com",
+    "appId": 1,
     "credentials": {
-        "username": "khiem",
-        "password": "khiem"
+        "username": "cybozu",
+        "password": "cybozu"
     },
 	"folderTest": "js"
 }
