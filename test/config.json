@@ -1,9 +1,9 @@
 {
     "domain": "khiem-test-1.cybozu-dev.com",
-    "appId": 3,
+    "appId": 1,
     "credentials": {
         "username": "cybozu",
         "password": "cybozu"
     },
-	"folderTest": "react"
+	"folderTest": "js"
 }

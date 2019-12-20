@@ -128,6 +128,16 @@ class ElementHandler {
 
     /**
     * @param {string} locator  Element for verify
+    * @param {number} value    Position for verify
+    */
+    verifyElementPosition(locator, attribute, value) {
+        let elementPosition = $(locator).getCssProperty(attribute);
+        expect(elementPosition.value).to.equal(value);
+        return this;
+    }
+
+    /**
+    * @param {string} locator  Element for verify
     * @param {number} width    Element for verify
     * @param {number} height   Element for verify
     */

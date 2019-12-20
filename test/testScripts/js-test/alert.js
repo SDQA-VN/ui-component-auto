@@ -1,7 +1,5 @@
-const $ = require('../../utils/ReturnElement').singleElement;
 const common = require('../../utils/common');
 const Helper = require('../../helper/main');
-const expect = require('chai').expect;
 
 
 const SUCCESS_ALERT = "//div[contains(text(),'successAlert')]";
@@ -45,23 +43,19 @@ describe('kintoneUIComponent - Alert', function () {
     });
 
     it('[Alert-2] Success alert should have green (#91c36c) background-color, size, relative position', function () {
-        let alertBgColor = $(SUCCESS_ALERT).getCssProperty('background-color');
-        let alertSize = browser.getElementSize(SUCCESS_ALERT);
-        let alertPos = $(SUCCESS_ALERT).getCssProperty('position');
-        expect(alertBgColor.parsed.hex).to.equal('#91c36c');
-        expect(alertSize.width).to.equal(alertSize.width);
-        expect(alertSize.height).to.equal(alertSize.height);
-        expect(alertPos.value).to.equal('relative');
+        Helper.ElementHandler
+            .waitForElement(SUCCESS_ALERT)
+            .verifyElementColor(SUCCESS_ALERT, 'background-color', '#91c36c')
+            .verifyElementSize(SUCCESS_ALERT, 299, 32)
+            .verifyElementPosition(SUCCESS_ALERT, 'position', 'relative')
     });
 
     it('[Alert-3] Error alert should have red (#e74c3c) background-color, size, relative position', function () {
-        let alertBgColor = $(ERROR_ALERT).getCssProperty('background-color');
-        let alertSize = browser.getElementSize(ERROR_ALERT);
-        let alertPos = $(ERROR_ALERT).getCssProperty('position');
-        expect(alertBgColor.parsed.hex).to.equal('#e74c3c');
-        expect(alertSize.width).to.equal(alertSize.width);
-        expect(alertSize.height).to.equal(alertSize.height);
-        expect(alertPos.value).to.equal('relative');
+        Helper.ElementHandler
+            .waitForElement(ERROR_ALERT)
+            .verifyElementColor(ERROR_ALERT, 'background-color', '#e74c3c')
+            .verifyElementSize(ERROR_ALERT, 301, 32)
+            .verifyElementPosition(ERROR_ALERT, 'position', 'relative')
     });
 
     it('[Alert-4-5] should create alert with no option', function () {
