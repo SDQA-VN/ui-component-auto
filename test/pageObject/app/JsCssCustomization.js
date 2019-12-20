@@ -81,6 +81,12 @@ class JsCssCustomization {
             this.addJSLink('https://unpkg.com/react@16/umd/react.production.min.js');
             this.addJSLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js');
         }
+        if (`${CONFIG.folderTest}` == 'js'){
+            const JSUIComponentPath = path.join(__dirname, '..', '..', '..', 'node_modules','@kintone', 'kintone-ui-component', 'dist','kintone-ui-component.min.js');
+            this._addJSFiles(JSUIComponentPath);
+            const CSSUIComponentPath = path.join(__dirname, '..', '..', '..', 'node_modules','@kintone', 'kintone-ui-component', 'dist','kintone-ui-component.min.css');
+            this._addCSSFiles(CSSUIComponentPath);
+        }
         for (let fileName of result) {
             if (fileName.includes('.js')) {
                 const filePath = path.join(__dirname, '..', '..', '..', 'kintoneUIComponent', `${CONFIG.folderTest}`, `${fileName}`);

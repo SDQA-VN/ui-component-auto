@@ -1,7 +1,6 @@
 const common = require('../../utils/common');
 const Helper = require('../../helper/main');
 
-
 const SUCCESS_ALERT = "//div[contains(text(),'successAlert')]";
 const ERROR_ALERT = "//div[contains(text(),'errorAlert')]";
 const NO_OPTION_ALERT = "//div[@id='no-option-alert']//div";
