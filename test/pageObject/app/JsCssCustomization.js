@@ -62,15 +62,11 @@ class JsCssCustomization {
     _orderFile(sourceFolder) {
         const test = fs.readdirSync(sourceFolder);
         const result = test.sort(function (file) {
-            if (file.includes('kintone-ui-component.min'))
-                return -1;
-            else if (file.includes('testgrid'))
-                return -1;
-            else if (file.includes('body.js'))
-                return 0;
-            else
+            if (file.includes('body.js'))
                 return 1;
-        });
+            else if (file.includes('testgrid'))
+                return 1;
+        }).reverse();
         return result;
     }
 
