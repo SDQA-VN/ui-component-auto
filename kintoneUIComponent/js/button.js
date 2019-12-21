@@ -42,7 +42,7 @@ normalButtonNoneParameterEl.setAttribute("id", "normalButton_NoneParameterEl");
 let buttonSetTextWithoutParam = document.createElement('button')
 buttonSetTextWithoutParam.innerHTML = 'Set Text Without Param Normal Button'
 buttonSetTextWithoutParam.addEventListener('click', function () {
-    normalButton_NoneParameter.setText('');
+    normalButton_NoneParameter.setText();
 })
 normalButtonNoneParameterEl.appendChild(normalButton_NoneParameter.render());
 normalButtonNoneParameterEl.appendChild(buttonSetTextWithoutParam);
@@ -111,13 +111,13 @@ normalButtonHideVisibleCell.appendChild(normalButtonHideVisibleEl);
 
 //disable() - enable button
 let normalButton_disable = new kintoneUIComponent.Button({
-    text: "Normal Button Disable",
+    text: "Normal Button Enable",
     type: "normal",
     isDisabled: false,
     isVisible: true,
 });
 let normalButtonDisableEl = document.createElement('div');
-normalButtonDisableEl.setAttribute("id", "normal-button-disable");
+normalButtonDisableEl.setAttribute("id", "normal-button-enable");
 // button disable
 let buttonDisableNormalButton = document.createElement('button')
 buttonDisableNormalButton.innerHTML = 'Disable Normal Button'
@@ -131,13 +131,13 @@ normalButtonDisableCell.appendChild(normalButtonDisableEl);
 
 //enable() - disable button
 let normalButton_enable = new kintoneUIComponent.Button({
-    text: "Normal Button Enable",
+    text: "Normal Button Disable",
     type: "normal",
     isDisabled: true,
     isVisible: true,
 });
 let normalButtonEnableEl = document.createElement('div');
-normalButtonEnableEl.setAttribute("id", "normal-button-enable");
+normalButtonEnableEl.setAttribute("id", "normal-button-disable");
 // button disable
 let buttonEnableNormalButton = document.createElement('button')
 buttonEnableNormalButton.innerHTML = 'Enable Normal Button'
@@ -166,123 +166,183 @@ normalButtonOnTriggerEl.appendChild(normalButton_onTrigger.render())
 let normalButtonOnTriggerCell = testgrid.getCell(posConfig.Normal_Button.x, 9);
 normalButtonOnTriggerCell.appendChild(normalButtonOnTriggerEl);
 
-// // constructor&render
-// let submitButton_constructor = new kintoneUIComponent.Button({type: 'submit'});
-// let submitButton_constructorEl = submitButton_constructor.render();
-// submitButton_constructorEl.className = 'submitButton_constructorEl';
-// submitButton_constructorEl.type = 'submit';
-// let submitButton_constructor_cell = testgrid.getCell(posConfig.Submit_Button.x, 1);
-// submitButton_constructor_cell.appendChild(submitButton_constructorEl);
 
-// let submitButton_fullValue_constructor = new kintoneUIComponent.Button({
-//     type: 'submit',
-//     text: 'submitButton_fullValue_constructor',
-//     isDisabled: false,
-//     isVisible: true
-// });
-// let submitButton_fullValue_constructorEl = submitButton_fullValue_constructor.render();
-// submitButton_fullValue_constructorEl.className = 'submitButton_fullValue_constructorEl';
-// submitButton_fullValue_constructorEl.type = 'submit';
-// let submitButton_fullValue_constructor_cell = testgrid.getCell(posConfig.Submit_Button.x, 2);
-// submitButton_fullValue_constructor_cell.appendChild(submitButton_fullValue_constructorEl);
 
-// // setText() - submit button which not contains exisiting text
-// let submitButton_NoneText = new kintoneUIComponent.Button({
-//     type: 'submit',
-//     isDisabled: false,
-//     isVisible: true,
-// });
-// let submitButton_NoneTextEl = submitButton_NoneText.render();
-// submitButton_NoneTextEl.className = 'submitButton_NoneTextEl';
-// let submitButton_NoneText_cell = testgrid.getCell(posConfig.Submit_Button.x, 3);
-// submitButton_NoneText_cell.appendChild(submitButton_NoneTextEl);
+// constructor&render
+let submitButton_constructor = new kintoneUIComponent.Button({type: 'submit'});
+let submitButtonConstructorEl = document.createElement('div');
+submitButtonConstructorEl.setAttribute("id", "submit-button-constructor");
+submitButtonConstructorEl.appendChild(submitButton_constructor.render())
+let submitButtonConstructorCell = testgrid.getCell(posConfig.Submit_Button.x, 1);
+submitButtonConstructorCell.appendChild(submitButtonConstructorEl);
 
-// // setText() - submit button using function not have parameter
-// let submitButton_NoneParameter = new kintoneUIComponent.Button({
-//     text: 'submitButton_NoneParameter',
-//     type: 'submit',
-//     isDisabled: false,
-//     isVisible: true,
-// });
-// let submitButton_NoneParameterEl = submitButton_NoneParameter.render();
-// submitButton_NoneParameterEl.className = 'submitButton_NoneParameterEl';
-// let submitButton_NoneParameter_cell = testgrid.getCell(posConfig.Submit_Button.x, 4);
-// submitButton_NoneParameter_cell.appendChild(submitButton_NoneParameterEl);
+// constructor&render
+let submitButton_fullOptions = new kintoneUIComponent.Button({
+    type: 'submit',
+    text: 'Submit Button Full Options',
+    isDisabled: false,
+    isVisible: true
+});
+let submitButtonFullOptionEl = document.createElement('div');
+submitButtonFullOptionEl.setAttribute("id", "submit-button-full-options");
+submitButtonFullOptionEl.appendChild(submitButton_fullOptions.render())
+let submitButton_fullValue_constructor_cell = testgrid.getCell(posConfig.Submit_Button.x, 2);
+submitButton_fullValue_constructor_cell.appendChild(submitButtonFullOptionEl);
 
-// // setType() - submit button using function not have parameter
-// let submitButton_setType = new kintoneUIComponent.Button({
-//     text: 'submitButton_setType',
-//     isDisabled: false,
-//     isVisible: true,
-// });
-// let submitButton_setType_cell = testgrid.getCell(posConfig.Submit_Button.x, 5);
-// submitButton_setType_cell.appendChild(submitButton_setType.render());
+// setText() - submit button which not contains exisiting text
+let submitButton_NoneText = new kintoneUIComponent.Button({
+    type: 'submit',
+    isDisabled: false,
+    isVisible: true,
+});
+let submitButtonNoneTextEl = document.createElement('div');
+submitButtonNoneTextEl.setAttribute("id", "submit-button-none-text");
+// button set text
+let buttonSetTextSubmitButton = document.createElement('button')
+buttonSetTextSubmitButton.innerHTML = 'Set Text Submit Button'
+buttonSetTextSubmitButton.addEventListener('click', function () {
+    submitButton_NoneText.setText('Submit Button Text Changed');
+});
+submitButtonNoneTextEl.appendChild(submitButton_NoneText.render())
+submitButtonNoneTextEl.appendChild(buttonSetTextSubmitButton)
+let submitButtonNoneTextCell = testgrid.getCell(posConfig.Submit_Button.x, 3);
+submitButtonNoneTextCell.appendChild(submitButtonNoneTextEl);
 
-// //show() - invisible button
-// let submitButton_showInvisible = new kintoneUIComponent.Button({
-//     text: 'submitButton_showInvisible',
-//     type: 'submit',
-//     isDisabled: false,
-//     isVisible: false,
-// });
-// let submitButton_showInvisible_cell = testgrid.getCell(posConfig.Submit_Button.x, 6);
-// submitButton_showInvisible_cell.appendChild(submitButton_showInvisible.render());
+// setText() - submit button using function not have parameter
+let submitButton_NoneParameter = new kintoneUIComponent.Button({
+    text: 'Submit Button None Parameter',
+    type: 'submit',
+    isDisabled: false,
+    isVisible: true,
+});
+let submitButtonNoneParamEl = document.createElement('div');
+submitButtonNoneParamEl.setAttribute("id", "submit-button-none-parameter");
+// button set text
+let buttonSetTextNoneParam = document.createElement('button')
+buttonSetTextNoneParam.innerHTML = 'Set Text Without Param Submit Button'
+buttonSetTextNoneParam.addEventListener('click', function () {
+    submitButton_NoneParameter.setText();
+});
+submitButtonNoneParamEl.appendChild(submitButton_NoneParameter.render())
+submitButtonNoneParamEl.appendChild(buttonSetTextNoneParam)
+let submitButtonNoneParameterCell = testgrid.getCell(posConfig.Submit_Button.x, 4);
+submitButtonNoneParameterCell.appendChild(submitButtonNoneParamEl);
 
-// //hide() - visible button
-// let submitButton_hideVisible = new kintoneUIComponent.Button({
-//     text: 'submitButton_hideVisible',
-//     type: 'submit',
-//     isDisabled: false,
-//     isVisible: true,
-// });
-// let submitButton_hideVisible_cell = testgrid.getCell(posConfig.Submit_Button.x, 7);
-// submitButton_hideVisible_cell.appendChild(submitButton_hideVisible.render());
 
-// //disable() - enable button
-// let submitButton_disable = new kintoneUIComponent.Button({
-//     text: 'submitButton_disable',
-//     type: 'submit',
-//     isDisabled: false,
-//     isVisible: true,
-// });
-// let submitButton_disable_cell = testgrid.getCell(posConfig.Submit_Button.x, 8);
-// submitButton_disable_cell.appendChild(submitButton_disable.render());
+// setType() - submit button using function not have parameter
+let submitButton_setType = new kintoneUIComponent.Button({
+    text: 'Submit Button Set Type',
+    type: 'normal',
+    isDisabled: false,
+    isVisible: true,
+});
+let submitButtonSetTypeEl = document.createElement('div');
+submitButtonSetTypeEl.setAttribute("id", "submit-button-set-type");
+// button set text
+let buttonSetTypeSubmitButton = document.createElement('button')
+buttonSetTypeSubmitButton.innerHTML = 'Set Type Submit Button'
+buttonSetTypeSubmitButton.addEventListener('click', function () {
+    submitButton_setType.setType('submit');
+});
+submitButtonSetTypeEl.appendChild(submitButton_setType.render())
+submitButtonSetTypeEl.appendChild(buttonSetTypeSubmitButton)
+let submitButtonSetTypeCell = testgrid.getCell(posConfig.Submit_Button.x, 5);
+submitButtonSetTypeCell.appendChild(submitButtonSetTypeEl);
 
-// //enable() - disable button
-// let submitButton_enable = new kintoneUIComponent.Button({
-//     text: 'submitButton_enable',
-//     type: 'submit',
-//     isDisabled: true,
-//     isVisible: true,
-// });
-// let submitButton_enable_cell = testgrid.getCell(posConfig.Submit_Button.x, 9);
-// submitButton_enable_cell.appendChild(submitButton_enable.render());
 
-// // submit button - on() - call method
-// let buttonSubmit = new kintoneUIComponent.Button({
-//     text: 'Submit',
-//     type: 'submit',
-//     isDisabled: false,
-//     isVisible: true,
-// });
-// let submitButtonEl = buttonSubmit.render();
-// submitButtonEl.className = 'submitButtonEl';
-// let buttonSubmit_cell = testgrid.getCell(posConfig.Submit_Button.x, 10);
-// buttonSubmit_cell.appendChild(submitButtonEl);
-// buttonSubmit.on('click', function (event) {
-//     alert('buttonSubmit has been clicked');
-// });
+//show() - invisible button
+let submitButton_showInvisible = new kintoneUIComponent.Button({
+    text: 'Submit Button Invisible',
+    type: 'submit',
+    isDisabled: false,
+    isVisible: false,
+});
+let submitButtonShowEl = document.createElement('div');
+submitButtonShowEl.setAttribute("id", "submit-button-show");
+// button set text
+let buttonShowSubmitButton = document.createElement('button')
+buttonShowSubmitButton.innerHTML = 'Show Submit Button'
+buttonShowSubmitButton.addEventListener('click', function () {
+    submitButton_showInvisible.show();
+});
+submitButtonShowEl.appendChild(submitButton_showInvisible.render())
+submitButtonShowEl.appendChild(buttonShowSubmitButton)
+let submitButtonShowInvisibleCell = testgrid.getCell(posConfig.Submit_Button.x, 6);
+submitButtonShowInvisibleCell.appendChild(submitButtonShowEl);
 
-// //on() - callback trigger
-// let submitButton_onTrigger = new kintoneUIComponent.Button({
-//     text: 'submitButton_onTrigger',
-//     type: 'submit',
-//     isDisabled: false,
-//     isVisible: true,
-// });
-// let submitButton_onTrigger_cell = testgrid.getCell(posConfig.Submit_Button.x, 11);
-// submitButton_onTrigger_cell.appendChild(submitButton_onTrigger.render());
-// function submitTriggerClick() {
-//     alert('submitButton_onTrigger has been clicked');
-// }
-// submitButton_onTrigger.on('click', submitTriggerClick);
+//hide() - visible button
+let submitButton_hideVisible = new kintoneUIComponent.Button({
+    text: 'Submit Button Visible',
+    type: 'submit',
+    isDisabled: false,
+    isVisible: true,
+});
+let submitButtonHideEl = document.createElement('div');
+submitButtonHideEl.setAttribute("id", "submit-button-hide");
+// button set text
+let buttonHideSubmitButton = document.createElement('button')
+buttonHideSubmitButton.innerHTML = 'Hide Submit Button'
+buttonHideSubmitButton.addEventListener('click', function () {
+    submitButton_hideVisible.hide();
+});
+submitButtonHideEl.appendChild(submitButton_hideVisible.render())
+submitButtonHideEl.appendChild(buttonHideSubmitButton)
+let submitButtonHideVisibleCell = testgrid.getCell(posConfig.Submit_Button.x, 7);
+submitButtonHideVisibleCell.appendChild(submitButtonHideEl);
+
+//disable() - enable button
+let submitButton_disable = new kintoneUIComponent.Button({
+    text: 'Submit Button Disable',
+    type: 'submit',
+    isDisabled: true,
+    isVisible: true,
+});
+let submitButtonDisableEl = document.createElement('div');
+submitButtonDisableEl.setAttribute("id", "submit-button-enable");
+// button set text
+let buttonEnableSubmitButton = document.createElement('button')
+buttonEnableSubmitButton.innerHTML = 'Enable Submit Button'
+buttonEnableSubmitButton.addEventListener('click', function () {
+    submitButton_disable.enable();
+});
+submitButtonDisableEl.appendChild(submitButton_disable.render())
+submitButtonDisableEl.appendChild(buttonEnableSubmitButton)
+let submitButtonDisableCell = testgrid.getCell(posConfig.Submit_Button.x, 8);
+submitButtonDisableCell.appendChild(submitButtonDisableEl);
+
+//enable() - disable button
+let submitButton_enable = new kintoneUIComponent.Button({
+    text: 'Submit Button Enable',
+    type: 'submit',
+    isDisabled: false,
+    isVisible: true,
+});
+let submitButtonEnableEl = document.createElement('div');
+submitButtonEnableEl.setAttribute("id", "submit-button-disable");
+// button set text
+let buttonDisableSubmitButton = document.createElement('button')
+buttonDisableSubmitButton.innerHTML = 'Disable Submit Button'
+buttonDisableSubmitButton.addEventListener('click', function () {
+    submitButton_enable.disable();
+});
+submitButtonEnableEl.appendChild(submitButton_enable.render())
+submitButtonEnableEl.appendChild(buttonDisableSubmitButton)
+let submitButton_enable_cell = testgrid.getCell(posConfig.Submit_Button.x, 9);
+submitButton_enable_cell.appendChild(submitButtonEnableEl);
+
+//on() - callback trigger
+let submitButton_onTrigger = new kintoneUIComponent.Button({
+    text: 'Submit Button On Trigger',
+    type: 'submit',
+    isDisabled: false,
+    isVisible: true,
+});
+let submitButtonOnTriggerEl = document.createElement('div');
+submitButtonOnTriggerEl.setAttribute("id", "submit-button-on-trigger");
+function submitButtonTriggerClick() {
+    alert('Submit Button has been clicked');
+}
+submitButton_onTrigger.on('click', submitButtonTriggerClick);
+submitButtonOnTriggerEl.appendChild(submitButton_onTrigger.render())
+let submitButtonOnTriggerCell = testgrid.getCell(posConfig.Submit_Button.x, 10);
+submitButtonOnTriggerCell.appendChild(submitButtonOnTriggerEl)
