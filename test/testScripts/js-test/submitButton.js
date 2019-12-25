@@ -18,9 +18,9 @@ const SUBMIT_BUTTON_SHOW_BUTTON = "//button[text()='Show Submit Button']";
 const SUBMIT_BUTTON_VISIBLE = "//div[@id='submit-button-hide']//button[contains(@class,'kuc-btn')]";
 const SUBMIT_BUTTON_HIDE_BUTTON = "//button[text()='Hide Submit Button']";
 const SUBMIT_BUTTON_DISABLE = "//div[@id='submit-button-disable']//button[contains(@class,'kuc-btn')]";
-const SUBMIT_BUTTON_DISABLE_BUTTON = "//button[text()='Enable Submit Button']";
+const SUBMIT_BUTTON_DISABLE_BUTTON = "//button[text()='Disable Submit Button']";
 const SUBMIT_BUTTON_ENABLE = "//div[@id='submit-button-enable']//button[contains(@class,'kuc-btn')]";
-const SUBMIT_BUTTON_ENABLE_BUTTON = "//button[text()='Disable Submit Button']";
+const SUBMIT_BUTTON_ENABLE_BUTTON = "//button[text()='Enable Submit Button']";
 const SUBMIT_BUTTON_ON_TRIGGER = "//div[@id='submit-button-on-trigger']//button[contains(@class,'kuc-btn')]";
 
 describe('kintoneUIComponent - Submit Button', function () {

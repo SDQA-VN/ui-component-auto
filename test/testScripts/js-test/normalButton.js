@@ -12,10 +12,10 @@ const NORMAL_BUTTON_INVISIBLE = "//div[@id='normal-button-show']//button[contain
 const NORMAL_BUTTON_SHOW_BUTTON = "//button[text()='Show Normal Button']";
 const NORMAL_BUTTON_VISIBLE = "//div[@id='normal-button-hide']//button[contains(@class,'kuc-btn')]";
 const NORMAL_BUTTON_HIDE_BUTTON = "//button[text()='Hide Normal Button']";
-const NORMAL_BUTTON_DISABLE = "//div[@id='normal-button-enable']//button[contains(@class,'kuc-btn')]";
-const NORMAL_BUTTON_DISABLE_BUTTON = "//button[text()='Enbale Normal Button']";
-const NORMAL_BUTTON_ENABLE = "//div[@id='normal-button-disable']//button[contains(@class,'kuc-btn')]";
-const NORMAL_BUTTON_ENABLE_BUTTON = "//button[text()='Disable Normal Button']";
+const NORMAL_BUTTON_DISABLE = "//div[@id='normal-button-disable']//button[contains(@class,'kuc-btn')]";
+const NORMAL_BUTTON_DISABLE_BUTTON = "//button[text()='Disable Normal Button']";
+const NORMAL_BUTTON_ENABLE = "//div[@id='normal-button-enable']//button[contains(@class,'kuc-btn')]";
+const NORMAL_BUTTON_ENABLE_BUTTON = "//button[text()='Enable Normal Button']";
 const NORMAL_BUTTON_ON_TRIGGER = "//div[@id='normal-button-on-trigger']//button[contains(@class,'kuc-btn')]";
 
 describe('kintoneUIComponent - Normal Button', function () {

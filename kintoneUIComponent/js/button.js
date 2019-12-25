@@ -117,7 +117,7 @@ let normalButton_disable = new kintoneUIComponent.Button({
     isVisible: true,
 });
 let normalButtonDisableEl = document.createElement('div');
-normalButtonDisableEl.setAttribute("id", "normal-button-enable");
+normalButtonDisableEl.setAttribute("id", "normal-button-disable");
 // button disable
 let buttonDisableNormalButton = document.createElement('button')
 buttonDisableNormalButton.innerHTML = 'Disable Normal Button'
@@ -137,7 +137,7 @@ let normalButton_enable = new kintoneUIComponent.Button({
     isVisible: true,
 });
 let normalButtonEnableEl = document.createElement('div');
-normalButtonEnableEl.setAttribute("id", "normal-button-disable");
+normalButtonEnableEl.setAttribute("id", "normal-button-enable");
 // button disable
 let buttonEnableNormalButton = document.createElement('button')
 buttonEnableNormalButton.innerHTML = 'Enable Normal Button'
