@@ -4,10 +4,14 @@ module.exports = (env = {}) => {
     return {
         entry: {
             // "source.min": './kintoneUIComponent/react/react-jsx/main.js',
-            "source.min": './kintoneUIComponent/js-esm/components/body.js',
+            // "source.min": './kintoneUIComponent/js-esm/components/body.js',
+            "textPlaceHolder.min": './textPlaceHolder_React.js',
+            "textAreaPlaceHolder.min": './textAreaPlaceHolder_React.js',
+            "textPlaceHolder_JSESM.min": './textPlaceHolder_JSESM.js',
+            "textAreaPlaceHolder_JSESM.min": './textAreaPlaceHolder_JSESM.js',
         },
         output: {
-            path: path.resolve(__dirname, './kintoneUIComponent/js-esm/'),
+            path: path.resolve(__dirname, './kintoneUIComponent/react/'),
             filename: '[name].js',
         },
         resolve: {
