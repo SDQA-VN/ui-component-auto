@@ -1,4 +1,4 @@
-const CONFIG = require('./config.json');
+const CONFIG = require('./config.js');
 /**
  * Environment constants
  */

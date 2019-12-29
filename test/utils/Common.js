@@ -1,7 +1,7 @@
 const Login = require('../pageObject/credentials/Login');
 const Logout = require('../pageObject/credentials/Logout');
 const Helper = require('../helper/main');
-const CONFIG = require('../config.json');
+const CONFIG = require('../config.js');
 const CONSTANT = require('../constant');
 
 logInSlash = () => {

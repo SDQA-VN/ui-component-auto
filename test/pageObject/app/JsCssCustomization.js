@@ -1,7 +1,7 @@
 const CONSTANT = require('../../constant');
 const path = require('path');
 const fs = require('fs');
-const CONFIG = require('../../config.json');
+const CONFIG = require('../../config.js');
 const Helper = require('../../helper/main')
 
 
