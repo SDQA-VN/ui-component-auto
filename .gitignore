@@ -1,6 +1,6 @@
 node_modules/
-package-lock.json/
+package-lock.json
 reports/
 screenshot/
-wdio.conf.js/
+.wdio.conf.js
 test/config.js
