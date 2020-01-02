@@ -66,17 +66,11 @@ describe('kintoneUIComponent - Dialog', function () {
     it('[Dialog-2]: Verify that the Dialog have the UI is the same as Dialog on kintone', function () {
         Helper.ElementHandler
             .waitForElement(SHOW_DIALOG_FULL_OPTION_BUTTON)
+            .click(SHOW_DIALOG_FULL_OPTION_BUTTON)
+            .waitForElement(DIALOG_FULL_OPTION)
             .verifyElementColor(DIALOG_FULL_OPTION, 'background-color', '#ffffff')
             .verifyElementSize(DIALOG_FULL_OPTION, 600, 172)
             .click(DIALOG_FULL_OPTION_CLOSE_BUTTON)
-
-        // $(SHOW_DIALOG_FULL_OPTION_BUTTON).click();
-        // let dialogBgColor = $(DIALOG_FULL_OPTION).getCssProperty('background-color');
-        // let dialogSize = browser.getElementSize(DIALOG_FULL_OPTION);
-        // expect(dialogBgColor.parsed.hex).to.equal('#ffffff');
-        // expect(dialogSize.width).to.equal(600);
-        // expect(dialogSize.height).to.equal(172);
-        // $(DIALOG_FULL_OPTION_CLOSE_BUTTON).click();
     });
 
     it('[Dialog-3-5]: Verify that can create a Dialog with full options value', function () {
@@ -85,11 +79,6 @@ describe('kintoneUIComponent - Dialog', function () {
             .click(SHOW_DIALOG_FULL_OPTION_BUTTON)
             .verifyElementVisible(DIALOG_FULL_OPTION)
             .click(DIALOG_FULL_OPTION_CLOSE_BUTTON)
-
-        // $(SHOW_DIALOG_FULL_OPTION_BUTTON).click();
-        // let isVisible = isVisibled(DIALOG_FULL_OPTION, true);
-        // expect(isVisible).to.equal(true);
-        // $(DIALOG_FULL_OPTION_CLOSE_BUTTON).click();
     });
 
     it('[Dialog-14]: Verify can set header for Dialog which contains existing header', function () {
@@ -98,11 +87,6 @@ describe('kintoneUIComponent - Dialog', function () {
             .click(DIALOG_SET_HEADER_FOR_EXISTING_HEADER_BUTTON)
             .verifyText(DIALOG_SET_HEADER_FOR_EXISTING_HEADER_VALUE, 'Set header for dialog with existing header')
             .click(DIALOG_SET_HEADER_FOR_EXISTING_HEADER_CLOSE_BUTTON)
-
-
-        // $(DIALOG_SET_HEADER_FOR_EXISTING_HEADER_BUTTON).click();
-        // expect($(DIALOG_SET_HEADER_FOR_EXISTING_HEADER_VALUE).getText()).to.equal('Set header for dialog with existing header');
-        // $(DIALOG_SET_HEADER_FOR_EXISTING_HEADER_CLOSE_BUTTON).click();
     });
 
     it('[Dialog-18]: Verify that can set header for Dialog with components', function () {
@@ -120,226 +104,152 @@ describe('kintoneUIComponent - Dialog', function () {
             .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON)
             .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE)
             .click(DIALOG_SET_HEADER_WITH_COMPONENTS_CLOSE_BUTTON)
-
-
-        // $(DIALOG_SET_HEADER_WITH_COMPONENTS_BUTTON).click();
-        // let isNormalButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON, true);
-        // let isSubmitButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON, true);
-        // let isTextBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX, true);
-        // let isLabelVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL, true);
-        // let isAlertVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT, true);
-        // let isDropdownVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN, true);
-        // let isRadioButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON, true);
-        // let isMultipleChoiceVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE, true);
-        // let isCheckBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX, true);
-        // let isIconButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON, true);
-        // let isTableVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE, true);
-
-        // expect(isNormalButtonVisible).to.equal(true);
-        // expect(isSubmitButtonVisible).to.equal(true);
-        // expect(isTextBoxVisible).to.equal(true);
-        // expect(isLabelVisible).to.equal(true);
-        // expect(isAlertVisible).to.equal(true);
-        // expect(isDropdownVisible).to.equal(true);
-        // expect(isRadioButtonVisible).to.equal(true);
-        // expect(isMultipleChoiceVisible).to.equal(true);
-        // expect(isCheckBoxVisible).to.equal(true);
-        // expect(isIconButtonVisible).to.equal(true);
-        // expect(isTableVisible).to.equal(true);
-        // $(DIALOG_SET_HEADER_WITH_COMPONENTS_CLOSE_BUTTON).click();
     });
 
     it('[Dialog-19-20]: Verify that can get the value of the header Dialog with String', function () {
-        $(DIALOG_GET_HEADER_WITH_STRING_BUTTON).click();
-        expect($(DIALOG_SHOW_GET_HEADER_STRING).getText()).to.equal("Value of header dialog with string");
+        Helper.ElementHandler
+            .click(DIALOG_GET_HEADER_WITH_STRING_BUTTON)
+            .waitForElement(DIALOG_SHOW_GET_HEADER_STRING)
+            .verifyText(DIALOG_SHOW_GET_HEADER_STRING, 'Value of header dialog with string')
     });
 
     it('[Dialog-19-20]: Verify that can get the value of the header Dialog with DOM', function () {
-        $(DIALOG_GET_HEADER_WITH_COMPONENTS_BUTTON).click();
-        let isNormalButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON, true);
-        let isSubmitButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON, true);
-        let isTextBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX, true);
-        let isLabelVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL, true);
-        let isAlertVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT, true);
-        let isDropdownVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN, true);
-        let isRadioButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON, true);
-        let isMultipleChoiceVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE, true);
-        let isCheckBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX, true);
-        let isIconButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON, true);
-        let isTableVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE, true);
-
-        expect(isNormalButtonVisible).to.equal(true);
-        expect(isSubmitButtonVisible).to.equal(true);
-        expect(isTextBoxVisible).to.equal(true);
-        expect(isLabelVisible).to.equal(true);
-        expect(isAlertVisible).to.equal(true);
-        expect(isDropdownVisible).to.equal(true);
-        expect(isRadioButtonVisible).to.equal(true);
-        expect(isMultipleChoiceVisible).to.equal(true);
-        expect(isCheckBoxVisible).to.equal(true);
-        expect(isIconButtonVisible).to.equal(true);
-        expect(isTableVisible).to.equal(true);
+        Helper.ElementHandler
+            .click(DIALOG_GET_HEADER_WITH_COMPONENTS_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE)
     });
 
     it('[Dialog-24]: Verify can set content for Dialog which contains existing content', function () {
-        $(DIALOG_SET_CONTENT_FOR_EXISTING_CONTENT_BUTTON).click();
-        expect($(DIALOG_SET_CONTENT_FOR_EXISTING_CONTENT_VALUE).getText()).to.equal('Set content for dialog with existing content');
-        $(DIALOG_SET_CONTENT_FOR_EXISTING_CONTENT_CLOSE_BUTTON).click();
+        Helper.ElementHandler
+            .click(DIALOG_SET_CONTENT_FOR_EXISTING_CONTENT_BUTTON)
+            .waitForElement(DIALOG_SET_CONTENT_FOR_EXISTING_CONTENT_VALUE)
+            .verifyText(DIALOG_SET_CONTENT_FOR_EXISTING_CONTENT_VALUE, 'Set content for dialog with existing content')
+            .click(DIALOG_SET_CONTENT_FOR_EXISTING_CONTENT_CLOSE_BUTTON)
     });
 
     it('[Dialog-28]: Verify that can set Content for Dialog with components', function () {
-        $(DIALOG_SET_CONTENT_WITH_COMPONENTS_BUTTON).click();
-        let isNormalButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON, true);
-        let isSubmitButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON, true);
-        let isTextBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX, true);
-        let isLabelVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL, true);
-        let isAlertVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT, true);
-        let isDropdownVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN, true);
-        let isRadioButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON, true);
-        let isMultipleChoiceVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE, true);
-        let isCheckBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX, true);
-        let isIconButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON, true);
-        let isTableVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE, true);
-
-        expect(isNormalButtonVisible).to.equal(true);
-        expect(isSubmitButtonVisible).to.equal(true);
-        expect(isTextBoxVisible).to.equal(true);
-        expect(isLabelVisible).to.equal(true);
-        expect(isAlertVisible).to.equal(true);
-        expect(isDropdownVisible).to.equal(true);
-        expect(isRadioButtonVisible).to.equal(true);
-        expect(isMultipleChoiceVisible).to.equal(true);
-        expect(isCheckBoxVisible).to.equal(true);
-        expect(isIconButtonVisible).to.equal(true);
-        expect(isTableVisible).to.equal(true);
-        $(DIALOG_SET_CONTENT_WITH_COMPONENTS_CLOSE_BUTTON).click();
+        Helper.ElementHandler
+            .click(DIALOG_SET_CONTENT_WITH_COMPONENTS_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE)
+            .click(DIALOG_SET_CONTENT_WITH_COMPONENTS_CLOSE_BUTTON)
     });
 
     it('[Dialog-29-30]: Verify that can get the value of the content Dialog with String', function () {
-        $(DIALOG_GET_CONTENT_WITH_STRING_BUTTON).click();
-        expect($(DIALOG_SHOW_GET_CONTENT_STRING).getText()).to.equal("Value of content on dialog with string");
+        Helper.ElementHandler
+            .click(DIALOG_GET_CONTENT_WITH_STRING_BUTTON)
+            .waitForElement(DIALOG_SHOW_GET_CONTENT_STRING)
+            .verifyText(DIALOG_SHOW_GET_CONTENT_STRING, 'Value of content on dialog with string')
     });
 
     it('[Dialog-29-30]: Verify that can get the value of the content Dialog with DOM', function () {
-        $(DIALOG_GET_CONTENT_WITH_COMPONENTS_BUTTON).click();
-        let isNormalButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON, true);
-        let isSubmitButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON, true);
-        let isTextBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX, true);
-        let isLabelVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL, true);
-        let isAlertVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT, true);
-        let isDropdownVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN, true);
-        let isRadioButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON, true);
-        let isMultipleChoiceVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE, true);
-        let isCheckBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX, true);
-        let isIconButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON, true);
-        let isTableVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE, true);
-
-        expect(isNormalButtonVisible).to.equal(true);
-        expect(isSubmitButtonVisible).to.equal(true);
-        expect(isTextBoxVisible).to.equal(true);
-        expect(isLabelVisible).to.equal(true);
-        expect(isAlertVisible).to.equal(true);
-        expect(isDropdownVisible).to.equal(true);
-        expect(isRadioButtonVisible).to.equal(true);
-        expect(isMultipleChoiceVisible).to.equal(true);
-        expect(isCheckBoxVisible).to.equal(true);
-        expect(isIconButtonVisible).to.equal(true);
-        expect(isTableVisible).to.equal(true);
+        Helper.ElementHandler
+            .click(DIALOG_GET_CONTENT_WITH_COMPONENTS_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE)
     });
 
     it('[Dialog-34]: Verify can set footer for Dialog which contains existing footer', function () {
-        $(DIALOG_SET_FOOTER_FOR_EXISTING_FOOTER_BUTTON).click();
-        expect($(DIALOG_SET_FOOTER_FOR_EXISTING_FOOTER_VALUE).getText()).to.equal("Set footer for dialog with existing footer");
-        $(DIALOG_SET_FOOTER_FOR_EXISTING_FOOTER_CLOSE_BUTTON).click();
+        Helper.ElementHandler
+            .click(DIALOG_SET_FOOTER_FOR_EXISTING_FOOTER_BUTTON)
+            .waitForElement(DIALOG_SET_FOOTER_FOR_EXISTING_FOOTER_VALUE)
+            .verifyText(DIALOG_SET_FOOTER_FOR_EXISTING_FOOTER_VALUE, "Set footer for dialog with existing footer")
+            .click(DIALOG_SET_FOOTER_FOR_EXISTING_FOOTER_CLOSE_BUTTON)
     });
 
     it('[Dialog-38]: Verify that can set footer for Dialog with components', function () {
-        $(DIALOG_SET_FOOTER_WITH_COMPONENTS_BUTTON).click();
-        let isNormalButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON, true);
-        let isSubmitButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON, true);
-        let isTextBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX, true);
-        let isLabelVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL, true);
-        let isAlertVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT, true);
-        let isDropdownVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN, true);
-        let isRadioButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON, true);
-        let isMultipleChoiceVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE, true);
-        let isCheckBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX, true);
-        let isIconButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON, true);
-        let isTableVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE, true);
-
-        expect(isNormalButtonVisible).to.equal(true);
-        expect(isSubmitButtonVisible).to.equal(true);
-        expect(isTextBoxVisible).to.equal(true);
-        expect(isLabelVisible).to.equal(true);
-        expect(isAlertVisible).to.equal(true);
-        expect(isDropdownVisible).to.equal(true);
-        expect(isRadioButtonVisible).to.equal(true);
-        expect(isMultipleChoiceVisible).to.equal(true);
-        expect(isCheckBoxVisible).to.equal(true);
-        expect(isIconButtonVisible).to.equal(true);
-        expect(isTableVisible).to.equal(true);
-        $(DIALOG_SET_FOOTER_WITH_COMPONENTS_CLOSE_BUTTON).click();
+        Helper.ElementHandler
+            .click(DIALOG_SET_FOOTER_WITH_COMPONENTS_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE)
+            .click(DIALOG_SET_FOOTER_WITH_COMPONENTS_CLOSE_BUTTON)
     });
 
     it('[Dialog-39-40]: Verify that can get the value of the footer Dialog with String', function () {
-        $(DIALOG_GET_FOOTER_WITH_STRING_BUTTON).click();
-        expect($(DIALOG_SHOW_GET_FOOTER_STRING).getText()).to.equal("Value of footer on dialog with string");
+        Helper.ElementHandler
+            .click(DIALOG_GET_FOOTER_WITH_STRING_BUTTON)
+            .waitForElement(DIALOG_SHOW_GET_FOOTER_STRING)
+            .verifyText(DIALOG_SHOW_GET_FOOTER_STRING, "Value of footer on dialog with string")
     });
 
     it('[Dialog-39-40]: Verify that can get the value of the footer Dialog with DOM', function () {
-        $(DIALOG_GET_FOOTER_WITH_COMPONENTS_BUTTON).click();
-        let isNormalButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON, true);
-        let isSubmitButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON, true);
-        let isTextBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX, true);
-        let isLabelVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL, true);
-        let isAlertVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT, true);
-        let isDropdownVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN, true);
-        let isRadioButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON, true);
-        let isMultipleChoiceVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE, true);
-        let isCheckBoxVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX, true);
-        let isIconButtonVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON, true);
-        let isTableVisible = isVisibled(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE, true);
-
-        expect(isNormalButtonVisible).to.equal(true);
-        expect(isSubmitButtonVisible).to.equal(true);
-        expect(isTextBoxVisible).to.equal(true);
-        expect(isLabelVisible).to.equal(true);
-        expect(isAlertVisible).to.equal(true);
-        expect(isDropdownVisible).to.equal(true);
-        expect(isRadioButtonVisible).to.equal(true);
-        expect(isMultipleChoiceVisible).to.equal(true);
-        expect(isCheckBoxVisible).to.equal(true);
-        expect(isIconButtonVisible).to.equal(true);
-        expect(isTableVisible).to.equal(true);
+        Helper.ElementHandler
+            .click(DIALOG_GET_FOOTER_WITH_COMPONENTS_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_NORMAL_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_SUBMIT_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TEXT_BOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_LABEL)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ALERT)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_DROPDOWN)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_RADIO_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_MULTIPLE_CHOICE)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_CHECKBOX)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_ICON_BUTTON)
+            .verifyElementVisible(DIALOG_SET_HEADER_WITH_COMPONENTS_TABLE)
     });
 
     it('[Dialog-44]: Verify that can show invisible Dialog on UI', function () {
-        $(SHOW_INVISIBLE_DIALOG_BUTTON).click();
-        let isVisible = isVisibled(DIALOG_INVISIBLE, true);
-        expect(isVisible).to.equal(true);
-        $(DIALOG_INVISIBLE_CLOSE_BUTTON).click();
+        Helper.ElementHandler
+            .click(SHOW_INVISIBLE_DIALOG_BUTTON)
+            .verifyElementVisible(DIALOG_INVISIBLE)
+            .click(DIALOG_INVISIBLE_CLOSE_BUTTON)
     });
 
     it('[Dialog-46]: Verify that can hide the visible Dialog on UI', function () {
-        $(RENDER_VISIBLE_DIALOG_BUTTON).click();
-        let isVisible = isVisibled(DIALOG_VISIBLE, true);
-        expect(isVisible).to.equal(true);
-        $(HIDE_VISIBLE_DIALOG_BUTTON).click();
-        let isVisibleAfterHide = isVisibled(DIALOG_VISIBLE, false);
-        expect(isVisibleAfterHide).to.equal(false);
+        Helper.ElementHandler
+            .click(RENDER_VISIBLE_DIALOG_BUTTON)
+            .verifyElementVisible(DIALOG_VISIBLE)
+            .click(HIDE_VISIBLE_DIALOG_BUTTON)
+            .verifyElementNotVisible(DIALOG_VISIBLE)
     });
 
     it('[Dialog-49]: Verify that can show CloseButton on Dialog', function () {
-        $(SHOW_DIALOG_WITH_CLOSE_BUTTON_BUTTON).click();
-        let isVisible = isVisibled(DIALOG_SHOW_CLOSE_BUTTON, true);
-        expect(isVisible).to.equal(true);
-        $(DIALOG_SHOW_CLOSE_BUTTON).click();
+        Helper.ElementHandler
+            .click(SHOW_DIALOG_WITH_CLOSE_BUTTON_BUTTON)
+            .verifyElementVisible(DIALOG_SHOW_CLOSE_BUTTON)
+            .click(DIALOG_SHOW_CLOSE_BUTTON)
     });
 
     it('[Dialog-51]: Verify that can hide the CloseButton on Dialog', function () {
-        $(SHOW_DIALOG_WITHOUT_CLOSE_BUTTON_BUTTON).click();
-        let isExist = isExisted(DIALOG_HIDE_CLOSE_BUTTON);
-        expect(isExist).to.equal(false);
-        $(CLOSE_DIALOG_WITHOUT_CLOSE_BUTTON_BUTTON).click();
+        Helper.ElementHandler
+            .click(SHOW_DIALOG_WITHOUT_CLOSE_BUTTON_BUTTON)
+            .verifyElementNotExist(DIALOG_HIDE_CLOSE_BUTTON)
+            .click(CLOSE_DIALOG_WITHOUT_CLOSE_BUTTON_BUTTON)
     });
 });
