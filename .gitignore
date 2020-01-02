@@ -3,4 +3,4 @@ package-lock.json/
 reports/
 screenshot/
 wdio.conf.js/
-/test/config.js
+test/config.js

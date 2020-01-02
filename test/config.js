@@ -1,5 +1,5 @@
 module.exports = {	
-    "domain": process.env.testtt,	 
+    "domain": process.env.domain,	 
     "appId": process.env.appID,	  
     "credentials": {
         "username": process.env.username,	
