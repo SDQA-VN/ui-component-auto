@@ -1,9 +1,9 @@
 module.exports = {	
-    "domain": "khiem-test-1.cybozu-dev.com",	 
-    "appId": 1,	  
+    "domain": process.env.domain,	 
+    "appId": process.env.appID,	  
     "credentials": {
-        "username": "cybozu",	
-        "password": "cybozu"
+        "username": process.env.username,	
+        "password": process.env.password
     },	  
-	"folderTest": "js"	
+	"folderTest": process.env.test	
 }
