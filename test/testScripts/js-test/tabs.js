@@ -1,6 +1,5 @@
 const common = require('../../utils/common');
 const Helper = require('../../helper/main');
-const expect = require('chai').expect
 
 const CONSTRUCTOR_TABS = "//div[@id='constructor-tabs']//div[@class='kuc-tabs-tabs']//ul[@class='kuc-tabs-tab-list']//li";
 const COMPONENT_CONTENT_TABS = "//div[@id='constructor-tabs']//div[@class='kuc-tabs-tabs']//div[@class='kuc-tabs-tab-contents']//div[@id='component-container']";
