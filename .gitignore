@@ -1,5 +1,7 @@
 .DS_STORE
+test/config.js
 node_modules/
 package-lock.json
 reports/
 screenshot/
+wdio.conf.js
