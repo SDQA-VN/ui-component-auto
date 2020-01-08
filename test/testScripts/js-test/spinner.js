@@ -15,7 +15,7 @@ describe('kintoneUIComponent - Spinner', function () {
         common.logOutSlash();
     });
 
-    it('[Spinner-3] Verify that operation of spinner and the UI is the same as spec', function () {
+    it('[Spinner-2] Verify that operation of spinner and the UI is the same as spec', function () {
         let checkVisible = browser.isVisible(CONSTRUCTOR_SPINNER);
         expect(checkVisible).to.equal(false);
         $(SHOW_BUTTON_SPINNER).click();
@@ -27,7 +27,7 @@ describe('kintoneUIComponent - Spinner', function () {
         expect(spinnerPosition.value).to.equal('static');
         $(HIDE_BUTTON_SPINNER).click()
     });
-    it('[Spinner-4] Verify that can create a Spinner successfully without any parameters', function () {
+    it('[Spinner-3] Verify that can create a Spinner successfully without any parameters', function () {
         Helper.ElementHandler
             .click(SHOW_BUTTON_SPINNER)
             .verifyElementExists(CONSTRUCTOR_SPINNER)
