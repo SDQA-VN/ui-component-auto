@@ -1,7 +1,6 @@
-const $ = require('../../utils/ReturnElement').singleElement;
-const common = require('../../utils/common');
 const Helper = require('../../helper/main');
-const expect = require('chai').expect;
+const common = require('../../utils/common');
+const path = require('path');
 
 const CONSTRUCTOR_SPINNER = "//div[@id='constructor-spinner']//div[@class='kuc-spinner']//div[@class='kuc-loader']";
 const SHOW_BUTTON_SPINNER = "//button[contains(text(),'Show Spinner')]";
