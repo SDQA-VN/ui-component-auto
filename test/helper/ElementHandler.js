@@ -247,6 +247,18 @@ class ElementHandler {
         return this;
     }
 
+
+    /**
+    * @param {string} locator    Element for verify
+    * @param {string} attribute    Attribute for verify
+    * @param {string} value    Value for verify
+    */
+    verifyAttributeIsNotIncludeValue(locator, attribute, value) {
+        let result = this.getAttribute(locator, attribute)
+        expect(result).to.not.include(value);
+        return this;
+    }
+
     /**
    * @param {string} locator    Element for verify
    */
