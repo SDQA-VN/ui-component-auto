@@ -1,7 +1,6 @@
-const $ = require('../../utils/ReturnElement').singleElement;
-const common = require('../../utils/common');
 const Helper = require('../../helper/main');
-const expect = require('chai').expect;
+const common = require('../../utils/common');
+const path = require('path');
 
 const CONSTRUCTOR_SPINNER = "//div[@id='constructor-spinner']//div[@class='kuc-spinner']//div[@class='kuc-loader']";
 const SHOW_BUTTON_SPINNER = "//button[contains(text(),'Show Spinner')]";
@@ -16,16 +15,13 @@ describe('kintoneUIComponent - Spinner', function () {
     });
 
     it('[Spinner-3] Verify that operation of spinner and the UI is the same as spec', function () {
-        let checkVisible = browser.isVisible(CONSTRUCTOR_SPINNER);
-        expect(checkVisible).to.equal(false);
-        $(SHOW_BUTTON_SPINNER).click();
-        checkVisible = browser.isVisible(CONSTRUCTOR_SPINNER);
-        let spinnerColor = $(CONSTRUCTOR_SPINNER).getCssProperty('color');
-        let spinnerPosition = $(CONSTRUCTOR_SPINNER).getCssProperty('position');
-        expect(checkVisible).to.equal(true);
-        expect(spinnerColor.parsed.hex).to.equal('#333333');
-        expect(spinnerPosition.value).to.equal('static');
-        $(HIDE_BUTTON_SPINNER).click()
+        Helper.ElementHandler
+            .verifyElementNotVisible(CONSTRUCTOR_SPINNER)
+            .click(SHOW_BUTTON_SPINNER)
+            .verifyElementVisible(CONSTRUCTOR_SPINNER)
+            .verifyElementColor(CONSTRUCTOR_SPINNER,'color','#333333')
+            .verifyElementPosition(CONSTRUCTOR_SPINNER,'position','static')
+            .click(HIDE_BUTTON_SPINNER)
     });
     it('[Spinner-4] Verify that can create a Spinner successfully without any parameters', function () {
         Helper.ElementHandler

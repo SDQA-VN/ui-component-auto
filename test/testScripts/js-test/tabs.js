@@ -57,13 +57,14 @@ describe('kintoneUIComponent - Text', function () {
     });
 
     it('[Tabs-17] should Verify that add items into Tab with options: String and DOM', function () {
-        Helper.ElementHandler.verifyNumberOfElements(ADD_ITEM_TABS, 2)
-        Helper.ElementHandler.click(ADD_ITEM_BUTTON_TABS)
-        Helper.ElementHandler.verifyNumberOfElements(ADD_ITEM_TABS, 4)
-        Helper.ElementHandler.click(ADD_ITEM_TABS + '[3]')
-        Helper.ElementHandler.verifyText(ADD_ITEM_CONTENT_TABS, 'This is Tab3')
-        Helper.ElementHandler.click(ADD_ITEM_TABS + '[4]')
-        Helper.ElementHandler.verifyElementExists(ADD_ITEM_CONTENT_TABS + "//div[@class='kuc-alert bg-success']")
+        Helper.ElementHandler
+            .verifyNumberOfElements(ADD_ITEM_TABS, 2)
+            .click(ADD_ITEM_BUTTON_TABS)
+            .verifyNumberOfElements(ADD_ITEM_TABS, 4)
+            .click(ADD_ITEM_TABS + '[3]')
+            .verifyText(ADD_ITEM_CONTENT_TABS, 'This is Tab3')
+            .click(ADD_ITEM_TABS + '[4]')
+            .verifyElementExists(ADD_ITEM_CONTENT_TABS + "//div[@class='kuc-alert bg-success']")
     });
 
     it('[Tabs-23] should Verify that the items will be removed correctly with the position in the tab ', function () {
