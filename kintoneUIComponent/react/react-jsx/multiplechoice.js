@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {MultipleChoice } from '@kintone/kintone-ui-component';
+import { MultipleChoice } from '@kintone/kintone-ui-component';
 
 // Multiple Choice
 class MultipleRenderMethod extends React.Component {
@@ -22,7 +22,7 @@ class MultipleRenderMethod extends React.Component {
                 isDisabled: true
             },
         ];
-        this.state = { items: items, value: ['Orange']};
+        this.state = { items: items, value: ['Orange'] };
     }
     render() {
         return (
@@ -403,10 +403,8 @@ class MutipleSetValueMethod extends React.Component {
     }
     handleClick = () => {
         this.setState(prevState => ({
-            value: ['Orange','Orange']
-        })
-        )
-        console.log(this.state.value);
+            value: ['Orange', 'Banana']
+        }))
     }
 }
 class MutipleGetValueMethod extends React.Component {

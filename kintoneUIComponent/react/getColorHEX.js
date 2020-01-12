@@ -4,9 +4,6 @@
         const locatorSatur = document.getElementById("constructor-colorpicker").getElementsByTagName("canvas")[0];
         const textField = document.getElementById("hex-value");
         const locatorHue = document.getElementById('constructor-colorpicker').getElementsByTagName("canvas")[1];
-        console.log(textField)
-        console.log(locatorSatur)
-        console.log(locatorHue)
         getHexValue(locatorSatur, textField);
         getHexValue(locatorHue, textField);
 
