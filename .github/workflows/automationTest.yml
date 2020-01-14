@@ -26,15 +26,12 @@ jobs:
     - name: install package
       run: |
         npm install
-    - name: install environment data
-      run: |
-        npm install https://${{secrets.ACCESS_TOKEN}}:x-oauth-basic@github.com/luckhiem/environment-data.git
     - name: preparation source
       run: |
-        npm run preparation
+        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
     - name: run test
       run: |
-        npm run test
+        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
       env:
         CI: true
         ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
