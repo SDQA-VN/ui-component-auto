@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const UI_CHECKBOX = "//div[@id='ui-checkbox']//div[@class='kuc-input-checkbox']";
 const CHECKBOX_FULL_OPTION = "//div[@id='cons-full-option-checkbox']//div[@class='kuc-input-checkbox']";

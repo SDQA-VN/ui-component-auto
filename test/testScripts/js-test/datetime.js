@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_DATETIME = '//div[@id="constructor-datetime"]//div[@class="date-time-container"]';
 const DATE_CONSTRUCTOR_DATETIME = '//div[@id="constructor-datetime"]//div[@class="date-time-container"]//input[@class="kuc-input-text text-input"]';

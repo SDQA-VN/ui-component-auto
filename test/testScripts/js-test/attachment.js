@@ -1,5 +1,5 @@
-const Helper = require('../../helper/main');
-const common = require('../../utils/common');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 const path = require('path');
 
 

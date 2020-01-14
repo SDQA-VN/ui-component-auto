@@ -1,6 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
-const expect = require('chai').expect
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_TEXTAREA = "//div[@id='constructor-textarea']//textarea[@class='kuc-textarea']";
 const CONSTRUCTOR_RESIZE_BUTTON_TEXTAREA = "//div[@id='constructor-textarea']//div[@class='kuc-textarea-resize']";

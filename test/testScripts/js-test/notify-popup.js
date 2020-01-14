@@ -1,4 +1,4 @@
-const common = require('../../utils/common');
+const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main');
 
 const FULL_OPTIONS_NOTIFY = "//div[@id='full-option-notifypopup']//div[@class='kuc-notify bg-danger']";

@@ -1,7 +1,5 @@
-const $ = require('../../utils/ReturnElement').singleElement;
-const common = require('../../utils/common');
-const expect = require('chai').expect;
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const XPATH_MULTIPLE = '.multiple-render .kuc-multiple-list';
 const XPATH_MULTIPLE_ICON = '.multiple-render .kuc-list-item-selected svg path';
