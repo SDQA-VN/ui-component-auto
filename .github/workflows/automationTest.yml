@@ -26,6 +26,13 @@ jobs:
     - name: install package
       run: |
         npm install
+    - name: get source latest
+    - uses: ./actions/get_latest_build
+      with:
+        branch: SSR_473
+    - name: install kintone-ui-component
+      run: |
+        npm install ${{steps.get_latest_build.outputs.files}}
     - name: preparation source
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
