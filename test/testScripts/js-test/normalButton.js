@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const NORMAL_BUTTON_CONSTRUCTOR = "//div[@id='normalButton_constructorEl']//button[contains(@class,'kuc-btn')]";
 const NORMAL_BUTTON_NONETEXT = "//div[@id='normalButton_NoneTextEl']//button[contains(@class,'kuc-btn')]";

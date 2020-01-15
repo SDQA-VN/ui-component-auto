@@ -1,9 +1,5 @@
-const $ = require('../../utils/ReturnElement').singleElement;
-const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
-const isExisted = require('../../utils/ReturnElement').checkElementExistence;
-const common = require('../../utils/common');
-const expect = require('chai').expect;
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const SHOW_DIALOG_FULL_OPTION_BUTTON = '//button[@id="dialog_full_option_button"]';
 const DIALOG_FULL_OPTION_CLOSE_BUTTON = '//div[@id="dialog_full_optionEl"]//span[@class="kuc-dialog-close-button"]//button[@class="kuc-icon-btn large  gray circle"]';

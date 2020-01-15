@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const SUCCESS_ALERT = "//div[contains(text(),'successAlert')]";
 const ERROR_ALERT = "//div[contains(text(),'errorAlert')]";

@@ -1,8 +1,5 @@
-const $ = require('../../utils/ReturnElement').singleElement;
-const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
-const common = require('../../utils/common');
-const expect = require('chai').expect;
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 
 const SUBMIT_BUTTON_CONSTRUCTOR = "//div[@id='submit-button-constructor']//button[contains(@class,'kuc-btn')]";

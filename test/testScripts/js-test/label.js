@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const UI = "//span[contains(text(), 'UILabel')]";
 const FULL_OPTION_LABEL = "//div[@id='full-option-label']//div[@class='kuc-label']";

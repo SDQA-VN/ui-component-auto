@@ -1,5 +1,5 @@
 const $ = require('../../utils/ReturnElement').singleElement;
-const common = require('../../utils/common');
+const common = require('../../utils/Common.js');
 const expect = require('chai').expect;
 
 const CONSTRUCTOR_TABLE = "//div[@id='constructor-table']//div[@class='kuc-table']";

@@ -1,6 +1,5 @@
-const Helper = require('../../helper/main');
-const common = require('../../utils/common');
-const path = require('path');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_SPINNER = "//div[@id='constructor-spinner']//div[@class='kuc-spinner']//div[@class='kuc-loader']";
 const SHOW_BUTTON_SPINNER = "//button[contains(text(),'Show Spinner')]";
