@@ -8,7 +8,7 @@ const branch = core.getInput('branch')
 if (fs.existsSync(sourePath)) {
     execSync(`rm -rf ./kintone-ui-component`);
 }
-execSync(`git clone https://github.com/kintone/kintone-ui-component.git#${branch}`);
+execSync(`git clone https://github.com/kintone/kintone-ui-component.git -b ${branch}`);
 execSync(`cd ./kintone-ui-component && npm install`);
 execSync(`cd ./kintone-ui-component && npm run build`);
 execSync(`cd ./kintone-ui-component && npm pack`);
