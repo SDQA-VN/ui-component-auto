@@ -19,24 +19,24 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: install chrome
+    - name: Install chrome
       run: |
         sudo apt-get update 
         sudo apt-get install google-chrome-stable 
-    - name: install package
+    - name: Install package
       run: |
         npm install
-    - name: get source latest
+    - name: Get latest build
       uses: ./actions/get_latest_build
       with:
         branch: SSR-473
-    - name: install kintone-ui-component
+    - name: Install latest build kintone-ui-component
       run: |
         npm install ${{steps.get_latest_build.outputs.files}}
-    - name: preparation source
+    - name: Preparation source
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
-    - name: run test
+    - name: Run test
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
       env:
