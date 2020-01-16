@@ -11,13 +11,11 @@ if (fs.existsSync(sourePath)) {
     execSync(`rm -rf ./kintone-ui-component`);
 }
 execSync(`git clone https://github.com/kintone/kintone-ui-component.git -b ${branch}`);
-execSync(`pwd`)
-execSync(`cd ./kintone-ui-component && npm install`);
-execSync(`cd ./kintone-ui-component && npm run build`);
-execSync(`cd ./kintone-ui-component && npm pack`);
-execSync(`ls -l`);
+execSync(`cd ${sourePath} && npm install`);
+execSync(`cd ${sourePath} && npm run build`);
+execSync(`cd ${sourePath} && npm pack`);
 const package = require(packagePath)
 core.setOutput('files', path.join(__dirname, '..', '..', 'kintone-ui-component', `kintone-kintone-ui-component-${package.version}.tgz`))
 
-
+console.log(core.getState())
 
