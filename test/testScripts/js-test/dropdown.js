@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_DROPDOWN = "//div[@id='constructor-dropdown']//div[@class='kuc-dropdown-selected']";
 const VALUE_CONSTRUCTOR_DROPDOWN = "//div[@id='constructor-dropdown']//div[@class='kuc-list-outer']//div[@class='kuc-list-item']";
