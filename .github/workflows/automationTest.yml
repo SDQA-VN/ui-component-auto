@@ -32,10 +32,13 @@ jobs:
         branch: SSR-473
     - name: Install latest build kintone-ui-component
       run: |
+        echo ${{steps.get_latest_build.outputs.files}}
+    - name: Install latest build kintone-ui-component
+      run: |
         npm install ${{steps.get_latest_build.outputs.files}}
     - name: Path
       run: |
-        pwd
+        ls -la ./node_modules
     - name: Preparation source
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
