@@ -8,7 +8,7 @@ const packagePath = path.join(__dirname, '..', '..', 'kintone-ui-component', 'pa
 
 const branch = core.getInput('branch')
 if (fs.existsSync(sourePath)) {
-    execSync(`rm -rf ./kintone-ui-component`);
+    execSync(`rm -rf ${sourePath}`);
 }
 execSync(`git clone https://github.com/kintone/kintone-ui-component.git -b ${branch}`);
 execSync(`cd ${sourePath} && npm install`);
