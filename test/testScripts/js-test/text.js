@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_TEXT = "//div[@id='constructor-text']//input[@class='kuc-input-text']";
 const SET_VALUE_TEXT = "//div[@id='set-value-text']//input[@class='kuc-input-text']";
