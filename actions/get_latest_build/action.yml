@@ -1,7 +1,7 @@
 name: 'Get Latest Build kintone-ui-component'
 description: 'Get latest build kintone-ui-component'
 input:
-  branch:
+  branches:
     description: "Branch dev to test"
 outputs:
   files:

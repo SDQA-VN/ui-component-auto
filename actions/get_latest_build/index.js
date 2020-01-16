@@ -6,11 +6,11 @@ const fs = require('fs');
 const sourePath = path.join(__dirname, '..', '..', 'kintone-ui-component',);
 const packagePath = path.join(__dirname, '..', '..', 'kintone-ui-component', 'package.json');
 
-const branch = core.getInput('branch')
+const branches = core.getInput('branches')
 if (fs.existsSync(sourePath)) {
     execSync(`rm -rf ${sourePath}`);
 }
-execSync(`git clone https://github.com/kintone/kintone-ui-component.git -b ${branch}`);
+execSync(`git clone https://github.com/kintone/kintone-ui-component.git -b ${branches}`);
 execSync(`cd ${sourePath} && npm install`);
 execSync(`cd ${sourePath} && npm run build`);
 execSync(`cd ${sourePath} && npm pack`);
