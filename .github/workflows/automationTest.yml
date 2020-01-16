@@ -30,7 +30,7 @@ jobs:
       uses: ./actions/get_latest_build
       id: get_latest_build
       with:
-        branch: SSR-473
+        branch: master
     - name: Install latest build kintone-ui-component
       run: |
         npm install ${{steps.get_latest_build.outputs.files}}
