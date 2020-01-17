@@ -5,31 +5,31 @@ on:
     types: kuc-trigger-auto-test
 
 jobs:
-    Run_tests:
-    name: Run automation test kintone-ui-component
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Install chrome
-      run: |
-        sudo apt-get update 
-        sudo apt-get install google-chrome-stable 
-    - name: Install package
-      run: |
-        npm install
-    - name: Get latest build kintone-ui-component
-      uses: ./actions/get_latest_build
-      id: get_latest_build
-      with:
-        branches: master
-    - name: Install latest build kintone-ui-component
-      run: |
-        npm install ${{steps.get_latest_build.outputs.files}}
-    - name: Preparation source
-      run: |
-        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
-    - name: Run test
-      run: |
-        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
-      env:
-        CI: true
+    automation_test:
+      name: Run automation test kintone-ui-component
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v1
+      - name: Install chrome
+        run: |
+          sudo apt-get update 
+          sudo apt-get install google-chrome-stable 
+      - name: Install package
+        run: |
+          npm install
+      - name: Get latest build kintone-ui-component
+        uses: ./actions/get_latest_build
+        id: get_latest_build
+        with:
+          branches: master
+      - name: Install latest build kintone-ui-component
+        run: |
+          npm install ${{steps.get_latest_build.outputs.files}}
+      - name: Preparation source
+        run: |
+          domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
+      - name: Run test
+        run: |
+          domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
+        env:
+          CI: true
