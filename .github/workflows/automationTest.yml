@@ -32,7 +32,14 @@ jobs:
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
     - name: Run test
+      if: success()
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
+    - name: Send status after run test
+      run: "curl -H 'Accept: application/vnd.github.everest-preview+json' \
+          -H 'Authorization: token 715b6a6c1791c70ee044d3051194464791cd0089' \
+          --request POST \
+          --data '{'event_type': 'test_dispatch'}' \
+          https://api.github.com/repos/Pham-Gia-Huong/kintone-ui-component/dispatches"
       env:
         CI: true
