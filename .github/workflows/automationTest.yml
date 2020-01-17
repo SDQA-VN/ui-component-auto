@@ -38,7 +38,7 @@ jobs:
     - name: Send status after run test
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: '715b6a6c1791c70ee044d3051194464791cd0089'
+        token: ${{secrets.ACESS_TOKEN}}
         repository: Pham-Gia-Huong/kintone-ui-component
         event-type: test_dispatch
         client-payload: '{"status": "success"}'
