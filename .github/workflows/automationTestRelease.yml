@@ -1,14 +1,11 @@
-name: Automation Test
+name: Automation Test Release Build
 
 on:
   repository_dispatch:
-    types: kuc-trigger-auto-test
-  push:
-    branches:
-      - master
+    types: kuc-trigger-auto-test-release
 
 jobs:
-  automation_test:
+  automation_test_release:
     name: Run automation test kintone-ui-component
     runs-on: ubuntu-latest
     steps:
@@ -38,5 +35,12 @@ jobs:
       if: success()
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
+    - name: Send status after run test
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{secrets.ACCESS_TOKEN}}
+        repository: kintone/kintone-ui-component
+        event-type: kuc-trigger-status-test
+        client-payload: '{"status": "success"}'
       env:
         CI: true
