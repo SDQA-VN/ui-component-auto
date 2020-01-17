@@ -2,14 +2,11 @@ name: Automation Test
 
 on:
   repository_dispatch:
-    types: do-something
-  push:
+    types: kuc-trigger-auto-test
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x]
