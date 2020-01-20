@@ -40,7 +40,7 @@ jobs:
       with:
         token: ${{secrets.ACCESS_TOKEN}}
         repository: kintone/kintone-ui-component
-        event-type: kuc-trigger-status-test
+        event-type: release_dispatch
         client-payload: '{"status": "success"}'
       env:
         CI: true
