@@ -1,0 +1,11 @@
+name: 'Get Latest Build kintone-ui-component'
+description: 'Get latest build kintone-ui-component'
+input:
+  branches:
+    description: "Branch dev to test"
+outputs:
+  files:
+    description: "File source after pack"
+runs:
+  using: 'node12'
+  main: 'index.js'
