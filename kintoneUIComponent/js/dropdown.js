@@ -150,8 +150,8 @@ let getItemsDropdown = new kintoneUIComponent.Dropdown({
             isDisabled: true
         },
         {
-            label: 'Grape',
-            value: 'Grape',
+            label: '',
+            value: '',
         }
     ],
     value: 'Orange'
