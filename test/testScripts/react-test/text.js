@@ -1,6 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
-const expect = require('chai').expect
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_TEXT = "//div[@id='constructor-text']//input[@class='kuc-input-text']";
 const SET_VALUE_TEXT = "//div[@id='set-value-text']//input[@class='kuc-input-text']";
@@ -31,18 +30,13 @@ describe('kintoneUIComponent - Text', function () {
         common.logOutSlash();
     });
 
-    // it('[Text-2-4-6] should verify that the Textbox object contains the the below attibutes', function () {
-    //     let txtBgColor = $(CONSTRUCTOR_TEXT).getCssProperty('background-color');
-    //     let txtSize = browser.getElementSize(CONSTRUCTOR_TEXT);
-    //     let checkVisible = browser.isVisible(CONSTRUCTOR_TEXT);
-    //     let checkDisable = browser.isEnabled(CONSTRUCTOR_TEXT);
-    //     expect(txtBgColor.parsed.hex).to.equal('#ffffff');
-    //     expect(txtSize.width).to.equal(168);
-    //     expect(txtSize.height).to.equal(48);
-    //     expect(checkVisible).to.equal(true);
-    //     expect(checkDisable).to.equal(true);
-    //     expect($(CONSTRUCTOR_TEXT).getValue()).to.equal('Constructor Text');
-    // });
+    it('[Text-2-4-6] should verify that the Textbox object contains the the below attibutes', function () {
+        Helper.ElementHandler
+            .verifyElementColor(CONSTRUCTOR_TEXT, 'background-color', '#ffffff')
+            .verifyElementSize(CONSTRUCTOR_TEXT, 165, 48)
+            .verifyElementEnabled(CONSTRUCTOR_TEXT)
+            .verifyValue(CONSTRUCTOR_TEXT, 'Constructor Text')
+    });
 
     it('[Text-14-15] should set text for text box which not contain existing text and textbox which contain existing text', function () {
         Helper.ElementHandler
@@ -72,8 +66,8 @@ describe('kintoneUIComponent - Text', function () {
 
     it('[Text-27] should hide the visible Text and invisble Text on UI', function () {
         Helper.ElementHandler
-            .waitForElement(SHOW_VISIBLE_TEXT)
-            .verifyElementVisible(SHOW_VISIBLE_TEXT)
+            .waitForElement(HIDE_VISIBLE_TEXT)
+            .verifyElementVisible(HIDE_VISIBLE_TEXT)
             .verifyElementNotVisible(HIDE_INVISIBLE_TEXT)
             .click(HIDE_BUTTON_TEXT)
             .verifyElementNotVisible(HIDE_VISIBLE_TEXT)
@@ -106,7 +100,6 @@ describe('kintoneUIComponent - Text', function () {
             .click(ON_CALLBACK_FUNCTION_TEXT)
             .verifyAlertText('onClickCallBackFunctionText has been clicked')
             .addValue(ON_CALLBACK_FUNCTION_TEXT, 'onChange callback')
-            .click(ENABLE_BUTTON_TEXT)
             .verifyAlertText('onChangeCallBackFunctionText has been changed')
     });
 
@@ -116,7 +109,6 @@ describe('kintoneUIComponent - Text', function () {
             .click(ON_CALLBACK_TRIGGER_TEXT)
             .verifyAlertText('onClickCallBackTriggerText has been clicked')
             .addValue(ON_CALLBACK_TRIGGER_TEXT, 'onChange callback')
-            .click(ENABLE_ENABLED_TEXT)
             .verifyAlertText('onChangeCallBackTriggerText has been changed')
     });
 });
