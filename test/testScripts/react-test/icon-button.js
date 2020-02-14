@@ -65,7 +65,7 @@ describe('kintoneUIComponent - Button', function () {
     // });
     it('[Icon-Button-24] Verify that can create a Icon Button with only option.isDisabled is true', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_ICON_ONLY_DISABLE)
+            .verifyElementExisting(XPATH_ICON_ONLY_DISABLE)
             .verifyElementDisabled(XPATH_ICON_ONLY_DISABLE)
     });
     it('[Icon-Button-29] Verify that can set type insert', function () {

@@ -33,37 +33,37 @@ describe('kintoneUIComponent - Text', function () {
             .verifyAttribute(TOGGLE_BUTTON_FIELDGROUP, 'class', 'expand')
             .verifyAttribute(TOGGLE_BUTTON_FIELDGROUP + '//span[1]', 'class', 'kuc-arrow down')
             // check components in fieldgroup content (DOM)
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-alert bg-success']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn normal']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn submit']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-checkbox']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='date-time-container']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-dropdown-container']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-fieldgroup']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-icon-btn large  gray circle']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-multiple-list kuc-list-outer']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-radio']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-table']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']")
-            .verifyElementExists(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-textarea-outer']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-alert bg-success']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn normal']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn submit']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-checkbox']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='date-time-container']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-dropdown-container']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-fieldgroup']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-icon-btn large  gray circle']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-multiple-list kuc-list-outer']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-radio']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-table']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-textarea-outer']")
     });
 
     it('[FieldGroup-17] should Verify that can set content of FieldGroup', function () {
         Helper.ElementHandler
-            .verifyElementExists(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementExisting(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
             .click(SET_CONTENT_BUTTON_FIELDGROUP)
-            .verifyElementNotExist(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
-            .verifyElementExists(SET_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']")
+            .verifyElementNotExisting(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementExisting(SET_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']")
     });
 
     it('[FieldGroup-18] should Verify that can get content of FieldGroup', function () {
         Helper.ElementHandler
-            .verifyElementExists(GET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
-            .verifyElementNotExist(GET_CONTENT_CHECK_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementExisting(GET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementNotExisting(GET_CONTENT_CHECK_FIELDGROUP + "//div[@class='kuc-label']")
             .click(GET_CONTENT_BUTTON_FIELDGROUP)
-            .verifyElementNotExist(GET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementNotExisting(GET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
     });
 
     it('[FieldGroup-19] should Verify that can set name for FieldGroup', function () {

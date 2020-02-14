@@ -46,9 +46,9 @@ describe('kintoneUIComponent - RadioButton', function () {
     it('[RadioButton-2-6-9] should verify that the radiobutton have the  UI is the same as Dropdown on kintone', function () {
         Helper.ElementHandler
             //verify UI and the operation of Radio Button 
-            .verifyElementNotExist(CONSTRUCTOR_RADIOBUTTON)
+            .verifyElementNotExisting(CONSTRUCTOR_RADIOBUTTON)
             .click(VALUE_CONSTRUCTOR_RADIOBUTTON + ":nth-child(1) label")
-            .verifyElementExists(CONSTRUCTOR_RADIOBUTTON)
+            .verifyElementExisting(CONSTRUCTOR_RADIOBUTTON)
             .verifyElementColor(VALUE_CONSTRUCTOR_RADIOBUTTON + ":nth-child(1) label", "color", "#333333")
             .verifyElementDisabled(VALUE_CONSTRUCTOR_RADIOBUTTON + ":nth-child(3) input")
             .verifyElementColor(VALUE_CONSTRUCTOR_RADIOBUTTON + ":nth-child(3) label", "color", "#bababa")
@@ -57,7 +57,7 @@ describe('kintoneUIComponent - RadioButton', function () {
     it('[RadioButton-7] verify that can create an no item radiobutton', function () {
         Helper.ElementHandler
             //verify UI and the operation of Radio Button 
-            .verifyElementNotExist(VALUE_NO_ITEM_RADIOBUTTON)
+            .verifyElementNotExisting(VALUE_NO_ITEM_RADIOBUTTON)
     });
 
     it('[RadioButton-24-30] verify that can add an item to radio button', function () {
@@ -110,13 +110,13 @@ describe('kintoneUIComponent - RadioButton', function () {
     it('[RadioButton-54-55] verify that can set value for radiobutton', function () {
         Helper.ElementHandler
             .click(SET_DISABLED_VALUE_BUTTON_RADIOBUTTON)
-            .verifyElementExists(SET_VALUE_RADIOBUTTON)
+            .verifyElementExisting(SET_VALUE_RADIOBUTTON)
             .verifyText(SET_VALUE_RADIOBUTTON + ' + label', 'Lemon')
             .click(SET_NO_VALUE_BUTTON_RADIOBUTTON)
-            .verifyElementExists(SET_VALUE_RADIOBUTTON)
+            .verifyElementExisting(SET_VALUE_RADIOBUTTON)
             .verifyText(SET_VALUE_RADIOBUTTON + ' + label', '')
             .click(SET_VALUE_BUTTON_RADIOBUTTON)
-            .verifyElementExists(SET_VALUE_RADIOBUTTON)
+            .verifyElementExisting(SET_VALUE_RADIOBUTTON)
             .verifyText(SET_VALUE_RADIOBUTTON + ' + label', 'Orange')
     });
 

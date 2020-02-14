@@ -25,7 +25,7 @@ describe('kintoneUIComponent - Spinner', function () {
     it('[Spinner-3] Verify that can create a Spinner successfully without any parameters', function () {
         Helper.ElementHandler
             .click(SHOW_BUTTON_SPINNER)
-            .verifyElementExists(CONSTRUCTOR_SPINNER)
+            .verifyElementExisting(CONSTRUCTOR_SPINNER)
             .click(HIDE_BUTTON_SPINNER)
     });
 });

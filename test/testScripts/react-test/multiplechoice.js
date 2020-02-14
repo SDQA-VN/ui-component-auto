@@ -57,8 +57,8 @@ describe('kintoneUIComponent - Button', function () {
     });
     it('[MultipleChoice-5] Verify that can create a MultipleChoice without any options value', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_MULTIPLE_WITHOUT_OPTION)
-            .verifyElementNotExist(XPATH_MULTIPLE_WITHOUT_OPTION_LIST)
+            .verifyElementExisting(XPATH_MULTIPLE_WITHOUT_OPTION)
+            .verifyElementNotExisting(XPATH_MULTIPLE_WITHOUT_OPTION_LIST)
     });
     it('[MultipleChoice-6] Verify that can create a MultipleChoice with full options default value', function () {
         Helper.ElementHandler
@@ -73,7 +73,7 @@ describe('kintoneUIComponent - Button', function () {
     });
     it('[MultipleChoice-22] Verify that can add an item to the MultipleChoice list with full value for item', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(XPATH_MULTIPLE_ADD_ITEMS)
+            .verifyElementNotExisting(XPATH_MULTIPLE_ADD_ITEMS)
             .click(XPATH_MULTIPLE_ADD_ITEMS_BUTTON)
             .verifyText(XPATH_MULTIPLE_ADD_ITEMS, 'Lemon')
     });
@@ -85,7 +85,7 @@ describe('kintoneUIComponent - Button', function () {
     });
     it('[MultipleChoice-31] Verify that can add an item to the MultipleChoice without item.value', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(XPATH_MULTIPLE_ADD_ITEMS_WITHOUT_VALUE)
+            .verifyElementNotExisting(XPATH_MULTIPLE_ADD_ITEMS_WITHOUT_VALUE)
             .click(XPATH_MULTIPLE_ADD_ITEMS_WITHOUT_VALUE_BUTTON)
             .verifyText(XPATH_MULTIPLE_ADD_ITEMS_WITHOUT_VALUE, 'Lemon')
     });

@@ -54,19 +54,19 @@ describe('kintoneUIComponent - Button', function () {
     });
     it('[CheckBox-4] Verify that can create a CheckBox without any options value', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_CHECKBOX_WITHOUT_OPTION_VALUE)
+            .verifyElementExisting(XPATH_CHECKBOX_WITHOUT_OPTION_VALUE)
     });
     it('[CheckBox-5]Verify that can create a CheckBox with full  options value', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_CHECKBOX)
+            .verifyElementExisting(XPATH_CHECKBOX)
             .verifyElementEnabled(XPATH_CHECKBOX)
             .verifyElementVisible(XPATH_CHECKBOX)
     });
     it('[CheckBox-6]Verify that can create a CheckBox with full  options value', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_CHECKBOX_ONLY_OPTION_VALUE_1)
-            .verifyElementExists(XPATH_CHECKBOX_ONLY_OPTION_VALUE_2)
-            .verifyElementExists(XPATH_CHECKBOX_ONLY_OPTION_VALUE_3)
+            .verifyElementExisting(XPATH_CHECKBOX_ONLY_OPTION_VALUE_1)
+            .verifyElementExisting(XPATH_CHECKBOX_ONLY_OPTION_VALUE_2)
+            .verifyElementExisting(XPATH_CHECKBOX_ONLY_OPTION_VALUE_3)
             .verifyText(XPATH_CHECKBOX_ONLY_OPTION_VALUE_1, '')
             .verifyText(XPATH_CHECKBOX_ONLY_OPTION_VALUE_2, '')
             .verifyText(XPATH_CHECKBOX_ONLY_OPTION_VALUE_3, '')
@@ -80,7 +80,7 @@ describe('kintoneUIComponent - Button', function () {
         Helper.ElementHandler
             .click(XPATH_CHECKBOX_ADD_DISABLE_ITEMS_BUTTON)
             .verifyText(XPATH_CHECKBOX_ADD_ITEMS_VALUE_2, 'Lemon')
-            .verifyElementExists(XPATH_CHECKBOX_DISABLE)
+            .verifyElementExisting(XPATH_CHECKBOX_DISABLE)
     });
     it('[CheckBox-42] Verify that can remove an item at the first position', function () {
         Helper.ElementHandler
@@ -124,31 +124,31 @@ describe('kintoneUIComponent - Button', function () {
         const XPATH_CHECKBOX_ITEMS_CHECKED = '.checkbox-setVisibleValue .kuc-input-checkbox-item :checked'
         Helper.ElementHandler
             .click(XPATH_CHECKBOX_SET_VALUE_BUTTON)
-            .verifyElementExists(XPATH_CHECKBOX_ITEMS_CHECKED)
+            .verifyElementExisting(XPATH_CHECKBOX_ITEMS_CHECKED)
             .verifyText(XPATH_CHECKBOX_SET_VALUE, 'Orange')
     });
     it('[Checkbox-68] Verify can set the selected value for CheckBox by valid value of an invisible item in CheckBox', function () {
         const XPATH_CHECKBOX_ITEMS_CHECKED = '.checkbox-setInvisibleValue .kuc-input-checkbox-item :checked'
         Helper.ElementHandler
             .click(XPATH_CHECKBOX_SET_DISABLE_VALUE_BUTTON)
-            .verifyElementExists(XPATH_CHECKBOX_ITEMS_CHECKED)
+            .verifyElementExisting(XPATH_CHECKBOX_ITEMS_CHECKED)
             .verifyText(XPATH_CHECKBOX_SET_DISABLE_VALUE, 'Orange')
     });
     it('[Checkbox-70] Verify can set disabled for existing enable item by the valid value of an item in CheckBox', function () {
         Helper.ElementHandler
             .verifyElementNotExist(XPATH_CHECKBOX_DISABLE_ITEMS)
             .click(XPATH_CHECKBOX_DISABLE_ITEMS_BUTTON)
-            .verifyElementExists(XPATH_CHECKBOX_DISABLE_ITEMS)
+            .verifyElementExisting(XPATH_CHECKBOX_DISABLE_ITEMS)
     });
     it('[Checkbox-72] Verify can set disabled for existing enable item by the valid value for invisible CheckBox', function () {
         Helper.ElementHandler
             .verifyElementNotVisible(XPATH_INVISIBLE_CHECKBOX_DISABLE_ITEMS)
             .click(XPATH_INVISIBLE_CHECKBOX_DISABLE_ITEMS_BUTTON)
-            .verifyElementExists(XPATH_INVISIBLE_CHECKBOX_DISABLE_ITEMS_VALUE)
+            .verifyElementExisting(XPATH_INVISIBLE_CHECKBOX_DISABLE_ITEMS_VALUE)
     });
     it('[Checkbox-76] Verify can set enable for existing enable item by the valid value of an item in CheckBoxx', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_CHECKBOX_ENABLE_ITEMS)
+            .verifyElementExisting(XPATH_CHECKBOX_ENABLE_ITEMS)
             .click(XPATH_CHECKBOX_ENABLE_ITEMS_BUTTON)
             .verifyElementNotExist(XPATH_CHECKBOX_ENABLE_ITEMS)
     });
@@ -173,14 +173,14 @@ describe('kintoneUIComponent - Button', function () {
     it('[Checkbox-84] Verify that can disable the current enable CheckBox on UI', function () {
         Helper.ElementHandler
             .verifyElementNotExist(XPATH_CHECKBOX_VALUE_LEMON_DISABLE)
-            .verifyElementExists(XPATH_CHECKBOX_VALUE_ORANGE_DISABLE)
+            .verifyElementExisting(XPATH_CHECKBOX_VALUE_ORANGE_DISABLE)
             .click(XPATH_CHECKBOX_DISABLE_BUTTON)
-            .verifyElementExists(XPATH_CHECKBOX_VALUE_LEMON_DISABLE)
-            .verifyElementExists(XPATH_CHECKBOX_VALUE_ORANGE_DISABLE)
+            .verifyElementExisting(XPATH_CHECKBOX_VALUE_LEMON_DISABLE)
+            .verifyElementExisting(XPATH_CHECKBOX_VALUE_ORANGE_DISABLE)
     });
     it('[Checkbox-86] Verify that can enable the disabled CheckBox on UI', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_CHECKBOX_ENABLE)
+            .verifyElementExisting(XPATH_CHECKBOX_ENABLE)
             .click(XPATH_CHECKBOX_ENABLE_BUTTON)
             .verifyElementNotExist(XPATH_CHECKBOX_ENABLE)
     });

@@ -60,7 +60,7 @@ describe('kintoneUIComponent - Label', function () {
     it('[Label-3-5] should verify that the Label object contains the the below attibutes and can create a label with full options value', function () {
         Helper.ElementHandler
             .verifyElementVisible(FULL_OPTION_LABEL)
-            .verifyElementNotExist(FULL_OPTION_LABEL + "//span[@class='kuc-require']")
+            .verifyElementNotExisting(FULL_OPTION_LABEL + "//span[@class='kuc-require']")
             .verifyElementEnabled(FULL_OPTION_LABEL)
             .verifyText(FULL_OPTION_LABEL, 'full option Label')
     });
@@ -79,7 +79,7 @@ describe('kintoneUIComponent - Label', function () {
 
     it('[Label-8] should verify that can create a label with only option.isRequired is False', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(ONLY_REQUIRED_LABEL_1)
+            .verifyElementNotExisting(ONLY_REQUIRED_LABEL_1)
     });
 
     it('[Label-11] should verify that can create a label with only option.isVisibled is True', function () {
@@ -133,33 +133,33 @@ describe('kintoneUIComponent - Label', function () {
 
     it('[Label-22] should hidden the required icon for exisiting required label when using setRequired(false)', function () {
         Helper.ElementHandler
-            .verifyElementExists(SET_FALSE_REQUIRED_LABEL)
+            .verifyElementExisting(SET_FALSE_REQUIRED_LABEL)
             .click(SET_FALSE_REQUIRED_BUTTON_LABEL)
-            .verifyElementNotExist(SET_FALSE_REQUIRED_LABEL)
+            .verifyElementNotExisting(SET_FALSE_REQUIRED_LABEL)
     });
 
     it('[Label-21-23] should set the required label when using setRequired(true) for the existing required label', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(SET_TRUE_REQUIRED_LABEL)
+            .verifyElementNotExisting(SET_TRUE_REQUIRED_LABEL)
             .click(SET_TRUE_REQUIRED_BUTTON_LABEL)
-            .verifyElementExists(SET_TRUE_REQUIRED_LABEL)
+            .verifyElementExisting(SET_TRUE_REQUIRED_LABEL)
             .verifyText(SET_TRUE_REQUIRED_LABEL, '*')
             .verifyElementColor(SET_TRUE_REQUIRED_LABEL, 'color', '#e74c3c')
     });
 
     it('[Label-24] should set required for invisible label ', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(SET_REQUIRED_INVISIBLE_LABEL)
+            .verifyElementNotExisting(SET_REQUIRED_INVISIBLE_LABEL)
             .verifyElementNotVisible(SET_REQUIRED_INVISIBLE_LABEL)
             .click(SET_REQUIRED_BUTTON_INVISIBLE_LABEL)
-            .verifyElementExists(SET_REQUIRED_INVISIBLE_LABEL)
+            .verifyElementExisting(SET_REQUIRED_INVISIBLE_LABEL)
     });
 
     it('[Label-25] should set required without parameter for label ', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(SET_REQUIRED_NO_PARAM_LABEL)
+            .verifyElementNotExisting(SET_REQUIRED_NO_PARAM_LABEL)
             .click(SET_REQUIRED_NO_PARAM_BUTTON_LABEL)
-            .verifyElementNotExist(SET_REQUIRED_NO_PARAM_LABEL)
+            .verifyElementNotExisting(SET_REQUIRED_NO_PARAM_LABEL)
     });
 
     it('[Label-28] should show invisible Label and visible Label on UI', function () {

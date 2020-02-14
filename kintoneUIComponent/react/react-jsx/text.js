@@ -104,7 +104,7 @@ class HideText extends React.Component {
                         value='Hide Visible Text'
                         isVisible={this.state.value} />
                 </div>
-                <div class="hide-invisible-text">
+                <div id="hide-invisible-text">
                     <Text
                         value='Hide Invisible Text'
                         isVisible={this.state.value1} />

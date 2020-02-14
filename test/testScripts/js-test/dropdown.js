@@ -61,11 +61,11 @@ describe('kintoneUIComponent - Dropdown', function () {
             .verifyText(CONSTRUCTOR_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']", 'Orange')
             .verifyElementColor(CONSTRUCTOR_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']", 'color', '#3498db')
             .click(CONSTRUCTOR_DROPDOWN)
-            .verifyElementExists(VALUE_SELECTED_CONSTRUCTOR_DROPDOWN)
+            .verifyElementExisting(VALUE_SELECTED_CONSTRUCTOR_DROPDOWN)
             .verifyElementColor(VALUE_CONSTRUCTOR_DROPDOWN + "//span[1]", 'color', '#333333')
             .verifyElementColor(VALUE_SELECTED_CONSTRUCTOR_DROPDOWN + "//span[1]", 'color', '#3498db')
             .verifyElementColor(DISABLED_VALUE_CONSTRUCTOR_DROPDOWN + "//span[1]", 'color', '#888888')
-            .verifyElementExists(VALUE_SELECTED_CONSTRUCTOR_DROPDOWN + "/span[@class='kuc-icon-check']")
+            .verifyElementExisting(VALUE_SELECTED_CONSTRUCTOR_DROPDOWN + "/span[@class='kuc-icon-check']")
             .moveToObject(VALUE_SELECTED_CONSTRUCTOR_DROPDOWN)
             .verifyElementColor(VALUE_SELECTED_CONSTRUCTOR_DROPDOWN, 'background-color', '#e2f2fe')
             .moveToObject(VALUE_CONSTRUCTOR_DROPDOWN)
@@ -77,43 +77,43 @@ describe('kintoneUIComponent - Dropdown', function () {
     it('[Dropdown-6-7] should verify that can create a no item dropdown ', function () {
         Helper.ElementHandler
             .verifyText(NO_ITEM_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']", '')
-            .verifyElementNotExist(VALUE_NO_ITEM_DROPDOWN)
+            .verifyElementNotExisting(VALUE_NO_ITEM_DROPDOWN)
     });
 
     it('[Dropdown-42-44-55-56] verify can add item to dropdown', function () {
         Helper.ElementHandler
             .click(ADD_ITEM_DROPDOWN)
-            .verifyNumberOfElements(VALUE_ADD_ITEM_DROPDOWN,2)
+            .verifyNumberOfElements(VALUE_ADD_ITEM_DROPDOWN, 2)
             .click(ADD_ITEM_BUTTON_DROPDOWN)
             .click(ADD_ITEM_DROPDOWN)
-            .verifyNumberOfElements(VALUE_ADD_ITEM_DROPDOWN,4)
+            .verifyNumberOfElements(VALUE_ADD_ITEM_DROPDOWN, 4)
             .click(GET_ISDISABLED_ADD_ITEM_BUTTON_DROPDOWN)
             .verifyAlertText('false,true,false,true')
     });
-    
+
     it('[Dropdown-43-53-54] verify can add item to invisible dropdown', function () {
         Helper.ElementHandler
-            .verifyNumberOfElements(VALUE_ADD_ITEM_INVISIBLE_DROPDOWN,2)
+            .verifyNumberOfElements(VALUE_ADD_ITEM_INVISIBLE_DROPDOWN, 2)
             .click(ADD_ITEM_SHOW_BUTTON_INVISIBLE_DROPDOWN)
             .click(ADD_ITEM_BUTTON_INVISIBLE_DROPDOWN)
             .click(ADD_ITEM_INVISIBLE_DROPDOWN)
-            .verifyNumberOfElements(VALUE_ADD_ITEM_INVISIBLE_DROPDOWN,3)
-            .verifyText(VALUE_ADD_ITEM_INVISIBLE_DROPDOWN + '[3]','Banana')
+            .verifyNumberOfElements(VALUE_ADD_ITEM_INVISIBLE_DROPDOWN, 3)
+            .verifyText(VALUE_ADD_ITEM_INVISIBLE_DROPDOWN + '[3]', 'Banana')
             .verifyElementEnabled(VALUE_ADD_ITEM_INVISIBLE_DROPDOWN + '[3]')
     });
 
     it('[Dropdown-57-62] verify can remove item from dropdown', function () {
         Helper.ElementHandler
             .click(REMOVE_ITEM_DROPDOWN)
-            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN,2)
+            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN, 2)
             .click(REMOVE_ITEM_BUTTON_DROPDOWN)
             .click(REMOVE_ITEM_DROPDOWN)
-            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN,1)
+            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN, 1)
             .click(REMOVE_ITEM_BUTTON_DROPDOWN)
             .click(REMOVE_ITEM_DROPDOWN)
-            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN,0)
+            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN, 0)
             .click(REMOVE_ITEM_DROPDOWN)
-            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN,0)
+            .verifyNumberOfElements(VALUE_REMOVE_ITEM_DROPDOWN, 0)
     });
 
     it('[Dropdown-64-65-66-67] verify that can get items of dropdown', function () {
@@ -138,11 +138,11 @@ describe('kintoneUIComponent - Dropdown', function () {
     it('[Dropdown-74-75-76] verify that can set value for dropdown', function () {
         Helper.ElementHandler
             .click(SET_VALUE_BUTTON_DROPDOWN)
-            .verifyText(SET_VALUE_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']",'Orange')
+            .verifyText(SET_VALUE_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']", 'Orange')
             .click(SET_DISABLED_VALUE_BUTTON_DROPDOWN)
-            .verifyText(SET_VALUE_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']",'Lemon')
+            .verifyText(SET_VALUE_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']", 'Lemon')
             .click(SET_NO_VALUE_BUTTON_DROPDOWN)
-            .verifyText(SET_VALUE_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']",'')
+            .verifyText(SET_VALUE_DROPDOWN + "/span/span[@class='kuc-dropdown-selected-label']", '')
     });
 
     it('[Dropdown-79-80] verify that can disable item of dropdown', function () {
@@ -179,33 +179,33 @@ describe('kintoneUIComponent - Dropdown', function () {
 
     it('[Dropdown-94] verify that can disable dropdown', function () {
         Helper.ElementHandler
-        .click(GET_ISDISABLED_BUTTON_DISABLE_DROPDOWN)
-        .verifyAlertText('false')
-        .click(DISABLE_BUTTON_DROPDOWN)
-        .click(GET_ISDISABLED_BUTTON_DISABLE_DROPDOWN)
-        .verifyAlertText('true')
+            .click(GET_ISDISABLED_BUTTON_DISABLE_DROPDOWN)
+            .verifyAlertText('false')
+            .click(DISABLE_BUTTON_DROPDOWN)
+            .click(GET_ISDISABLED_BUTTON_DISABLE_DROPDOWN)
+            .verifyAlertText('true')
     });
 
     it('[Dropdown-96] verify that can enable dropdown', function () {
         Helper.ElementHandler
-        .click(GET_ISDISABLED_BUTTON_ENABLE_DROPDOWN)
-        .verifyAlertText('true')
-        .click(ENABLE_BUTTON_DROPDOWN)
-        .click(GET_ISDISABLED_BUTTON_ENABLE_DROPDOWN)
-        .verifyAlertText('false')
+            .click(GET_ISDISABLED_BUTTON_ENABLE_DROPDOWN)
+            .verifyAlertText('true')
+            .click(ENABLE_BUTTON_DROPDOWN)
+            .click(GET_ISDISABLED_BUTTON_ENABLE_DROPDOWN)
+            .verifyAlertText('false')
     });
 
     it('[Dropdown-98] verify that can callback function dropdown', function () {
-       Helper.ElementHandler
-        .click(ON_CALLBACK_FUNCTION_DROPDOWN)
-        .click(VALUE_ON_CALLBACK_FUNCTION_DROPDOWN + '[1]')
-        .verifyAlertText('onCallBackFunctionDropdown has been changed')
+        Helper.ElementHandler
+            .click(ON_CALLBACK_FUNCTION_DROPDOWN)
+            .click(VALUE_ON_CALLBACK_FUNCTION_DROPDOWN + '[1]')
+            .verifyAlertText('onCallBackFunctionDropdown has been changed')
     });
 
     it('[Dropdown-99] verify that callback trigger dropdown ', function () {
         Helper.ElementHandler
-         .click(ON_CALLBACK_TRIGGER_DROPDOWN)
-         .click(VALUE_ON_CALLBACK_TRIGGER_DROPDOWN + '[1]')
-         .verifyAlertText('onCallBackTriggerDropdown has been changed')
-     });
+            .click(ON_CALLBACK_TRIGGER_DROPDOWN)
+            .click(VALUE_ON_CALLBACK_TRIGGER_DROPDOWN + '[1]')
+            .verifyAlertText('onCallBackTriggerDropdown has been changed')
+    });
 });

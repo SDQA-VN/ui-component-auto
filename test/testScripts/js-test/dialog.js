@@ -245,7 +245,7 @@ describe('kintoneUIComponent - Dialog', function () {
     it('[Dialog-51]: Verify that can hide the CloseButton on Dialog', function () {
         Helper.ElementHandler
             .click(SHOW_DIALOG_WITHOUT_CLOSE_BUTTON_BUTTON)
-            .verifyElementNotExist(DIALOG_HIDE_CLOSE_BUTTON)
+            .verifyElementNotExisting(DIALOG_HIDE_CLOSE_BUTTON)
             .click(CLOSE_DIALOG_WITHOUT_CLOSE_BUTTON_BUTTON)
     });
 });

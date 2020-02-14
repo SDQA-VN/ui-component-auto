@@ -36,7 +36,7 @@ class ElementHandler {
     /**
     * @param {string} locator    Element for verify
     */
-    verifyElementExists(locator) {
+    verifyElementExisting(locator) {
         expect($(locator).isExisting(), "Element " + locator + " does not exist").to.be.true;
         return this;
     }
@@ -44,7 +44,7 @@ class ElementHandler {
     /**
     * @param {string} locator    Element for verify
     */
-    verifyElementNotExist(locator) {
+    verifyElementNotExisting(locator) {
         expect($(locator).isExisting(), "Element " + locator + " does exist").to.be.false;
         return this;
     }

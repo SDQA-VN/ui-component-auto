@@ -60,32 +60,32 @@ describe('kintoneUIComponent - Button', function () {
         Helper.ElementHandler
             .verifyAttribute(XPATH_LABEL_NO_OPTION, 'class', 'kuc-label')
             .verifyElementEnabled(XPATH_LABEL_NO_OPTION)
-            .verifyElementNotExist(XPATH_LABEL_NO_OPTION + " span.kuc-require")
+            .verifyElementNotExisting(XPATH_LABEL_NO_OPTION + " span.kuc-require")
     });
 
     it('[Label-3-5] Verify that can create label with full options value', function () {
         Helper.ElementHandler
             .verifyText(XPATH_LABEL, 'Label*')
             .verifyElementEnabled(XPATH_LABEL)
-            .verifyElementExists(XPATH_LABEL)
-            .verifyElementExists(XPATH_LABEL + " span.kuc-require")
+            .verifyElementExisting(XPATH_LABEL)
+            .verifyElementExisting(XPATH_LABEL + " span.kuc-require")
     });
 
     it('[Label-6] Verify that can create label with only option.Text', function () {
         Helper.ElementHandler
             .verifyText(XPATH_LABEL_ONLY_TEXT, 'Label with only option.Text')
             .verifyElementEnabled(XPATH_LABEL_ONLY_TEXT)
-            .verifyElementExists(XPATH_LABEL_ONLY_TEXT)
-            .verifyElementNotExist(XPATH_LABEL_ONLY_TEXT + " span.kuc-require")
+            .verifyElementExisting(XPATH_LABEL_ONLY_TEXT)
+            .verifyElementNotExisting(XPATH_LABEL_ONLY_TEXT + " span.kuc-require")
     });
 
     it('[Label-9-10] Verify that can create label with only option.isRequired are true and false', function () {
         Helper.ElementHandler
             .verifyElementEnabled(XPATH_LABEL_ONLY_REQUIRED)
-            .verifyElementExists(XPATH_LABEL_ONLY_REQUIRED)
-            .verifyElementExists(XPATH_LABEL_ONLY_REQUIRED + " span.kuc-require")
+            .verifyElementExisting(XPATH_LABEL_ONLY_REQUIRED)
+            .verifyElementExisting(XPATH_LABEL_ONLY_REQUIRED + " span.kuc-require")
             .click(XPATH_LABEL_ONLY_REQUIRED_BUTTON)
-            .verifyElementNotExist(XPATH_LABEL_ONLY_REQUIRED + " span.kuc-require")
+            .verifyElementNotExisting(XPATH_LABEL_ONLY_REQUIRED + " span.kuc-require")
     });
 
     it('[Label-11-12] Verify that create a Label with only option.isDisable are true and false', function () {
@@ -139,41 +139,41 @@ describe('kintoneUIComponent - Button', function () {
 
     it('[Label-21-22-23] Verify that can set required icon when isRequired is true, hidden required icon when setRequired(False),set required icon when setRequired(True)', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_LABEL_SET_REQUIRE_VALUE)
+            .verifyElementExisting(XPATH_LABEL_SET_REQUIRE_VALUE)
             .verifyElementColor(XPATH_LABEL_SET_REQUIRE_VALUE, 'color', '#e74c3c')
             .verifyText(XPATH_LABEL_SET_REQUIRE_VALUE, '*')
             .click(XPATH_LABEL_SET_REQUIRE_TRUE_BUTTON)
-            .verifyElementExists(XPATH_LABEL_SET_REQUIRE_VALUE)
+            .verifyElementExisting(XPATH_LABEL_SET_REQUIRE_VALUE)
             .click(XPATH_LABEL_SET_REQUIRE_FALSE_BUTTON)
-            .verifyElementNotExist(XPATH_LABEL_SET_REQUIRE_VALUE)
+            .verifyElementNotExisting(XPATH_LABEL_SET_REQUIRE_VALUE)
     })
 
     it('[Alert-24] Verify that can set require for invisible Label', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
-            .verifyElementNotExist(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
+            .verifyElementNotExisting(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
+            .verifyElementNotExisting(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
             .click(XPATH_LABEL_INVISIBLE_SET_REQUIRE_BUTTON)
             .click(XPATH_LABEL_INVISIBLE_SHOW_REQUIRE_BUTTON)
-            .verifyElementExists(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
-            .verifyElementExists(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
+            .verifyElementExisting(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
+            .verifyElementExisting(XPATH_LABEL_INVISIBLE_SET_REQUIRE_VALUE)
     })
 
     it('[Label-27-28] Verify that can show invisible Label on UI', function () {
         Helper.ElementHandler
-            .verifyElementNotExist(XPATH_LABEL_SHOW_INVISIBLE)
-            .verifyElementExists(XPATH_LABEL_SHOW_VISIBLE)
+            .verifyElementNotExisting(XPATH_LABEL_SHOW_INVISIBLE)
+            .verifyElementExisting(XPATH_LABEL_SHOW_VISIBLE)
             .click(XPATH_LABEL_SHOW_BUTTON)
-            .verifyElementExists(XPATH_LABEL_SHOW_INVISIBLE)
-            .verifyElementExists(XPATH_LABEL_SHOW_VISIBLE)
+            .verifyElementExisting(XPATH_LABEL_SHOW_INVISIBLE)
+            .verifyElementExisting(XPATH_LABEL_SHOW_VISIBLE)
     });
 
     it('[Label-29-30] Verify that can hide visible Label and hide invisible Label on UI', function () {
         Helper.ElementHandler
-            .verifyElementExists(XPATH_LABEL_HIDE_VISIBLE)
-            .verifyElementNotExist(XPATH_LABEL_HIDE_INVISIBLE)
+            .verifyElementExisting(XPATH_LABEL_HIDE_VISIBLE)
+            .verifyElementNotExisting(XPATH_LABEL_HIDE_INVISIBLE)
             .click(XPATH_LABEL_HIDE_BUTTON)
-            .verifyElementNotExist(XPATH_LABEL_HIDE_VISIBLE)
-            .verifyElementNotExist(XPATH_LABEL_HIDE_INVISIBLE)
+            .verifyElementNotExisting(XPATH_LABEL_HIDE_VISIBLE)
+            .verifyElementNotExisting(XPATH_LABEL_HIDE_INVISIBLE)
     });
 
     it('[Label-31-32] Verify that can disable the current enabled and disable the current disabled Label', function () {
