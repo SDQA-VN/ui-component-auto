@@ -1,7 +1,5 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const $$ = require('../../util/ReturnElement').listOfElements;
-const common = require('../../util/common');
-const expect = require('chai').expect;
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js')
 
 const XPATH_BUTTON_NORMAL = '.normalButton .kuc-btn';
 const XPATH_BUTTON_SET_TEXT = '.normalButton_setText .kuc-btn';
@@ -30,76 +28,71 @@ describe('kintoneUIComponent - Button', function () {
     });
 
     it('[Normal button-2] Normal button should has white for background color and blue for text color', function () {
-        let btnBgColor = $(XPATH_BUTTON_NORMAL).getCssProperty('background-color');
-        let btnTextColor = $(XPATH_BUTTON_NORMAL).getCssProperty('color');
-        expect(btnBgColor.parsed.hex).to.equal('#f7f9fa');
-        expect(btnTextColor.parsed.hex).to.equal('#3498db');
+        Helper.ElementHandler
+            .verifyElementVisible(XPATH_BUTTON_NORMAL)
+            .verifyElementColor(XPATH_BUTTON_NORMAL, 'background-color', '#f7f9fa')
+            .verifyElementColor(XPATH_BUTTON_NORMAL, 'color', '#3498db')
     });
 
     it('[Normal button-6] Verify that can create a button with full options value contains default value', function () {
-        let btnText = $(XPATH_BUTTON_NORMAL).getText();
-        let btnClassAttribute = browser.getAttribute(XPATH_BUTTON_NORMAL, 'class');
-        let btnIsVisibled = browser.isVisible(XPATH_BUTTON_NORMAL);
-        let btnIsEnabled = browser.isEnabled(XPATH_BUTTON_NORMAL);
-        expect(btnIsEnabled).to.equal(true);
-        expect(btnIsVisibled).to.equal(true);
-        expect(btnClassAttribute).to.equal('kuc-btn normal');
-        expect(btnText).to.equal('normalButton');
+        Helper.ElementHandler
+            .verifyText(XPATH_BUTTON_NORMAL, 'normalButton')
+            .verifyAttribute(XPATH_BUTTON_NORMAL, 'class', 'kuc-btn normal')
+            .verifyElementEnabled(XPATH_BUTTON_NORMAL)
+            .verifyElementVisible(XPATH_BUTTON_NORMAL)
     });
 
     it('[Normal button-16] Verify can set text for button which contains existing text', function () {
-        $(XPATH_BUTTON_CHANGE_TEXT).click();
-        let btnText = $(XPATH_BUTTON_SET_TEXT).getText();
-        expect(btnText).to.equal('Button changed text');
+        Helper.ElementHandler
+            .click(XPATH_BUTTON_CHANGE_TEXT)
+            .verifyText(XPATH_BUTTON_SET_TEXT, 'Button changed text')
     });
 
     it('[Normal button-20] Verify can set normal type for button', function () {
-        $(XPATH_BUTTON_CHANGE_NORMAL_TYPE).click();
-        let btnClassAttribute = browser.getAttribute(XPATH_BUTTON_NORMAL_TYPE, 'class');
-        expect(btnClassAttribute).to.equal('kuc-btn normal');
+        Helper.ElementHandler
+            .click(XPATH_BUTTON_CHANGE_NORMAL_TYPE)
+            .verifyAttribute(XPATH_BUTTON_NORMAL_TYPE, 'class', 'kuc-btn normal')
     });
 
     it('[Normal button-21] Verify can set submit type for button', function () {
-        $(XPATH_BUTTON_CHANGE_SUBMIT_TYPE).click();
-        let btnClassAttribute = browser.getAttribute(XPATH_BUTTON_SUBMIT_TYPE, 'class');
-        expect(btnClassAttribute).to.equal('kuc-btn submit');
+        Helper.ElementHandler
+            .click(XPATH_BUTTON_CHANGE_SUBMIT_TYPE)
+            .verifyAttribute(XPATH_BUTTON_SUBMIT_TYPE, 'class', 'kuc-btn submit')
     });
 
     it('[Normal button-25] Verify that can show invisible Button on UI', function () {
-        $(XPATH_INVISIBLE_BUTTON_SHOW).click();
-        let btnIsVisibled = browser.isVisible(XPATH_INVISIBLE_BUTTON_DISPLAYED);
-        expect(btnIsVisibled).to.equal(true);
+        Helper.ElementHandler
+            .click(XPATH_INVISIBLE_BUTTON_SHOW)
+            .verifyElementVisible(XPATH_INVISIBLE_BUTTON_DISPLAYED)
     });
 
     it('[Normal button-27] Verify that can hide the visible Button on UI', function () {
-        $(XPATH_VISIBLE_BUTTON_HIDE).click();
-        let btnIsVisibled = browser.isVisible(XPATH_VISIBLE_BUTTON_NON_DISLAYED);
-        expect(btnIsVisibled).to.equal(false);
+        Helper.ElementHandler
+            .click(XPATH_VISIBLE_BUTTON_HIDE)
+            .verifyElementNotVisible(XPATH_VISIBLE_BUTTON_NON_DISLAYED)
     });
 
     it('[Normal button-29] Verify that can disable the current enable Button on UI', function () {
-        $(XPATH_ENABLE_BUTTON_DISABLE).click();
-        let btnIsEnabled = browser.isEnabled(XPATH_ENABLE_BUTTON_UNCLICKABLE);
-        expect(btnIsEnabled).to.equal(false);
+        Helper.ElementHandler
+            .click(XPATH_ENABLE_BUTTON_DISABLE)
+            .verifyElementDisabled(XPATH_ENABLE_BUTTON_UNCLICKABLE)
     });
 
     it('[Normal button-31] Verify that can enable the disabled Button on UI', function () {
-        $(XPATH_DISABLE_BUTTON_ENABLE).click();
-        let btnIsEnabled = browser.isEnabled(XPATH_DISABLE_BUTTON_CLICKABLE);
-        expect(btnIsEnabled).to.equal(true);
+        Helper.ElementHandler
+            .click(XPATH_DISABLE_BUTTON_ENABLE)
+            .verifyElementEnabled(XPATH_DISABLE_BUTTON_CLICKABLE)
     });
 
     it('[Normal button-33] Verify that can register a callback function for click event successfully', function () {
-        $(XPATH_BUTTON_ON_CALL_CLICK).click();
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('normalButton_onCall has been clicked');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_BUTTON_ON_CALL_CLICK)
+            .verifyAlertText('normalButton_onCall has been clicked')
     });
 
     it('[Normal button-34] Verify that the callback function will be trigger when click on the button', function () {
-        $(XPATH_BUTTON_ON_TRIGGER).click();
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('normalButton_onTrigger has been clicked');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_BUTTON_ON_TRIGGER)
+            .verifyAlertText('normalButton_onTrigger has been clicked')
     });
 });
