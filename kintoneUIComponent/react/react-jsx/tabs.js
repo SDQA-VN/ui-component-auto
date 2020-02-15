@@ -320,7 +320,7 @@ class GetItemTabs extends React.Component {
             {
                 tabName: "Tab1",
                 tabContent: 'This is Tab1',
-                isDisabled: true
+                isDisabled: false
             },
             {
                 tabName: "Tab2",
@@ -455,7 +455,7 @@ class EnableItemTabs extends React.Component {
             {
                 tabName: "Tab1",
                 tabContent: 'This is Tab1',
-                isDisabled: true
+                isDisabled: false
             },
             {
                 tabName: "Tab2",

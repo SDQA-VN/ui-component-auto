@@ -19,7 +19,7 @@ const HIDE_ERROR_BUTTON_ATTACHMENT = "//button[contains(text(),'Hide Error Messa
 const SHOW_HIDE_ATTACHMENT = "//div[@id='show-hide-attachment']//div[@class='kuc-attachment-outer']";
 const SHOW_BUTTON_ATTACHMENT = "//button[contains(text(),'Show Attachment')]";
 const HIDE_BUTTON_ATTACHMENT = "//button[contains(text(),'Hide Attachment')]";
-const ON_CALLBACK_ATTACHMENT = "//div[@id='on-callback-attachment']//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']//a";
+const ON_CALLBACK_ATTACHMENT = "//div[@id='on-callback-attachment']//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']";
 const ON_CALLBACK_FILENAME_ATTACHMENT = "//div[@id='on-callback-attachment']//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']//div[@class='kuc-attachment-file-filelist kuc-attachment-file-filelist-list']//div[@class='kuc-attachment_delete kuc-attachment-file-item']";
 const CONSTRUCTOR_ATTACHMENT_INPUT = "//div[@id='constructor-attachment']//div[@class='kuc-attachment-file']//input";
 const CONSTRUCTOR_FILENAME_ATTACHMENT = "//div[@id='constructor-attachment']//div[@class='kuc-attachment_file_name']";
@@ -40,10 +40,10 @@ describe('kintoneUIComponent - Attachment', function () {
 
     it('[Attachment-1] should Verify the operation of Attachment', function () {
         Helper.ElementHandler
-            .chooseFile(CONSTRUCTOR_ATTACHMENT_INPUT, filePath)
+            .setValue(CONSTRUCTOR_ATTACHMENT_INPUT, filePath)
             .verifyText(CONSTRUCTOR_FILENAME_ATTACHMENT, 'alert.js')
             .click(CONSTRUCTOR_ATTACHMENT_BUTTON_DELETE)
-            .verifyElementNotExist(CONSTRUCTOR_FILENAME_ATTACHMENT)
+            .verifyElementNotExisting(CONSTRUCTOR_FILENAME_ATTACHMENT)
     });
 
     it('[Attachment-2] should Verify the operation of Attachment', function () {
@@ -83,23 +83,23 @@ describe('kintoneUIComponent - Attachment', function () {
             .click(SHOW_ERROR_BUTTON_ATTACHMENT)
             .verifyText(SET_ERROR_MESSAGE_ATTACHMENT, 'Error message')
             .click(HIDE_ERROR_BUTTON_ATTACHMENT)
-            .verifyElementNotVisible(SET_ERROR_MESSAGE_ATTACHMENT)
+            .verifyElementNotDisplayed(SET_ERROR_MESSAGE_ATTACHMENT)
     });
 
     it('[Attachment-8] should Verify the operation of Attachment', function () {
         Helper.ElementHandler
-            .chooseFile(ON_CALLBACK_ATTACHMENT + '//input', filePath)
+            .setValue(ON_CALLBACK_ATTACHMENT + '//input', filePath)
             .verifyAlertText('alert.js')
             .click(ON_CALLBACK_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_action']//button")
             .verifyAlertText('')
-            .verifyElementNotExist(ON_CALLBACK_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_name']")
+            .verifyElementNotExisting(ON_CALLBACK_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_name']")
     });
 
     it('[Attachment-9] should Verify the operation of Attachment', function () {
         Helper.ElementHandler
             .click(HIDE_BUTTON_ATTACHMENT)
-            .verifyElementNotVisible(SHOW_HIDE_ATTACHMENT)
+            .verifyElementNotDisplayed(SHOW_HIDE_ATTACHMENT)
             .click(SHOW_BUTTON_ATTACHMENT)
-            .verifyElementVisible(SHOW_HIDE_ATTACHMENT)
+            .verifyElementDisplayed(SHOW_HIDE_ATTACHMENT)
     });
 });

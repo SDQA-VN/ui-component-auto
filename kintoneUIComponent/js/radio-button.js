@@ -1,12 +1,6 @@
-//kintone-ui-component Radio Button
-//https://sharedoc.atlassian.net/wiki/spaces/SC/pages/83034178/kintone-ui-component+RadioButton
-'use strict';
-
-//let body = document.getElementsByTagName("BODY")[0];
-
-// UI
-let radioBtnUI = new kintoneUIComponent.RadioButton({
-    name: "UI_radioBtn",
+//Constructor RadioButton
+let constructorRadioButton = new kintoneUIComponent.RadioButton({
+    name: "constructor",
     items: [
         {
             label: 'Orange',
@@ -14,628 +8,539 @@ let radioBtnUI = new kintoneUIComponent.RadioButton({
             isDisabled: false
         },
         {
+            label: 'Lemon',
+            value: 'Lemon',
+            isVisible: false
+        },
+        {
             label: 'Banana',
             value: 'Banana',
             isDisabled: true
+        }],
+        isVisible: true,
+        isDisabled: false
+});
+let constructorRadioButtonEl = document.createElement('div');
+constructorRadioButtonEl.appendChild(constructorRadioButton.render());
+constructorRadioButtonEl.id = 'constructor-radio-button';
+let constructorRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 1)
+constructorRadioButtonCell.appendChild(constructorRadioButtonEl);
+
+// No Item RadioButton
+let noItemRadioButton = new kintoneUIComponent.RadioButton({
+    name: "no item",
+    items: [
+    ],
+});
+
+let noItemRadioButtonEl = document.createElement('div');
+noItemRadioButtonEl.appendChild(noItemRadioButton.render());
+noItemRadioButtonEl.id = 'no-item-radio-button';
+let noItemRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 2);
+noItemRadioButtonCell.appendChild(noItemRadioButtonEl);
+
+// Add item RadioButton
+let addItemRadioButton = new kintoneUIComponent.RadioButton({
+    name: "add item",
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        }
+    ],
+    value: 'Orange'
+});
+let addItemRadioButtonEl = document.createElement('div');
+addItemRadioButtonEl.appendChild(addItemRadioButton.render());
+addItemRadioButtonEl.id = 'add-item-radio-button';
+let addItemRadioButtonButton = document.createElement('button');
+addItemRadioButtonButton.innerHTML='Add Item Radio Button';
+addItemRadioButtonButton.addEventListener('click',function(){
+    addItemRadioButton.addItem({label: 'Banana', value: 'Banana',isDisabled: false});
+    addItemRadioButton.addItem({label: 'Grape', value: 'Grape',isDisabled: true});
+})
+addItemRadioButtonEl.appendChild(addItemRadioButtonButton);
+let addItemRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 3);
+addItemRadioButtonCell.appendChild(addItemRadioButtonEl);
+
+// Add item invisible RadioButton
+let addItemInvisibleRadioButton = new kintoneUIComponent.RadioButton({
+    name: "add invisible item",
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: false
+        }
+    ],
+    value: 'Orange',
+    isVisible: false
+});
+
+let addItemInvisibleRadioButtonEl = document.createElement('div');
+addItemInvisibleRadioButtonEl.appendChild(addItemInvisibleRadioButton.render());
+addItemInvisibleRadioButtonEl.id = 'add-item-invisible-radio-button';
+let addItemInvisibleRadioButtonButton = document.createElement('button');
+addItemInvisibleRadioButtonButton.innerHTML='Add Item Invisible Radio Button';
+let addItemShowInvisibleRadioButtonButton = document.createElement('button');
+addItemShowInvisibleRadioButtonButton.innerHTML='Show Invisible Radio Button';
+addItemInvisibleRadioButtonButton.addEventListener('click',function(){
+    addItemInvisibleRadioButton.addItem({label: 'Banana', value: 'Banana'});
+})
+addItemShowInvisibleRadioButtonButton.addEventListener('click',function(){
+    addItemInvisibleRadioButton.show();
+})
+addItemInvisibleRadioButtonEl.appendChild(addItemInvisibleRadioButtonButton);
+addItemInvisibleRadioButtonEl.appendChild(addItemShowInvisibleRadioButtonButton);
+let addItemInvisibleRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 4);
+addItemInvisibleRadioButtonCell.appendChild(addItemInvisibleRadioButtonEl);
+
+// Remove Item RadioButton
+let removeItemRadioButton = new kintoneUIComponent.RadioButton({
+    name: "remove item",
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: false
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: false
+        }
+    ],
+    value: 'Orange'
+});
+
+let removeItemRadioButtonEl = document.createElement('div');
+removeItemRadioButtonEl.appendChild(removeItemRadioButton.render());
+removeItemRadioButtonEl.id = 'remove-item-radio-button';
+let removeItemRadioButtonButton = document.createElement('button');
+removeItemRadioButtonButton.innerHTML='Remove Item Radio Button';
+removeItemRadioButtonButton.addEventListener('click',function(){
+    removeItemRadioButton.removeItem(0);
+    removeItemRadioButton.removeItem(1);
+})
+removeItemRadioButtonEl.appendChild(removeItemRadioButtonButton);
+let removeItemRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 5);
+removeItemRadioButtonCell.appendChild(removeItemRadioButtonEl);
+
+// Get Items RadioButton
+let getItemsRadioButton = new kintoneUIComponent.RadioButton({
+    name: "get items",
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
         },
         {
             label: 'Lemon',
             value: 'Lemon',
             isDisabled: true
         },
-    ],
-    value: 'Banana',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnUI_cell = testgrid.getCell(posConfig.Radio.x, 1);
-radioBtnUI_cell.appendChild(radioBtnUI.render());
-
-// constructor without value option
-let radioBtnConstructor = new kintoneUIComponent.RadioButton({
-    name: "constructorWithoutValueOption_radioBtn",
-    items: [
         {
-            label: 'Yellow',
-            value: 'Yellow',
-            isDisabled: false
-        },
-        {
-            label: 'Purple',
-            value: 'Purple',
-            isDisabled: true
-        },
-        {
-            label: 'Black',
-            value: 'Black',
-            isDisabled: true
-        },
-    ],
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnConstructorEl = radioBtnConstructor.render();
-radioBtnConstructorEl.id = 'constructorWithoutValueOption_radioBtnEl';
-let radioBtnConstructor_cell = testgrid.getCell(posConfig.Radio.x, 2);
-radioBtnConstructor_cell.appendChild(radioBtnConstructorEl);
-
-// constructor full options
-let radioBtnFullConstructor = new kintoneUIComponent.RadioButton({
-    name: "constructorFullOptions_radioBtn",
-    items: [
-        {
-            label: 'Lion',
-            value: 'Lion',
-            isDisabled: false
-        },
-        {
-            label: 'Elephant',
-            value: 'Elephant',
-            isDisabled: false
-        },
-        {
-            label: 'Dog',
-            value: 'Dog',
-            isDisabled: true
-        },
-    ],
-    value: 'Lion',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnFullConstructorEl = radioBtnFullConstructor.render();
-radioBtnFullConstructorEl.id = 'radioBtnFullConstructorEl';
-let radioBtnFullConstructor_cell = testgrid.getCell(posConfig.Radio.x, 3);
-radioBtnFullConstructor_cell.appendChild(radioBtnFullConstructorEl);
-
-// constructor contain only options.items[].isDisabled
-let radioBtnOnlyIsDisabled = new kintoneUIComponent.RadioButton({
-    name: "constructorOnlyIsDisabled_radioBtn",
-    items: [
-        {
-            isDisabled: true
+            label: '',
+            value: '',
         }
-    ]
-});
-let radioBtnOnlyIsDisabledEl = radioBtnOnlyIsDisabled.render();
-radioBtnOnlyIsDisabledEl.id = 'radioBtnOnlyIsDisabledEl';
-let radioBtnOnlyIsDisabled_cell = testgrid.getCell(posConfig.Radio.x, 4);
-radioBtnOnlyIsDisabled_cell.appendChild(radioBtnOnlyIsDisabledEl);
-
-// constructor contain both options.items[].label and options.items[].isDisabled
-let radioBtnBothLabelIsDisabled = new kintoneUIComponent.RadioButton({
-    name: "radioBtnBothLabelIsDisabled_radioBtn",
-    items: [
-        {
-            label: 'Park',
-            isDisabled: false
-        }
-    ]
-});
-let radioBtnBothLabelIsDisabledEl = radioBtnBothLabelIsDisabled.render();
-radioBtnBothLabelIsDisabledEl.id = 'radioBtnBothLabelIsDisabledEl';
-let radioBtnBothLabelIsDisabled_cell = testgrid.getCell(posConfig.Radio.x, 5);
-radioBtnBothLabelIsDisabled_cell.appendChild(radioBtnBothLabelIsDisabledEl);
-
-// addItems
-let radioBtnAddItems = new kintoneUIComponent.RadioButton({
-    name: "addItem_radioBtn",
-    items: [
-        {
-            label: 'Mac',
-            value: 'Mac',
-            isDisabled: false
-        },
-        {
-            label: 'Dell',
-            value: 'Dell',
-            isDisabled: false
-        },
-        {
-            label: 'HP',
-            value: 'HP',
-            isDisabled: true
-        },
     ],
-    value: 'Mac',
-    isDisabled: false,
-    isVisible: true
+    value: 'Orange'
 });
-let radioBtnAddItems_cell = testgrid.getCell(posConfig.Radio.x, 6);
-radioBtnAddItems_cell.appendChild(radioBtnAddItems.render());
-function getItemsRadioBtn() {
-    let items = radioBtnAddItems.getItems();
-    let alertString = [];
-    for (let i = 0; i < items.length; i++ ){
-        alertString.push('\n' + "Item " + (i+1) + " - Item value: " + items[i].value + " - isDisabled: " + items[i].isDisabled);
-    }
-    alert(alertString);
-}
-radioBtnAddItems.on('change', getItemsRadioBtn);
 
-// addItem - get the last item
-let radioBtnAddItemsGetLast = new kintoneUIComponent.RadioButton({
-    name: "addItem_LastItems_radioBtn",
-    items: [
-        {
-            label: 'Mac - last',
-            value: 'Mac - last',
-            isDisabled: false
-        },
-        {
-            label: 'Dell - last',
-            value: 'Dell - last',
-            isDisabled: false
-        },
-        {
-            label: 'HP - last',
-            value: 'HP - last',
-            isDisabled: true
-        },
-    ],
-    value: 'Mac - last',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnAddItemsGetLast_cell = testgrid.getCell(posConfig.Radio.x, 7);
-radioBtnAddItemsGetLast_cell.appendChild(radioBtnAddItemsGetLast.render());
-function getLastItemsRadioBtn() {
-    let getLastItems = radioBtnAddItemsGetLast.getItems();
-    let getLatAlertString = [];
-    for (let i = 0; i < getLastItems.length; i++ ){
-        getLatAlertString.push('\n' + "Item " + (i+1) + " - Item value: " + getLastItems[i].value + " - isDisabled: " + getLastItems[i].isDisabled);
-    }
-    alert(getLatAlertString[getLatAlertString.length - 1]);
-}
-radioBtnAddItemsGetLast.on('change', getLastItemsRadioBtn);
-
-// removeItems
-let radioBtnRemoveItems = new kintoneUIComponent.RadioButton({
-    name: "removeItems_radioBtn",
-    items: [
-        {
-            label: 'PC',
-            value: 'PC',
-            isDisabled: false
-        },
-        {
-            label: 'Laptop',
-            value: 'Laptop',
-            isDisabled: false
-        },
-        {
-            label: 'Stationery',
-            value: 'Stationery',
-            isDisabled: true
-        },
-    ],
-    value: 'Stationery',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnRemoveItems_cell = testgrid.getCell(posConfig.Radio.x, 8);
-radioBtnRemoveItems_cell.appendChild(radioBtnRemoveItems.render());
-function getNumberOfItems() {
-    let getNoItems = radioBtnRemoveItems.getItems();
-    let getAlertString = [];
-    for (let i = 0; i < getNoItems.length; i++ ){
-        getAlertString.push('\n' + "Item " + (i+1) + " - Item value: " + getNoItems[i].value + " - isDisabled: " + getNoItems[i].isDisabled);
-    }
-    alert(getAlertString.length);
-}
-radioBtnRemoveItems.on('change', getNumberOfItems);
-
-// getItems()
-let radioBtnGetItems = new kintoneUIComponent.RadioButton({
-    name: "getItems_radioBtn",
-    items: [
-        {
-            label: 'QA',
-            value: 'QA',
-            isDisabled: false
-        },
-        {
-            label: 'Development',
-            value: 'Development',
-            isDisabled: false
-        },
-        {
-            label: 'Business',
-            value: 'Business',
-            isDisabled: true
-        },
-    ],
-    value: 'Business',
-    isDisabled: false,
-    isVisible: false
-});
-let radioBtnGetItemsEl = radioBtnGetItems.render();
-radioBtnGetItemsEl.id = 'radioBtnGetItemsEl';
-let radioBtnGetItems_cell = testgrid.getCell(posConfig.Radio.x, 9);
-radioBtnGetItems_cell.appendChild(radioBtnGetItemsEl);
-
-let getItemBtn = new kintoneUIComponent.Button({
-    text: 'Get Items of Full Radio Button',
-    type: 'normal',
-    isVisible: true,
-});
-radioBtnGetItems_cell.appendChild(getItemBtn.render());
-
-function getItemList() {
-    let getItems = radioBtnGetItems.getItems();
-    alert(Object.keys(getItems[0]).join('\n'));
-}
-getItemBtn.on('click', getItemList);
-
-let getItemOfInVisiBleBtn = new kintoneUIComponent.Button({
-    text: 'Get Items of Invisible',
-    type: 'normal',
-    isVisible: true,
-});
-radioBtnGetItems_cell.appendChild(getItemOfInVisiBleBtn.render());
-
-function getItemListOfInviRadioBtn() {
-    let getItems = radioBtnGetItems.getItems();
-    let items = JSON.stringify(getItems);
-    alert(items);
-}
-getItemOfInVisiBleBtn.on('click', getItemListOfInviRadioBtn);
+let getItemsRadioButtonEl = document.createElement('div');
+getItemsRadioButtonEl.appendChild(getItemsRadioButton.render());
+getItemsRadioButtonEl.id = 'get-items-radio-button';
+let getItemsRadioButtonButton = document.createElement('button');
+getItemsRadioButtonButton.innerHTML='Get Items Radio Button';
+getItemsRadioButtonButton.addEventListener('click',function(){
+    alert(JSON.stringify(getItemsRadioButton.getItems()));
+})
+getItemsRadioButtonEl.appendChild(getItemsRadioButtonButton)
+let getItemsRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 6);
+getItemsRadioButtonCell.appendChild(getItemsRadioButtonEl);
 
 // getValue()
-let radioBtnGetValue = new kintoneUIComponent.RadioButton({
-    name: "getValue_radioBtn",
+let getValueRadioButton = new kintoneUIComponent.RadioButton({
+    name: "get value",
     items: [
         {
-            label: 'Cheese',
-            value: 'Cheese',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Ice Cream',
-            value: 'Ice Cream',
-            isDisabled: false
-        },
-        {
-            label: 'Cider',
-            value: 'Cider',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: true
-        },
+        }
     ],
-    value: 'Ice Cream',
-    isDisabled: false,
-    isVisible: false
+    value: 'Lemon'
 });
-let radioBtnGetValue_cell = testgrid.getCell(posConfig.Radio.x, 10);
-radioBtnGetValue_cell.appendChild(radioBtnGetValue.render());
-let getValueRadioBtn = new kintoneUIComponent.Button({
-    text: 'Get Value Radio Button',
-    type: 'normal',
-    isVisible: true,
-});
-radioBtnGetValue_cell.appendChild(getValueRadioBtn.render());
 
-function getValueOfBtn() {
-    let getValue = radioBtnGetValue.getValue();
-    alert(getValue);
-}
-getValueRadioBtn.on('click', getValueOfBtn);
-
-let getValueOfInVisiBleBtn = new kintoneUIComponent.Button({
-    text: 'Get Value of Invisible',
-    type: 'normal',
-    isVisible: true,
-});
-radioBtnGetValue_cell.appendChild(getValueOfInVisiBleBtn.render());
-
-function getValueOfInviRadioBtn() {
-    let getValue = radioBtnGetValue.getValue();
-    alert(getValue);
-}
-getValueOfInVisiBleBtn.on('click', getValueOfInviRadioBtn);
+let getValueRadioButtonEl = document.createElement('div');
+getValueRadioButtonEl.appendChild(getValueRadioButton.render());
+getValueRadioButtonEl.id = 'get-value-radio-button';
+let getValueRadioButtonButton = document.createElement('button');
+getValueRadioButtonButton.innerHTML='Get Value Radio Button';
+getValueRadioButtonButton.addEventListener('click',function(){
+    alert(JSON.stringify(getValueRadioButton.getValue()));
+})
+let hideValueRadioButtonButton = document.createElement('button');
+hideValueRadioButtonButton.innerHTML='Hide Value Radio Button';
+hideValueRadioButtonButton.addEventListener('click',function(){
+    getValueRadioButton.hide()
+})
+getValueRadioButtonEl.appendChild(getValueRadioButtonButton)
+getValueRadioButtonEl.appendChild(hideValueRadioButtonButton)
+let getValueRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 7);
+getValueRadioButtonCell.appendChild(getValueRadioButtonEl);
 
 // setValue()
-let radioBtnSetValue = new kintoneUIComponent.RadioButton({
-    name: "setValue_radioBtn",
+let setValueRadioButton = new kintoneUIComponent.RadioButton({
+    name: "set value",
     items: [
         {
-            label: 'Java',
-            value: 'Java',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'C#',
-            value: 'C#',
-            isDisabled: false
-        },
-        {
-            label: 'Python',
-            value: 'Python',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: true
         },
-    ],
-    value: 'Java',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnSetValue_cell = testgrid.getCell(posConfig.Radio.x, 11);
-radioBtnSetValue_cell.appendChild(radioBtnSetValue.render());
-let getValueOfSetValue = new kintoneUIComponent.Button({
-    text: 'Get Value of setValue',
-    type: 'normal',
-    isVisible: true,
-});
-radioBtnSetValue_cell.appendChild(getValueOfSetValue.render());
-
-function getValueOfsetValueFunc() {
-    let getValue = radioBtnSetValue.getValue();
-    alert(getValue);
-}
-getValueOfSetValue.on('click', getValueOfsetValueFunc);
-
-// disableItem()
-let radioBtnDisable = new kintoneUIComponent.RadioButton({
-    name: "disable_radioBtn",
-    items: [
         {
-            label: 'Coca Cola',
-            value: 'Coca Cola',
-            isDisabled: false
-        },
-        {
-            label: 'Pepsi',
-            value: 'Pepsi',
-            isDisabled: false
-        },
-        {
-            label: 'Aquafina',
-            value: 'Aquafina',
-            isDisabled: true
-        },
-    ],
-    value: 'Aquafina',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnDisable_cell = testgrid.getCell(posConfig.Radio.x, 12);
-radioBtnDisable_cell.appendChild(radioBtnDisable.render());
-
-// disableItem()
-let radioBtnDisableInvisible = new kintoneUIComponent.RadioButton({
-    name: "disableInvisible_radioBtn",
-    items: [
-        {
-            label: 'Pepsi - Invisible',
-            value: 'Pepsi - Invisible',
-            isDisabled: false
+            label: '',
+            value: ''
         }
     ],
-    value: 'Pepsi - Invisible',
-    isDisabled: false,
-    isVisible: false
+    value: "Orange"
 });
-let radioBtnDisableInvisible_cell = testgrid.getCell(posConfig.Radio.x, 13);
-radioBtnDisableInvisible_cell.appendChild(radioBtnDisableInvisible.render());
-let getValueOfInvisible = new kintoneUIComponent.Button({
-    text: 'Get Value of Disabled Invisible',
-    type: 'normal',
-    isVisible: true,
-});
-radioBtnDisableInvisible_cell.appendChild(getValueOfInvisible.render());
-function getValueOfInviDisabled() {
-    radioBtnDisableInvisible.disableItem('Pepsi - Invisible');
-    let getValue = JSON.stringify(radioBtnDisableInvisible.getItems());
-    alert(getValue);
-}
-getValueOfInvisible.on('click', getValueOfInviDisabled);
 
-// enableItem()
-let radioBtnEnable = new kintoneUIComponent.RadioButton({
-    name: "enable_radioBtn",
+let setValueRadioButtonEl = document.createElement('div');
+setValueRadioButtonEl.appendChild(setValueRadioButton.render());
+setValueRadioButtonEl.id = 'set-value-radio-button';
+let setValueRadioButtonButton = document.createElement('button');
+setValueRadioButtonButton.innerHTML='Set Value Radio Button';
+setValueRadioButtonButton.addEventListener('click',function(){
+    setValueRadioButton.setValue('Orange');
+})
+let setDisabledValueRadioButtonButton = document.createElement('button');
+setDisabledValueRadioButtonButton.innerHTML='Set Disabled Value Radio Button';
+setDisabledValueRadioButtonButton.addEventListener('click',function(){
+    setValueRadioButton.setValue('Lemon');
+})
+let setNoValueRadioButtonButton = document.createElement('button');
+setNoValueRadioButtonButton.innerHTML='Set No Value Radio Button';
+setNoValueRadioButtonButton.addEventListener('click',function(){
+    setValueRadioButton.setValue('');
+})
+setValueRadioButtonEl.appendChild(setValueRadioButtonButton);
+setValueRadioButtonEl.appendChild(setDisabledValueRadioButtonButton);
+setValueRadioButtonEl.appendChild(setNoValueRadioButtonButton);
+
+let setValueRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 8);
+setValueRadioButtonCell.appendChild(setValueRadioButtonEl);
+
+// Disable Item RadioButton
+let disableItemRadioButton = new kintoneUIComponent.RadioButton({
+    name: "disable item",
     items: [
         {
-            label: 'Table',
-            value: 'Table',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Chair',
-            value: 'Chair',
-            isDisabled: false
-        },
-        {
-            label: 'iDesk',
-            value: 'iDesk',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: true
-        },
+        }
     ],
-    value: 'Chair',
-    isDisabled: false,
-    isVisible: true
+    value: 'Orange'
 });
-let radioBtnEnable_cell = testgrid.getCell(posConfig.Radio.x, 14);
-radioBtnEnable_cell.appendChild(radioBtnEnable.render());
 
-// render() - not use
-let radioBtnRender = new kintoneUIComponent.RadioButton({
-    name: "render_radioBtn",
+let disableItemRadioButtonEl = document.createElement('div');
+disableItemRadioButtonEl.appendChild(disableItemRadioButton.render());
+disableItemRadioButtonEl.id = 'disable-item-radio-button';
+let disableItemRadioButtonButton = document.createElement('button');
+disableItemRadioButtonButton.innerHTML='Disable Item Radio Button';
+disableItemRadioButtonButton.addEventListener('click',function(){
+  disableItemRadioButton.disableItem('Orange');
+  disableItemRadioButton.disableItem('Lemon');
+})
+let getIsDisabledOfDisableItemRadioButtonButton = document.createElement('button');
+getIsDisabledOfDisableItemRadioButtonButton.innerHTML='Get isDisabled of Disable Item Radio Button';
+getIsDisabledOfDisableItemRadioButtonButton.addEventListener('click',function(){
+    alert(disableItemRadioButton._props.items.map( function(item) {return item.isDisabled}));
+})
+
+disableItemRadioButtonEl.appendChild(disableItemRadioButtonButton);
+disableItemRadioButtonEl.appendChild(getIsDisabledOfDisableItemRadioButtonButton);
+let disableItemRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 9);
+disableItemRadioButtonCell.appendChild(disableItemRadioButtonEl);
+
+
+// Enable Item RadioButton
+let enableItemRadioButton = new kintoneUIComponent.RadioButton({
+    name: "enable item",
     items: [
         {
-            label: 'First_Render',
-            value: 'First_Render',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Two_Render',
-            value: 'Two_Render',
-            isDisabled: false
-        },
-        {
-            label: 'Third_Render',
-            value: 'Third_Render',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: true
-        },
+        }
     ],
-    value: 'Third_Render',
-    isDisabled: false,
-    isVisible: true
+    value: 'Orange'
 });
+
+let enableItemRadioButtonEl = document.createElement('div');
+enableItemRadioButtonEl.appendChild(enableItemRadioButton.render());
+enableItemRadioButtonEl.id = 'enable-item-radio-button';
+let enableItemRadioButtonButton = document.createElement('button');
+enableItemRadioButtonButton.innerHTML='Enable Item Radio Button';
+enableItemRadioButtonButton.addEventListener('click',function(){
+    enableItemRadioButton.enableItem('Orange');
+    enableItemRadioButton.enableItem('Lemon');
+})
+let getIsDisabledOfEnableItemRadioButtonButton = document.createElement('button');
+getIsDisabledOfEnableItemRadioButtonButton.innerHTML='Get isDisabled of Enable Item Radio Button';
+getIsDisabledOfEnableItemRadioButtonButton.addEventListener('click',function(){
+    alert(enableItemRadioButton._props.items.map( function(item) {return item.isDisabled}));
+})
+enableItemRadioButtonEl.appendChild(enableItemRadioButtonButton);
+enableItemRadioButtonEl.appendChild(getIsDisabledOfEnableItemRadioButtonButton);
+let enableItemRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 10);
+enableItemRadioButtonCell.appendChild(enableItemRadioButtonEl);
+
 
 // show()
-let radioBtnShow = new kintoneUIComponent.RadioButton({
-    name: "show_radioBtn",
+let showRadioButton = new kintoneUIComponent.RadioButton({
+    name: "show",
     items: [
         {
-            label: 'First_Show',
-            value: 'First_Show',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Two_Show',
-            value: 'Two_Show',
-            isDisabled: false
-        },
-        {
-            label: 'Third_Show',
-            value: 'Third_Show',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: true
-        },
+        }
     ],
-    value: 'Third_Show',
-    isDisabled: false,
+    value: 'Orange',
     isVisible: false
 });
-let radioBtnShow_cell = testgrid.getCell(posConfig.Radio.x, 15);
-radioBtnShow_cell.appendChild(radioBtnShow.render());
+
+let showRadioButtonEl = document.createElement('div');
+showRadioButtonEl.appendChild(showRadioButton.render());
+showRadioButtonEl.id = 'show-radio-button';
+let showRadioButtonButton = document.createElement('button');
+showRadioButtonButton.innerHTML='Show Radio Button';
+showRadioButtonButton.addEventListener('click',function(){
+    showRadioButton.show()
+})
+showRadioButtonEl.appendChild(showRadioButtonButton);
+let showRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 11);
+showRadioButtonCell.appendChild(showRadioButtonEl);
 
 // hide()
-let radioBtnHide = new kintoneUIComponent.RadioButton({
-    name: "hide_radioBtn",
+let hideRadioButton = new kintoneUIComponent.RadioButton({
+    name: "hide",
     items: [
         {
-            label: 'First_Hide',
-            value: 'First_Hide',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Two_Hide',
-            value: 'Two_Hide',
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        }
+    ],
+    value: 'Orange',
+    isVisible: true,
+    isDisabled: false
+});
+
+let hideRadioButtonEl = document.createElement('div');
+hideRadioButtonEl.appendChild(hideRadioButton.render());
+hideRadioButtonEl.id = 'hide-radio-button';
+let hideRadioButtonButton = document.createElement('button');
+hideRadioButtonButton.innerHTML='Hide Radio Button';
+hideRadioButtonButton.addEventListener('click',function(){
+    hideRadioButton.hide()
+})
+hideRadioButtonEl.appendChild(hideRadioButtonButton);
+let hideRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 12);
+hideRadioButtonCell.appendChild(hideRadioButtonEl);
+
+// disable()
+let disableRadioButton = new kintoneUIComponent.RadioButton({
+    name: "disable",
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Third_Hide',
-            value: 'Third_Hide',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: true
         },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: false
+        },
     ],
-    value: 'Third_Hide',
-    isDisabled: false,
-    isVisible: true
+    value: 'Orange',
+    isVisible: true,
+    isDisabled: false
 });
-let radioBtnHide_cell = testgrid.getCell(posConfig.Radio.x, 16);
-radioBtnHide_cell.appendChild(radioBtnHide.render());
 
-// disabled()
-let disabled_radioBtn = new kintoneUIComponent.RadioButton({
-    name: "disabled_radioBtn",
+let disableRadioButtonEl = document.createElement('div');
+disableRadioButtonEl.appendChild(disableRadioButton.render());
+disableRadioButtonEl.id = 'disable-radio-button';
+let disableRadioButtonButton = document.createElement('button');
+disableRadioButtonButton.innerHTML='Disable Radio Button';
+disableRadioButtonButton.addEventListener('click',function(){
+    disableRadioButton.disable()
+})
+let getIsDisabledOfDisableRadioButtonButton = document.createElement('button');
+getIsDisabledOfDisableRadioButtonButton.innerHTML='Get isDisabled of Disable Radio Button';
+getIsDisabledOfDisableRadioButtonButton.addEventListener('click',function(){
+    alert(JSON.stringify(disableRadioButton._props.isDisabled));
+})
+disableRadioButtonEl.appendChild(disableRadioButtonButton);
+disableRadioButtonEl.appendChild(getIsDisabledOfDisableRadioButtonButton);
+let disableRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 13);
+disableRadioButtonCell.appendChild(disableRadioButtonEl);
+
+// enable()
+let enableRadioButton = new kintoneUIComponent.RadioButton({
+    name: "enable",
     items: [
         {
-            label: 'First_Disable',
-            value: 'First_Disable',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Two_Disable',
-            value: 'Two_Disable',
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: false
         }
     ],
-    value: 'Two_Disable',
-    isDisabled: false,
-    isVisible: true
+    value: 'Orange',
+    isVisible: true,
+    isDisabled: true
 });
-let disabled_radioBtn_cell = testgrid.getCell(posConfig.Radio.x, 17);
-disabled_radioBtn_cell.appendChild(disabled_radioBtn.render());
 
-// enabled()
-let enabled_radioBtn = new kintoneUIComponent.RadioButton({
-    name: "enabled_radioBtn",
+let enableRadioButtonEl = document.createElement('div');
+enableRadioButtonEl.appendChild(enableRadioButton.render());
+enableRadioButtonEl.id = 'enable-radio-button';
+let enableRadioButtonButton = document.createElement('button');
+enableRadioButtonButton.innerHTML='Enable Radio Button';
+enableRadioButtonButton.addEventListener('click',function(){
+    enableRadioButton.enable()
+})
+let getIsDisabledOfEnableRadioButtonButton = document.createElement('button');
+getIsDisabledOfEnableRadioButtonButton.innerHTML='Get isDisabled of Enable Radio Button';
+getIsDisabledOfEnableRadioButtonButton.addEventListener('click',function(){
+    alert(JSON.stringify(enableRadioButton._props.isDisabled));
+})
+enableRadioButtonEl.appendChild(enableRadioButtonButton);
+enableRadioButtonEl.appendChild(getIsDisabledOfEnableRadioButtonButton);
+let enableRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 14);
+enableRadioButtonCell.appendChild(enableRadioButtonEl);
+
+// on Callback Function RadioButton
+let onCallbackFunctionRadioButton = new kintoneUIComponent.RadioButton({
+    name: "callback function",
     items: [
         {
-            label: 'First_Enable',
-            value: 'First_Enable',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Two_Enable',
-            value: 'Two_Enable',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: false
         }
     ],
-    value: 'Two_Enable',
-    isDisabled: true,
-    isVisible: true
+    value: 'Orange',
+    isVisible: true,
+    isDisabled: false
 });
-let enabled_radioBtn_cell = testgrid.getCell(posConfig.Radio.x, 18);
-enabled_radioBtn_cell.appendChild(enabled_radioBtn.render());
+let onCallbackFunctionRadioButtonEl = document.createElement('div');
+onCallbackFunctionRadioButtonEl.appendChild(onCallbackFunctionRadioButton.render());
+onCallbackFunctionRadioButtonEl.id = 'on-callback-function-radio-button';
+let onCallbackFunctionRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 15);
+onCallbackFunctionRadioButtonCell.appendChild(onCallbackFunctionRadioButtonEl);
 
-// on change() - function
-let radioBtnOnFunc = new kintoneUIComponent.RadioButton({
-    name: "onFunc_radioBtn",
+onCallbackFunctionRadioButton.on('change', function (event) {
+    alert('onCallBackFunctionRadioButton has been changed');
+});
+
+// on Callback Trigger RadioButton
+let onCallbackTriggerRadioButton = new kintoneUIComponent.RadioButton({
+    name: "callback trigger",
     items: [
         {
-            label: 'Screen',
-            value: 'Screen',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
+        
         {
-            label: 'Main',
-            value: 'Main',
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: false
-        },
-        {
-            label: 'RAM',
-            value: 'RAM',
-            isDisabled: true
-        },
+        }
     ],
-    value: 'RAM',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnOnFunc_cell = testgrid.getCell(posConfig.Radio.x, 19);
-radioBtnOnFunc_cell.appendChild(radioBtnOnFunc.render());
-radioBtnOnFunc.on('change', function (event) {
-    alert('onFunc_radioBtn has been changed');
+    value: 'Orange',
+    isVisible: true,
+    isDisabled: false
 });
 
-// on change() - trigger
-let radioBtnOnTrigger = new kintoneUIComponent.RadioButton({
-    name: "onTrigger_radioBtn",
-    items: [
-        {
-            label: 'First_OnTrigger',
-            value: 'First_OnTrigger',
-            isDisabled: false
-        },
-        {
-            label: 'Second_OnTrigger',
-            value: 'Second_OnTrigger',
-            isDisabled: false
-        },
-        {
-            label: 'Third_OnTrigger',
-            value: 'Third_OnTrigger',
-            isDisabled: true
-        },
-    ],
-    value: 'Third_OnTrigger',
-    isDisabled: false,
-    isVisible: true
-});
-let radioBtnOnTrigger_cell = testgrid.getCell(posConfig.Radio.x, 20);
+let onCallbackTriggerRadioButtonEl = document.createElement('div');
+onCallbackTriggerRadioButtonEl.appendChild(onCallbackTriggerRadioButton.render());
+onCallbackTriggerRadioButtonEl.id = 'on-callback-trigger-radio-button';
+let onCallbackTriggerRadioButtonCell = testgrid.getCell(posConfig.Radio.x, 16);
+onCallbackTriggerRadioButtonCell.appendChild(onCallbackTriggerRadioButtonEl);
 
-radioBtnOnTrigger_cell.appendChild(radioBtnOnTrigger.render());
-function triggerSubmitChange() {
-    alert('onTrigger_radioBtn has been changed');
+function triggerChange() {
+    alert('onCallBackTriggerRadioButton has been changed');
 }
-radioBtnOnTrigger.on('change', triggerSubmitChange);
+onCallbackTriggerRadioButton.on('change', triggerChange);

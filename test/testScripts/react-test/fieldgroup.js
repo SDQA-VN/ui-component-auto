@@ -1,8 +1,5 @@
-const $ = require('../../utils/ReturnElement').singleElement;
-const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
-const isEnabled = require('../../utils/ReturnElement').waitUntilSelectorEnabled;
-const common = require('../../utils/common');
-const expect = require('chai').expect;
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js')
 
 // const CONSTRUCTOR_FIELDGROUP = "//div[@id='constructor-fieldgroup']//div[@class='kuc-fieldgroup']//ul[@class='kuc-fieldgroup-container']//li";
 const COMPONENT_CONTENT_FIELDGROUP = "//div[@id='constructor-fieldgroup']//div[@class='kuc-fieldgroup']//div[@class='kuc-fieldgroup-container']//div[@class='kuc-fieldgroup-contents']//div[@id='component-container-fieldgroup']";
@@ -28,96 +25,70 @@ describe('kintoneUIComponent - Text', function () {
     });
 
     it('[FieldGroup-3] should Verify the operation of FieldGroup, all below components can be add to table as child component', function () {
-        //check the toggle of fieldgroup
-        let checkToggle = $(TOGGLE_BUTTON_FIELDGROUP).getAttribute('class');
-        expect(checkToggle).to.include('collapse');
-        let checkArrow = browser.getAttribute(TOGGLE_BUTTON_FIELDGROUP + "//span[1]",'class');
-        expect(checkArrow).to.equal('kuc-arrow right')
-        $(TOGGLE_BUTTON_FIELDGROUP).click();
-        checkToggle = $(TOGGLE_BUTTON_FIELDGROUP).getAttribute('class');
-        expect(checkToggle).to.include('expand');
-        checkArrow = browser.getAttribute(TOGGLE_BUTTON_FIELDGROUP + "//span[1]",'class');
-        expect(checkArrow).to.equal('kuc-arrow down')
-        // check components in fieldgroup content (DOM)
-        let checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-alert bg-success']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn normal']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn submit']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-checkbox']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='date-time-container']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-dropdown-container']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-fieldgroup']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-icon-btn large  gray circle']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-label']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-multiple-list kuc-list-outer']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-radio']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-table']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']").isExisting();
-        expect(checkComponent).to.equal(true);
-        checkComponent = $(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-textarea-outer']").isExisting();
-        expect(checkComponent).to.equal(true);
+        Helper.ElementHandler
+            .verifyAttribute(TOGGLE_BUTTON_FIELDGROUP, 'class', 'collapse')
+            .verifyAttribute(TOGGLE_BUTTON_FIELDGROUP + "//span[1]", 'class', 'kuc-arrow right')
+            .click(TOGGLE_BUTTON_FIELDGROUP)
+            .verifyAttribute(TOGGLE_BUTTON_FIELDGROUP, 'class', 'expand')
+            .verifyAttribute(TOGGLE_BUTTON_FIELDGROUP + "//span[1]", 'class', 'kuc-arrow down')
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-alert bg-success']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-attachment-outer']//div[@class='kuc-attachment-file']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn normal']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-btn submit']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-checkbox']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='date-time-container']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-dropdown-container']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-fieldgroup']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-icon-btn large  gray circle']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-multiple-list kuc-list-outer']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-multiple-list kuc-list-outer']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-radio']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-table']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-textarea-outer']")
     });
 
     it('[FieldGroup-17] should Verify that can set content of FieldGroup', function () {
-        let checkComponent = browser.isExisting(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
-        expect(checkComponent).to.equal(true);
-        $(SET_CONTENT_BUTTON_FIELDGROUP).click();
-        checkComponent = browser.isExisting(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
-        expect(checkComponent).to.equal(false);
-        checkComponent = $(SET_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']").isExisting();
-        expect(checkComponent).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementExisting(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .click(SET_CONTENT_BUTTON_FIELDGROUP)
+            .verifyElementNotExisting(SET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementExisting(SET_CONTENT_FIELDGROUP + "//input[@class='kuc-input-text']")
     });
 
     it('[FieldGroup-18] should Verify that can get content of FieldGroup', function () {
-        let checkComponent = browser.isExisting(GET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
-        expect(checkComponent).to.equal(true);
-        let checkDOMAfterGetContent = browser.isExisting(GET_CONTENT_CHECK_FIELDGROUP + "//div[@class='kuc-label']")
-        expect(checkDOMAfterGetContent).to.equal(false); 
-        $(GET_CONTENT_BUTTON_FIELDGROUP).click();
-        checkDOMAfterGetContent = browser.isExisting(GET_CONTENT_CHECK_FIELDGROUP + "//div[@class='kuc-label']")
-        expect(checkDOMAfterGetContent).to.equal(true); 
+        Helper.ElementHandler
+            .verifyElementExisting(GET_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
+            .verifyElementNotExisting(GET_CONTENT_CHECK_FIELDGROUP + "//div[@class='kuc-label']")
+            .click(GET_CONTENT_BUTTON_FIELDGROUP)
+            .verifyElementExisting(GET_CONTENT_CHECK_FIELDGROUP + "//div[@class='kuc-label']")
     });
 
     it('[FieldGroup-19] should Verify that can set name for FieldGroup', function () {
-        let getName = $(SET_NAME_FIELDGROUP).getText();
-        expect(getName).to.equal('Group');
-        $(SET_NAME_BUTTON_FIELDGROUP).click();
-        getName = $(SET_NAME_FIELDGROUP).getText();
-        expect(getName).to.equal('Set Name Success');
+        Helper.ElementHandler
+            .verifyText(SET_NAME_FIELDGROUP, 'Group')
+            .click(SET_NAME_BUTTON_FIELDGROUP)
+            .verifyText(SET_NAME_FIELDGROUP, 'Set Name Success')
     });
 
     it('[FieldGroup-20] should Verify that can get name for FieldGroup', function () {
-        $(GET_NAME_BUTTON_FIELDGROUP).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('Group');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(GET_NAME_BUTTON_FIELDGROUP)
+            .verifyAlertText('Group')
     });
 
     it('[FieldGroup-21] should Verify that can set toggle for FieldGroup', function () {
-        let checkToggle = $(SET_TOGGLE_FIELDGROUP).getAttribute('class');
-        expect(checkToggle).to.include('expand');
-        $(SET_TOGGLE_BUTTON_FIELDGROUP).click();
-        checkToggle = $(SET_TOGGLE_FIELDGROUP).getAttribute('class');
-        expect(checkToggle).to.include('collapse');
+        Helper.ElementHandler
+            .verifyAttribute(SET_TOGGLE_FIELDGROUP, 'class', 'expand')
+            .click(SET_TOGGLE_BUTTON_FIELDGROUP)
+            .verifyAttribute(SET_TOGGLE_FIELDGROUP, 'class', 'collapse')
     });
 
     it('[FieldGroup-22] should Verify that can get toggle for FieldGroup', function () {
-        $(GET_TOGGLE_BUTTON_FIELDGROUP).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('expand');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(GET_TOGGLE_BUTTON_FIELDGROUP)
+            .verifyAlertText('expand')
     });
 });

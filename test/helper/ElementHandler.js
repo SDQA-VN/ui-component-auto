@@ -5,38 +5,14 @@ class ElementHandler {
     * @param {string} locator    Element for wait
     */
     waitForElement(locator) {
-        browser.waitForVisible(locator, 30000, false);
-        return this;
-    }
-
-    /**
-    * @param {string} locator    Element for wait
-    */
-    waitForElementExit(locator) {
-        browser.waitForExist(locator, 30000, false);
+        $(locator).waitForExist(30000, false);
         return this;
     }
 
     /**
     * @param {string} locator    Element for verify
     */
-    verifyElementVisible(locator) {
-        expect($(locator).isVisible(), "Element " + locator + " does not visible").to.be.true;
-        return this;
-    }
-
-    /**
-    * @param {string} locator    Element for verify
-    */
-    verifyElementNotVisible(locator) {
-        expect($(locator).isVisible(), "Element " + locator + " does not visible").to.be.false;
-        return this;
-    }
-
-    /**
-    * @param {string} locator    Element for verify
-    */
-    verifyElementExists(locator) {
+    verifyElementExisting(locator) {
         expect($(locator).isExisting(), "Element " + locator + " does not exist").to.be.true;
         return this;
     }
@@ -44,7 +20,7 @@ class ElementHandler {
     /**
     * @param {string} locator    Element for verify
     */
-    verifyElementNotExist(locator) {
+    verifyElementNotExisting(locator) {
         expect($(locator).isExisting(), "Element " + locator + " does exist").to.be.false;
         return this;
     }
@@ -52,7 +28,7 @@ class ElementHandler {
     /**
     * @param {string} locator    Element for verify
     */
-    verifyElementDisplayed() {
+    verifyElementDisplayed(locator) {
         expect($(locator).isDisplayed(), "Element " + locator + " is not displayed").to.be.true;
         return this;
     }
@@ -110,7 +86,7 @@ class ElementHandler {
     * @param {number} height   Element for verify
     */
     verifyElementSize(locator, width, height) {
-        let elementSize = $(locator).getElementSize();
+        let elementSize = $(locator).getSize();
         expect(elementSize.width).to.equal(width);
         expect(elementSize.height).to.equal(height);
         return this;
@@ -121,7 +97,7 @@ class ElementHandler {
     * @param {number} value    Color for verify
     */
     verifyElementColor(locator, attribute, value) {
-        let elementColor = $(locator).getCssProperty(attribute);
+        let elementColor = $(locator).getCSSProperty(attribute);
         expect(elementColor.parsed.hex).to.equal(value);
         return this;
     }
@@ -131,7 +107,7 @@ class ElementHandler {
     * @param {number} value    Position for verify
     */
     verifyElementPosition(locator, attribute, value) {
-        let elementPosition = $(locator).getCssProperty(attribute);
+        let elementPosition = $(locator).getCSSProperty(attribute);
         expect(elementPosition.value).to.equal(value);
         return this;
     }
@@ -143,7 +119,7 @@ class ElementHandler {
     */
 
     verifyElementSizeDragAndDrop(locator, width, height) {
-        let elementSize = $(locator).getElementSize();
+        let elementSize = $(locator).getSize();
         expect(elementSize.width >= width).to.equal(true);
         expect(elementSize.height >= height).to.equal(true);
         return this;
@@ -172,7 +148,7 @@ class ElementHandler {
     */
     verifyTitle(title) {
         browser.waitUntil(() => {
-            return browser.title().value === title;
+            return browser.getTitle() === title;
         }, 30000, `${title} is not correct`);
         return this;
     }
@@ -191,9 +167,9 @@ class ElementHandler {
     * @param {string} text    text for verify
     */
     verifyAlertText(text) {
-        let alertText = browser.alertText()
+        let alertText = browser.getAlertText()
         expect(alertText).to.equal(text);
-        browser.alertAccept();
+        browser.acceptAlert();
         return this;
     }
 
@@ -202,7 +178,7 @@ class ElementHandler {
     * @param {string} value    Value for enter
     */
     setValue(locator, value) {
-        browser.waitForVisible(locator, 30000, false);
+        this.waitForElement(locator);
         $(locator).setValue(value);
         return this;
     }
@@ -212,7 +188,7 @@ class ElementHandler {
     * @param {string} value    Value for enter
     */
     addValue(locator, value) {
-        browser.waitForVisible(locator, 30000, false);
+        this.waitForElement(locator);
         $(locator).addValue(value);
         return this;
     }
@@ -247,12 +223,23 @@ class ElementHandler {
         return this;
     }
 
+
+    /**
+    * @param {string} locator    Element for verify
+    * @param {string} attribute    Attribute for verify
+    * @param {string} value    Value for verify
+    */
+    verifyAttributeIsNotIncludeValue(locator, attribute, value) {
+        let result = this.getAttribute(locator, attribute)
+        expect(result).to.not.include(value);
+        return this;
+    }
+
     /**
    * @param {string} locator    Element for verify
    */
     waitForElementClickable(locator) {
-        $(locator).waitForVisible(3000);
-        $(locator).waitForEnabled(3000);
+        $(locator).waitForClickable({ timeout: 3000 });
         return this;
     }
 
@@ -267,18 +254,9 @@ class ElementHandler {
 
     /**
     * @param {string} locator    Element for verify
-    * @param {string} filePath    filePath for upload
-    */
-    chooseFile(locator, filePath) {
-        browser.chooseFile(locator, filePath);
-        return this;
-    }
-
-    /**
-    * @param {string} locator    Element for verify
     */
     moveToObject(locator) {
-        browser.moveToObject(locator)
+        $(locator).moveTo()
         return this;
     }
 
@@ -289,25 +267,23 @@ class ElementHandler {
     dragAndDrop(sourceLocator, destinationLocator) {
         this.waitForElement(sourceLocator)
         this.waitForElement(destinationLocator)
-        browser.dragAndDrop(sourceLocator, destinationLocator)
+        $(sourceLocator).dragAndDrop(destinationLocator)
         return this;
     }
 
     /**
     * @param {string} locator    Element for verify
     */
-    buttonUp(locator) {
-        this.waitForElementClickable(locator)
-        browser.buttonUp(locator)
+    buttonUp() {
+        browser.buttonUp()
         return this;
     }
 
     /**
     * @param {string} locator    Element for verify
     */
-    buttonDown(locator) {
-        this.waitForElementClickable(locator)
-        browser.buttonDown(locator)
+    buttonDown() {
+        browser.buttonDown()
         return this;
     }
 }

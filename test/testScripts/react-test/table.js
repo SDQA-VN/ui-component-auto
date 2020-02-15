@@ -1,7 +1,5 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const $$ = require('../../util/ReturnElement').listOfElements;
-const common = require('../../util/common');
-const expect = require('chai').expect;
+const common = require('../../utils/common');
+const Helper = require('../../helper/main.js')
 
 const XPATH_TABLE_HEADER = '.table-render .kuc-table-thead .kuc-table-th';
 const XPATH_TABLE_ROW = '.table-render .kuc-table-tbody .kuc-table-tr';
@@ -48,6 +46,8 @@ const XPATH_TABLE_ON_CALL_INSERT = '.table-cellChange .kuc-table-tr:nth-child(1)
 const XPATH_TABLE_ON_CALL_DELETE = '.table-cellChange .kuc-table-tr:nth-child(1) .action-group .kuc-icon-btn.small.hover-danger.gray.circle';
 const XPATH_TABLE_1ST_EXIST = '.table-render .kuc-table';
 const XPATH_TABLE_2ND_EXIST = '.table-working .kuc-table';
+const XPATH_TABLE_ON_CELL_ROW = ".table-cellChange .kuc-table-tbody .kuc-table-tr"
+
 
 describe('kintoneUIComponent - Button', function () {
     before(() => {
@@ -58,236 +58,205 @@ describe('kintoneUIComponent - Button', function () {
     });
 
     it('[Table-2] Verify that the Table have the  UI is the same as Table on kintone', function () {
-        let tableHeaderColor = $(XPATH_TABLE_HEADER).getCssProperty('background-color');
-        let tableInsertButton = browser.getAttribute(XPATH_TABLE_INSERT_BUTTON, 'class');
-        $(XPATH_TABLE_INSERT_BUTTON).click();
-        let tableDeleteButton = browser.getAttribute(XPATH_TABLE_DELETE_BUTTON, 'class');
-        expect(tableHeaderColor.parsed.hex).to.equal('#3498db');
-        expect(tableInsertButton).to.include('blue');
-        expect(tableDeleteButton).to.include('gray');
-        $(XPATH_TABLE_DELETE_BUTTON).click();
+        Helper.ElementHandler
+            .verifyElementColor(XPATH_TABLE_HEADER, 'background-color', '#3498db')
+            .verifyAttribute(XPATH_TABLE_INSERT_BUTTON, 'class', 'blue')
+            .click(XPATH_TABLE_INSERT_BUTTON)
+            .verifyAttribute(XPATH_TABLE_DELETE_BUTTON, 'class', 'gray')
+            .click(XPATH_TABLE_DELETE_BUTTON)
     });
     it('[Table-3] Verify that the default table will contain the header and sample row', function () {
-        let tableHeaderExist = browser.isExisting(XPATH_TABLE_HEADER);
-        let tableRowExist = browser.isExisting(XPATH_TABLE_ROW);
-        expect(tableHeaderExist).to.equal(true);
-        expect(tableRowExist).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementDisplayed(XPATH_TABLE_HEADER)
+            .verifyElementDisplayed(XPATH_TABLE_ROW)
     });
     it('[Table-5] Verify that the sample row is added below the row contains clicked button when click on the insert button', function () {
-        let rowLengthBefore = browser.elements(XPATH_TABLE_ROW).value.length;
-        expect(rowLengthBefore).to.equal(1);
-        $(XPATH_TABLE_INSERT_BUTTON).click();
-        let rowLengthAfter = browser.elements(XPATH_TABLE_ROW).value.length;
-        expect(rowLengthAfter).to.equal(2);
-        $(XPATH_TABLE_DELETE_BUTTON).click();
+        Helper.ElementHandler
+            .verifyNumberOfElements(XPATH_TABLE_ROW, 1)
+            .click(XPATH_TABLE_INSERT_BUTTON)
+            .verifyNumberOfElements(XPATH_TABLE_ROW, 2)
+            .click(XPATH_TABLE_DELETE_BUTTON)
     });
     it('[Table-6] Verify that the sample row which contains all component is added below the row contains clicked button when click on the insert button', function () {
-        let rowLengthBefore = browser.elements(XPATH_TABLE_ROW).value.length;
-        expect(rowLengthBefore).to.equal(1);
-        $(XPATH_TABLE_INSERT_BUTTON).click();
-        let rowLengthAfter = browser.elements(XPATH_TABLE_ROW).value.length;
-        let radioExist = browser.isExisting(XPATH_TABLE_RADIO);
-        let dropdownExist = browser.isExisting(XPATH_TABLE_DROPDOWN);
-        let buttonExist = browser.isExisting(XPATH_TABLE_NORMAL_BUTTON);
-        let iconExist = browser.isExisting(XPATH_TABLE_ICON_BUTTON);
-        let textExist = browser.isExisting(XPATH_TABLE_TEXTBOX);
-        let checkboxExist = browser.isExisting(XPATH_TABLE_CHECKBOX);
-        let multipleExist = browser.isExisting(XPATH_TABLE_MULTIPLE);
-        let labelExist = browser.isExisting(XPATH_TABLE_LABEL);
-        let alertExist = browser.isExisting(XPATH_TABLE_ALERT);
-        expect(radioExist).to.equal(true);
-        expect(dropdownExist).to.equal(true);
-        expect(buttonExist).to.equal(true);
-        expect(iconExist).to.equal(true);
-        expect(textExist).to.equal(true);
-        expect(checkboxExist).to.equal(true);
-        expect(multipleExist).to.equal(true);
-        expect(labelExist).to.equal(true);
-        expect(alertExist).to.equal(true);
-        expect(rowLengthAfter).to.equal(2);
-        $(XPATH_TABLE_DELETE_BUTTON).click();
+        Helper.ElementHandler
+            .verifyNumberOfElements(XPATH_TABLE_ROW, 1)
+            .click(XPATH_TABLE_INSERT_BUTTON)
+            .verifyNumberOfElements(XPATH_TABLE_ROW, 2)
+            .verifyElementDisplayed(XPATH_TABLE_RADIO)
+            .verifyElementDisplayed(XPATH_TABLE_DROPDOWN)
+            .verifyElementDisplayed(XPATH_TABLE_NORMAL_BUTTON)
+            .verifyElementDisplayed(XPATH_TABLE_ICON_BUTTON)
+            .verifyElementDisplayed(XPATH_TABLE_TEXTBOX)
+            .verifyElementDisplayed(XPATH_TABLE_CHECKBOX)
+            .verifyElementDisplayed(XPATH_TABLE_MULTIPLE)
+            .verifyElementDisplayed(XPATH_TABLE_LABEL)
+            .verifyElementDisplayed(XPATH_TABLE_ALERT)
+            .click(XPATH_TABLE_DELETE_BUTTON)
     });
     it('[Table-22] Verify that the operation for all below child components in table are working as normally - Text', function () {
-        $(XPATH_TABLE_TEXT_INPUT).setValue('Text input');
-        let textInput = browser.getValue(XPATH_TABLE_TEXT_INPUT)
-        expect(textInput).to.equal('Text input');
+        Helper.ElementHandler
+            .setValue(XPATH_TABLE_TEXT_INPUT, 'Text input')
+            .verifyValue(XPATH_TABLE_TEXT_INPUT, 'Text input')
     });
     it('[Table-23] Verify that the operation for all below child components in table are working as normally - Dropdown', function () {
-        $(XPATH_TABLE_DROPDOWN_OPEN).click();
-        $(XPATH_TABLE_DROPDOWN_CHECKED).click();
-        let itemsValue = browser.getText(XPATH_TABLE_DROPDOWN_VALUE)
-        expect(itemsValue).to.equal('Red');
+        Helper.ElementHandler
+            .click(XPATH_TABLE_DROPDOWN_OPEN)
+            .click(XPATH_TABLE_DROPDOWN_CHECKED)
+            .verifyText(XPATH_TABLE_DROPDOWN_VALUE, 'Red')
     });
     it('[Table-24] Verify that the operation for all below child components in table are working as normally - CheckBox', function () {
-        $(XPATH_TABLE_CHECKBOX_CHECKED).click();
-        let itemsValue = browser.isExisting(XPATH_TABLE_CHECKBOX_VALUE)
-        expect(itemsValue).to.equal(true);
+        Helper.ElementHandler
+            .click(XPATH_TABLE_CHECKBOX_CHECKED)
+            .verifyElementExisting(XPATH_TABLE_CHECKBOX_VALUE)
     });
     it('[Table-25] Verify that the operation for all below child components in table are working as normally - Multiple choice', function () {
-        $(XPATH_TABLE_MULTIPLE_CHECKED).click();
-        let itemsValue = browser.getAttribute(XPATH_TABLE_MULTIPLE_CHECKED, 'class')
-        expect(itemsValue).to.include('kuc-list-item-selected');
+        Helper.ElementHandler
+            .click(XPATH_TABLE_MULTIPLE_CHECKED)
+            .verifyAttribute(XPATH_TABLE_MULTIPLE_CHECKED, 'class', 'kuc-list-item-selected')
     });
     it('[Table-26] Verify that the operation for all below child components in table are working as normally - Radio Button', function () {
-        $(XPATH_TABLE_RADIO_CHECKED).click();
-        let itemsValue = browser.isExisting(XPATH_TABLE_RADIO_VALUE)
-        expect(itemsValue).to.equal(true);
+        Helper.ElementHandler
+            .click(XPATH_TABLE_RADIO_CHECKED)
+            .verifyElementExisting(XPATH_TABLE_RADIO_VALUE)
     });
     it('[Table-27] Verify that the operation for all below child components in table are working as normally - Button', function () {
-        $(XPATH_TABLE_BUTTON_CLICK).click();
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('Component clicked');
-        browser.alertAccept()
+        Helper.ElementHandler
+            .click(XPATH_TABLE_BUTTON_CLICK)
+            .verifyAlertText('Component clicked')
     });
     it('[Table-28] Verify that the operation for all below child components in table are working as normally - Label', function () {
-        let itemsValue = browser.getText(XPATH_TABLE_LABEL_VALUE);
-        expect(itemsValue).to.equal('label');
+        Helper.ElementHandler
+            .verifyElementDisplayed(XPATH_TABLE_LABEL_VALUE)
+            .verifyText(XPATH_TABLE_LABEL_VALUE, 'label')
     });
     it('[Table-29] Verify that the operation for all below child components in table are working as normally - IconButton', function () {
-        let itemsValue = browser.isExisting(XPATH_TABLE_ICON_VALUE);
-        expect(itemsValue).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementDisplayed(XPATH_TABLE_ICON_VALUE)
     });
     it('[Table-30] Verify that the operation for all below child components in table are working as normally - Alert', function () {
-        let itemsValue = browser.getText(XPATH_TABLE_ALERT_VALUE);
-        let itemsExist = browser.isExisting(XPATH_TABLE_ALERT_VALUE);
-        expect(itemsValue).to.equal('Alert');
-        expect(itemsExist).to.equal(true);
+        Helper.ElementHandler
+            .verifyText(XPATH_TABLE_ALERT_VALUE, 'Alert')
+            .verifyElementDisplayed(XPATH_TABLE_ALERT_VALUE)
     });
     it('[Table-31] Verify that can add 2 tables into 1 form', function () {
-        let table1stExist = browser.isExisting(XPATH_TABLE_1ST_EXIST);
-        let table2ndExist = browser.isExisting(XPATH_TABLE_2ND_EXIST);
-        expect(table1stExist).to.equal(true);
-        expect(table2ndExist).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementDisplayed(XPATH_TABLE_1ST_EXIST)
+            .verifyElementDisplayed(XPATH_TABLE_2ND_EXIST)
     });
-    it('[Table-33] Verify that the Table object contains the the below attibutes', function () {
-        let header = browser.isExisting(XPATH_TABLE_HEADER);
-        let headerTemplate1st = browser.getText(XPATH_TABLE_HEADER)[0];
-        let headerTemplate2nd = browser.getText(XPATH_TABLE_HEADER)[1];
-        let headerTemplate3th = browser.getText(XPATH_TABLE_HEADER)[2];
-        let headerTemplate4th = browser.getText(XPATH_TABLE_HEADER)[3];
-        let headerTemplate5th = browser.getText(XPATH_TABLE_HEADER)[4];
-        let headerTemplate6th = browser.getText(XPATH_TABLE_HEADER)[5];
-        let headerTemplate7th = browser.getText(XPATH_TABLE_HEADER)[6];
-        let headerTemplate8th = browser.getText(XPATH_TABLE_HEADER)[7];
-        let headerTemplate9th = browser.getText(XPATH_TABLE_HEADER)[8];
-        expect(headerTemplate1st).to.equal('Radio');
-        expect(headerTemplate2nd).to.equal('Dropdown');
-        expect(headerTemplate3th).to.equal('Button');
-        expect(headerTemplate4th).to.equal('Icon');
-        expect(headerTemplate5th).to.equal('Text');
-        expect(headerTemplate6th).to.equal('CheckBox');
-        expect(headerTemplate7th).to.equal('MultipleChoice');
-        expect(headerTemplate8th).to.equal('Label');
-        expect(headerTemplate9th).to.equal('Alert');
-        expect(header).to.equal(true);
-    });
+    // it('[Table-33] Verify that the Table object contains the the below attibutes', function () {
+    //     let header = browser.isExisting(XPATH_TABLE_HEADER);
+    //     let headerTemplate1st = browser.getText(XPATH_TABLE_HEADER)[0];
+    //     let headerTemplate2nd = browser.getText(XPATH_TABLE_HEADER)[1];
+    //     let headerTemplate3th = browser.getText(XPATH_TABLE_HEADER)[2];
+    //     let headerTemplate4th = browser.getText(XPATH_TABLE_HEADER)[3];
+    //     let headerTemplate5th = browser.getText(XPATH_TABLE_HEADER)[4];
+    //     let headerTemplate6th = browser.getText(XPATH_TABLE_HEADER)[5];
+    //     let headerTemplate7th = browser.getText(XPATH_TABLE_HEADER)[6];
+    //     let headerTemplate8th = browser.getText(XPATH_TABLE_HEADER)[7];
+    //     let headerTemplate9th = browser.getText(XPATH_TABLE_HEADER)[8];
+    //     expect(headerTemplate1st).to.equal('Radio');
+    //     expect(headerTemplate2nd).to.equal('Dropdown');
+    //     expect(headerTemplate3th).to.equal('Button');
+    //     expect(headerTemplate4th).to.equal('Icon');
+    //     expect(headerTemplate5th).to.equal('Text');
+    //     expect(headerTemplate6th).to.equal('CheckBox');
+    //     expect(headerTemplate7th).to.equal('MultipleChoice');
+    //     expect(headerTemplate8th).to.equal('Label');
+    //     expect(headerTemplate9th).to.equal('Alert');
+    //     expect(header).to.equal(true);
+    // });
     it('[Table-41] Verify that can get value of all rows in the table', function () {
-        $(XPATH_TABLE_GET_VALUE_CHECK_RADIO).click();
-        $(XPATH_TABLE_GET_VALUE_BUTTON).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('["banana","green","text",["orange"],["orange"]]');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_GET_VALUE_CHECK_RADIO)
+            .click(XPATH_TABLE_GET_VALUE_BUTTON)
+            .verifyAlertText('["banana","green","text",["orange"],["orange"]]')
     });
     it('[Table-50] Verify that can get value of Text in the table', function () {
         let XPATH_TABLE_GET_TEXT_VALUE_BUTTON = ".table-getValue .get-value-text"
-        $(XPATH_TABLE_GET_TEXT_VALUE_BUTTON).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('"text"');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_GET_TEXT_VALUE_BUTTON)
+            .verifyAlertText('"text"')
     });
     it('[Table-51] Verify that can get value of Dropdown in the table', function () {
         let XPATH_TABLE_GET_DROPDOWN_VALUE_BUTTON = ".table-getValue .get-value-dropdown"
-        $(XPATH_TABLE_GET_DROPDOWN_VALUE_BUTTON).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('"green"');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_GET_DROPDOWN_VALUE_BUTTON)
+            .verifyAlertText('"green"')
     });
     it('[Table-52] Verify that can get value of Checkbox in the table', function () {
         let XPATH_TABLE_GET_CHECKBOX_VALUE_BUTTON = ".table-getValue .get-value-checkbox"
-        $(XPATH_TABLE_GET_CHECKBOX_VALUE_BUTTON).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('["orange"]');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_GET_CHECKBOX_VALUE_BUTTON)
+            .verifyAlertText('["orange"]')
     });
     it('[Table-53] Verify that can get value of Multiple Choice in the table', function () {
         let XPATH_TABLE_GET_MULTI_CHOICE_VALUE_BUTTON = ".table-getValue .get-value-multipleChoice"
-        $(XPATH_TABLE_GET_MULTI_CHOICE_VALUE_BUTTON).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('["orange"]');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_GET_MULTI_CHOICE_VALUE_BUTTON)
+            .verifyAlertText('["orange"]')
     });
     it('[Table-54] Verify that can get value of Radio Button in the table', function () {
         let XPATH_TABLE_GET_RADIO_VALUE_BUTTON = ".table-getValue .get-value-radio"
-        $(XPATH_TABLE_GET_RADIO_VALUE_BUTTON).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('"banana"');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_GET_RADIO_VALUE_BUTTON)
+            .verifyAlertText('"banana"')
     });
     it('[Table-55] Verify that can set value for multiple rows in table', function () {
-        $(XPATH_TABLE_SET_VALUE_INSERT_ROW).click();
-        $(XPATH_TABLE_SET_VALUE_BUTTON).click();
-        $(XPATH_TABLE_SET_VALUE_GET_BUTTON).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('["banana","green","text",["banana"],["banana"]]["banana","green","text",["banana"],["banana"]]');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_SET_VALUE_INSERT_ROW)
+            .click(XPATH_TABLE_SET_VALUE_BUTTON)
+            .click(XPATH_TABLE_SET_VALUE_GET_BUTTON)
+            .verifyAlertText('["banana","green","text",["banana"],["banana"]]["banana","green","text",["banana"],["banana"]]')
     });
     it('[Table-59] Verify that can show invisible Table on UI', function () {
-        let tableVisibleBefore = browser.isVisible(XPATH_TABLE_SHOW)
-        expect(tableVisibleBefore).to.equal(false);
-        $(XPATH_TABLE_DISPLAY_BUTTON).click();
-        let tableVisibleAfter = browser.isVisible(XPATH_TABLE_SHOW)
-        expect(tableVisibleAfter).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementNotDisplayed(XPATH_TABLE_SHOW)
+            .click(XPATH_TABLE_DISPLAY_BUTTON)
+            .verifyElementDisplayed(XPATH_TABLE_SHOW)
     });
     it('[Table-61] Verify that can hide the visible Table on UI', function () {
-        let tableVisibleBefore = browser.isVisible(XPATH_TABLE_HIDE)
-        expect(tableVisibleBefore).to.equal(true);
-        $(XPATH_TABLE_NON_DISPLAY_BUTTON).click();
-        let tableVisibleAfter = browser.isVisible(XPATH_TABLE_HIDE)
-        expect(tableVisibleAfter).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementDisplayed(XPATH_TABLE_HIDE)
+            .click(XPATH_TABLE_NON_DISPLAY_BUTTON)
+            .verifyElementNotDisplayed(XPATH_TABLE_HIDE)
     });
     it('[Table-63] Verify that the callback function will be triggered after adding a new row to table', function () {
-        $(XPATH_TABLE_ON_CALL_INSERT).click();
-        let rows = browser.elements(".table-cellChange .kuc-table-tbody .kuc-table-tr").value.length
-        expect(rows).to.equal(2);
-        $(XPATH_TABLE_ON_CALL_DELETE).click();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_ON_CALL_INSERT)
+            .verifyNumberOfElements(XPATH_TABLE_ON_CELL_ROW, 2)
+            .click(XPATH_TABLE_ON_CALL_DELETE)
     });
     it('[Table-64] Verify that the callback function will be triggered after removing row from table', function () {
-        $(XPATH_TABLE_ON_CALL_INSERT).click();
-        let rowsBefore = browser.elements(".table-cellChange .kuc-table-tbody .kuc-table-tr").value.length
-        expect(rowsBefore).to.equal(2);
-        $(XPATH_TABLE_ON_CALL_DELETE).click();
-        let rowsAfter = browser.elements(".table-cellChange .kuc-table-tbody .kuc-table-tr").value.length
-        expect(rowsAfter).to.equal(1);
+        Helper.ElementHandler
+            .click(XPATH_TABLE_ON_CALL_INSERT)
+            .verifyNumberOfElements(XPATH_TABLE_ON_CELL_ROW, 2)
+            .click(XPATH_TABLE_ON_CALL_DELETE)
+            .verifyNumberOfElements(XPATH_TABLE_ON_CELL_ROW, 1)
     });
     it('[Table-65-Radio] Verify that the callback function will be triggered when changing the value', function () {
-        $(XPATH_TABLE_ON_CALL_RADIO_CHANGE).click();
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('data select: "banana"');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_ON_CALL_RADIO_CHANGE)
+            .verifyAlertText('data select: "banana"')
     });
     it('[Table-65-Dropdown] Verify that the callback function will be triggered when changing the value', function () {
-        $(XPATH_TABLE_ON_CALL_DROPDOWN_OPEN).click();
-        $(XPATH_TABLE_ON_CALL_DROPDOWN_CHANGE).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('data select: "red"');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_ON_CALL_DROPDOWN_OPEN)
+            .click(XPATH_TABLE_ON_CALL_DROPDOWN_CHANGE)
+            .verifyAlertText('data select: "red"')
     });
     it('[Table-65-Textbox] Verify that the callback function will be triggered when changing the value', function () {
-        $(XPATH_TABLE_ON_CALL_INPUT).setValue("t")
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('data select: "t"');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .setValue(XPATH_TABLE_ON_CALL_INPUT, 't')
+            .verifyAlertText('data select: "t"')
     });
     it('[Table-65-Checkbox] Verify that the callback function will be triggered when changing the value', function () {
-        $(XPATH_TABLE_ON_CALL_CHECKBOX_CHANGE).click()
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('data select: ["orange"]');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_ON_CALL_CHECKBOX_CHANGE)
+            .verifyAlertText('data select: ["orange"]')
     });
     it('[Table-65-Multiple] Verify that the callback function will be triggered when changing the value', function () {
-        $(XPATH_TABLE_ON_CALL_MULTIPLE_CHANGE).click()
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('data select: ["orange"]');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_TABLE_ON_CALL_MULTIPLE_CHANGE)
+            .verifyAlertText('data select: ["orange"]')
     });
 });

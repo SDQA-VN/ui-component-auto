@@ -1,5 +1,5 @@
-const Helper = require('../../helper/main');
-const common = require('../../utils/common');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 const path = require('path');
 
 
@@ -43,7 +43,7 @@ describe('kintoneUIComponent - Attachment', function () {
             .chooseFile(CONSTRUCTOR_ATTACHMENT_INPUT, filePath)
             .verifyText(CONSTRUCTOR_FILENAME_ATTACHMENT, 'alert.js')
             .click(CONSTRUCTOR_ATTACHMENT_BUTTON_DELETE)
-            .verifyElementNotExist(CONSTRUCTOR_FILENAME_ATTACHMENT)
+            .verifyElementNotExisting(CONSTRUCTOR_FILENAME_ATTACHMENT)
     });
 
     it('[Attachment-2] should Verify the operation of Attachment', function () {
@@ -92,7 +92,7 @@ describe('kintoneUIComponent - Attachment', function () {
             .verifyAlertText('alert.js')
             .click(ON_CALLBACK_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_action']//button")
             .verifyAlertText('')
-            .verifyElementNotExist(ON_CALLBACK_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_name']")
+            .verifyElementNotExisting(ON_CALLBACK_FILENAME_ATTACHMENT + "//div[@class='kuc-attachment_file_name']")
     });
 
     it('[Attachment-9] should Verify the operation of Attachment', function () {

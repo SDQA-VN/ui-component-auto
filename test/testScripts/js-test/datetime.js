@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_DATETIME = '//div[@id="constructor-datetime"]//div[@class="date-time-container"]';
 const DATE_CONSTRUCTOR_DATETIME = '//div[@id="constructor-datetime"]//div[@class="date-time-container"]//input[@class="kuc-input-text text-input"]';
@@ -111,19 +111,19 @@ describe('kintoneUIComponent - Datetime', function () {
     it('[Datetime-31] Verify that can get value for Datetime component with Date', function () {
         Helper.ElementHandler
             .click(GET_VALUE_DATE_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
+            .verifyAlertText('Mon Oct 13 2014 11:13:00')
     });
 
     it('[Datetime-31] Verify that can get value for Datetime component with Time', function () {
         Helper.ElementHandler
             .click(GET_VALUE_TIME_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
+            .verifyAlertText('Mon Oct 13 2014 11:13:00')
     });
 
     it('[Datetime-31] Verify that can get value for Datetime component with Datetime', function () {
         Helper.ElementHandler
             .click(GET_VALUE_DATETIME_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
+            .verifyAlertText('Mon Oct 13 2014 11:13:00')
     });
 
     it('[Datetime-35] Verify that can set value for DateTime component which contains existing value with Date', function () {

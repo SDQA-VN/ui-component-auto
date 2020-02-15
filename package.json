@@ -20,7 +20,7 @@
   "dependencies": {
     "@actions/core": "^1.2.0",
     "@actions/github": "^1.1.0",
-    "@kintone/kintone-ui-component": "file:../kintone-ui-component/kintone-kintone-ui-component-0.5.0.tgz",
+    "@kintone/kintone-ui-component": "file:../../tmp1/kintone-ui-component/kintone-kintone-ui-component-0.5.0.tgz",
     "babel-loader": "^8.0.6",
     "babel-preset-stage-0": "^6.24.1",
     "chromedriver": "^78.0.1",
@@ -28,7 +28,7 @@
     "css-loader": "^3.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^3.3.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
@@ -37,12 +37,15 @@
     "chai": "^4.2.0",
     "pngjs": "^3.4.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "wdio-chromedriver-service": "^5.0.2",
-    "wdio-docker-service": "^2.1.5-rc.0",
-    "wdio-html-format-reporter": "^0.2.9",
-    "wdio-mocha-framework": "^0.6.4",
-    "wdio-selenium-standalone-service": "0.0.12",
-    "wdio-spec-reporter": "^0.1.5",
-    "webdriverio": "^4.14.1"
+    "@types/node": "^10.12.20",
+    "@types/webdriverio": "^4.13.1",
+    "@wdio/allure-reporter": "^5.7.11",
+    "@wdio/cli": "^5.7.0",
+    "@wdio/local-runner": "^5.7.0",
+    "@wdio/mocha-framework": "^5.7.0",
+    "@wdio/spec-reporter": "^5.7.13",
+    "@wdio/sync": "^5.7.0",
+    "@wdio/selenium-standalone-service": "^5.15.0",
+    "webdriverio": "^5.18.7"
   }
 }

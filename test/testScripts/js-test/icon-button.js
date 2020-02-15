@@ -1,5 +1,5 @@
-const common = require('../../utils/common');
-const Helper = require('../../helper/main');
+const common = require('../../utils/Common.js');
+const Helper = require('../../helper/main.js');
 
 const ICON_FULL_OPTIONS = "//div[@id='icon-full-options']//button[contains(@class,'kuc-icon-btn')]";
 const ICON_ONLY_TYPE = "//div[@id='icon-only-type']/button[contains(@class,'kuc-icon-btn')]";

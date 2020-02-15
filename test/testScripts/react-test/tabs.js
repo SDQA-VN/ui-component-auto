@@ -1,7 +1,5 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const isVisibled = require('../../util/ReturnElement').waitUntilSelectorVisibled;
-const isEnabled = require('../../util/ReturnElement').waitUntilSelectorEnabled;
-const common = require('../../util/common');
+const $ = require('../../utils/ReturnElement').singleElement;
+const common = require('../../utils/common');
 const expect = require('chai').expect;
 
 const CONSTRUCTOR_TABS = "//div[@id='constructor-tabs']//div[@class='kuc-tabs-tabs']//ul[@class='kuc-tabs-tab-list']//li";

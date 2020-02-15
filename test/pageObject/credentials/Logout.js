@@ -1,10 +1,10 @@
-const ReturnElement = require('../../utils/ReturnElement');
+const Helper = require('../../helper/main');
 const CONSTANT = require('../../constant');
 
 class Logout {
     navigateToLoginPage() {
         browser.url(CONSTANT.PATH.LOGOUT_URL);
-        ReturnElement.waitForURLCorrect(CONSTANT.PATH.LOGIN_URL);
+        Helper.ElementHandler.verifyURL(CONSTANT.PATH.LOGIN_URL);
         return this;
     }
 }

@@ -1,6 +1,5 @@
 const $ = require('../../utils/ReturnElement').singleElement;
-const isVisibled = require('../../utils/ReturnElement').waitUntilSelectorVisibled;
-const common = require('../../utils/common');
+const common = require('../../utils/Common.js');
 const expect = require('chai').expect;
 
 const XPATH_CONSTRUCTOR_COLORPICKER = "//div[@id='constructor-colorpicker']//div/input";
