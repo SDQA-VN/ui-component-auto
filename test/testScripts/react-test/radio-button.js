@@ -1,7 +1,5 @@
-const $ = require('../../util/ReturnElement').singleElement;
-const $$ = require('../../util/ReturnElement').listOfElements;
-const common = require('../../util/common');
-const expect = require('chai').expect;
+const common = require('../../utils/common');
+const Helper = require('../../helper/main.js')
 
 const XPATH_RADIO = '.radio-render .kuc-input-radio';
 const XPATH_RADIO_RENDER = '.radio-render .kuc-input-radio-item input';
@@ -44,37 +42,34 @@ describe('kintoneUIComponent - Button', function () {
     });
 
     it('[RadioButton-2] Verify that the Radio Button have the  UI is the same as Radio Button on kintone', function () {
-        let radioColor = $(XPATH_RADIO).getCssProperty('color');
-        let radioPosition = $(XPATH_RADIO).getCssProperty('position');
-        expect(radioColor.parsed.hex).to.equal('#333333');
-        expect(radioPosition.value).to.equal('static');
+        Helper.ElementHandler
+            .verifyElementVisible(XPATH_RADIO)
+            .verifyElementPosition(XPATH_RADIO, 'position', 'static')
+            .verifyElementColor(XPATH_RADIO, 'color', '#333333')
     });
 
     it('[RadioButton-6] Verify that can create a Radio Button with full options default value', function () {
-        let radioName = browser.getAttribute(XPATH_RADIO_RENDER, 'name')[0]
-        let radioVisible = browser.isVisible(XPATH_RADIO)
-        let radioEnable = browser.isEnabled(XPATH_RADIO)
-        expect(radioName).to.equal('radio-render');
-        expect(radioVisible).to.equal(true);
-        expect(radioEnable).to.equal(true);
+        Helper.ElementHandler
+            .verifyAttribute(XPATH_RADIO_RENDER, 'name', 'radio-render')
+            .verifyElementVisible(XPATH_RADIO)
+            .verifyElementEnabled(XPATH_RADIO)
     });
 
     it('[RadioButton-24-30] Verify that can add an item to the Radio Button list with full value for item', function () {
-        $(XPATH_RADIO_ADD_ITEMS_BUTTON).click()
-        let radioVisible = browser.isVisible(XPATH_RADIO_ADD_ITEMS)[1]
-        let radioValue = browser.getText(XPATH_RADIO_ADD_ITEMS)[1]
-        expect(radioVisible).to.equal(true);
-        expect(radioValue).to.equal('Lemon');
+        let XPATH_RADIO_ADD_ITEMS_2 = ".radio-add .kuc-input-radio-item:nth-child(2)"
+        Helper.ElementHandler
+            .click(XPATH_RADIO_ADD_ITEMS_BUTTON)
+            .verifyElementVisible(XPATH_RADIO_ADD_ITEMS)
+            .verifyText(XPATH_RADIO_ADD_ITEMS_2, 'Lemon')
     });
 
     it('[RadioButton-37] Verify that can remove an item to the Radio Button list with full value for item', function () {
-        let radioBefore = browser.isVisible(XPATH_RADIO_REMOVE_ITEMS)
-        let radioValue = browser.getText(XPATH_RADIO_REMOVE_ITEMS)
-        expect(radioBefore).to.equal(true);
-        expect(radioValue).to.equal('Lemon');
-        $(XPATH_LABEL_REMOVE_ITEMS_BUTTON).click()
-        let radioAfter = browser.isVisible(XPATH_RADIO_REMOVE_ITEMS)
-        expect(radioAfter).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementVisible(XPATH_RADIO_REMOVE_ITEMS)
+            .verifyText(XPATH_RADIO_REMOVE_ITEMS, 'Lemon')
+            .click(XPATH_LABEL_REMOVE_ITEMS_BUTTON)
+            .verifyElementNotVisible(XPATH_RADIO_REMOVE_ITEMS)
+            .verifyElementNotExisting(XPATH_RADIO_REMOVE_ITEMS)
     });
     it('[RadioButton-46-47] Verify the return list have the same value of item with the Radio Button list', function () {
         var items = [
@@ -89,103 +84,87 @@ describe('kintoneUIComponent - Button', function () {
                 isDisabled: true
             }
         ];
-        $(XPATH_RADIO_GET_ITEMS_BUTTON).click()
-        let alertText = browser.alertText();
-        expect(alertText).to.equal(JSON.stringify(items));
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_RADIO_GET_ITEMS_BUTTON)
+            .verifyAlertText(JSON.stringify(items))
     });
     it('[RadioButton-49] Verify that can get the value of the selected item', function () {
-        $(XPATH_RADIO_GET_VALUE_BUTTON).click()
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('Banana');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_RADIO_GET_VALUE_BUTTON)
+            .verifyAlertText('Banana')
     });
     it('[RadioButton-52] Verify can get the value of the selected item for invisible radio button', function () {
-        let radioVisible = browser.isVisible(XPATH_INVISIBLE_RADIO_GET_VALUE)
-        expect(radioVisible).to.equal(false);
-        $(XPATH_INVISIBLE_RADIO_GET_VALUE_BUTTON).click()
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('Banana');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .verifyElementNotVisible(XPATH_INVISIBLE_RADIO_GET_VALUE)
+            .click(XPATH_INVISIBLE_RADIO_GET_VALUE_BUTTON)
+            .verifyAlertText('Banana')
     });
     it('[RadioButton-54] Verify can set the selected value for radiobutton by valid value of an item in radiobutton', function () {
         const XPATH_RADIO_VALUE_FIRST = '.radio-setValue .kuc-input-radio-item:nth-child(1) :checked';
         const XPATH_RADIO_VALUE_SECOND = '.radio-setValue .kuc-input-radio-item:nth-child(2) :checked';
-        let valueFirstBefore = browser.isExisting(XPATH_RADIO_VALUE_FIRST)
-        let valueSecondBefore = browser.isExisting(XPATH_RADIO_VALUE_SECOND)
-        expect(valueFirstBefore).to.equal(false);
-        expect(valueSecondBefore).to.equal(true);
-        $(XPATH_RADIO_SET_VALUE_BUTTON).click()
-        let valueFirstAfter = browser.isExisting(XPATH_RADIO_VALUE_FIRST)
-        let valueSecondAfter = browser.isExisting(XPATH_RADIO_VALUE_SECOND)
-        expect(valueFirstAfter).to.equal(true);
-        expect(valueSecondAfter).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementNotExisting(XPATH_RADIO_VALUE_FIRST)
+            .verifyElementExisting(XPATH_RADIO_VALUE_SECOND)
+            .click(XPATH_RADIO_SET_VALUE_BUTTON)
+            .verifyElementExisting(XPATH_RADIO_VALUE_FIRST)
+            .verifyElementNotExisting(XPATH_RADIO_VALUE_SECOND)
     });
     it('[RadioButton-58] Verify can set disabled for existing enable item by the valid value of an item in radiobutton', function () {
-        let radioExistBefore = browser.isExisting(XPATH_RADIO_ENABLE_ITEMS)
-        expect(radioExistBefore).to.equal(false);
-        $(XPATH_RADIO_DISABLE_ITEMS_ENABLE_BUTTON).click();
-        let radioExistAfter = browser.isExisting(XPATH_RADIO_ENABLE_ITEMS)
-        expect(radioExistAfter).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementNotExisting(XPATH_RADIO_ENABLE_ITEMS)
+            .click(XPATH_RADIO_DISABLE_ITEMS_ENABLE_BUTTON)
+            .verifyElementExisting(XPATH_RADIO_ENABLE_ITEMS)
     });
     it('[RadioButton-59] Verify can set disabled for existing disable item by the valid value of an item in radiobutton', function () {
-        let radioExistBefore = browser.isExisting(XPATH_RADIO_DISABLE_ITEMS)
-        expect(radioExistBefore).to.equal(true);
-        $(XPATH_RADIO_DISABLE_ITEMS_DISABLE_BUTTON).click();
-        let radioExistAfter = browser.isExisting(XPATH_RADIO_DISABLE_ITEMS)
-        expect(radioExistAfter).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementExisting(XPATH_RADIO_DISABLE_ITEMS)
+            .click(XPATH_RADIO_DISABLE_ITEMS_DISABLE_BUTTON)
+            .verifyElementExisting(XPATH_RADIO_DISABLE_ITEMS)
     });
     it('[RadioButton-60] Verify can set disabled for existing enable item by the valid value for invisible radiobutton', function () {
-        $(XPATH_INVISIBLE_RADIO_DISABLE_ITEMS_BUTTON).click();
-        let radioExistAfter = browser.isExisting(XPATH_INVISIBLE_RADIO_ENABLE_ITEMS)
-        expect(radioExistAfter).to.equal(true);
+        Helper.ElementHandler
+            .click(XPATH_INVISIBLE_RADIO_DISABLE_ITEMS_BUTTON)
+            .verifyElementExisting(XPATH_INVISIBLE_RADIO_ENABLE_ITEMS)
     });
     it('[RadioButton-63] Verify can set enable for existing disable item by the valid value of an item in radiobutton', function () {
-        let radioExistBefore = browser.isExisting(XPATH_RADIO_ENABLE_ITEMS_DISABLE)
-        expect(radioExistBefore).to.equal(true);
-        $(XPATH_RADIO_ENABLE_ITEMS_DISABLE_BUTTON).click();
-        let radioExistAfter = browser.isExisting(XPATH_RADIO_ENABLE_ITEMS_DISABLE)
-        expect(radioExistAfter).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementExisting(XPATH_RADIO_ENABLE_ITEMS_DISABLE)
+            .click(XPATH_RADIO_ENABLE_ITEMS_DISABLE_BUTTON)
+            .verifyElementNotExisting(XPATH_RADIO_ENABLE_ITEMS_DISABLE)
     });
     it('[RadioButton-64] Verify can set enabled for existing enable item by the valid value of an item in radiobutton', function () {
-        let radioExistBefore = browser.isExisting(XPATH_RADIO_ENABLE_ITEMS_ENABLE)
-        expect(radioExistBefore).to.equal(false);
-        $(XPATH_RADIO_ENABLE_ITEMS_ENABLE_BUTTON).click();
-        let radioExistAfter = browser.isExisting(XPATH_RADIO_ENABLE_ITEMS_ENABLE)
-        expect(radioExistAfter).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementNotExisting(XPATH_RADIO_ENABLE_ITEMS_ENABLE)
+            .click(XPATH_RADIO_ENABLE_ITEMS_ENABLE_BUTTON)
+            .verifyElementNotExisting(XPATH_RADIO_ENABLE_ITEMS_ENABLE)
     });
     it('[RadioButton-69] Verify that can show invisible radiobutton on UI', function () {
-        let radioVisibleBefore = browser.isVisible(XPATH_RADIO_SHOW)
-        expect(radioVisibleBefore).to.equal(false);
-        $(XPATH_RADIO_DISPLAY_BUTTON).click();
-        let radioVisibleAfter = browser.isVisible(XPATH_RADIO_SHOW)
-        expect(radioVisibleAfter).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementNotVisible(XPATH_RADIO_SHOW)
+            .click(XPATH_RADIO_DISPLAY_BUTTON)
+            .verifyElementVisible(XPATH_RADIO_SHOW)
     });
     it('[RadioButton-71] Verify that can hide the visible radiobutton on UI', function () {
-        let radioVisibleBefore = browser.isVisible(XPATH_RADIO_HIDE)
-        expect(radioVisibleBefore).to.equal(true);
-        $(XPATH_RADIO_NONDE_DISPLAY_BUTTON).click();
-        let radioVisibleAfter = browser.isVisible(XPATH_RADIO_HIDE)
-        expect(radioVisibleAfter).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementVisible(XPATH_RADIO_HIDE)
+            .click(XPATH_RADIO_NONDE_DISPLAY_BUTTON)
+            .verifyElementNotVisible(XPATH_RADIO_HIDE)
     });
     it('[RadioButton-73] Verify that can disable the current enable radiobutton on UI', function () {
-        let radioVisibleBefore = browser.isExisting(XPATH_RADIO_DISABLE)
-        expect(radioVisibleBefore).to.equal(false);
-        $(XPATH_RADIO_DISABLE_BUTTON).click();
-        let radioVisibleAfter = browser.isExisting(XPATH_RADIO_DISABLE)
-        expect(radioVisibleAfter).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementNotExisting(XPATH_RADIO_DISABLE)
+            .click(XPATH_RADIO_DISABLE_BUTTON)
+            .verifyElementExisting(XPATH_RADIO_DISABLE)
     });
     it('[RadioButton-75] Verify that can enable the disabled radiobutton on UI', function () {
-        let radioVisibleBefore = browser.isExisting(XPATH_RADIO_ENABLE)
-        expect(radioVisibleBefore).to.equal(true);
-        $(XPATH_RADIO_ENABLE_BUTTON).click();
-        let radioVisibleAfter = browser.isExisting(XPATH_RADIO_ENABLE)
-        expect(radioVisibleAfter).to.equal(false);
+        Helper.ElementHandler
+            .verifyElementExisting(XPATH_RADIO_ENABLE)
+            .click(XPATH_RADIO_ENABLE_BUTTON)
+            .verifyElementNotExisting(XPATH_RADIO_ENABLE)
     });
     it('[RadioButton-77-78] Verify that the callback function will be trigger when change the value for radiobutton', function () {
-        $(XPATH_RADIO_ON_CALL_BUTTON).click();
-        let alertText = browser.alertText();
-        expect(alertText).to.equal('value: Tiger');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(XPATH_RADIO_ON_CALL_BUTTON)
+            .verifyAlertText('value: Tiger')
     });
 });
