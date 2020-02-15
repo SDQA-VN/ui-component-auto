@@ -105,25 +105,25 @@ describe('kintoneUIComponent - Datetime', function () {
     it('[Datetime-11-13] Verify the can create DateTime object with full options', function () {
         Helper.ElementHandler
             .waitForElement(CONSTRUCTOR_DATETIME)
-            .verifyElementVisible(CONSTRUCTOR_DATETIME)
+            .verifyElementDisplayed(CONSTRUCTOR_DATETIME)
     });
 
     it('[Datetime-31] Verify that can get value for Datetime component with Date', function () {
         Helper.ElementHandler
             .click(GET_VALUE_DATE_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00')
+            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
     });
 
     it('[Datetime-31] Verify that can get value for Datetime component with Time', function () {
         Helper.ElementHandler
             .click(GET_VALUE_TIME_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00')
+            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
     });
 
     it('[Datetime-31] Verify that can get value for Datetime component with Datetime', function () {
         Helper.ElementHandler
             .click(GET_VALUE_DATETIME_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00')
+            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
     });
 
     it('[Datetime-35] Verify that can set value for DateTime component which contains existing value with Date', function () {
@@ -181,13 +181,13 @@ describe('kintoneUIComponent - Datetime', function () {
     it('[Datetime-48] Verify that can show invisible Datetime on UI', function () {
         Helper.ElementHandler
             .click(SHOW_INVISIBLE_DATETIME_BUTTON)
-            .verifyElementVisible(SHOW_INVISIBLE_DATETIME)
+            .verifyElementDisplayed(SHOW_INVISIBLE_DATETIME)
     });
 
     it('[Datetime-50] Verify that can hide the visible Datetime on UI', function () {
         Helper.ElementHandler
             .click(HIDE_VISIBLE_DATETIME_BUTTON)
-            .verifyElementNotVisible(HIDE_VISIBLE_DATETIME)
+            .verifyElementNotDisplayed(HIDE_VISIBLE_DATETIME)
     });
 
     it('[Datetime-52] Verify that can disable the current enable Datetime on UI', function () {

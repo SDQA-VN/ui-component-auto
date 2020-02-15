@@ -117,9 +117,14 @@ describe('kintoneUIComponent - Dropdown', function () {
     });
 
     it('[Dropdown-64-65-66-67] verify that can get items of dropdown', function () {
+        let itemsValue = [
+            { "label": "Orange", "value": "Orange", "isDisabled": false },
+            { "label": "Lemon", "value": "Lemon", "isDisabled": true },
+            { "label": "", "value": "" }
+        ]
         Helper.ElementHandler
             .click(GET_ITEMS_BUTTON_DROPDOWN)
-            .verifyAlertText('[{"label":"Orange","value":"Orange","isDisabled":false},{"label":"Lemon","value":"Lemon","isDisabled":true},{"label":"Grape","value":"Grape"}]')
+            .verifyAlertText(JSON.stringify(itemsValue))
     });
 
     it('[Dropdown-69-70-71] verify that can get selected value of dropdown', function () {
@@ -165,16 +170,16 @@ describe('kintoneUIComponent - Dropdown', function () {
 
     it('[Dropdown-90] verify that can show dropdown', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(SHOW_DROPDOWN)
+            .verifyElementNotDisplayed(SHOW_DROPDOWN)
             .click(SHOW_BUTTON_DROPDOWN)
-            .verifyElementVisible(SHOW_DROPDOWN)
+            .verifyElementDisplayed(SHOW_DROPDOWN)
     });
 
     it('[Dropdown-92] verify that can hide dropdown', function () {
         Helper.ElementHandler
-            .verifyElementVisible(HIDE_DROPDOWN)
+            .verifyElementDisplayed(HIDE_DROPDOWN)
             .click(HIDE_BUTTON_DROPDOWN)
-            .verifyElementNotVisible(HIDE_DROPDOWN)
+            .verifyElementNotDisplayed(HIDE_DROPDOWN)
     });
 
     it('[Dropdown-94] verify that can disable dropdown', function () {

@@ -75,9 +75,13 @@ describe('kintoneUIComponent - Text', function () {
     });
 
     it('[Tabs-26] should Verify that can get all items in tab including disabled items ', function () {
+        let tabItemsValue = [
+            { "tabName": "Tab1", "tabContent": "This is Tab1", "isDisabled": true },
+            { "tabName": "Tab2", "tabContent": "This is Tab2", "isDisabled": false }
+        ]
         Helper.ElementHandler
             .click(GET_ITEM_BUTTON_TABS)
-            .verifyAlertText('[{"tabName":"Tab1","tabContent":"This is Tab1","isDisabled":true},{"tabName":"Tab2","tabContent":"This is Tab2","isDisabled":false}]')
+            .verifyAlertText(JSON.stringify(tabItemsValue))
     });
 
     it('[Tabs-29] should Verify that can get value of the selected item ', function () {

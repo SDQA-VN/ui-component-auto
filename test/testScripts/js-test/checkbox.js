@@ -76,19 +76,19 @@ describe('kintoneUIComponent - Checkbox', function () {
     it('[Checkbox-5] should create a Checkbox with full options', function () {
         Helper.ElementHandler
             .waitForElement(CHECKBOX_FULL_OPTION)
-            .verifyElementVisible(CHECKBOX_FULL_OPTION)
+            .verifyElementDisplayed(CHECKBOX_FULL_OPTION)
     });
 
     it('[Checkbox-4] should create a Checkbox without any options value', function () {
         Helper.ElementHandler
             .waitForElement(WITHOUT_OPTION_VALUE)
-            .verifyElementVisible(WITHOUT_OPTION_VALUE)
+            .verifyElementDisplayed(WITHOUT_OPTION_VALUE)
     });
 
     it('[Checkbox-15] should verify create a Checkbox with only option.value', function () {
         Helper.ElementHandler
             .waitForElement(ONLY_OPTION_VALUE)
-            .verifyElementVisible(ONLY_OPTION_VALUE)
+            .verifyElementDisplayed(ONLY_OPTION_VALUE)
     });
 
     it('[Checkbox-23] should add an item to the checkbox list with full value for item', function () {
@@ -103,18 +103,18 @@ describe('kintoneUIComponent - Checkbox', function () {
 
     it('[Checkbox-30] should add an item to the invisible checkbox list with full value for item', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(ADD_ITEM_INVISIBLE_CHECKBOX)
+            .verifyElementNotDisplayed(ADD_ITEM_INVISIBLE_CHECKBOX)
             .click(ADD_ITEM_INVISIBLE_CHECKBOX_BUTTON)
             .click(ADD_ITEM_INVISIBLE_CHECKBOX_SHOW_BUTTON)
             .verifyNumberOfElements(ADD_ITEM_INVISIBLE_CHECKBOX_ITEMS, 3)
-            .verifyElementVisible(ADD_ITEMS_INVISIBLE_CHECKBOX_ITEM)
+            .verifyElementDisplayed(ADD_ITEMS_INVISIBLE_CHECKBOX_ITEM)
     });
 
     it('[Checkbox-31] should add an item to the checkbox with only item.value', function () {
         Helper.ElementHandler
             .waitForElement(ADD_ITEM_ONLY_VALUE_CHECKBOX)
             .click(ADD_ITEM_ONLY_VALUE_CHECKBOX_BUTTON)
-            .verifyElementVisible(ADD_ITEM_ONLY_VALUE_CHECKBOX_ITEM)
+            .verifyElementDisplayed(ADD_ITEM_ONLY_VALUE_CHECKBOX_ITEM)
     });
 
     it('[CheckBox-49-51] should get item by index', function () {
@@ -176,16 +176,16 @@ describe('kintoneUIComponent - Checkbox', function () {
 
     it('[Checkbox-80] should show invisible Checkbox on UI', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(SHOW_CHECKBOX)
+            .verifyElementNotDisplayed(SHOW_CHECKBOX)
             .click(SHOW_CHECKBOX_BUTTON)
-            .verifyElementVisible(SHOW_CHECKBOX)
+            .verifyElementDisplayed(SHOW_CHECKBOX)
     });
 
     it('[Checkbox-82-83] should hide visible Checkbox on UI', function () {
         Helper.ElementHandler
-            .verifyElementVisible(HIDE_CHECKBOX)
+            .verifyElementDisplayed(HIDE_CHECKBOX)
             .click(HIDE_CHECKBOX_BUTTON)
-            .verifyElementNotVisible(HIDE_CHECKBOX)
+            .verifyElementNotDisplayed(HIDE_CHECKBOX)
     });
 
     it('[Checkbox-84] should disable the current enable Checkbox on UI', function () {

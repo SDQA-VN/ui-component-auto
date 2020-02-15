@@ -47,10 +47,10 @@ describe('kintoneUIComponent - Icon button', function () {
     it('[Icon-Button-3-5-6-14-15] should create a Icon Button', function () {
         Helper.ElementHandler
             .waitForElement(ICON_FULL_OPTIONS)
-            .verifyElementVisible(ICON_FULL_OPTIONS)
-            .verifyElementVisible(ICON_ONLY_TYPE)
-            .verifyElementVisible(ICON_ONLY_COLOR)
-            .verifyElementVisible(ICON_DISABLED)
+            .verifyElementDisplayed(ICON_FULL_OPTIONS)
+            .verifyElementDisplayed(ICON_ONLY_TYPE)
+            .verifyElementDisplayed(ICON_ONLY_COLOR)
+            .verifyElementDisplayed(ICON_DISABLED)
     });
 
     it('[Icon-Button-20-21-22-26] should set type for icon button', function () {
@@ -103,13 +103,13 @@ describe('kintoneUIComponent - Icon button', function () {
     it('[Icon-Button-45] should hide visible Icon button on UI', function () {
         Helper.ElementHandler
             .click(ICON_HIDE_BUTTON)
-            .verifyElementNotVisible(ICON_DISABLED)
+            .verifyElementNotDisplayed(ICON_DISABLED)
     });
 
     it('[Icon-Button-43] should show invisible Icon button on UI', function () {
         Helper.ElementHandler
             .click(ICON_SHOW_BUTTON)
-            .verifyElementVisible(ICON_DISABLED)
+            .verifyElementDisplayed(ICON_DISABLED)
     });
 
     it('[Icon-Button-47] should disable Icon button on UI', function () {

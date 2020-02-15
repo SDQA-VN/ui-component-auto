@@ -54,12 +54,12 @@ describe('kintoneUIComponent - Label', function () {
 
     it('[Label-4] should verify that can create a label without any options value', function () {
         Helper.ElementHandler
-            .verifyElementVisible(NO_OPTION_LABEL)
+            .verifyElementDisplayed(NO_OPTION_LABEL)
     });
 
     it('[Label-3-5] should verify that the Label object contains the the below attibutes and can create a label with full options value', function () {
         Helper.ElementHandler
-            .verifyElementVisible(FULL_OPTION_LABEL)
+            .verifyElementDisplayed(FULL_OPTION_LABEL)
             .verifyElementNotExisting(FULL_OPTION_LABEL + "//span[@class='kuc-require']")
             .verifyElementEnabled(FULL_OPTION_LABEL)
             .verifyText(FULL_OPTION_LABEL, 'full option Label')
@@ -67,13 +67,13 @@ describe('kintoneUIComponent - Label', function () {
 
     it('[Label-6] should verify that can create a label with only option.Text', function () {
         Helper.ElementHandler
-            .verifyElementVisible(ONLY_TEXT_LABEL)
+            .verifyElementDisplayed(ONLY_TEXT_LABEL)
             .verifyText(ONLY_TEXT_LABEL, 'only options.Text Label')
     });
 
     it('[Label-7] should verify that can create a label with only option.isRequired is True', function () {
         Helper.ElementHandler
-            .waitForElementExit(ONLY_REQUIRED_LABEL)
+            .waitForElement(ONLY_REQUIRED_LABEL)
             .verifyText(ONLY_REQUIRED_LABEL, '*')
     });
 
@@ -84,12 +84,12 @@ describe('kintoneUIComponent - Label', function () {
 
     it('[Label-11] should verify that can create a label with only option.isVisibled is True', function () {
         Helper.ElementHandler
-            .verifyElementVisible(ONLY_VISIBLE_LABEL)
+            .verifyElementDisplayed(ONLY_VISIBLE_LABEL)
     });
 
     it('[Label-12] should verify that can create a label with only option.isVisibled is False', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(ONLY_VISIBLE_LABEL_1)
+            .verifyElementNotDisplayed(ONLY_VISIBLE_LABEL_1)
     });
 
     it('[Label-15-16] should set text for label which not contain existing text and contain existing text', function () {
@@ -110,10 +110,10 @@ describe('kintoneUIComponent - Label', function () {
 
     it('[Label-18] should set text for invisible label', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(SET_TEXT_INVISIBLE_LABEL)
+            .verifyElementNotDisplayed(SET_TEXT_INVISIBLE_LABEL)
             .click(SET_TEXT_INVISIBLE_BUTTON_LABEL)
             .click(SHOW_TEXT_INVISIBLE_BUTTON_LABEL)
-            .verifyElementVisible(SET_TEXT_INVISIBLE_LABEL)
+            .verifyElementDisplayed(SET_TEXT_INVISIBLE_LABEL)
             .verifyText(SET_TEXT_INVISIBLE_LABEL, 'Set text with invisible label')
     });
 
@@ -150,7 +150,7 @@ describe('kintoneUIComponent - Label', function () {
     it('[Label-24] should set required for invisible label ', function () {
         Helper.ElementHandler
             .verifyElementNotExisting(SET_REQUIRED_INVISIBLE_LABEL)
-            .verifyElementNotVisible(SET_REQUIRED_INVISIBLE_LABEL)
+            .verifyElementNotDisplayed(SET_REQUIRED_INVISIBLE_LABEL)
             .click(SET_REQUIRED_BUTTON_INVISIBLE_LABEL)
             .verifyElementExisting(SET_REQUIRED_INVISIBLE_LABEL)
     });
@@ -164,20 +164,20 @@ describe('kintoneUIComponent - Label', function () {
 
     it('[Label-28] should show invisible Label and visible Label on UI', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(INVISIBLE_SHOW_LABEL)
-            .verifyElementVisible(VISIBLE_SHOW_LABEL)
+            .verifyElementNotDisplayed(INVISIBLE_SHOW_LABEL)
+            .verifyElementDisplayed(VISIBLE_SHOW_LABEL)
             .click(SHOW_BUTTON_LABEL)
-            .verifyElementVisible(INVISIBLE_SHOW_LABEL)
-            .verifyElementVisible(VISIBLE_SHOW_LABEL)
+            .verifyElementDisplayed(INVISIBLE_SHOW_LABEL)
+            .verifyElementDisplayed(VISIBLE_SHOW_LABEL)
     });
 
     it('[Label-30] should hide the visible Label and invisible Label on UI', function () {
         Helper.ElementHandler
-            .verifyElementVisible(VISIBLE_HIDE_LABEL)
-            .verifyElementNotVisible(INVISIBLE_HIDE_LABEL)
+            .verifyElementDisplayed(VISIBLE_HIDE_LABEL)
+            .verifyElementNotDisplayed(INVISIBLE_HIDE_LABEL)
             .click(HIDE_BUTTON_LABEL)
-            .verifyElementNotVisible(VISIBLE_HIDE_LABEL)
-            .verifyElementNotVisible(INVISIBLE_HIDE_LABEL)
+            .verifyElementNotDisplayed(VISIBLE_HIDE_LABEL)
+            .verifyElementNotDisplayed(INVISIBLE_HIDE_LABEL)
     });
 
     it('[Label-36] should register a callback function for click event successfully', function () {

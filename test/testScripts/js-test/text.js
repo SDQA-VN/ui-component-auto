@@ -33,8 +33,8 @@ describe('kintoneUIComponent - Text', function () {
     it('[Text-2-4-6] should verify that the Textbox object contains the the below attibutes', function () {
         Helper.ElementHandler
             .verifyElementColor(CONSTRUCTOR_TEXT, 'background-color', '#ffffff')
-            .verifyElementSize(CONSTRUCTOR_TEXT, 168, 48)
-            .verifyElementVisible(CONSTRUCTOR_TEXT)
+            .verifyElementSize(CONSTRUCTOR_TEXT, 165, 48)
+            .verifyElementDisplayed(CONSTRUCTOR_TEXT)
             .verifyElementEnabled(CONSTRUCTOR_TEXT)
             .verifyValue(CONSTRUCTOR_TEXT, 'Constructor Text')
     });
@@ -58,21 +58,21 @@ describe('kintoneUIComponent - Text', function () {
 
     it('[Text-25] should show invisible Text and visible Text on UI', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(SHOW_INVISIBLE_TEXT)
-            .verifyElementVisible(SHOW_VISIBLE_TEXT)
+            .verifyElementNotDisplayed(SHOW_INVISIBLE_TEXT)
+            .verifyElementDisplayed(SHOW_VISIBLE_TEXT)
             .click(SHOW_BUTTON_TEXT)
-            .verifyElementVisible(SHOW_INVISIBLE_TEXT)
-            .verifyElementVisible(SHOW_VISIBLE_TEXT)
+            .verifyElementDisplayed(SHOW_INVISIBLE_TEXT)
+            .verifyElementDisplayed(SHOW_VISIBLE_TEXT)
     });
 
     it('[Text-27] should hide the visible Text and invisble Text on UI', function () {
         Helper.ElementHandler
             .waitForElement(SHOW_VISIBLE_TEXT)
-            .verifyElementVisible(SHOW_VISIBLE_TEXT)
-            .verifyElementNotVisible(HIDE_INVISIBLE_TEXT)
+            .verifyElementDisplayed(SHOW_VISIBLE_TEXT)
+            .verifyElementNotDisplayed(HIDE_INVISIBLE_TEXT)
             .click(HIDE_BUTTON_TEXT)
-            .verifyElementNotVisible(HIDE_VISIBLE_TEXT)
-            .verifyElementNotVisible(HIDE_INVISIBLE_TEXT)
+            .verifyElementNotDisplayed(HIDE_VISIBLE_TEXT)
+            .verifyElementNotDisplayed(HIDE_INVISIBLE_TEXT)
     });
 
     it('[Text-29] should disable the current enabled Text and disable the current disabled Text  on UI', function () {

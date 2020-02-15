@@ -15,9 +15,9 @@ describe('kintoneUIComponent - Spinner', function () {
 
     it('[Spinner-2] Verify that operation of spinner and the UI is the same as spec', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(CONSTRUCTOR_SPINNER)
+            .verifyElementNotDisplayed(CONSTRUCTOR_SPINNER)
             .click(SHOW_BUTTON_SPINNER)
-            .verifyElementVisible(CONSTRUCTOR_SPINNER)
+            .verifyElementDisplayed(CONSTRUCTOR_SPINNER)
             .verifyElementColor(CONSTRUCTOR_SPINNER,'color','#333333')
             .verifyElementPosition(CONSTRUCTOR_SPINNER,'position','static')
             .click(HIDE_BUTTON_SPINNER)

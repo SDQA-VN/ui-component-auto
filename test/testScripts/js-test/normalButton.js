@@ -36,7 +36,7 @@ describe('kintoneUIComponent - Normal Button', function () {
     it('[Normal button-6] should create a button without any options value', function () {
         Helper.ElementHandler
             .waitForElement(NORMAL_BUTTON_CONSTRUCTOR)
-            .verifyElementVisible(NORMAL_BUTTON_CONSTRUCTOR)
+            .verifyElementDisplayed(NORMAL_BUTTON_CONSTRUCTOR)
     });
 
     it('[Normal button-16] should changed text by function setText which not contains existing text', function () {
@@ -64,16 +64,16 @@ describe('kintoneUIComponent - Normal Button', function () {
 
     it('[Normal button-25] should show invisible Button on UI', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(NORMAL_BUTTON_INVISIBLE)
+            .verifyElementNotDisplayed(NORMAL_BUTTON_INVISIBLE)
             .click(NORMAL_BUTTON_SHOW_BUTTON)
-            .verifyElementVisible(NORMAL_BUTTON_INVISIBLE)
+            .verifyElementDisplayed(NORMAL_BUTTON_INVISIBLE)
     });
 
     it('[Normal button-27] should hide the visible Button on UI', function () {
         Helper.ElementHandler
-            .verifyElementVisible(NORMAL_BUTTON_VISIBLE)
+            .verifyElementDisplayed(NORMAL_BUTTON_VISIBLE)
             .click(NORMAL_BUTTON_HIDE_BUTTON)
-            .verifyElementNotVisible(NORMAL_BUTTON_VISIBLE)
+            .verifyElementNotDisplayed(NORMAL_BUTTON_VISIBLE)
     });
 
     it('[Normal button-29] should disable the current enable Button on UI', function () {

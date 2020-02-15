@@ -38,13 +38,13 @@ describe('kintoneUIComponent - Submit Button', function () {
     it('[Submit button-5] should create a button without any options value', function () {
         Helper.ElementHandler
             .waitForElement(SUBMIT_BUTTON_CONSTRUCTOR)
-            .verifyElementVisible(SUBMIT_BUTTON_CONSTRUCTOR)
+            .verifyElementDisplayed(SUBMIT_BUTTON_CONSTRUCTOR)
     });
 
     it('[Submit button-6] should create a button with full options value', function () {
         Helper.ElementHandler
             .waitForElement(SUBMIT_BUTTON_FULL_OPTIONS)
-            .verifyElementVisible(SUBMIT_BUTTON_FULL_OPTIONS)
+            .verifyElementDisplayed(SUBMIT_BUTTON_FULL_OPTIONS)
     });
 
     it('[Submit button-16] should changed text by function setText which not contains existing text', function () {
@@ -72,16 +72,16 @@ describe('kintoneUIComponent - Submit Button', function () {
 
     it('[Submit button-25] should show invisible Button on UI', function () {
         Helper.ElementHandler
-            .verifyElementNotVisible(SUBMIT_BUTTON_INVISIBLE)
+            .verifyElementNotDisplayed(SUBMIT_BUTTON_INVISIBLE)
             .click(SUBMIT_BUTTON_SHOW_BUTTON)
-            .verifyElementVisible(SUBMIT_BUTTON_INVISIBLE)
+            .verifyElementDisplayed(SUBMIT_BUTTON_INVISIBLE)
     });
 
     it('[Submit button-27] should hide the visible Button on UI', function () {
         Helper.ElementHandler
-            .verifyElementVisible(SUBMIT_BUTTON_VISIBLE)
+            .verifyElementDisplayed(SUBMIT_BUTTON_VISIBLE)
             .click(SUBMIT_BUTTON_HIDE_BUTTON)
-            .verifyElementNotVisible(SUBMIT_BUTTON_VISIBLE)
+            .verifyElementNotDisplayed(SUBMIT_BUTTON_VISIBLE)
     });
 
     it('[Submit button-29] should disable the current enable Button on UI', function () {
