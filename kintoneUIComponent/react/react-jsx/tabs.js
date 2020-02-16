@@ -207,7 +207,7 @@ class ConstructorTable extends React.Component {
 class ConstructorTabs extends React.Component {
     constructor(props) {
         super(props);
-        var items = [
+        var itemsCons = [
             {
                 tabName: "Tab1",
                 tabContent: <ConstructorComponent/>
@@ -225,14 +225,14 @@ class ConstructorTabs extends React.Component {
                 isDisabled: true
             }
         ]
-        this.state = { items: items}
+        this.state = { items: itemsCons, value: 0}
     }
   
     render() {
         return (
             <div id='constructor-tabs'>
                 <Tabs
-                    items={this.state.items} onClickTabItem={(value) => { this.setState({ value }) }}
+                    items={this.state.items} value={this.state.value} onClickTabItem={(value) => { this.setState({ value }) }}
                 />
             </div>
         );
@@ -425,6 +425,11 @@ class DisableItemTabs extends React.Component {
             {
                 tabName: "Tab2",
                 tabContent: "This is Tab2",
+                isDisabled: false
+            },
+            {
+                tabName: "Tab3",
+                tabContent: "This is Tab3",
                 isDisabled: true
             }
         ];
@@ -433,8 +438,8 @@ class DisableItemTabs extends React.Component {
 
     handleClick = () => {
         const items = [...this.state.items];
-        items[0].isDisabled = true;
         items[1].isDisabled = true;
+        items[2].isDisabled = true;
         this.setState({ items: items });
     }
 
@@ -460,7 +465,7 @@ class EnableItemTabs extends React.Component {
             {
                 tabName: "Tab2",
                 tabContent: "This is Tab2",
-                isDisabled: false
+                isDisabled: true
             }
         ];
         this.state = { items: items, value: 0};
