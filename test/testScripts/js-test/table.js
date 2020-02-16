@@ -1,6 +1,5 @@
-const $ = require('../../utils/ReturnElement').singleElement;
 const common = require('../../utils/Common.js');
-const expect = require('chai').expect;
+const Helper = require('../../helper/main.js')
 
 const CONSTRUCTOR_TABLE = "//div[@id='constructor-table']//div[@class='kuc-table']";
 const WORKING_TABLE = "//div[@id='get-value-table']//div[@class='kuc-table']";
@@ -63,180 +62,127 @@ describe('kintoneUIComponent - Table', function () {
     });
 
     it('[Table-3-11->19] should verify that default table will contain header and sample row, verify that all below components can be add to table as child component', function () {
-        let tableHeaderColor = $(HEADER_CONSTRUCTOR_TABLE).getCssProperty('background-color');  
-        expect(tableHeaderColor.parsed.hex).to.equal('#3498db');
-        let tableHeaderExist = browser.isExisting(HEADER_CONSTRUCTOR_TABLE);
-        let tableRowExist = browser.isExisting(ROW_CONSTRUCTOR_TABLE);
-        expect(tableHeaderExist).to.equal(true);
-        expect(tableRowExist).to.equal(true);
-
-        let checkText = browser.isExisting(TEXT_CONSTRUCTOR_TABLE);
-        let checkRadio = browser.isExisting(RADIO_CONSTRUCTOR_TABLE);
-        let checkMultipleChoice = browser.isExisting(MULTIPLE_CHOICE_CONSTRUCTOR_TABLE);
-        let checkCheckbox = browser.isExisting(CHECKBOX_CONSTRUCTOR_TABLE);
-        let checkDropdown = browser.isExisting(DROPDOWN_CONSTRUCTOR_TABLE);
-        let checkLabel = browser.isExisting(LABEL_CONSTRUCTOR_TABLE);
-        let checkIconbtn = browser.isExisting(ICON_BUTTON_CONSTRUCTOR_TABLE);
-        let checkAlert = browser.isExisting(ALERT_CONSTRUCTOR_TABLE);
-        expect(checkText).to.equal(true);
-        expect(checkRadio).to.equal(true);
-        expect(checkMultipleChoice).to.equal(true);
-        expect(checkCheckbox).to.equal(true);
-        expect(checkDropdown).to.equal(true);
-        expect(checkLabel).to.equal(true);
-        expect(checkIconbtn).to.equal(true);
-        expect(checkAlert).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementColor(HEADER_CONSTRUCTOR_TABLE, 'background-color', '#3498db')
+            .verifyElementDisplayed(HEADER_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ROW_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(TEXT_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(RADIO_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(MULTIPLE_CHOICE_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(CHECKBOX_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(DROPDOWN_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(LABEL_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ICON_BUTTON_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ALERT_CONSTRUCTOR_TABLE)
     });
 
     it('[Table-2-5-6] should verify that the Table have the  UI is the same as Table on kintone, verify sample row is add below the row contains and verify the added row contain all components when click on insert button', function () {
-        let rowCount = browser.elements(ROW_CONSTRUCTOR_TABLE).value.length;
-        let addedRow = browser.isExisting(ADDED_ROW_CONSTRUCTOR_TABLE);
-        expect(addedRow).to.equal(false);
-        expect(rowCount).to.equal(1);
-        $(INSERT_BUTTON_CONSTRUCTOR_TABLE).click();
-        addedRow = browser.isExisting(ROW_CONSTRUCTOR_TABLE);
-        rowCount = browser.elements(ROW_CONSTRUCTOR_TABLE).value.length;
-        expect(addedRow).to.equal(true);
-        expect(rowCount).to.equal(2);
+        Helper.ElementHandler
+            .verifyNumberOfElements(ROW_CONSTRUCTOR_TABLE, 1)
+            .verifyElementNotDisplayed(ADDED_ROW_CONSTRUCTOR_TABLE)
+            .click(INSERT_BUTTON_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ROW_CONSTRUCTOR_TABLE)
+            .verifyNumberOfElements(ROW_CONSTRUCTOR_TABLE, 2)
 
-        let tableHeaderColor = $(HEADER_CONSTRUCTOR_TABLE).getCssProperty('background-color');  
-        expect(tableHeaderColor.parsed.hex).to.equal('#3498db');
-        let tableHeaderExist = browser.isExisting(HEADER_CONSTRUCTOR_TABLE);
-        let tableRowExist = browser.isExisting(ROW_CONSTRUCTOR_TABLE);
-        expect(tableHeaderExist).to.equal(true);
-        expect(tableRowExist).to.equal(true);
+            .verifyElementColor(HEADER_CONSTRUCTOR_TABLE, 'background-color', '#3498db')
+            .verifyElementDisplayed(HEADER_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ROW_CONSTRUCTOR_TABLE)
 
-        let tableInsertButton = browser.getAttribute(INSERT_BUTTON_CONSTRUCTOR_TABLE, 'class');
-        let tableRemoveButton = browser.getAttribute(REMOVE_BUTTON_CONSTRUCTOR_TABLE, 'class');
-        expect(tableInsertButton).to.include('blue');
-        expect(tableRemoveButton).to.include('gray');
+            .verifyAttribute(INSERT_BUTTON_CONSTRUCTOR_TABLE, 'class', 'blue')
+            .verifyAttribute(REMOVE_BUTTON_CONSTRUCTOR_TABLE, 'class', 'gray')
 
-        let checkText = browser.isExisting(ADDED_ROW_TEXT_CONSTRUCTOR_TABLE);
-        let checkRadio = browser.isExisting(ADDED_ROW_RADIO_CONSTRUCTOR_TABLE);
-        let checkMultipleChoice = browser.isExisting(ADDED_ROW_MULTIPLE_CHOICE_CONSTRUCTOR_TABLE);
-        let checkCheckbox = browser.isExisting(ADDED_ROW_CHECKBOX_CONSTRUCTOR_TABLE);
-        let checkDropdown = browser.isExisting(ADDED_ROW_DROPDOWN_CONSTRUTCTOR_TABLE);
-        let checkLabel = browser.isExisting(ADDED_ROW_LABEL_CONSTRUCTOR_TABLE);
-        let checkIconbtn = browser.isExisting(ADDED_ROW_ICON_BUTTON_CONSTRUCTOR_TABLE);
-        let checkAlert = browser.isExisting(ADDED_ROW_ALERT_CONSTRUCTOR_TABLE);
-        expect(checkText).to.equal(true);
-        expect(checkRadio).to.equal(true);
-        expect(checkMultipleChoice).to.equal(true);
-        expect(checkCheckbox).to.equal(true);
-        expect(checkDropdown).to.equal(true);
-        expect(checkLabel).to.equal(true);
-        expect(checkIconbtn).to.equal(true);
-        expect(checkAlert).to.equal(true);
+            .verifyElementDisplayed(ADDED_ROW_TEXT_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ADDED_ROW_RADIO_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ADDED_ROW_MULTIPLE_CHOICE_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ADDED_ROW_CHECKBOX_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ADDED_ROW_DROPDOWN_CONSTRUTCTOR_TABLE)
+            .verifyElementDisplayed(ADDED_ROW_LABEL_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ADDED_ROW_ICON_BUTTON_CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(ADDED_ROW_ALERT_CONSTRUCTOR_TABLE)
     });
 
     it('[Table-22->26] should verify the operation for all below child components in table are working as normally', function () {
-        $(TEXT_CONSTRUCTOR_TABLE).setValue('Check operation of Text');
-        let checkText = browser.getValue(TEXT_CONSTRUCTOR_TABLE);
-        expect(checkText).to.equal('Check operation of Text');
+        Helper.ElementHandler
+            .setValue(TEXT_CONSTRUCTOR_TABLE, 'Check operation of Text')
+            .verifyValue(TEXT_CONSTRUCTOR_TABLE, 'Check operation of Text')
 
-        $(RADIO_VALUE_CONSTRUCTOR_TABLE).click();
-        let checkRadio = browser.isExisting(RADIO_VALUE_CONSTRUCTOR_TABLE + ' input[type=radio]:checked');
-        expect(checkRadio).to.equal(true);
+            .click(RADIO_VALUE_CONSTRUCTOR_TABLE)
+            .verifyElementExisting(RADIO_VALUE_CONSTRUCTOR_TABLE + ' input[type=radio]:checked')
 
-        $(MULTIPLE_CHOICE_VALUE_CONSTRUCTOR_TABLE).click();
-        let checkMultipleChoice = browser.isExisting(MULTIPLE_CHOICE_VALUE_CONSTRUCTOR_TABLE + '.kuc-list-item-selected');
-        expect(checkMultipleChoice).to.equal(true);
+            .click(MULTIPLE_CHOICE_VALUE_CONSTRUCTOR_TABLE)
+            .verifyElementExisting(MULTIPLE_CHOICE_VALUE_CONSTRUCTOR_TABLE + '.kuc-list-item-selected')
 
-        $(CHECKBOX_VALUE_CONSTRUCTOR_TABLE).click();
-        let checkCheckbox = browser.isExisting(CHECKBOX_VALUE_CONSTRUCTOR_TABLE + ' input[type=checkbox]:checked')
-        expect(checkCheckbox).to.equal(true);
+            .click(CHECKBOX_VALUE_CONSTRUCTOR_TABLE)
+            .verifyElementExisting(CHECKBOX_VALUE_CONSTRUCTOR_TABLE + ' input[type=checkbox]:checked')
 
-        $(DROPDOWN_CONSTRUCTOR_TABLE + "//div[@class='kuc-dropdown-selected']").click();  
-        browser.moveToObject(DROPDOWN_CONSTRUCTOR_VALUE_TABLE);
-      
-        let checkHover = browser.isExisting('.kuc-list-item:hover');
-        let checkColor = $(DROPDOWN_CONSTRUCTOR_VALUE_TABLE).getCssProperty('background-color');
-        expect(checkHover).to.equal(true);
-        expect(checkColor.parsed.hex).to.equal('#e2f2fe');
-        $(DROPDOWN_CONSTRUCTOR_VALUE_TABLE).click();
-        let isSelect= browser.isExisting(".kuc-list-item-selected");
-        expect(isSelect).to.equal(true);
+            .click(DROPDOWN_CONSTRUCTOR_TABLE + "//div[@class='kuc-dropdown-selected']")
+            .moveToObject(DROPDOWN_CONSTRUCTOR_VALUE_TABLE)
+            .verifyElementExisting('.kuc-list-item:hover')
+            .verifyElementColor(DROPDOWN_CONSTRUCTOR_VALUE_TABLE, 'background-color', '#e2f2fe')
+            .click(DROPDOWN_CONSTRUCTOR_VALUE_TABLE)
+            .verifyElementExisting('.kuc-list-item-selected')
     });
 
     it('[Table-31] should verify that can add 2 tables into 1 form', function () {
-        let constructorTable = browser.isExisting(CONSTRUCTOR_TABLE);
-        let workingTable = browser.isExisting(WORKING_TABLE);
-        expect(constructorTable).to.equal(true);
-        expect(workingTable).to.equal(true);
+        Helper.ElementHandler
+            .verifyElementDisplayed(CONSTRUCTOR_TABLE)
+            .verifyElementDisplayed(WORKING_TABLE)
     });
 
     it('[Table-43] should verify that can get value of all rows in table', function () {
-        $(GET_VALUE_ALL_TABLE).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('text field, Banana, [red], [potato,celery], cars');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(GET_VALUE_ALL_TABLE)
+            .verifyAlertText('text field, Banana, [red], [potato,celery], cars')
     });
 
     it('[Table-46] should verify that return the same value in the current table', function () {
-        $(GET_VALUE_TEXT_TABLE).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('text field');
-        browser.alertAccept();
-        $(GET_VALUE_RADIO_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('Banana');
-        browser.alertAccept();
-        $(GET_VALUE_MULTIPLE_CHOICE_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('red');
-        browser.alertAccept();
-        $(GET_VALUE_CHECKBOX_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('potato,celery');
-        browser.alertAccept();
-        $(GET_VALUE_DROPDOWN_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('cars');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(GET_VALUE_TEXT_TABLE)
+            .verifyAlertText('text field')
+
+            .click(GET_VALUE_RADIO_TABLE)
+            .verifyAlertText('Banana')
+
+            .click(GET_VALUE_MULTIPLE_CHOICE_TABLE)
+            .verifyAlertText('red')
+
+            .click(GET_VALUE_CHECKBOX_TABLE)
+            .verifyAlertText('potato,celery')
+
+            .click(GET_VALUE_DROPDOWN_TABLE)
+            .verifyAlertText('cars')
     });
 
     it('[Table-53->57] should verify that can set value for the below components in table', function () {
-        $(SET_VALUE_ALL_BUTTON_TABLE).click();
-        let checkText = $(SET_VALUE_TEXT_TABLE).getValue();
-        expect(checkText).to.equal('first row');
-        let checkRadio = browser.isExisting(SET_VALUE_RADIO_TABLE + ' input[type=radio]:checked');
-        expect(checkRadio).to.equal(true);
-        let checkMultipleChoice = browser.isExisting(SET_VALUE_MULTIPLE_CHOICE_TABLE + '.kuc-list-item-selected');
-        expect(checkMultipleChoice).to.equal(true);
-        let checkCheckbox = browser.isExisting(SET_VALUE_CHECKBOX_TABLE + ' input[type=checkbox]:checked');
-        expect (checkCheckbox).to.equal(true);
-        let checkDropdown = $(SET_VALUE_DROPDOWN_TABLE).getText();
-        expect(checkDropdown).to.equal('Robots');
-     });
+        Helper.ElementHandler
+            .click(SET_VALUE_ALL_BUTTON_TABLE)
+            .verifyValue(SET_VALUE_TEXT_TABLE, 'first row')
+            .verifyElementExisting(SET_VALUE_RADIO_TABLE + ' input[type=radio]:checked')
+            .verifyElementExisting(SET_VALUE_MULTIPLE_CHOICE_TABLE + '.kuc-list-item-selected')
+            .verifyText(SET_VALUE_DROPDOWN_TABLE, 'Robots')
+    });
 
     it('[Table-67-68-69-84-91] should verify that callback when rowAdd, rowRemove and cellChange', function () {
-        $(INSERT_BUTTON_CALLBACK_TABLE).click();
-        let alertText = browser.alertText()
-        expect(alertText).to.equal('rowAdd is callback');
-        browser.alertAccept();
-        $(REMOVE_BUTTON_CALLBACK_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('rowRemove is callback');
-        browser.alertAccept();   
-        $(SET_VALUE_TEXT_BUTTON_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('cellChange is callback');
-        browser.alertAccept();
-        $(SET_VALUE_RADIO_BUTTON_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('cellChange is callback');
-        browser.alertAccept();
-        $(SET_VALUE_MULTIPLE_CHOICE_BUTTON_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('cellChange is callback');
-        browser.alertAccept();
-        $(SET_VALUE_CHECKBOX_BUTTON_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('cellChange is callback');
-        browser.alertAccept();
-        $(SET_VALUE_DROPDOWN_BUTTON_TABLE).click();
-        alertText = browser.alertText()
-        expect(alertText).to.equal('cellChange is callback');
-        browser.alertAccept();
+        Helper.ElementHandler
+            .click(INSERT_BUTTON_CALLBACK_TABLE)
+            .verifyAlertText('rowAdd is callback')
+
+            .click(REMOVE_BUTTON_CALLBACK_TABLE)
+            .verifyAlertText('rowRemove is callback')
+
+            .click(SET_VALUE_TEXT_BUTTON_TABLE)
+            .verifyAlertText('cellChange is callback')
+
+            .click(SET_VALUE_RADIO_BUTTON_TABLE)
+            .verifyAlertText('cellChange is callback')
+
+            .click(SET_VALUE_MULTIPLE_CHOICE_BUTTON_TABLE)
+            .verifyAlertText('cellChange is callback')
+
+            .click(SET_VALUE_CHECKBOX_BUTTON_TABLE)
+            .verifyAlertText('cellChange is callback')
+
+            .click(SET_VALUE_DROPDOWN_BUTTON_TABLE)
+            .verifyAlertText('cellChange is callback')
     });
 });
