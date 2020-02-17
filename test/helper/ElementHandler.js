@@ -255,8 +255,13 @@ class ElementHandler {
     /**
     * @param {string} locator    Element for verify
     */
-    moveToObject(locator) {
-        $(locator).moveTo()
+    moveToObject(locator, xoffset, yoffset) {
+        if (xoffset === undefined & yoffset === undefined) {
+            $(locator).moveTo()
+        }
+        else {
+            $(locator).moveTo(xoffset, yoffset)
+        }
         return this;
     }
 
@@ -272,18 +277,18 @@ class ElementHandler {
     }
 
     /**
-    * @param {string} locator    Element for verify
+    * @param {int} number    which button, enum: LEFT = 0, MIDDLE = 1 , RIGHT = 2, defaults to the left mouse button if not specified
     */
-    buttonUp() {
-        browser.buttonUp()
+    buttonUp(number) {
+        browser.buttonUp(number)
         return this;
     }
 
     /**
-    * @param {string} locator    Element for verify
+    * @param {int} number    which button, enum: LEFT = 0, MIDDLE = 1 , RIGHT = 2, defaults to the left mouse button if not specified
     */
-    buttonDown() {
-        browser.buttonDown()
+    buttonDown(number) {
+        browser.buttonDown(number)
         return this;
     }
 }

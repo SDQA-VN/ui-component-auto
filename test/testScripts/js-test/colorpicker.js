@@ -1,6 +1,6 @@
-const $ = require('../../utils/ReturnElement').singleElement;
 const common = require('../../utils/Common.js');
 const expect = require('chai').expect;
+const Helper = require('../../helper/main')
 
 const XPATH_CONSTRUCTOR_COLORPICKER = "//div[@id='constructor-colorpicker']//div/input";
 const XPATH_CONSTRUCTOR_COLORPICKER_CANCEL_BUTTON = "//div[@id='constructor-colorpicker']//button[@class='kuc-btn normal']";
@@ -39,11 +39,10 @@ describe('kintoneUIComponent - Alert', () => {
   });
 
   it('[Colorpicker-2-3-4-7] should checking HEX input field, ColorPicker popup window displayed, operation of Saturation,Hue,RGB input, full option ColorPicker  ', function () {
-    let checkHex = browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER);
-    let checkColor = $(XPATH_CONSTRUCTOR_COLORPICKER).getCssProperty('background-color');
-    expect(checkHex).to.equal('#ecd110');
-    expect(checkColor.parsed.hex).to.equal('#ecd110');
-    $(XPATH_CONSTRUCTOR_COLORPICKER).click();
+    Helper.ElementHandler
+      .verifyValue(XPATH_CONSTRUCTOR_COLORPICKER, '#ecd110')
+      .verifyElementColor(XPATH_CONSTRUCTOR_COLORPICKER, 'background-color', '#ecd110')
+      .click(XPATH_CONSTRUCTOR_COLORPICKER)
 
     const verify = (verifyObj, expectObj) => {
       expect(verifyObj.Rfield).to.equal(expectObj.r);
@@ -56,93 +55,90 @@ describe('kintoneUIComponent - Alert', () => {
 
     const getVerifyObj = () => {
       return verifyObject = {
-        Rfield: browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_R_FIELD),
-        Gfield: browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_G_FIELD),
-        Bfield: browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_B_FIELD),
-        Hfield: browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER_HUE_H_FIELD),
-        Ufield: browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER_HUE_U_FIELD),
-        Efield: browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER_HUE_E_FIELD),
+        Rfield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_R_FIELD),
+        Gfield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_G_FIELD),
+        Bfield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_B_FIELD),
+        Hfield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_HUE_H_FIELD),
+        Ufield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_HUE_U_FIELD),
+        Efield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_HUE_E_FIELD),
       };
     }
 
     verify(getVerifyObj(), { r: '236', g: '209', b: '16', h: '0.1', u: '0.9', e: '0.9' });
-    browser.leftClick(XPATH_CONSTRUCTOR_COLORPICKER_SATURATION, 82, 58);
-    let getHexColor = $(XPATH_CONSTRUCTOR_COLORPICKER_HEX_FIELD).getValue();
-    verify(getVerifyObj(), { r: '131', g: '123', b: '66', h: '0.1', u: '0.5', e: '0.5' });
 
-    browser.leftClick(XPATH_CONSTRUCTOR_COLORPICKER_HUE, 10, 92);
-    verify(getVerifyObj(), { r: '0', g: '183', b: '255', h: '0.5', u: '1.0', e: '1.0' });
+    // verify click on saturation
+    Helper.ElementHandler
+      .moveToObject(XPATH_CONSTRUCTOR_COLORPICKER_SATURATION, 30, 40)
+      .click(XPATH_CONSTRUCTOR_COLORPICKER_SATURATION)
+    verify(getVerifyObj(), { r: '91', g: '84', b: '35', h: '0.1', u: '0.6', e: '0.4' });
 
-    getHexColor = $(XPATH_CONSTRUCTOR_COLORPICKER_HEX_FIELD).getValue();
-    checkHex = browser.getValue(XPATH_CONSTRUCTOR_COLORPICKER);
-    checkColor = $(XPATH_CONSTRUCTOR_COLORPICKER).getCssProperty('background-color');
-    expect(getHexColor).to.equal(checkHex);
-    expect(checkColor.parsed.hex).to.equal('#00b7ff');
-    $(XPATH_CONSTRUCTOR_COLORPICKER_CANCEL_BUTTON).click();
+    // verify click on hue
+    Helper.ElementHandler
+      .moveToObject(XPATH_CONSTRUCTOR_COLORPICKER_HUE, 10, 92)
+      .click(XPATH_CONSTRUCTOR_COLORPICKER_HUE)
+    verify(getVerifyObj(), { r: '0', g: '243', b: '255', h: '0.5', u: '1.0', e: '1.0' });
+
+    let checkHex = Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_HEX_FIELD)
+
+    Helper.ElementHandler
+      .verifyValue(XPATH_CONSTRUCTOR_COLORPICKER_HEX_FIELD, checkHex)
+      .verifyElementColor(XPATH_CONSTRUCTOR_COLORPICKER, 'background-color', '#00f3ff')
+      .click(XPATH_CONSTRUCTOR_COLORPICKER_CANCEL_BUTTON)
   });
 
   it('[Colorpicker-18] should get color of Colorpicker by using getColor()', () => {
-    let hexField = browser.getValue(XPATH_GET_COLOR_COLORPICKER);
-    $(XPATH_GET_COLOR_COLORPICKER_BUTTON).click();
-    alertText = browser.alertText();
-    browser.alertAccept();
-    expect(alertText).to.equal(hexField);
+    let hexField = Helper.ElementHandler.getValue(XPATH_GET_COLOR_COLORPICKER)
+    Helper.ElementHandler
+      .click(XPATH_GET_COLOR_COLORPICKER_BUTTON)
+      .verifyAlertText(hexField)
   });
 
   it('[Colorpicker-23] should set color of Colorpicker by using setColor()', () => {
-    let hexField = browser.getValue(XPATH_SET_COLOR_COLORPICKER);
-    expect(hexField).to.equal('#00B7FF');
-    $(XPATH_SET_COLOR_COLORPICKER_BUTTON).click();
-    hexField = browser.getValue(XPATH_SET_COLOR_COLORPICKER);
-    expect(hexField).to.equal('#e74c3c');
+    Helper.ElementHandler
+      .verifyValue(XPATH_SET_COLOR_COLORPICKER, '#00B7FF')
+      .click(XPATH_SET_COLOR_COLORPICKER_BUTTON)
+      .verifyValue(XPATH_SET_COLOR_COLORPICKER, '#e74c3c')
   });
 
   it('[Colorpicker-29] should show invisible Colorpicker', () => {
-    let checkVisible = browser.isVisible(XPATH_SHOW_COLORPICKER);
-    expect(checkVisible).to.equal(false);
-    $(XPATH_SHOW_COLORPICKER_BUTTON).click();
-    checkVisible = browser.isVisible(XPATH_SHOW_COLORPICKER);
-    expect(checkVisible).to.equal(true);
+    Helper.ElementHandler
+      .verifyElementNotDisplayed(XPATH_SHOW_COLORPICKER)
+      .click(XPATH_SHOW_COLORPICKER_BUTTON)
+      .verifyElementDisplayed(XPATH_SHOW_COLORPICKER)
   });
 
   it('[Colorpicker-30] should hide invisible Colorpicker', () => {
-    let checkVisible = browser.isVisible(XPATH_HIDE_COLORPICKER);
-    expect(checkVisible).to.equal(true);
-    $(XPATH_HIDE_COLORPICKER_BUTTON).click();
-    checkVisible = browser.isVisible(XPATH_HIDE_COLORPICKER);
-    expect(checkVisible).to.equal(false);
+    Helper.ElementHandler
+      .verifyElementDisplayed(XPATH_HIDE_COLORPICKER)
+      .click(XPATH_HIDE_COLORPICKER_BUTTON)
+      .verifyElementNotDisplayed(XPATH_HIDE_COLORPICKER)
   });
 
   it('[Colorpicker-32] should disable the current enabled Colorpicker', () => {
-    let checkDisable = browser.isEnabled(XPATH_DISABLE_COLORPICKER);
-    expect(checkDisable).to.equal(true);
-    $(XPATH_DISABLE_COLORPICKER_BUTTON).click();
-    checkDisable = browser.isEnabled(XPATH_DISABLE_COLORPICKER);
-    expect(checkDisable).to.equal(false);
+    Helper.ElementHandler
+      .verifyElementEnabled(XPATH_DISABLE_COLORPICKER)
+      .click(XPATH_DISABLE_COLORPICKER_BUTTON)
+      .verifyElementDisabled(XPATH_DISABLE_COLORPICKER)
   });
 
   it('[Colorpicker-33] should enable the current disabled Colorpicker', () => {
-    let checkDisable = browser.isEnabled(XPATH_ENABLE_COLORPICKER);
-    expect(checkDisable).to.equal(false);
-    $(XPATH_ENABLE_COLORPICKER_BUTTON).click();
-    checkDisable = browser.isEnabled(XPATH_ENABLE_COLORPICKER);
-    expect(checkDisable).to.equal(true);
+    Helper.ElementHandler
+      .verifyElementDisabled(XPATH_ENABLE_COLORPICKER)
+      .click(XPATH_ENABLE_COLORPICKER_BUTTON)
+      .verifyElementEnabled(XPATH_ENABLE_COLORPICKER)
   });
 
   it('[Colorpicker-34] should register a callback function for change event successfully', () => {
-    $(XPATH_CALLBACK_COLORPICKER).click();
-    $(XPATH_CALLBACK_COLORPICKER_BUTTON).click();
-    alertText = browser.alertText();
-    browser.alertAccept();
-    expect(alertText).to.equal('onCallbackFunctionColorPicker has been clicked');
+    Helper.ElementHandler
+      .click(XPATH_CALLBACK_COLORPICKER)
+      .click(XPATH_CALLBACK_COLORPICKER_BUTTON)
+      .verifyAlertText('onCallbackFunctionColorPicker has been clicked')
   });
 
   it('[Colorpicker-35] should callback function will be trigger when click on button OK in the HEX string', () => {
-    $(XPATH_TRIGGER_COLORPICKER).click();
-    $(XPATH_TRIGGER_COLORPICKER_BUTTON).click();
-    alertText = browser.alertText();
-    browser.alertAccept();
-    expect(alertText).to.equal('onCallbackTriggerAlert has been clicked');
+    Helper.ElementHandler
+      .click(XPATH_TRIGGER_COLORPICKER)
+      .click(XPATH_TRIGGER_COLORPICKER_BUTTON)
+      .verifyAlertText('onCallbackTriggerAlert has been clicked')
   });
-
 })
