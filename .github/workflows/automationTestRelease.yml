@@ -36,11 +36,12 @@ jobs:
 #       run: |
 #         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
     - name: Send status after run test
+      if: always()
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{secrets.ACCESS_TOKEN}}
         repository: hokimcuc0202/kintone-ui-component
         event-type: release_dispatch
-        client-payload: '{"status": "success"}'
+        client-payload: '{"status": ${{job.status}}}'
       env:
         CI: true
