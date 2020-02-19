@@ -13,28 +13,28 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-    - name: Install chrome
-      run: |
-        sudo apt-get update 
-        sudo apt-get install google-chrome-stable 
-    - name: Install package
-      run: |
-        npm install
-    - name: Get latest build kintone-ui-component
-      uses: ./actions/get_latest_build
-      id: get_latest_build
-      with:
-        branches: master
-    - name: Install latest build kintone-ui-component
-      run: |
-        npm install ${{steps.get_latest_build.outputs.files}}
-    - name: Preparation source
-      run: |
-        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
-    - name: Run test
-      if: success()
-      run: |
-        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
+#     - name: Install chrome
+#       run: |
+#         sudo apt-get update 
+#         sudo apt-get install google-chrome-stable 
+#     - name: Install package
+#       run: |
+#         npm install
+#     - name: Get latest build kintone-ui-component
+#       uses: ./actions/get_latest_build
+#       id: get_latest_build
+#       with:
+#         branches: master
+#     - name: Install latest build kintone-ui-component
+#       run: |
+#         npm install ${{steps.get_latest_build.outputs.files}}
+#     - name: Preparation source
+#       run: |
+#         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
+#     - name: Run test
+#       if: success()
+#       run: |
+#         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run test
     - name: Send status after run test
       uses: peter-evans/repository-dispatch@v1
       with:
