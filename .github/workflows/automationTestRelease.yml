@@ -39,7 +39,7 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{secrets.ACCESS_TOKEN}}
-        repository: kintone/kintone-ui-component
+        repository: hokimcuc0202/kintone-ui-component
         event-type: release_dispatch
         client-payload: '{"status": "success"}'
       env:
