@@ -9,7 +9,7 @@ const SET_DROPZONE_TEXT_ATTACHMENT = "//div[@id='set-dropzone-text-attachment']/
 const SET_DROPZONE_TEXT_BUTTON_ATTACHMENT = "//button[contains(text(),'Set Dropzone Text of Attachment')]";
 const SET_BROWSE_BUTTON_TEXT_ATTACHMENT = "//div[@id='set-browse-button-text-attachment']//span[@class='kuc-attachment-file-upload-button-text']"
 const SET_BROWSE_BUTTON_TEXT_BUTTON_ATTACHMENT = "//button[contains(text(),'Set Browse Button Text of Attachment')]";
-const SET_FILE_LIMIT_TEXT_ATTACHMENT_JS = "//div[@id='set-file-limit-text-attachment']//div[@class='kuc-attachment-file-constraints']";
+const SET_FILE_LIMIT_TEXT_ATTACHMENT_JS = "//div[@id='set-file-limit-text-attachment']//p[@class='kuc-attachment-file-constraints']";
 const SET_FILE_LIMIT_TEXT_ATTACHMENT_REACT = "//div[@id='set-file-limit-text-attachment']//p[@class='kuc-attachment-file-constraints']";
 const SET_FILE_LIMIT_TEXT_BUTTON_ATTACHMENT = "//button[contains(text(),'Set File Limit Text of Attachment')]";
 const SET_ERROR_MESSAGE_BUTTON_ATTACHMENT = "//button[contains(text(),'Set Error Message of Attachment')]";

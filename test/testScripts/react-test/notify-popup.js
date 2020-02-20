@@ -42,7 +42,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_NOTIFY_SUCCESS_SHOW)
             .verifyElementColor(XPATH_NOTIFY_SUCCESS, 'background', '#91c36c')
             .verifyElementPosition(XPATH_NOTIFY_SUCCESS, 'position', 'fixed')
-            .verifyElementSize(XPATH_NOTIFY_SUCCESS, 216, 70)
+            .verifyElementSize(XPATH_NOTIFY_SUCCESS, 215, 70)
             .click(XPATH_NOTIFY_SUCCESS_CLOSE)
     });
     it('[Notify-3] Verify that the Error NotifyPopup have the UI is the same as NotifyPopup on kintone', function () {
