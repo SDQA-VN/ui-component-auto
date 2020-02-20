@@ -3,577 +3,685 @@
 'use strict';
 
 // Render() - without value
-let cons_without_value_CWV_mulChoice = new kintoneUIComponent.MultipleChoice({
+let consValueFullValueMulChoice = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'CWV_Default_MulChoice_Item',
-            value: 'CWV_Default_MulChoice_Item',
-            isDisabled: true
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
         },
         {
-            label: 'CWV_MulChoice_Item_2',
-            value: 'CWV_MulChoice_Item_2',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: false
-        }
-    ]
-});
-let cons_without_value_CWV_mulChoice_El = cons_without_value_CWV_mulChoice.render();
-cons_without_value_CWV_mulChoice_El.id = 'CWV_M_MulChoice_ID';
-let cons_without_value_CWV_mulChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 1);
-cons_without_value_CWV_mulChoice_cell.appendChild(cons_without_value_CWV_mulChoice_El);
-
-// Render() - full Value
-let cons_full_option_CFO_mulChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'CFO_Default_MulChoice_Item',
-            value: 'CFO_Default_MulChoice_Item',
-            isDisabled: true
         },
         {
-            label: 'CFO_MulChoice_Item_2',
-            value: 'CFO_MulChoice_Item_2',
-            isDisabled: false
-        }
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
     ],
-    value: ['CFO_Default_MulChoice_Item'],
+    value: ['Orange'],
     isDisabled: false,
     isVisible: true
 });
-let cons_full_option_CFO_mulChoice_El = cons_full_option_CFO_mulChoice.render();
-cons_full_option_CFO_mulChoice_El.id = 'CFO_M_MulChoice_ID';
-let cons_full_option_CFO_mulChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 2);
-cons_full_option_CFO_mulChoice_cell.appendChild(cons_full_option_CFO_mulChoice_El);
+let consValueFullValueMulChoiceEl = document.createElement('div');
+consValueFullValueMulChoiceEl.setAttribute('class', 'multiple-render');
+consValueFullValueMulChoiceEl.appendChild(consValueFullValueMulChoice.render());
+let consValueFullValueMulChoiceCell = testgrid.getCell(posConfig.Multiple_Choice.x, 1);
+consValueFullValueMulChoiceCell.appendChild(consValueFullValueMulChoiceEl);
 
-// Render() - with only value
-let cons_with_only_value_CWOV_mulChoice = new kintoneUIComponent.MultipleChoice({
+
+// Render() - without value
+let MultipleWithoutOption = new kintoneUIComponent.MultipleChoice({
+    items: [],
+});
+let MultipleWithoutOptionEl = document.createElement('div');
+MultipleWithoutOptionEl.setAttribute('class', 'multiple-withoutOption');
+MultipleWithoutOptionEl.appendChild(MultipleWithoutOption.render());
+let MultipleWithoutOptionCell = testgrid.getCell(posConfig.Multiple_Choice.x, 2);
+MultipleWithoutOptionCell.appendChild(MultipleWithoutOptionEl);
+
+// Render() - only value
+let MultipleOnlyValue = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'OCAI_Default_MulChoice_Item',
-            value: 'OCAI_Default_MulChoice_Item',
-            isDisabled: true
-        },
-        {
-            label: 'OCAI_MulChoice_Item_2',
-            value: 'OCAI_MulChoice_Item_2',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
-        }
-    ],
-    value: ['OCAI_Default_MulChoice_Item']
-});
-let cons_with_only_value_CWOV_mulChoice_El = cons_with_only_value_CWOV_mulChoice.render();
-cons_with_only_value_CWOV_mulChoice_El.id = 'CWOV_M_MulChoice_ID';
-let cons_with_only_value_CWOV_mulChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 3);
-cons_with_only_value_CWOV_mulChoice_cell.appendChild(cons_with_only_value_CWOV_mulChoice_El);
-
-// Add items - full value
-let add_item_full_value_AIFV_mulChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'AIFV_Default_MulChoice_Item',
-            value: 'AIFV_Default_MulChoice_Item',
-            isDisabled: true
         },
-        {
-            label: 'AIFV_MulChoice_Item_2',
-            value: 'AIFV_MulChoice_Item_2',
-            isDisabled: false
-        }
     ],
-    value: ['AIFV_Default_MulChoice_Item']
+    value: ['Orange'],
 });
-let add_item_full_value_AIFV_mulChoice_El = add_item_full_value_AIFV_mulChoice.render();
-add_item_full_value_AIFV_mulChoice_El.id = 'AIFV_MulChoice_ID';
-let add_item_full_value_AIFV_mulChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 4);
-add_item_full_value_AIFV_mulChoice_cell.appendChild(add_item_full_value_AIFV_mulChoice_El);
+let MultipleOnlyValueEl = document.createElement('div');
+MultipleOnlyValueEl.setAttribute('class', 'multiple-onlyValue');
+MultipleOnlyValueEl.appendChild(MultipleOnlyValue.render());
+let MultipleOnlyValueCell = testgrid.getCell(posConfig.Multiple_Choice.x, 3);
+MultipleOnlyValueCell.appendChild(MultipleOnlyValueEl);
 
-function getAddItemMulChoice() {
-    let items = add_item_full_value_AIFV_mulChoice.getItems();
-    alert(JSON.stringify(items));
-}
 
-let getAddItemMulChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get New Added Item MulChoice Button',
-    type: 'normal',
-    isVisible: true,
+// Render() - add items
+let MultipleAdd = new kintoneUIComponent.MultipleChoice({
+    items: [],
 });
-let getAddItemMulChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 5);
-getAddItemMulChoiceBtn_cell.appendChild(getAddItemMulChoiceBtn.render());
-getAddItemMulChoiceBtn.on('click', getAddItemMulChoice);
+let MultipleAddEl = document.createElement('div');
+MultipleAddEl.setAttribute('class', 'multiple-addItems');
 
-// Add items - full value for invisible mulChoice
-let add_item_invi_AII_mulChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'AII_Default_MulChoice_Item',
-            value: 'AII_Default_MulChoice_Item',
-            isDisabled: true
-        },
-        {
-            label: 'AII_MulChoice_Item_2',
-            value: 'AII_MulChoice_Item_2',
-            isDisabled: false
-        }
-    ],
-    value: ['AII_Default_MulChoice_Item'],
+let buttonMultipleAdd = document.createElement('button');
+buttonMultipleAdd.innerHTML = 'Add Items';
+buttonMultipleAdd.setAttribute('class', 'add-items');
+buttonMultipleAdd.addEventListener('click', function () {
+    MultipleAdd.addItem({
+        label: 'Lemon',
+        value: 'Lemon',
+        isDisabled: false
+    })
+})
+
+MultipleAddEl.appendChild(MultipleAdd.render());
+MultipleAddEl.appendChild(buttonMultipleAdd);
+let MultipleAddCell = testgrid.getCell(posConfig.Multiple_Choice.x, 4);
+MultipleAddCell.appendChild(MultipleAddEl);
+
+
+// Render() - add items without value
+let MultipleAddWithoutValue = new kintoneUIComponent.MultipleChoice({
+    items: [],
+});
+let MultipleAddWithoutValueEl = document.createElement('div');
+MultipleAddWithoutValueEl.setAttribute('class', 'multiple-addItems-withoutValue');
+
+let buttonMultipleAddWithoutValue = document.createElement('button');
+buttonMultipleAddWithoutValue.innerHTML = 'Add Items';
+buttonMultipleAddWithoutValue.setAttribute('class', 'add-items');
+buttonMultipleAddWithoutValue.addEventListener('click', function () {
+    MultipleAddWithoutValue.addItem({
+        label: 'Lemon',
+        isDisabled: false
+    })
+})
+
+MultipleAddWithoutValueEl.appendChild(MultipleAddWithoutValue.render());
+MultipleAddWithoutValueEl.appendChild(buttonMultipleAddWithoutValue);
+let MultipleAddWithoutValueCell = testgrid.getCell(posConfig.Multiple_Choice.x, 5);
+MultipleAddWithoutValueCell.appendChild(MultipleAddWithoutValueEl);
+
+
+// Render() - add items without value
+let InvisibleMultipleAdd = new kintoneUIComponent.MultipleChoice({
+    items: [],
     isVisible: false
 });
-let add_item_invi_AII_mulChoice_El = add_item_invi_AII_mulChoice.render();
-add_item_invi_AII_mulChoice_El.id = 'invi_AII_MulChoice_ID';
-let add_item_invi_AII_mulChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 6);
-add_item_invi_AII_mulChoice_cell.appendChild(add_item_invi_AII_mulChoice_El);
+let InvisibleMultipleAddEl = document.createElement('div');
+InvisibleMultipleAddEl.setAttribute('class', 'invisibleMultiple-addItems');
 
-function getAddItemInviMulChoice() {
-    let items = add_item_invi_AII_mulChoice.getItems();
-    alert(JSON.stringify(items));
-}
+let buttonInvisibleMultipleAdd = document.createElement('button');
+buttonInvisibleMultipleAdd.innerHTML = 'Add Items';
+buttonInvisibleMultipleAdd.setAttribute('class', 'add-items');
+buttonInvisibleMultipleAdd.addEventListener('click', function () {
+    InvisibleMultipleAdd.addItem({
+        value: 'Lemon',
+    })
+    InvisibleMultipleAdd.show()
+})
 
-let getAddItemInvisibleMulChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get New Added Item For Invisible MulChoice Button',
-    type: 'normal',
-    isVisible: true,
-});
-let getAddItemInvisibleMulChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 7);
-getAddItemInvisibleMulChoiceBtn_cell.appendChild(getAddItemInvisibleMulChoiceBtn.render());
-getAddItemInvisibleMulChoiceBtn.on('click', getAddItemInviMulChoice);
+InvisibleMultipleAddEl.appendChild(InvisibleMultipleAdd.render());
+InvisibleMultipleAddEl.appendChild(buttonInvisibleMultipleAdd);
+let InvisibleMultipleAddCell = testgrid.getCell(posConfig.Multiple_Choice.x, 6);
+InvisibleMultipleAddCell.appendChild(InvisibleMultipleAddEl);
 
-// Add item - only item.value
-let add_item_only_value_AIOV_mulChoice = new kintoneUIComponent.MultipleChoice({
+
+// Render() - remove items
+let MultipleRemove = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'AIOV_Default_MulChoice_Item',
-            value: 'AIOV_Default_MulChoice_Item',
-            isDisabled: true
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
         },
         {
-            label: 'AIOV_MulChoice_Item_2',
-            value: 'AIOV_MulChoice_Item_2',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: false
-        }
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
     ],
-    value: ['AIOV_Default_MulChoice_Item']
 });
-let add_item_only_value_AIOV_mulChoice_El = add_item_only_value_AIOV_mulChoice.render();
-add_item_only_value_AIOV_mulChoice_El.id = 'AIOV_MulChoice_ID';
-let add_item_only_value_AIOV_mulChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 8);
-add_item_only_value_AIOV_mulChoice_cell.appendChild(add_item_only_value_AIOV_mulChoice_El);
+let MultipleRemoveEl = document.createElement('div');
+MultipleRemoveEl.setAttribute('class', 'multiple-remove');
 
-function getAddItemOnlyValue() {
-    let items = add_item_only_value_AIOV_mulChoice.getItems();
-    alert(JSON.stringify(items));
-}
+let buttonMultipleRemove = document.createElement('button');
+buttonMultipleRemove.innerHTML = 'Remove Item';
+buttonMultipleRemove.setAttribute('class', 'remove-item');
+buttonMultipleRemove.addEventListener('click', function () {
+    MultipleRemove.removeItem(0);
+})
 
-let getAddItemOnlyValueMulChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get New Added Item With Only Value MulChoice Button',
-    type: 'normal',
-    isVisible: true,
-});
-let getAddItemOnlyValueMulChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 9);
-getAddItemOnlyValueMulChoiceBtn_cell.appendChild(getAddItemOnlyValueMulChoiceBtn.render());
-getAddItemOnlyValueMulChoiceBtn.on('click', getAddItemOnlyValue);
+MultipleRemoveEl.appendChild(MultipleRemove.render());
+MultipleRemoveEl.appendChild(buttonMultipleRemove);
+let MultipleRemoveCell = testgrid.getCell(posConfig.Multiple_Choice.x, 7);
+MultipleRemoveCell.appendChild(MultipleRemoveEl);
 
-// Add item - without item.value
-let add_item_without_value_AIWVM_mulChoice = new kintoneUIComponent.MultipleChoice({
+
+// Render() - remove invisible
+let InvisibleMultipleRemove = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'AIWVM_Default_MulChoice_Item',
-            value: 'AIWVM_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: false
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
             isDisabled: true
         },
-        {
-            label: 'AIWVM_MulChoice_Item_2',
-            value: 'AIWVM_MulChoice_Item_2',
-            isDisabled: false
-        }
     ],
-    value: ['AIWVM_Default_MulChoice_Item']
-});
-let add_item_without_value_AIWVM_mulChoice_El = add_item_without_value_AIWVM_mulChoice.render();
-add_item_without_value_AIWVM_mulChoice_El.id = 'AIWVM_MulChoice_ID';
-let add_item_without_value_AIWVM_mulChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 10);
-add_item_without_value_AIWVM_mulChoice_cell.appendChild(add_item_without_value_AIWVM_mulChoice_El);
-
-function getAddItemWithoutValue() {
-    let items = add_item_without_value_AIWVM_mulChoice.getItems();
-    alert(JSON.stringify(items));
-}
-
-let getAddItemWithoutValueMulChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get New Added Item Without Value MulChoice Button',
-    type: 'normal',
-    isVisible: true,
-});
-let getAddItemWithoutValueMulChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 11);
-getAddItemWithoutValueMulChoiceBtn_cell.appendChild(getAddItemWithoutValueMulChoiceBtn.render());
-getAddItemWithoutValueMulChoiceBtn.on('click', getAddItemWithoutValue);
-
-// RemoveItem()
-let remove_item_RI_multipleChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'RI_Default_MulChoice_Item',
-            value: 'RI_Default_MulChoice_Item',
-            isDisabled: true
-        },
-        {
-            label: 'RI_MulChoice_Item_2',
-            value: 'RI_MulChoice_Item_2',
-            isDisabled: false
-        },
-        {
-            label: 'RI_MulChoice_Item_3',
-            value: 'RI_MulChoice_Item_3',
-            isDisabled: false
-        }
-    ],
-    value: ['RI_Default_MulChoice_Item']
-});
-let remove_item_RI_multipleChoice_El = remove_item_RI_multipleChoice.render();
-remove_item_RI_multipleChoice_El.id = 'RI_MulChoice_ID';
-let remove_item_RI_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 12);
-remove_item_RI_multipleChoice_cell.appendChild(remove_item_RI_multipleChoice_El);
-
-function getItemsOfRemovedMulChoice() {
-    let items = remove_item_RI_multipleChoice.getItems();
-    alert(JSON.stringify(items));
-}
-
-let getItemsOfRemovedMulChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get Items of Removed MulChoice Button',
-    type: 'normal',
-    isVisible: true,
-});
-let getItemsOfRemovedMulChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 13);
-getItemsOfRemovedMulChoiceBtn_cell.appendChild(getItemsOfRemovedMulChoiceBtn.render());
-getItemsOfRemovedMulChoiceBtn.on('click', getItemsOfRemovedMulChoice);
-
-// getItem(index)
-let get_item_GI_multipleChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'GI_Default_MulChoice_Item',
-            value: 'GI_Default_MulChoice_Item',
-            isDisabled: true
-        },
-        {
-            label: 'GI_MulChoice_Item_2',
-            value: 'GI_MulChoice_Item_2',
-            isDisabled: false
-        },
-        {
-            label: 'GI_MulChoice_Item_3',
-            value: 'GI_MulChoice_Item_3',
-            isDisabled: false
-        }
-    ],
-    value: ['GI_Default_MulChoice_Item'],
-    isVisible: true
-});
-let get_item_GI_multipleChoice_El = get_item_GI_multipleChoice.render();
-get_item_GI_multipleChoice_El.id = 'GI_MulChoice_ID';
-let get_item_GI_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 14);
-get_item_GI_multipleChoice_cell.appendChild(get_item_GI_multipleChoice_El);
-
-function getItemMultipleChoice(index) {
-    let indexItem;
-    let items = get_item_GI_multipleChoice.getItem(index);
-    alert(JSON.stringify(items));
-}
-
-let getItemMultipleChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get Item Index For MultipleChoice Button',
-    type: 'normal',
-    isVisible: true,
-});
-let getItemMultipleChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 15);
-getItemMultipleChoiceBtn_cell.appendChild(getItemMultipleChoiceBtn.render());
-getItemMultipleChoiceBtn.on('click', function (event) {
-    getItemMultipleChoice(indexItem);
-});
-
-// getItems()
-let get_items_GIs_multipleChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'GIs_Default_MulChoice_Item',
-            value: 'GIs_Default_MulChoice_Item',
-            isDisabled: true
-        },
-        {
-            label: 'GIs_MulChoice_Item_2',
-            value: 'GIs_MulChoice_Item_2',
-            isDisabled: false
-        }
-    ],
-    value: ['GIs_Default_MulChoice_Item'],
     isVisible: false
 });
-let get_items_GIs_multipleChoice_El = get_items_GIs_multipleChoice.render();
-get_items_GIs_multipleChoice_El.id = 'GIs_MulChoice_ID';
-let get_items_GIs_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 16);
-get_items_GIs_multipleChoice_cell.appendChild(get_items_GIs_multipleChoice_El);
-function getItemsMultipleChoice() {
-    let items = get_items_GIs_multipleChoice.getItems();
-    alert(JSON.stringify(items));
-}
+let InvisibleMultipleRemoveEl = document.createElement('div');
+InvisibleMultipleRemoveEl.setAttribute('class', 'invisibleMultiple-remove');
 
-let getItemsMultipleChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get Items For MultipleChoice Button',
-    type: 'normal',
-    isVisible: true,
-});
-let getItemsMultipleChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 17);
-getItemsMultipleChoiceBtn_cell.appendChild(getItemsMultipleChoiceBtn.render());
-getItemsMultipleChoiceBtn.on('click', getItemsMultipleChoice);
+let buttonInvisibleMultipleRemove = document.createElement('button');
+buttonInvisibleMultipleRemove.innerHTML = 'Remove Item';
+buttonInvisibleMultipleRemove.setAttribute('class', 'remove-item');
+buttonInvisibleMultipleRemove.addEventListener('click', function () {
+    InvisibleMultipleRemove.removeItem(2);
+    InvisibleMultipleRemove.show()
+})
 
-// getValue()
-let get_value_GV_multipleChoice = new kintoneUIComponent.MultipleChoice({
+InvisibleMultipleRemoveEl.appendChild(InvisibleMultipleRemove.render());
+InvisibleMultipleRemoveEl.appendChild(buttonInvisibleMultipleRemove);
+let InvisibleMultipleRemoveCell = testgrid.getCell(posConfig.Multiple_Choice.x, 8);
+InvisibleMultipleRemoveCell.appendChild(InvisibleMultipleRemoveEl);
+
+
+// Render() - get items
+let MutipleGetItems = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'GV_Default_MulChoice_Item',
-            value: 'GV_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'GV_MulChoice_Item_2',
-            value: 'GV_MulChoice_Item_2',
-            isDisabled: false
-        }
-    ],
-    value: ['GV_Default_MulChoice_Item'],
-    isVisible: true
-});
-let get_value_GV_multipleChoice_El = get_value_GV_multipleChoice.render();
-get_value_GV_multipleChoice_El.id = 'GV_MulChoice_ID';
-let get_value_GV_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 18);
-get_value_GV_multipleChoice_cell.appendChild(get_value_GV_multipleChoice_El);
-
-function getValueMultipleChoice() {
-    let items = get_value_GV_multipleChoice.getValue();
-    alert(items);
-}
-
-let getValueMulChoiceBtn = new kintoneUIComponent.Button({
-    text: 'Get Value For MultipleChoice Button',
-    type: 'normal',
-    isVisible: true,
-});
-let getValueMulChoiceBtn_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 19);
-getValueMulChoiceBtn_cell.appendChild(getValueMulChoiceBtn.render());
-getValueMulChoiceBtn.on('click', getValueMultipleChoice);
-
-// setValue()
-let set_value_SV_multipleChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'SV_Default_MulChoice_Item',
-            value: 'SV_Default_MulChoice_Item',
-            isDisabled: true
-        },
-        {
-            label: 'SV_MulChoice_Item_Disable',
-            value: 'SV_MulChoice_Item_Disable',
-            isDisabled: true
-        },
-        {
-            label: '',
-            value: '',
-            isDisabled: false
-        }
-    ],
-    isVisible: true
-});
-let set_value_SV_multipleChoice_El = set_value_SV_multipleChoice.render();
-set_value_SV_multipleChoice_El.id = 'SV_MulChoice_ID';
-let set_value_SV_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 20);
-set_value_SV_multipleChoice_cell.appendChild(set_value_SV_multipleChoice_El);
-
-// disableItem
-let set_disable_item_SDI_multipleChoice = new kintoneUIComponent.MultipleChoice({
-    items: [
-        {
-            label: 'SDI_Default_MulChoice_Item',
-            value: 'SDI_Default_MulChoice_Item',
-            isDisabled: false
-        },
-        {
-            label: 'SDI_MulChoice_Item_Disable',
-            value: 'SDI_MulChoice_Item_Disable',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: true
         }
     ],
-    value: ['SDI_Default_MulChoice_Item'],
-    isVisible: true
 });
-let set_disable_item_SDI_multipleChoice_El = set_disable_item_SDI_multipleChoice.render();
-set_disable_item_SDI_multipleChoice_El.id = 'SDI_MulChoice_ID';
-let set_disable_item_SDI_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 21);
-set_disable_item_SDI_multipleChoice_cell.appendChild(set_disable_item_SDI_multipleChoice_El);
+let MutipleGetItemsEl = document.createElement('div');
+MutipleGetItemsEl.setAttribute('class', 'multiple-getItems');
 
-// enableItem()
-let set_enable_item_SEI_multipleChoice = new kintoneUIComponent.MultipleChoice({
+let buttonMutipleGetItems = document.createElement('button');
+buttonMutipleGetItems.innerHTML = 'Get Items';
+buttonMutipleGetItems.setAttribute('class', 'get-items');
+buttonMutipleGetItems.addEventListener('click', function () {
+    alert(JSON.stringify(MutipleGetItems.getItems()))
+})
+
+MutipleGetItemsEl.appendChild(MutipleGetItems.render());
+MutipleGetItemsEl.appendChild(buttonMutipleGetItems);
+let MutipleGetItemsCell = testgrid.getCell(posConfig.Multiple_Choice.x, 9);
+MutipleGetItemsCell.appendChild(MutipleGetItemsEl);
+
+
+// Render() - get item index
+let MutipleGetIndex = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'SEI_Default_MulChoice_Item',
-            value: 'SEI_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'SEI_MulChoice_Item_Disable',
-            value: 'SEI_MulChoice_Item_Disable',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isVisible: false
         }
     ],
-    value: ['SEI_Default_MulChoice_Item'],
-    isVisible: true
 });
-let set_enable_item_SEI_multipleChoice_El = set_enable_item_SEI_multipleChoice.render();
-set_enable_item_SEI_multipleChoice_El.id = 'SEI_MulChoice_ID';
-let set_enable_item_SEI_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 22);
-set_enable_item_SEI_multipleChoice_cell.appendChild(set_enable_item_SEI_multipleChoice_El);
+let MutipleGetIndexEl = document.createElement('div');
+MutipleGetIndexEl.setAttribute('class', 'multiple-getItemsIndex');
 
-// show()
-let show_multipleChoice = new kintoneUIComponent.MultipleChoice({
+let buttonMutipleGetIndex = document.createElement('button');
+buttonMutipleGetIndex.innerHTML = 'Get Items';
+buttonMutipleGetIndex.setAttribute('class', 'get-items');
+buttonMutipleGetIndex.addEventListener('click', function () {
+    alert(JSON.stringify(MutipleGetIndex.getItem(1)))
+})
+
+MutipleGetIndexEl.appendChild(MutipleGetIndex.render());
+MutipleGetIndexEl.appendChild(buttonMutipleGetIndex);
+let MutipleGetIndexCell = testgrid.getCell(posConfig.Multiple_Choice.x, 10);
+MutipleGetIndexCell.appendChild(MutipleGetIndexEl);
+
+
+// Render() - get invisible item index
+let MutipleGetInvisibleIndex = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'Show_Default_MulChoice_Item',
-            value: 'Show_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Show_MulChoice_Item_1',
-            value: 'Show_MulChoice_Item_1',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isVisible: false
         }
     ],
-    value: ['Show_MulChoice_Item_1'],
+});
+let MutipleGetInvisibleIndexEl = document.createElement('div');
+MutipleGetInvisibleIndexEl.setAttribute('class', 'multiple-getInvisibleIndex');
+
+let buttonMutipleGetInvisibleIndex = document.createElement('button');
+buttonMutipleGetInvisibleIndex.innerHTML = 'Get Items';
+buttonMutipleGetInvisibleIndex.setAttribute('class', 'get-items-invisibleIndex');
+buttonMutipleGetInvisibleIndex.addEventListener('click', function () {
+    alert(JSON.stringify(MutipleGetIndex.getItem(0)))
+})
+
+MutipleGetInvisibleIndexEl.appendChild(MutipleGetInvisibleIndex.render());
+MutipleGetInvisibleIndexEl.appendChild(buttonMutipleGetInvisibleIndex);
+let MutipleGetInvisibleIndexCell = testgrid.getCell(posConfig.Multiple_Choice.x, 11);
+MutipleGetInvisibleIndexCell.appendChild(MutipleGetInvisibleIndexEl);
+
+
+// Render() - set value item index
+let MutipleSetValue = new kintoneUIComponent.MultipleChoice({
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isVisible: false
+        }
+    ],
+});
+let MutipleSetValueEl = document.createElement('div');
+MutipleSetValueEl.setAttribute('class', 'multiple-setValue');
+
+let buttonMutipleSetValue = document.createElement('button');
+buttonMutipleSetValue.innerHTML = 'Set Value';
+buttonMutipleSetValue.setAttribute('class', 'set-value');
+buttonMutipleSetValue.addEventListener('click', function () {
+    MutipleSetValue.setValue(['Orange', 'Banana']);
+})
+
+MutipleSetValueEl.appendChild(MutipleSetValue.render());
+MutipleSetValueEl.appendChild(buttonMutipleSetValue);
+let MutipleSetValueCell = testgrid.getCell(posConfig.Multiple_Choice.x, 12);
+MutipleSetValueCell.appendChild(MutipleSetValueEl);
+
+
+// Render() - get value item index
+let MutipleGetValue = new kintoneUIComponent.MultipleChoice({
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isVisible: false
+        }
+    ],
+});
+let MutipleGetValueEl = document.createElement('div');
+MutipleGetValueEl.setAttribute('class', 'multiple-getValue');
+
+let buttonMutipleGetValue = document.createElement('button');
+buttonMutipleGetValue.innerHTML = 'Get Value';
+buttonMutipleGetValue.setAttribute('class', 'get-value');
+buttonMutipleGetValue.addEventListener('click', function () {
+    alert(MutipleGetValue.getValue());
+})
+
+MutipleGetValueEl.appendChild(MutipleGetValue.render());
+MutipleGetValueEl.appendChild(buttonMutipleGetValue);
+let MutipleGetValueCell = testgrid.getCell(posConfig.Multiple_Choice.x, 13);
+MutipleGetValueCell.appendChild(MutipleGetValueEl);
+
+
+// Render() - disable item index
+let MutipleDisableItems = new kintoneUIComponent.MultipleChoice({
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: false
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
+    ],
+});
+let MutipleDisableItemsEl = document.createElement('div');
+MutipleDisableItemsEl.setAttribute('class', 'multiple-disableItems');
+
+let buttonMutipleDisableItems = document.createElement('button');
+buttonMutipleDisableItems.innerHTML = 'Disabled Item';
+buttonMutipleDisableItems.setAttribute('class', 'disable-items');
+buttonMutipleDisableItems.addEventListener('click', function () {
+    MutipleDisableItems.disableItem('Orange');
+})
+
+MutipleDisableItemsEl.appendChild(MutipleDisableItems.render());
+MutipleDisableItemsEl.appendChild(buttonMutipleDisableItems);
+let MutipleDisableItemsCell = testgrid.getCell(posConfig.Multiple_Choice.x, 14);
+MutipleDisableItemsCell.appendChild(MutipleDisableItemsEl);
+
+
+// Render() - enable item index
+let MutipleEnableItems = new kintoneUIComponent.MultipleChoice({
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: true
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
+    ],
+});
+let MutipleEnableItemsEl = document.createElement('div');
+MutipleEnableItemsEl.setAttribute('class', 'multiple-enableItems');
+
+let buttonMutipleEnableItems = document.createElement('button');
+buttonMutipleEnableItems.innerHTML = 'Enabled Item';
+buttonMutipleEnableItems.setAttribute('class', 'enable-items');
+buttonMutipleEnableItems.addEventListener('click', function () {
+    MutipleEnableItems.enableItem('Orange');
+})
+
+MutipleEnableItemsEl.appendChild(MutipleEnableItems.render());
+MutipleEnableItemsEl.appendChild(buttonMutipleEnableItems);
+let MutipleEnableItemsCell = testgrid.getCell(posConfig.Multiple_Choice.x, 15);
+MutipleEnableItemsCell.appendChild(MutipleEnableItemsEl);
+
+
+
+// Render() - enable item index
+let InsvisibleMutipleEnableItems = new kintoneUIComponent.MultipleChoice({
+    items: [
+        {
+            label: 'Orange',
+            value: 'Orange',
+            isDisabled: true
+        },
+        {
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
+    ],
     isVisible: false
 });
-let show_MulChoice_El = show_multipleChoice.render();
-show_MulChoice_El.id = 'show_MulChoice_ID';
-let show_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 23);
-show_multipleChoice_cell.appendChild(show_MulChoice_El);
+let InsvisibleMutipleEnableItemsEl = document.createElement('div');
+InsvisibleMutipleEnableItemsEl.setAttribute('class', 'invisibleMultiple-enableItems');
 
-// hide()
-let hide_multipleChoice = new kintoneUIComponent.MultipleChoice({
+let buttonInsvisibleMutipleEnableItems = document.createElement('button');
+buttonInsvisibleMutipleEnableItems.innerHTML = 'Enabled Item';
+buttonInsvisibleMutipleEnableItems.setAttribute('class', 'enable-items');
+buttonInsvisibleMutipleEnableItems.addEventListener('click', function () {
+    InsvisibleMutipleEnableItems.enableItem('Orange');
+    InsvisibleMutipleEnableItems.show()
+})
+
+InsvisibleMutipleEnableItemsEl.appendChild(InsvisibleMutipleEnableItems.render());
+InsvisibleMutipleEnableItemsEl.appendChild(buttonInsvisibleMutipleEnableItems);
+let InsvisibleMutipleEnableItemsCell = testgrid.getCell(posConfig.Multiple_Choice.x, 16);
+InsvisibleMutipleEnableItemsCell.appendChild(InsvisibleMutipleEnableItemsEl);
+
+
+// Render() - show
+let MutipleShow = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'Hide_Default_MulChoice_Item',
-            value: 'Hide_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'Hide_MulChoice_Item_1',
-            value: 'Hide_MulChoice_Item_1',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: true
-        }
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
     ],
-    value: ['Hide_Default_MulChoice_Item'],
-    isVisible: true,
-    isDisabled: false
+    isVisible: false
 });
-let hide_MulChoice_El = hide_multipleChoice.render();
-hide_MulChoice_El.id = 'hide_MulChoice_ID';
-let hide_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 24);
-hide_multipleChoice_cell.appendChild(hide_MulChoice_El);
+let MutipleShowEl = document.createElement('div');
+MutipleShowEl.setAttribute('class', 'multiple-show');
 
-// disable()
-let disable_multipleChoice = new kintoneUIComponent.MultipleChoice({
+let buttonMutipleShow = document.createElement('button');
+buttonMutipleShow.innerHTML = 'Show Multiple';
+buttonMutipleShow.setAttribute('class', 'show-multiple');
+buttonMutipleShow.addEventListener('click', function () {
+    MutipleShow.show()
+})
+
+MutipleShowEl.appendChild(MutipleShow.render());
+MutipleShowEl.appendChild(buttonMutipleShow);
+let MutipleShowCell = testgrid.getCell(posConfig.Multiple_Choice.x, 17);
+MutipleShowCell.appendChild(MutipleShowEl);
+
+
+// Render() - hide
+let MutipleHide = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'disable_Default_MulChoice_Item',
-            value: 'disable_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'disable_MulChoice_Item_1',
-            value: 'disable_MulChoice_Item_1',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: true
-        }
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
     ],
-    value: ['disable_Default_MulChoice_Item'],
-    isVisible: true,
-    isDisabled: false
+    isVisible: true
 });
-let disable_MulChoice_El = disable_multipleChoice.render();
-disable_MulChoice_El.id = 'disable_MulChoice_ID';
-let disable_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 25);
-disable_multipleChoice_cell.appendChild(disable_MulChoice_El);
+let MutipleHideEl = document.createElement('div');
+MutipleHideEl.setAttribute('class', 'multiple-hide');
 
-// enable()
-let enable_multipleChoice = new kintoneUIComponent.MultipleChoice({
+let buttonMutipleHide = document.createElement('button');
+buttonMutipleHide.innerHTML = 'Hide Multiple';
+buttonMutipleHide.setAttribute('class', 'hide-multiple');
+buttonMutipleHide.addEventListener('click', function () {
+    MutipleHide.hide()
+})
+
+MutipleHideEl.appendChild(MutipleHide.render());
+MutipleHideEl.appendChild(buttonMutipleHide);
+let MutipleHideCell = testgrid.getCell(posConfig.Multiple_Choice.x, 18);
+MutipleHideCell.appendChild(MutipleHideEl);
+
+
+// Render() - enable
+let MutipleEnable = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'enable_Default_MulChoice_Item',
-            value: 'enable_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'enable_MulChoice_Item_1',
-            value: 'enable_MulChoice_Item_1',
+            label: 'Banana',
+            value: 'Banana',
             isDisabled: true
-        }
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
     ],
-    value: ['enable_Default_MulChoice_Item'],
-    isVisible: true,
     isDisabled: true
 });
-let enable_MulChoice_El = enable_multipleChoice.render();
-enable_MulChoice_El.id = 'enable_MulChoice_ID';
-let enable_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 26);
-enable_multipleChoice_cell.appendChild(enable_MulChoice_El);
+let MutipleEnableEL = document.createElement('div');
+MutipleEnableEL.setAttribute('class', 'multiple-enable');
 
-// on - function
-let on_function_multipleChoice = new kintoneUIComponent.MultipleChoice({
+let buttonMutipleEnable = document.createElement('button');
+buttonMutipleEnable.innerHTML = 'Enable Multiple';
+buttonMutipleEnable.setAttribute('class', 'enable-multiple');
+buttonMutipleEnable.addEventListener('click', function () {
+    MutipleEnable.enable()
+})
+
+MutipleEnableEL.appendChild(MutipleEnable.render());
+MutipleEnableEL.appendChild(buttonMutipleEnable);
+let MutipleEnableCell = testgrid.getCell(posConfig.Multiple_Choice.x, 19);
+MutipleEnableCell.appendChild(MutipleEnableEL);
+
+
+// Render() - disable
+let MutipleDisable = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'on_function_Default_MulChoice_Item',
-            value: 'on_function_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'on_function_MulChoice_Item_1',
-            value: 'on_function_MulChoice_Item_1',
-            isDisabled: false
-        }
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
     ],
-    value: ['on_function_Default_MulChoice_Item'],
-    isVisible: true,
     isDisabled: false
 });
-let on_function_MulChoice_El = on_function_multipleChoice.render();
-on_function_MulChoice_El.id = 'on_function_MulChoice_ID';
-let on_function_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 27);
-on_function_multipleChoice_cell.appendChild(on_function_MulChoice_El);
+let MutipleDisableEl = document.createElement('div');
+MutipleDisableEl.setAttribute('class', 'multiple-disable');
 
-on_function_multipleChoice.on('change', function (event) {
-    alert('on_function_multipleChoice has been changed');
-});
+let buttonMutipleDisable = document.createElement('button');
+buttonMutipleDisable.innerHTML = 'Disable Multiple';
+buttonMutipleDisable.setAttribute('class', 'disable-multiple');
+buttonMutipleDisable.addEventListener('click', function () {
+    MutipleDisable.disable()
+})
 
-// on - trigger
-let on_trigger_multipleChoice = new kintoneUIComponent.MultipleChoice({
+MutipleDisableEl.appendChild(MutipleDisable.render());
+MutipleDisableEl.appendChild(buttonMutipleDisable);
+let MutipleDisableCell = testgrid.getCell(posConfig.Multiple_Choice.x, 20);
+MutipleDisableCell.appendChild(MutipleDisableEl);
+
+
+// Render() - trigger event
+let MutipleOnCall = new kintoneUIComponent.MultipleChoice({
     items: [
         {
-            label: 'on_trigger_Default_MulChoice_Item',
-            value: 'on_trigger_Default_MulChoice_Item',
+            label: 'Orange',
+            value: 'Orange',
             isDisabled: false
         },
         {
-            label: 'on_trigger_MulChoice_Item_1',
-            value: 'on_trigger_MulChoice_Item_1',
-            isDisabled: false
-        }
+            label: 'Banana',
+            value: 'Banana',
+            isDisabled: true
+        },
+        {
+            label: 'Lemon',
+            value: 'Lemon',
+            isDisabled: true
+        },
     ],
-    value: ['on_trigger_Default_MulChoice_Item'],
-    isVisible: true,
-    isDisabled: false
+    isDisabled: false,
 });
-let on_trigger_MulChoice_El = on_trigger_multipleChoice.render();
-on_trigger_MulChoice_El.id = 'on_trigger_MulChoice_ID';
-let on_trigger_multipleChoice_cell = testgrid.getCell(posConfig.Multiple_Choice.x, 28);
-on_trigger_multipleChoice_cell.appendChild(on_trigger_MulChoice_El);
+let MutipleOnCallEl = document.createElement('div');
+MutipleOnCallEl.setAttribute('class', 'multiple-onCall');
+MutipleOnCall.on('change', function (value) {
+    alert('value: ' + value)
+})
+MutipleOnCallEl.appendChild(MutipleOnCall.render());
+let MutipleOnCallCell = testgrid.getCell(posConfig.Multiple_Choice.x, 21);
+MutipleOnCallCell.appendChild(MutipleOnCallEl);
 
-function triggerChange() {
-    alert('on_trigger_multipleChoice has been changed');
-}
-on_trigger_multipleChoice.on('change', triggerChange);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
