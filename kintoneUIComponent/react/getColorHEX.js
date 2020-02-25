@@ -1,9 +1,9 @@
 (function () {
     "use strict";
     kintone.events.on('app.record.index.show', function (event) {
-        const locatorSatur = document.getElementById("constructor-colorpicker").getElementsByTagName("canvas")[0];
+        const locatorSatur = document.getElementById("colorpicker-content").getElementsByTagName("canvas")[0];
         const textField = document.getElementById("hex-value");
-        const locatorHue = document.getElementById('constructor-colorpicker').getElementsByTagName("canvas")[1];
+        const locatorHue = document.getElementById('colorpicker-content').getElementsByTagName("canvas")[1];
         getHexValue(locatorSatur, textField);
         getHexValue(locatorHue, textField);
 
