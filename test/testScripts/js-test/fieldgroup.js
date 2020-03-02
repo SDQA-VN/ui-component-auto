@@ -41,7 +41,7 @@ describe('kintoneUIComponent - Text', function () {
             .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='date-time-container']")
             .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-dropdown-container']")
             .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-fieldgroup']")
-            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-icon-btn large  gray circle']")
+            .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//button[@class='kuc-icon-btn normal  gray circle']")
             .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-label']")
             .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-multiple-list kuc-list-outer']")
             .verifyElementExisting(COMPONENT_CONTENT_FIELDGROUP + "//div[@class='kuc-input-radio']")

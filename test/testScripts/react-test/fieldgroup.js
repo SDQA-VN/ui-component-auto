@@ -1,7 +1,6 @@
 const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js')
 
-// const CONSTRUCTOR_FIELDGROUP = "//div[@id='constructor-fieldgroup']//div[@class='kuc-fieldgroup']//ul[@class='kuc-fieldgroup-container']//li";
 const COMPONENT_CONTENT_FIELDGROUP = "//div[@id='constructor-fieldgroup']//div[@class='kuc-fieldgroup']//div[@class='kuc-fieldgroup-container']//div[@class='kuc-fieldgroup-contents']//div[@id='component-container-fieldgroup']";
 const TOGGLE_BUTTON_FIELDGROUP = "//div[@id='constructor-fieldgroup']/div[@class='kuc-fieldgroup']/div[@class='kuc-fieldgroup-container']/span";
 const SET_CONTENT_FIELDGROUP = "//div[@id='set-content-fieldgroup']//div[@class='kuc-fieldgroup']//div[@class='kuc-fieldgroup-container']//div[@class='kuc-fieldgroup-contents']";

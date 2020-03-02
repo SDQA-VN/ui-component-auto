@@ -83,12 +83,6 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_INVISIBLE_MULTIPLE_ADD_ITEMS_BUTTON)
             .verifyText(XPATH_INVISIBLE_MULTIPLE_ADD_ITEMS, '')
     });
-    it('[MultipleChoice-31] Verify that can add an item to the MultipleChoice without item.value', function () {
-        Helper.ElementHandler
-            .verifyElementNotExisting(XPATH_MULTIPLE_ADD_ITEMS_WITHOUT_VALUE)
-            .click(XPATH_MULTIPLE_ADD_ITEMS_WITHOUT_VALUE_BUTTON)
-            .verifyText(XPATH_MULTIPLE_ADD_ITEMS_WITHOUT_VALUE, 'Lemon')
-    });
     it('[MultipleChoice-40] Verify that can remove an item at the last position', function () {
         Helper.ElementHandler
             .verifyNumberOfElements(XPATH_MULTIPLE_REMOVE_ITEMS, 3)

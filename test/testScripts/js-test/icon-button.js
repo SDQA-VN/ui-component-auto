@@ -87,7 +87,7 @@ describe('kintoneUIComponent - Icon button', function () {
             .verifyAttribute(ICON_SIZE, 'class', 'small')
 
             .click(ICON_SET_SIZE_NORMAL_BUTTON)
-            .verifyAttribute(ICON_SIZE, 'class', 'large')
+            .verifyAttribute(ICON_SIZE, 'class', 'normal')
     });
 
     it('[Icon-Button-37-38] should set shape for icon button', function () {
