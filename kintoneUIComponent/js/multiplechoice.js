@@ -84,23 +84,6 @@ let MultipleAddCell = testgrid.getCell(posConfig.Multiple_Choice.x, 4);
 MultipleAddCell.appendChild(MultipleAddEl);
 
 
-// Render() - add items without value
-let MultipleAddWithoutValue = new kintoneUIComponent.MultipleChoice({
-    items: [],
-});
-let MultipleAddWithoutValueEl = document.createElement('div');
-MultipleAddWithoutValueEl.setAttribute('class', 'multiple-addItems-withoutValue');
-
-let buttonMultipleAddWithoutValue = document.createElement('button');
-buttonMultipleAddWithoutValue.innerHTML = 'Add Items';
-buttonMultipleAddWithoutValue.setAttribute('class', 'add-items');
-buttonMultipleAddWithoutValue.addEventListener('click', function () {
-    MultipleAddWithoutValue.addItem({
-        label: 'Lemon',
-        isDisabled: false
-    })
-})
-
 MultipleAddWithoutValueEl.appendChild(MultipleAddWithoutValue.render());
 MultipleAddWithoutValueEl.appendChild(buttonMultipleAddWithoutValue);
 let MultipleAddWithoutValueCell = testgrid.getCell(posConfig.Multiple_Choice.x, 5);

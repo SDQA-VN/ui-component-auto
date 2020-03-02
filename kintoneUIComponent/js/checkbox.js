@@ -312,7 +312,7 @@ let setValueCheckbox = new kintoneUIComponent.CheckBox({
         },
         {
             label: '',
-            value: '',
+            value: 'SV_Item_Checkbox',
             isDisabled: false
         }
     ],
