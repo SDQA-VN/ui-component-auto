@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js')
 
 const XPATH_BUTTON_NORMAL = '.normalButton .kuc-btn';
@@ -20,13 +19,6 @@ const XPATH_BUTTON_ON_CALL_CLICK = '.normalButton_onCall .kuc-btn';
 const XPATH_BUTTON_ON_TRIGGER = '.normalButton_onTrigger .kuc-btn';
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Normal button-2] Normal button should has white for background color and blue for text color', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_BUTTON_NORMAL)

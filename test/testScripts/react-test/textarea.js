@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js')
 
 const CONSTRUCTOR_TEXTAREA = "//div[@id='constructor-textarea']//textarea[@class='kuc-textarea']";
@@ -25,13 +24,6 @@ const ENABLE_DISABLED_TEXTAREA = "//div[@id='enable-disabled-textarea']//textare
 const ENABLE_BUTTON_TEXTAREA = "//button[contains(text(), 'Enable TextArea')]";
 
 describe('kintoneUIComponent - Text', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     // it('[TextArea-2-3-4-5-8] should Verify that the Textbox have the UI is the same as Textbox on kintone - color, - size ( width + height)', function () {
     //     Helper.ElementHandler
     //         .verifyElementSize(CONSTRUCTOR_TEXTAREA, 297, 123)

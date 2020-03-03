@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js')
 
 const XPATH_CHECKBOX = '.checkbox-render .kuc-input-checkbox';
@@ -41,12 +40,6 @@ const XPATH_CHECKBOX_ON_CALL_BUTTON = "//div[@class='checkbox-onCall']//label[co
 const XPATH_CHECKBOX_DISABLE = '.checkbox-addItems .kuc-input-checkbox-item :disabled'
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
     it('[CheckBox-2] Verify that the MultipleChoice have the  UI is the same as MultipleChoice on kintone', function () {
         Helper.ElementHandler
             .waitForElement(XPATH_CHECKBOX)

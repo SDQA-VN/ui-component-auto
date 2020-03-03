@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_TABS = "//div[@id='constructor-tabs']//div[@class='kuc-tabs-tabs']//ul[@class='kuc-tabs-tab-list']//li";
@@ -20,13 +19,6 @@ const ENABLE_BUTTON_TABS = "//div[@id='enable-tabs']//button[contains(text(), 'E
 
 
 describe('kintoneUIComponent - Text', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Tabs-1-2-3-4-5-6-7-15] should Verify the operation of Tabs, all below components can be add to table as child component', function () {
         Helper.ElementHandler
             .verifyNumberOfElements(CONSTRUCTOR_TABS, 4)

@@ -1,5 +1,4 @@
 const Helper = require('../../helper/main.js')
-const common = require('../../utils/Common.js');
 
 const SHOW_DIALOG_FULL_OPTION_BUTTON = '.dialog_full_option_button';
 const DIALOG_FULL_OPTION = '.dialog_full_optionEl .kuc-dialog-wrapper';
@@ -120,13 +119,6 @@ const DIALOG_HIDE_CLOSE_BUTTON = '.dialog_hide_closeButtonEl .kuc-dialog-close-b
 const CLOSE_DIALOG_WITHOUT_CLOSE_BUTTON_BUTTON = '.dialog_hide_closeButtonEl .close_dialog_without_closeButton_button'
 
 describe('kintoneUIComponent - Dialog', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Dialog-2]: Verify that the Dialog have the UI is the same as Dialog on kintone', function () {
         Helper.ElementHandler
             .click(SHOW_DIALOG_FULL_OPTION_BUTTON)

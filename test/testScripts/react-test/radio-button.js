@@ -1,4 +1,3 @@
-const common = require('../../utils/common');
 const Helper = require('../../helper/main.js')
 
 const XPATH_RADIO = '.radio-render .kuc-input-radio';
@@ -34,13 +33,6 @@ const XPATH_RADIO_ON_CALL_BUTTON = '//div[@class="radio-onCall"]//label[contains
 
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[RadioButton-2] Verify that the Radio Button have the  UI is the same as Radio Button on kintone', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_RADIO)

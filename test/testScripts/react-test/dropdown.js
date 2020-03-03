@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js')
 
 const XPATH_OUT_OF_DROPDOWN = '.gaia-header-toolbar-navigation';
@@ -60,13 +59,6 @@ const XPATH_DROPDOWN_LIST_ITEMS_SELECT = "//div[@class='dropdown-render']//div[@
 
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Dropdown-2] Verify that the Dropdown have the  UI is the same as Dropdown on kintone', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_DROPDOWN)

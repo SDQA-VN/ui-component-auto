@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const expect = require('chai').expect;
 const Helper = require('../../helper/main')
 
@@ -31,13 +30,6 @@ const XPATH_TRIGGER_COLORPICKER = "//div[@id='on-callback-colorpicker']//div/inp
 const XPATH_TRIGGER_COLORPICKER_BUTTON = "//div[@id='on-callback-colorpicker']//button[@class='kuc-btn submit']"
 
 describe('kintoneUIComponent - Alert', () => {
-  before(() => {
-    common.logInSlash();
-  });
-  after(() => {
-    common.logOutSlash();
-  });
-
   it('[Colorpicker-2-3-4-7] should checking HEX input field, ColorPicker popup window displayed, operation of Saturation,Hue,RGB input, full option ColorPicker  ', function () {
     Helper.ElementHandler
       .verifyValue(XPATH_CONSTRUCTOR_COLORPICKER, '#ecd110')

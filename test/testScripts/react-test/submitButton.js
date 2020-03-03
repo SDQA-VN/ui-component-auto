@@ -1,4 +1,3 @@
-const common = require('../../utils/common');
 const Helper = require('../../helper/main.js')
 
 const XPATH_BUTTON_SUBMIT = '.submitButton .kuc-btn';
@@ -20,13 +19,6 @@ const XPATH_BUTTON_ON_CALL_CLICK = '.submitButton_onCall .kuc-btn';
 const XPATH_BUTTON_ON_TRIGGER = '.submitButton_onTrigger .kuc-btn';
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Submit button-3] Verify that the Submit button have the UI is the same as button on kintone', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_BUTTON_SUBMIT)

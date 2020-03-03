@@ -1,4 +1,3 @@
-const common = require('../../utils/common');
 const Helper = require('../../helper/main.js')
 
 const XPATH_TABLE_HEADER = '.table-render .kuc-table-thead .kuc-table-th';
@@ -50,13 +49,6 @@ const XPATH_TABLE_ON_CELL_ROW = ".table-cellChange .kuc-table-tbody .kuc-table-t
 
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Table-2] Verify that the Table have the  UI is the same as Table on kintone', function () {
         Helper.ElementHandler
             .verifyElementColor(XPATH_TABLE_HEADER, 'background-color', '#3498db')

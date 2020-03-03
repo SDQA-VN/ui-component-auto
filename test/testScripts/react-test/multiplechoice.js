@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const XPATH_MULTIPLE = '.multiple-render .kuc-multiple-list';
@@ -43,12 +42,6 @@ const XPATH_MULTIPLE_LIST_VALUE = '.multiple-render .kuc-list-item-label';
 const iconCheck = 'M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
     it('[MultipleChoice-2] Verify that the MultipleChoice have the  UI is the same as MultipleChoice on kintone', function () {
         Helper.ElementHandler
             .verifyElementColor(XPATH_MULTIPLE, 'background-color', '#ffffff')

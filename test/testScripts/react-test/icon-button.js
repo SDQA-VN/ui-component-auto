@@ -1,4 +1,3 @@
-const common = require('../../utils/common');
 const Helper = require('../../helper/main.js');
 
 const XPATH_ICON = '.icon-button .kuc-icon-btn';
@@ -32,12 +31,6 @@ const iconMinus = 'M19,13H5V11H19V13Z';
 const iconClose = 'M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z'
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
     it('[Icon-Button-11] Verify that the IconButton have the UI is the same as spec', function () {
         Helper.ElementHandler
             .waitForElement(XPATH_ICON)
@@ -51,18 +44,18 @@ describe('kintoneUIComponent - Button', function () {
             .verifyElementEnabled(XPATH_ICON)
             .verifyElementDisplayed(XPATH_ICON)
     });
-    // it('[Icon-Button-15] Verify that can create a Icon Button only with options.type with option.type= insert', function () {
-    //     Helper.ElementHandler
-    //         .verifyAttribute(XPATH_ICON_ONLY_TYPE_TYPE, 'd', iconPlus)
-    //         .verifyAttribute(XPATH_ICON_ONLY_TYPE, 'class', 'large')
-    //         .verifyAttribute(XPATH_ICON_ONLY_TYPE, 'class', 'gray')
-    // });
-    // it('[Icon-Button-23] Verify that can create a Icon Button only with options.color= green', function () {
-    //     Helper.ElementHandler
-    //         .verifyAttribute(XPATH_ICON_ONLY_COLOR_TYPE, 'd', iconPlus)
-    //         .verifyAttribute(XPATH_ICON_ONLY_COLOR, 'class', 'large')
-    //         .verifyAttribute(XPATH_ICON_ONLY_COLOR, 'class', 'green')
-    // });
+    it('[Icon-Button-15] Verify that can create a Icon Button only with options.type with option.type= insert', function () {
+        Helper.ElementHandler
+            .verifyAttribute(XPATH_ICON_ONLY_TYPE_TYPE, 'd', iconPlus)
+            .verifyAttribute(XPATH_ICON_ONLY_TYPE, 'class', 'normal')
+            .verifyAttribute(XPATH_ICON_ONLY_TYPE, 'class', 'gray')
+    });
+    it('[Icon-Button-23] Verify that can create a Icon Button only with options.color= green', function () {
+        Helper.ElementHandler
+            .verifyAttribute(XPATH_ICON_ONLY_COLOR_TYPE, 'd', iconPlus)
+            .verifyAttribute(XPATH_ICON_ONLY_COLOR, 'class', 'normal')
+            .verifyAttribute(XPATH_ICON_ONLY_COLOR, 'class', 'green')
+    });
     it('[Icon-Button-24] Verify that can create a Icon Button with only option.isDisabled is true', function () {
         Helper.ElementHandler
             .verifyElementExisting(XPATH_ICON_ONLY_DISABLE)
@@ -90,11 +83,14 @@ describe('kintoneUIComponent - Button', function () {
             .verifyAttribute(XPATH_INVISIBLE_ICON_SET_TYPE_VALUE, 'd', iconMinus)
 
     });
-    // it('[Icon-Button-35] Verify can set the normal (large) size for the IconButton', function () {
-    //     $(XPATH_ICON_SET_SIZE_LARGE_BUTTON).click();
-    //     let iconSize = browser.getAttribute(XPATH_ICON_SET_SIZE_VALUE, 'class');
-    //     expect(iconSize).to.include('large');
-    // });
+    it('[Icon-Button-35] Verify can set the normal (large) size for the IconButton', function () {
+        Helper.ElementHandler
+            .click(XPATH_ICON_SET_SIZE_LARGE_BUTTON)
+            .verifyAttribute(XPATH_ICON_SET_SIZE_VALUE, 'class', 'normal')
+        // $(XPATH_ICON_SET_SIZE_LARGE_BUTTON).click();
+        // let iconSize = browser.getAttribute(XPATH_ICON_SET_SIZE_VALUE, 'class');
+        // expect(iconSize).to.include('normal');
+    });
     it('[Icon-Button-36] Verify can set the small size for the IconButton', function () {
         Helper.ElementHandler
             .click(XPATH_ICON_SET_SIZE_SMALL_BUTTON)

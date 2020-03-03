@@ -1,4 +1,3 @@
-const common = require('../../utils/common');
 const Helper = require('../../helper/main.js')
 
 const XPATH_NOTIFY_SUCCESS = '.notifySuccess-render .kuc-notify';
@@ -31,12 +30,6 @@ const XPATH_NOTIFY_ON_CALL_CLOSE = '.notify-onCall .kuc-close-button';
 
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
     it('[Notify-2] Verify that the Success NotifyPopup have the  UI is the same as NotifyPopup on kintone', function () {
         Helper.ElementHandler
             .click(XPATH_NOTIFY_SUCCESS_SHOW)

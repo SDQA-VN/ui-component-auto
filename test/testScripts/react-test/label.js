@@ -1,4 +1,3 @@
-const common = require('../../utils/common');
 const Helper = require('../../helper/main.js')
 
 const XPATH_LABEL = '.label-render .kuc-label';
@@ -42,13 +41,6 @@ const XPATH_LABEL_ON_CLICK = '.label-onCall .kuc-label';
 
 
 describe('kintoneUIComponent - Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Label-2] Verify that the Label and Required Label have the UI is the same as on kintone', function () {
         Helper.ElementHandler
             .waitForElement(XPATH_LABEL)
