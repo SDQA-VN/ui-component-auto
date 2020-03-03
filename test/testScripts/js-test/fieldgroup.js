@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 // const CONSTRUCTOR_FIELDGROUP = "//div[@id='constructor-fieldgroup']//div[@class='kuc-fieldgroup']//ul[@class='kuc-fieldgroup-container']//li";
@@ -17,13 +16,6 @@ const SET_TOGGLE_BUTTON_FIELDGROUP = "//div[@id='set-toggle-fieldgroup']//button
 const GET_TOGGLE_BUTTON_FIELDGROUP = "//div[@id='get-toggle-fieldgroup']//button[contains(text(), 'Get Toggle FieldGroup')]";
 
 describe('kintoneUIComponent - Text', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[FieldGroup-3] should Verify the operation of FieldGroup, all below components can be add to table as child component', function () {
         Helper.ElementHandler
             //check the toggle of fieldgroup

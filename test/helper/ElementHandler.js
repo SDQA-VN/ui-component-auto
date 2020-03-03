@@ -204,6 +204,27 @@ class ElementHandler {
 
     /**
     * @param {string} locator    Element for verify
+    * @param {string} tag       Value for verify
+    */
+    getElementScreenshot(locator, tag) {
+        $(locator).scrollIntoView(false)
+        browser.saveElement($(locator), tag)
+        expect(browser.checkElement($(locator), tag)).to.equal(0)
+        return this
+    }
+
+    /**
+    * @param {string} locator    Element for verify
+    * @param {string} tag       Value for verify
+    */
+    verifyElementUI(locator, tag) {
+        $(locator).scrollIntoView(false);
+        expect(browser.checkElement($(locator), tag)).to.equal(0)
+        return this;
+    }
+
+    /**
+    * @param {string} locator    Element for verify
     * @param {number} value       Value for verify
     */
 

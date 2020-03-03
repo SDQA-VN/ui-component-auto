@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_TEXT = "//div[@id='constructor-text']//input[@class='kuc-input-text']";
@@ -23,13 +22,6 @@ const ON_CALLBACK_FUNCTION_TEXT = "//div[@id='on-callback-function-text']//input
 const ON_CALLBACK_TRIGGER_TEXT = "//div[@id='on-callback-trigger-text']//input";
 
 describe('kintoneUIComponent - Text', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Text-2-4-6] should verify that the Textbox object contains the the below attibutes', function () {
         Helper.ElementHandler
             .verifyElementColor(CONSTRUCTOR_TEXT, 'background-color', '#ffffff')

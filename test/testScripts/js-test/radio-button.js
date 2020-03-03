@@ -1,4 +1,3 @@
-const common = require('../../utils/common');
 const Helper = require('../../helper/main');
 
 const CONSTRUCTOR_RADIOBUTTON = "#constructor-radio-button .kuc-input-radio-item input[type=radio]:checked";
@@ -36,13 +35,6 @@ const ON_CALLBACK_TRIGGER_RADIOBUTTON = "#on-callback-trigger-radio-button .kuc-
 
 
 describe('kintoneUIComponent - RadioButton', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[RadioButton-2-6-9] should verify that the radiobutton have the  UI is the same as Dropdown on kintone', function () {
         Helper.ElementHandler
             //verify UI and the operation of Radio Button 

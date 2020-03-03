@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const ICON_FULL_OPTIONS = "//div[@id='icon-full-options']//button[contains(@class,'kuc-icon-btn')]";
@@ -30,13 +29,6 @@ const ICON_SET_SHAPE_CIRCLE_BUTTON = "//button[text()='Set Shape Circle']";
 const ICON_ON_TRIGGER = "//div[@id='icon-on-trigger']/button[contains(@class,'kuc-icon-btn')]";
 
 describe('kintoneUIComponent - Icon button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Icon-Button-2] should verify UI', function () {
         Helper.ElementHandler
             .waitForElement(ICON_FULL_OPTIONS)

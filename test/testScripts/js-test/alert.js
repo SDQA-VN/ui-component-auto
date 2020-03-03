@@ -1,4 +1,4 @@
-const common = require('../../utils/Common.js');
+const Auth = require('../../pageObject/auth/Auth.js');
 const Helper = require('../../helper/main.js');
 
 const SUCCESS_ALERT = "//div[contains(text(),'successAlert')]";
@@ -34,13 +34,6 @@ const ON_CALLBACK_FUNCTION_ALERT = "//div[@id='on-callback-function-alert']";
 const ON_CALLBACK_TRIGGER_ALERT = "//div[@id='on-callback-trigger-alert']";
 
 describe('kintoneUIComponent - Alert', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Alert-2] Success alert should have green (#91c36c) background-color, size, relative position', function () {
         Helper.ElementHandler
             .waitForElement(SUCCESS_ALERT)

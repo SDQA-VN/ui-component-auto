@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 const path = require('path');
 
@@ -31,13 +30,6 @@ const SET_FILES_FILESIZE_ATTACHMENT = "//div[@id='set-files-attachment']//div[@c
 const filePath = path.join(__dirname, 'alert.js')
 
 describe('kintoneUIComponent - Attachment', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Attachment-1] should Verify the operation of Attachment', function () {
         Helper.ElementHandler
             .setValue(CONSTRUCTOR_ATTACHMENT_INPUT, filePath)

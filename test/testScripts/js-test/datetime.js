@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_DATETIME = '//div[@id="constructor-datetime"]//div[@class="date-time-container"]';
@@ -56,14 +55,6 @@ const TIME_ENABLED_DATETIME = '//div[@id="enable-disabled-datetime"]//div[@class
 
 
 describe('kintoneUIComponent - Datetime', function () {
-    before(() => {
-        common.logInSlash();
-    });
-
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Datetime-2] Verify that the DateTime form have the UI is the same as DateTime form on kintone', function () {
         Helper.ElementHandler
             .waitForElement(CONSTRUCTOR_DATETIME)

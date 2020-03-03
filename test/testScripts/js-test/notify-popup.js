@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main');
 
 const FULL_OPTIONS_NOTIFY = "//div[@id='full-option-notifypopup']//div[@class='kuc-notify bg-danger']";
@@ -20,13 +19,6 @@ const ON_TRIGGER_NOTIFY_SHOW_BUTTON = "//button[text()='Show Notify On Trigger']
 const ON_TRIGGER_NOTIFY_CLOSE_BUTTON = "//div[@id='on-callback-trigger-notifypopup']//div[@class='kuc-close-button']//button"
 
 describe('kintoneUIComponent - Notify Popup', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Notify-2] should verify success notify', function () {
         Helper.ElementHandler
             .click(ON_TRIGGER_NOTIFY_SHOW_BUTTON)

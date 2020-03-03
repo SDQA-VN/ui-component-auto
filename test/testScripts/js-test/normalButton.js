@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const NORMAL_BUTTON_CONSTRUCTOR = "//div[@id='normalButton_constructorEl']//button[contains(@class,'kuc-btn')]";
@@ -19,13 +18,6 @@ const NORMAL_BUTTON_ENABLE_BUTTON = "//button[text()='Enable Normal Button']";
 const NORMAL_BUTTON_ON_TRIGGER = "//div[@id='normal-button-on-trigger']//button[contains(@class,'kuc-btn')]";
 
 describe('kintoneUIComponent - Normal Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Normal button-1]Normal button should has white for background color and blue for text color', function () {
         Helper.ElementHandler
             .waitForElement(NORMAL_BUTTON_CONSTRUCTOR)

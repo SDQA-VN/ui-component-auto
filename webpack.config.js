@@ -4,6 +4,7 @@ module.exports = (env = {}) => {
     return {
         entry: {
             "source.min": './kintoneUIComponent/react/react-jsx/main.js',
+            "tabsTest.min": './tabsTest.js',
         },
         output: {
             path: path.resolve(__dirname, './kintoneUIComponent/react/'),

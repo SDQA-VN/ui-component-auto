@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const CONSTRUCTOR_DROPDOWN = "//div[@id='constructor-dropdown']//div[@class='kuc-dropdown-selected']";
@@ -45,13 +44,6 @@ const ON_CALLBACK_TRIGGER_DROPDOWN = "//div[@id='on-callback-trigger-dropdown']/
 const VALUE_ON_CALLBACK_TRIGGER_DROPDOWN = "//div[@id='on-callback-trigger-dropdown']//div[@class='kuc-list-outer']//div[contains(@class,'kuc-list-item')]";
 
 describe('kintoneUIComponent - Dropdown', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Dropdown-2-3-4-6-7-8-10-11-12-13-14-15-19] should verify that the Dropdown have the  UI is the same as Dropdown on kintone', function () {
         Helper.ElementHandler
             //UI and operation of dropdown

@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js')
 
 const CONSTRUCTOR_TABLE = "//div[@id='constructor-table']//div[@class='kuc-table']";
@@ -54,13 +53,6 @@ const SET_VALUE_CHECKBOX_BUTTON_TABLE = "//div[@id='callback-table']//button[con
 const SET_VALUE_DROPDOWN_BUTTON_TABLE = "//div[@id='callback-table']//button[contains(text(),'Set Value Dropdown Table')]";
 
 describe('kintoneUIComponent - Table', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Table-3-11->19] should verify that default table will contain header and sample row, verify that all below components can be add to table as child component', function () {
         Helper.ElementHandler
             .verifyElementColor(HEADER_CONSTRUCTOR_TABLE, 'background-color', '#3498db')

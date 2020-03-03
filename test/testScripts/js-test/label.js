@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const UI = "//span[contains(text(), 'UILabel')]";
@@ -39,13 +38,6 @@ const SET_REQUIRED_NO_PARAM_LABEL = "//div[@id='set-required-no-param-label']//s
 const SET_REQUIRED_NO_PARAM_BUTTON_LABEL = "//button[contains(text(),'Set required without parameter for label')]";
 
 describe('kintoneUIComponent - Label', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Label-2] should Verify that the Label have the UI is the same as Label on kintone - color, - size ( width + height)', function () {
         Helper.ElementHandler
             .verifyElementSize(UI, 45, 17)

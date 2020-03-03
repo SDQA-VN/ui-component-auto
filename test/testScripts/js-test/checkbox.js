@@ -1,4 +1,3 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
 
 const UI_CHECKBOX = "//div[@id='ui-checkbox']//div[@class='kuc-input-checkbox']";
@@ -58,13 +57,6 @@ const ENABLE_ITEM_2_CHECKBOX = "//div[@id='enable-checkbox']//label[text()='enab
 const ON_TRIGGER_CHECKBOX_ITEM = "//div[@id='on-trigger-checkbox']//label[text()='on_trigger_Item_Checkbox_1']";
 
 describe('kintoneUIComponent - Checkbox', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Checkbox-1] should checking UI for checkbox', function () {
         Helper.ElementHandler
             .waitForElement(UI_CHECKBOX)

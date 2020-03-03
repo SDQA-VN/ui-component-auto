@@ -20,7 +20,7 @@
   "dependencies": {
     "@actions/core": "^1.2.0",
     "@actions/github": "^1.1.0",
-    "@kintone/kintone-ui-component": "file:../../tmp1/kintone-ui-component/kintone-kintone-ui-component-0.5.0.tgz",
+    "@kintone/kintone-ui-component": "file:../kintone-ui-component/kintone-kintone-ui-component-0.6.0.tgz",
     "babel-loader": "^8.0.6",
     "babel-preset-stage-0": "^6.24.1",
     "chromedriver": "^78.0.1",
@@ -46,6 +46,7 @@
     "@wdio/spec-reporter": "^5.7.13",
     "@wdio/sync": "^5.7.0",
     "@wdio/selenium-standalone-service": "^5.15.0",
+    "wdio-image-comparison-service": "^1.7.0",
     "webdriverio": "^5.18.7"
   }
 }

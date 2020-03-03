@@ -1,6 +1,4 @@
-const common = require('../../utils/Common.js');
 const Helper = require('../../helper/main.js');
-
 
 const SUBMIT_BUTTON_CONSTRUCTOR = "//div[@id='submit-button-constructor']//button[contains(@class,'kuc-btn')]";
 const SUBMIT_BUTTON_FULL_OPTIONS = "//div[@id='submit-button-full-options']//button[contains(@class,'kuc-btn')]";
@@ -21,13 +19,6 @@ const SUBMIT_BUTTON_ENABLE_BUTTON = "//button[text()='Enable Submit Button']";
 const SUBMIT_BUTTON_ON_TRIGGER = "//div[@id='submit-button-on-trigger']//button[contains(@class,'kuc-btn')]";
 
 describe('kintoneUIComponent - Submit Button', function () {
-    before(() => {
-        common.logInSlash();
-    });
-    after(() => {
-        common.logOutSlash();
-    });
-
     it('[Submit button-3]Submit button should has white for background color and blue for text color', function () {
         Helper.ElementHandler
             .waitForElement(SUBMIT_BUTTON_CONSTRUCTOR)
