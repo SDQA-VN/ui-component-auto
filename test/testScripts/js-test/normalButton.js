@@ -18,7 +18,7 @@ const NORMAL_BUTTON_ENABLE_BUTTON = "//button[text()='Enable Normal Button']";
 const NORMAL_BUTTON_ON_TRIGGER = "//div[@id='normal-button-on-trigger']//button[contains(@class,'kuc-btn')]";
 
 describe('kintoneUIComponent - Normal Button', function () {
-    it('[Normal button-1]Normal button should has white for background color and blue for text color', function () {
+    it('[Normal button-2] Normal button should has white for background color and blue for text color', function () {
         Helper.ElementHandler
             .waitForElement(NORMAL_BUTTON_CONSTRUCTOR)
             .verifyElementColor(NORMAL_BUTTON_CONSTRUCTOR, 'background-color', '#f7f9fa')
@@ -84,7 +84,7 @@ describe('kintoneUIComponent - Normal Button', function () {
             .verifyElementEnabled(NORMAL_BUTTON_ENABLE)
     });
 
-    it('[Normal button-33-34] Normal button can be clicked and call trigger', function () {
+    it('[Normal button-34] Normal button can be clicked and call trigger', function () {
         Helper.ElementHandler
             .waitForElement(NORMAL_BUTTON_ON_TRIGGER)
             .click(NORMAL_BUTTON_ON_TRIGGER)
