@@ -157,13 +157,13 @@ describe('kintoneUIComponent - Button', function () {
     //     expect(headerTemplate9th).to.equal('Alert');
     //     expect(header).to.equal(true);
     // });
-    it('[Table-41] Verify that can get value of all rows in the table', function () {
+    it('[Table-43] Verify that can get value of all rows in the table', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_GET_VALUE_CHECK_RADIO)
             .click(XPATH_TABLE_GET_VALUE_BUTTON)
             .verifyAlertText('["banana","green","text",["orange"],["orange"]]')
     });
-    it('[Table-50] Verify that can get value of Text in the table', function () {
+    it('[Table-51] Verify that can get value of Text in the table', function () {
         let XPATH_TABLE_GET_TEXT_VALUE_BUTTON = ".table-getValue .get-value-text"
         Helper.ElementHandler
             .click(XPATH_TABLE_GET_TEXT_VALUE_BUTTON)
@@ -175,78 +175,78 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_TABLE_GET_DROPDOWN_VALUE_BUTTON)
             .verifyAlertText('"green"')
     });
-    it('[Table-52] Verify that can get value of Checkbox in the table', function () {
+    it('[Table-51] Verify that can get value of Checkbox in the table', function () {
         let XPATH_TABLE_GET_CHECKBOX_VALUE_BUTTON = ".table-getValue .get-value-checkbox"
         Helper.ElementHandler
             .click(XPATH_TABLE_GET_CHECKBOX_VALUE_BUTTON)
             .verifyAlertText('["orange"]')
     });
-    it('[Table-53] Verify that can get value of Multiple Choice in the table', function () {
+    it('[Table-51] Verify that can get value of Multiple Choice in the table', function () {
         let XPATH_TABLE_GET_MULTI_CHOICE_VALUE_BUTTON = ".table-getValue .get-value-multipleChoice"
         Helper.ElementHandler
             .click(XPATH_TABLE_GET_MULTI_CHOICE_VALUE_BUTTON)
             .verifyAlertText('["orange"]')
     });
-    it('[Table-54] Verify that can get value of Radio Button in the table', function () {
+    it('[Table-51] Verify that can get value of Radio Button in the table', function () {
         let XPATH_TABLE_GET_RADIO_VALUE_BUTTON = ".table-getValue .get-value-radio"
         Helper.ElementHandler
             .click(XPATH_TABLE_GET_RADIO_VALUE_BUTTON)
             .verifyAlertText('"banana"')
     });
-    it('[Table-55] Verify that can set value for multiple rows in table', function () {
+    it('[Table-58] Verify that can set value for multiple rows in table', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_SET_VALUE_INSERT_ROW)
             .click(XPATH_TABLE_SET_VALUE_BUTTON)
             .click(XPATH_TABLE_SET_VALUE_GET_BUTTON)
             .verifyAlertText('["banana","green","text",["banana"],["banana"]]["banana","green","text",["banana"],["banana"]]')
     });
-    it('[Table-59] Verify that can show invisible Table on UI', function () {
+    it('[Table-63] Verify that can show invisible Table on UI', function () {
         Helper.ElementHandler
             .verifyElementNotDisplayed(XPATH_TABLE_SHOW)
             .click(XPATH_TABLE_DISPLAY_BUTTON)
             .verifyElementDisplayed(XPATH_TABLE_SHOW)
     });
-    it('[Table-61] Verify that can hide the visible Table on UI', function () {
+    it('[Table-65] Verify that can hide the visible Table on UI', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_TABLE_HIDE)
             .click(XPATH_TABLE_NON_DISPLAY_BUTTON)
             .verifyElementNotDisplayed(XPATH_TABLE_HIDE)
     });
-    it('[Table-63] Verify that the callback function will be triggered after adding a new row to table', function () {
+    it('[Table-67] Verify that the callback function will be triggered after adding a new row to table', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_ON_CALL_INSERT)
             .verifyNumberOfElements(XPATH_TABLE_ON_CELL_ROW, 2)
             .click(XPATH_TABLE_ON_CALL_DELETE)
     });
-    it('[Table-64] Verify that the callback function will be triggered after removing row from table', function () {
+    it('[Table-68] Verify that the callback function will be triggered after removing row from table', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_ON_CALL_INSERT)
             .verifyNumberOfElements(XPATH_TABLE_ON_CELL_ROW, 2)
             .click(XPATH_TABLE_ON_CALL_DELETE)
             .verifyNumberOfElements(XPATH_TABLE_ON_CELL_ROW, 1)
     });
-    it('[Table-65-Radio] Verify that the callback function will be triggered when changing the value', function () {
+    it('[Table-69-Radio] Verify that the callback function will be triggered when changing the value', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_ON_CALL_RADIO_CHANGE)
             .verifyAlertText('data select: "banana"')
     });
-    it('[Table-65-Dropdown] Verify that the callback function will be triggered when changing the value', function () {
+    it('[Table-69-Dropdown] Verify that the callback function will be triggered when changing the value', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_ON_CALL_DROPDOWN_OPEN)
             .click(XPATH_TABLE_ON_CALL_DROPDOWN_CHANGE)
             .verifyAlertText('data select: "red"')
     });
-    it('[Table-65-Textbox] Verify that the callback function will be triggered when changing the value', function () {
+    it('[Table-69-Textbox] Verify that the callback function will be triggered when changing the value', function () {
         Helper.ElementHandler
             .setValue(XPATH_TABLE_ON_CALL_INPUT, 't')
             .verifyAlertText('data select: "t"')
     });
-    it('[Table-65-Checkbox] Verify that the callback function will be triggered when changing the value', function () {
+    it('[Table-69-Checkbox] Verify that the callback function will be triggered when changing the value', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_ON_CALL_CHECKBOX_CHANGE)
             .verifyAlertText('data select: ["orange"]')
     });
-    it('[Table-65-Multiple] Verify that the callback function will be triggered when changing the value', function () {
+    it('[Table-69-Multiple] Verify that the callback function will be triggered when changing the value', function () {
         Helper.ElementHandler
             .click(XPATH_TABLE_ON_CALL_MULTIPLE_CHANGE)
             .verifyAlertText('data select: ["orange"]')

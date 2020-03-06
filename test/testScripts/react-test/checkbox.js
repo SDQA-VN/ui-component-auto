@@ -39,8 +39,8 @@ const XPATH_CHECKBOX_ENABLE_BUTTON = '.checkbox-enable .enable-checkbox';
 const XPATH_CHECKBOX_ON_CALL_BUTTON = "//div[@class='checkbox-onCall']//label[contains(text(),'Orange')]";
 const XPATH_CHECKBOX_DISABLE = '.checkbox-addItems .kuc-input-checkbox-item :disabled'
 
-describe('kintoneUIComponent - Button', function () {
-    it('[CheckBox-2] Verify that the MultipleChoice have the  UI is the same as MultipleChoice on kintone', function () {
+describe('kintoneUIComponent - CheckBox', function () {
+    it('[CheckBox-2] Verify that the MultipleChoice have the  UI is the same as CheckBox on kintone', function () {
         Helper.ElementHandler
             .waitForElement(XPATH_CHECKBOX)
             .verifyElementColor(XPATH_CHECKBOX, 'background-color', '#000000')
@@ -64,7 +64,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyText(XPATH_CHECKBOX_ONLY_OPTION_VALUE_2, '')
             .verifyText(XPATH_CHECKBOX_ONLY_OPTION_VALUE_3, '')
     });
-    it('[CheckBox-23-40] Verify that can add an item to the CheckBox list with full value for item', function () {
+    it('[CheckBox-23] Verify that can add an item to the CheckBox list with full value for item', function () {
         Helper.ElementHandler
             .click(XPATH_CHECKBOX_ADD_ENABLE_ITEMS_BUTTON)
             .verifyText(XPATH_CHECKBOX_ADD_ITEMS_VALUE_1, 'Orange')
@@ -81,7 +81,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_CHECKBOX_REMOVE_ITEMS_BUTTON)
             .verifyNumberOfElements(XPATH_CHECKBOX_REMOVE_ITEMS_VALUE, 2)
     });
-    it('[CheckBox-49-51] Verify that can get value of the visible item at the first position', function () {
+    it('[CheckBox-49] Verify that can get value of the visible item at the first position', function () {
         let items = {
             label: 'Orange',
             value: 'Orange',
@@ -91,7 +91,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_CHECKBOX_GET_ITEMS_INDEX_BUTTON)
             .verifyAlertText(JSON.stringify(items))
     });
-    it('[CheckBox-57-58-59] Verify the return list have the same value of item with the CheckBox list', function () {
+    it('[CheckBox-57] Verify the return list have the same value of item with the CheckBox list', function () {
         let items = [
             {
                 label: 'Orange',
@@ -108,7 +108,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_CHECKBOX_GET_ITEMS_BUTTON)
             .verifyAlertText(JSON.stringify(items))
     });
-    it('[Checkbox-62-63] Verify that the return value is the same with the current selected value in checkbox', function () {
+    it('[Checkbox-62] Verify that the return value is the same with the current selected value in checkbox', function () {
         Helper.ElementHandler
             .click(XPATH_CHECKBOX_GET_VALUE_BUTTON)
             .verifyAlertText('Orange')
@@ -177,7 +177,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_CHECKBOX_ENABLE_BUTTON)
             .verifyElementNotExisting(XPATH_CHECKBOX_ENABLE)
     });
-    it('[Checkbox-88-89] Verify that the callback function will be trigger when the checked state has been changed', function () {
+    it('[Checkbox-89] Verify that the callback function will be trigger when the checked state has been changed', function () {
         Helper.ElementHandler
             .click(XPATH_CHECKBOX_ON_CALL_BUTTON)
             .verifyAlertText('value: Orange')
