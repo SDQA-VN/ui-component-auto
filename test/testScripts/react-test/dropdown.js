@@ -66,7 +66,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyElementSize(XPATH_DROPDOWN, 180, 40)
     });
 
-    it('[Dropdown-] should verify that when hover item change background color #e2f2fe and when move out of item change background color to white ', function () {
+    it('[Dropdown-5] Verify that when hover any items on list, background color will change to #e2f2fe at the item is hovering', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN_HOVER_BUTTON)
             .moveToObject(XPATH_DROPDOWN_HOVER_ITEMS)
@@ -76,7 +76,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyElementNotExisting('.kuc-list-item:hover')
     });
 
-    it('[Dropdown-3-23] Dropdown contains items ( disable items, invisible item, enable item, visible items)', function () {
+    it('[Dropdown-3] Dropdown contains items ( disable items, invisible item, enable item, visible items)', function () {
         const XPATH_DROPDOWN_LIST_ITEMS_VISIBLE = '.dropdown-render .kuc-list-outer .kuc-list-item:nth-child(1)';
         const XPATH_DROPDOWN_LIST_ITEMS_DISABLE = '.dropdown-render .kuc-list-outer .kuc-list-item:nth-child(2)';
         Helper.ElementHandler
@@ -92,13 +92,13 @@ describe('kintoneUIComponent - Button', function () {
             .verifyElementNotExisting(XPATH_DROPDOWN_EMPTY_LIST)
     });
 
-    it('[Dropdown-6-7-8] Verify when user does not interact', function () {
+    it('[Dropdown-7] Verify when user does not interact', function () {
         Helper.ElementHandler
             .verifyElementExisting(XPATH_DROPDOWN_VALUE_SELECTED)
             .verifyText(XPATH_DROPDOWN_VALUE_SELECTED, '')
     });
 
-    it('[Dropdown-10-11] Verify when user clicks on the main area', function () {
+    it('[Dropdown-11] Verify when user clicks on the main area', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN)
             .verifyAttribute(XPATH_DROPDOWN_CONTENT, 'style', 'display: block;')
@@ -106,7 +106,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_DROPDOWN)
     });
 
-    it('[Dropdown-13-14] Verify When user choose any items in the list', function () {
+    it('[Dropdown-14] Verify When user choose any items in the list', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN)
             .click(XPATH_DROPDOWN_LIST_ITEMS_SELECT)
@@ -127,14 +127,14 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_DROPDOWN)
     });
 
-    it('[Dropdown-17-18] Verify when user click out of the dropdown', function () {
+    it('[Dropdown-18] Verify when user click out of the dropdown', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN)
             .click(XPATH_OUT_OF_DROPDOWN)
             .verifyText(XPATH_DROPDOWN_VALUE_SELECTED, 'Orange')
     });
 
-    it('[Dropdown-19] Verify The main are will displayed blank in case does not have any selected value', function () {
+    it('[Dropdown-21] Verify the main are will displayed blank in case does not have any selected value', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN_WITHOUT_OPTION)
             .click(XPATH_OUT_OF_DROPDOWN)
@@ -148,20 +148,20 @@ describe('kintoneUIComponent - Button', function () {
             .verifyElementSize(XPATH_DROPDOWN_WITHOUT_OPTION, 180, 40)
     });
 
-    it('[Dropdown-33-34-35] Verify can create a dropdown with default selected value', function () {
+    it('[Dropdown-33] Verify can create a dropdown with default selected value', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_DROPDOWN_DEFAULT_VALUE)
             .verifyText(XPATH_DROPDOWN_DEFAULT_VALUE_SELECTED, 'Snake')
     });
 
-    it('[Dropdown-42-54] Verify that can add an item to the dropdown list with full value for item', function () {
+    it('[Dropdown-42] Verify that can add an item to the dropdown list with full value for item', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN_ADD_ITEMS_BUTTON)
             .click(XPATH_DROPDOWN_ADD_ITEMS)
             .verifyText(XPATH_DROPDOWN_ADD_ITEMS_LIST, 'Lemon')
     });
 
-    it('[Dropdown-43-44-55] Verify that can add an item to the dropdown list with full value for item', function () {
+    it('[Dropdown-43] Verify that can add an item to the invisible dropdown list with full value for item', function () {
         Helper.ElementHandler
             .click(XPATH_INVISIBLE_DROPDOWN_ADD_ITEMS_BUTTON)
             .verifyElementNotDisplayed(XPATH_INVISIBLE_DROPDOWN_ADD_ITEMS)
@@ -170,7 +170,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyText(XPATH_INVISIBLE_DROPDOWN_ADD_ITEMS_LIST, 'Lemon')
     });
 
-    it('[Dropdown-53-56] Verify that the new added item is disabled if the item.isDisable is true', function () {
+    it('[Dropdown-56] Verify that the new added item is disabled if the item.isDisable is true', function () {
         const XPATH_DROPDOWN_ITEMS_FIRST = '.dropdown-addItems-existList .kuc-list-outer .kuc-list-item-disable';
         const XPATH_DROPDOWN_ITEMS_SECOND = '.dropdown-addItems-existList .kuc-list-outer .kuc-list-item:nth-child(2)';
         Helper.ElementHandler
@@ -202,7 +202,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyNumberOfElements(XPATH_DROPDOWN_REMOVE_EMPTY_LIST, 0)
     });
 
-    it('[Dropdown-64-65-66] Verify the return list have the same value of item with the current dropdown list', function () {
+    it('[Dropdown-64] Verify that can get all the items of the dropdownlist including disabled items, invisible items', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN_GET_ITEMS_BUTTON)
             .verifyAlertText('Orange,Banana,Lemon')
@@ -212,7 +212,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_INVISBLE_DROPDOWN_GET_ITEMS_BUTTON)
             .verifyAlertText('Orange,Banana,Lemon')
     });
-    it('[Dropdown-69-70-71] Verify that can get all the items for invisible dropdow', function () {
+    it('[Dropdown-69] Verify that can get the value of the selected item', function () {
         const XPATH_DROPDOWN_ITEMS_SELECTED = '.dropdown-getValue .kuc-list-outer .kuc-list-item:nth-child(2)'
         Helper.ElementHandler
             .click(XPATH_DROPDOWN_GET_VALUE_LIST_OPEN)
@@ -226,7 +226,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_INVISIBLE_DROPDOWN_GET_VALUE_BUTTON)
             .verifyAlertText('Banana')
     });
-    it('[Dropdown-74-75] Verify can set the selected value for Dropdown by valid value of an item in dropdown', function () {
+    it('[Dropdown-74] Verify can set the selected value for Dropdown by valid value of an item in dropdown', function () {
         Helper.ElementHandler
             .verifyText(XPATH_DROPDOWN_SET_VALUE_SELECTED, 'Orange')
             .click(XPATH_DROPDOWN_SET_VALUE_BUTTON)
@@ -302,7 +302,7 @@ describe('kintoneUIComponent - Button', function () {
             .click(XPATH_DROPDOWN_ENABLE_BUTTON)
             .verifyAttributeIsNotIncludeValue(XPATH_DROPDOWN_DISBALE, 'class', 'kuc-dropdown-disable')
     });
-    it('[Dropdown-98-99] Verify that the callback function will be trigger when change the value for dropdown', function () {
+    it('[Dropdown-99] Verify that the callback function will be trigger when change the value for dropdown', function () {
         Helper.ElementHandler
             .click(XPATH_DROPDOWN_ON_CALL_OPEN)
             .click(XPATH_DROPDOWN_ON_CALL_SELECT)

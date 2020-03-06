@@ -54,7 +54,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyElementNotDisplayed(XPATH_NOTIFY_ERROR)
             .verifyElementNotExisting(XPATH_NOTIFY_ERROR)
     });
-    it('[Notify-6-16] Verify that the Error NotifyPopup have the UI is the same as NotifyPopup on kintone', function () {
+    it('[Notify-6] Verify that can create a NotifyPopup without any options value', function () {
         Helper.ElementHandler
             .click(XPATH_NOTIFY_WITHOUT_OPTION_SHOW)
             .verifyElementDisplayed(XPATH_NOTIFY_WITHOUT_OPTION)
@@ -84,7 +84,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyText(XPATH_NOTIFY_SET_TEXT_BLANK_VALUE, '')
             .click(XPATH_NOTIFY_SET_TEXT_BLANK_CLOSE)
     });
-    it('[Notify-25-32] Verify can set error type for NotifyPopup', function () {
+    it('[Notify-25] Verify can set error type for NotifyPopup', function () {
         Helper.ElementHandler
             .click(XPATH_NOTIFY_SET_TYPE_SHOW)
             .verifyElementDisplayed(XPATH_NOTIFY_SET_TYPE_VALUE)
@@ -101,7 +101,7 @@ describe('kintoneUIComponent - Button', function () {
             .verifyElementNotDisplayed(XPATH_NOTIFY_SET_HIDE_VALUE)
             .verifyElementNotExisting(XPATH_NOTIFY_SET_HIDE_VALUE)
     });
-    it('[Notify-40-41] Verify that the callback function will be triggered when clicking on that NotifyPopup', function () {
+    it('[Notify-41] Verify that the callback function will be triggered when clicking on that NotifyPopup', function () {
         Helper.ElementHandler
             .click(XPATH_NOTIFY_ON_CALL_SHOW)
             .click(XPATH_NOTIFY_ON_CALL)
