@@ -6,7 +6,7 @@ import { Button, Text, Label, Dropdown, RadioButton, Alert, IconButton, Multiple
 class NormalButton extends React.Component {
     render() {
         return (
-            <div class="normalButton">
+            <div id="normalButton">
                 <Button
                     text='normalButton'
                     type='Normal'
@@ -24,13 +24,13 @@ class NormalButtonSetTypeMethod extends React.Component {
 
     render() {
         return (
-            <div class="normalButton_setNormalType">
+            <div id="normalButton_setNormalType">
                 <Button
                     text="normalButton_setNormalType"
                     type={this.state.type}
                     isDisabled={false}
                     isVisible={true} />
-                <button class="change-type" onClick={this.handleButtonClick} >Change Type</button>
+                <button id="change-type" onClick={this.handleButtonClick} >Change Type</button>
             </div>
         );
     }
@@ -48,13 +48,13 @@ class SubmitButtonSetTypeMethod extends React.Component {
 
     render() {
         return (
-            <div class="normalButton_setSubmitType">
+            <div id="normalButton_setSubmitType">
                 <Button
                     text="normalButton_setSubmitType"
                     type={this.state.type}
                     isDisabled={false}
                     isVisible={true} />
-                <button class="change-type" onClick={this.handleButtonClick} >Change Type</button>
+                <button id="change-type" onClick={this.handleButtonClick} >Change Type</button>
             </div>
         );
     }
@@ -72,13 +72,13 @@ class NormalButtonSetTextMethod extends React.Component {
 
     render() {
         return (
-            <div class="normalButton_setText">
+            <div id="normalButton_setText">
                 <Button
                     text={this.state.test}
                     type='normal'
                     isDisabled={false}
                     isVisible={true} />
-                <button class="change-text" onClick={this.handleButtonClick} >Change Text</button>
+                <button id="change-text" onClick={this.handleButtonClick} >Change Text</button>
             </div>
         );
     }
@@ -96,13 +96,13 @@ class NormalButtonShowMethod extends React.Component {
 
     render() {
         return (
-            <div class="normalButton_showInvisible">
+            <div id="normalButton_showInvisible">
                 <Button
                     text="normalButton_showInvisible"
                     type='normal'
                     isDisabled={false}
                     isVisible={this.state.show} />
-                <button class="show-button" onClick={this.handleButtonClick} >Show Button</button>
+                <button id="show-button" onClick={this.handleButtonClick} >Show Button</button>
             </div>
         );
     }
@@ -120,13 +120,13 @@ class NormalButtonHideMethod extends React.Component {
 
     render() {
         return (
-            <div class="normalButton_hideVisible">
+            <div id="normalButton_hideVisible">
                 <Button
                     text="normalButton_hideVisible"
                     type='normal'
                     isDisabled={false}
                     isVisible={this.state.show} />
-                <button class="hide-button" onClick={this.handleButtonClick} >Hide Button</button>
+                <button id="hide-button" onClick={this.handleButtonClick} >Hide Button</button>
             </div>
         );
     }
@@ -144,13 +144,13 @@ class NormalButtonDisableMethod extends React.Component {
 
     render() {
         return (
-            <div class="normalButton_disable">
+            <div id="normalButton_disable">
                 <Button
                     text="normalButton_disable"
                     type='normal'
                     isDisabled={this.state.disable}
                     isVisible={true} />
-                <button class="disable-button" onClick={this.handleButtonClick} >Disable Button</button>
+                <button id="disable-button" onClick={this.handleButtonClick} >Disable Button</button>
             </div>
         );
     }
@@ -168,13 +168,13 @@ class NormalButtonEnableMethod extends React.Component {
 
     render() {
         return (
-            <div class="normalButton_enable">
+            <div id="normalButton_enable">
                 <Button
                     text="normalButton_enable"
                     type='normal'
                     isDisabled={this.state.disable}
                     isVisible={true} />
-                <button class="enable-button" onClick={this.handleButtonClick} >Enable Button</button>
+                <button id="enable-button" onClick={this.handleButtonClick} >Enable Button</button>
             </div>
         );
     }
@@ -187,7 +187,7 @@ class NormalButtonEnableMethod extends React.Component {
 class NormalButtonOnCallMethod extends React.Component {
     render() {
         return (
-            <div class="normalButton_onCall">
+            <div id="normalButton_onCall">
                 <Button
                     text="normalButton_onCall"
                     type='normal'
@@ -204,7 +204,7 @@ class NormalButtonOnCallMethod extends React.Component {
 class NormalButtonOnTriggerMethod extends React.Component {
     render() {
         return (
-            <div class="normalButton_onTrigger">
+            <div id="normalButton_onTrigger">
                 <Button
                     text="normalButton_onTrigger"
                     type='normal'
@@ -222,7 +222,7 @@ class NormalButtonOnTriggerMethod extends React.Component {
 class SubmitButton extends React.Component {
     render() {
         return (
-            <div class="submitButton">
+            <div id="submitButton">
                 <Button
                     text='submitButton'
                     type='submit'
@@ -240,13 +240,13 @@ class SubmitButtonSetTypeSubmitMethod extends React.Component {
 
     render() {
         return (
-            <div class="submitButton_setSubmitType">
+            <div id="submitButton_setSubmitType">
                 <Button
                     text="submitButton_setSubmitType"
                     type={this.state.type}
                     isDisabled={false}
                     isVisible={true} />
-                <button class="change-type" onClick={this.handleButtonClick} >Change Type</button>
+                <button id="change-type" onClick={this.handleButtonClick} >Change Type</button>
             </div>
         );
     }
@@ -264,13 +264,13 @@ class SubmitButtonSetTypeNormalMethod extends React.Component {
 
     render() {
         return (
-            <div class="submitButton_setNormalType">
+            <div id="submitButton_setNormalType">
                 <Button
                     text="submitButton_setSubmitType"
                     type={this.state.type}
                     isDisabled={false}
                     isVisible={true} />
-                <button class="change-type" onClick={this.handleButtonClick} >Change Type</button>
+                <button id="change-type" onClick={this.handleButtonClick} >Change Type</button>
             </div>
         );
     }
@@ -288,13 +288,13 @@ class SubmitButtonSetTextMethod extends React.Component {
 
     render() {
         return (
-            <div class="submitButton_setText">
+            <div id="submitButton_setText">
                 <Button
                     text={this.state.test}
                     type='submit'
                     isDisabled={false}
                     isVisible={true} />
-                <button class="change-text" onClick={this.handleButtonClick} >Change Text</button>
+                <button id="change-text" onClick={this.handleButtonClick} >Change Text</button>
             </div>
         );
     }
@@ -312,13 +312,13 @@ class SubmitButtonShowMethod extends React.Component {
 
     render() {
         return (
-            <div class="submitButton_showInvisible">
+            <div id="submitButton_showInvisible">
                 <Button
                     text="submitButton_showInvisible"
                     type='submit'
                     isDisabled={false}
                     isVisible={this.state.show} />
-                <button class="show-button" onClick={this.handleButtonClick} >Show Button</button>
+                <button id="show-button" onClick={this.handleButtonClick} >Show Button</button>
             </div>
         );
     }
@@ -336,13 +336,13 @@ class SubmitButtonHideMethod extends React.Component {
 
     render() {
         return (
-            <div class="submitButton_hideVisible">
+            <div id="submitButton_hideVisible">
                 <Button
                     text="submitButton_hideVisible"
                     type='submit'
                     isDisabled={false}
                     isVisible={this.state.show} />
-                <button class="hide-button" onClick={this.handleButtonClick} >Hide Button</button>
+                <button id="hide-button" onClick={this.handleButtonClick} >Hide Button</button>
             </div>
         );
     }
@@ -360,13 +360,13 @@ class SubmitButtonDisableMethod extends React.Component {
 
     render() {
         return (
-            <div class="submitButton_disable">
+            <div id="submitButton_disable">
                 <Button
                     text="submitButton_disable"
                     type='submit'
                     isDisabled={this.state.disable}
                     isVisible={true} />
-                <button class="disable-button" onClick={this.handleButtonClick} >Disable Button</button>
+                <button id="disable-button" onClick={this.handleButtonClick} >Disable Button</button>
             </div>
         );
     }
@@ -384,13 +384,13 @@ class SubmitButtonEnableMethod extends React.Component {
 
     render() {
         return (
-            <div class="submitButton_enable">
+            <div id="submitButton_enable">
                 <Button
                     text="submitButton_enable"
                     type='submit'
                     isDisabled={this.state.disable}
                     isVisible={true} />
-                <button class="enable-button" onClick={this.handleButtonClick} >Enable Button</button>
+                <button id="enable-button" onClick={this.handleButtonClick} >Enable Button</button>
             </div>
         );
     }
@@ -403,7 +403,7 @@ class SubmitButtonEnableMethod extends React.Component {
 class SubmitButtonOnCallMethod extends React.Component {
     render() {
         return (
-            <div class="submitButton_onCall">
+            <div id="submitButton_onCall">
                 <Button
                     text="submitButton_onCall"
                     type='submit'
@@ -420,7 +420,7 @@ class SubmitButtonOnCallMethod extends React.Component {
 class SubmitButtonOnTriggerMethod extends React.Component {
     render() {
         return (
-            <div class="submitButton_onTrigger">
+            <div id="submitButton_onTrigger">
                 <Button
                     text="submitButton_onTrigger"
                     type='submit'
